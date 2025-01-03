@@ -1,0 +1,593 @@
+{% extends '_base.html' %}
+{% load static %}
+{{form.media}}
+
+
+{% block seo_tags %}
+<title>{{event.title}}</title>
+<meta name="description" content="{{event.small_description|truncatechars:157}}">
+<meta name="title" content="{{event.title}}" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://bbgi.co.za/events/add" />
+<meta property="og:title" content="{{event.title}}" />
+<meta property="og:description" content="{{event.small_description|truncatechars:157}}" />
+{% if event.image %}
+<meta property="og:image" content="https://bbgi.co.za{{event.image.url}}" />
+{% else %}
+<meta property="og:image" content="https://bbgi.co.za{% static 'imgs/logo/logo.jpeg' %}" />
+{% endif %}
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://bbgi.co.za/events/add" />
+<meta property="twitter:title" content="{{event.title}}" />
+<meta property="twitter:description" content="{{event.small_description|truncatechars:157}}" />
+{% if event.image %}
+<meta property="twitter:image" content="https://bbgi.co.za{{event.image.url}}" />
+{% else %}
+<meta property="twitter:image" content="https://bbgi.co.za{% static 'imgs/logo/logo.jpeg' %}" />
+{% endif %}
+{% endblock seo_tags %}
+
+{% block content %}
+<section class="w-full font-sans relative block bg-custom-h mt-10 ">
+    <div class="group overflow-hidden relative">
+        <div class="w-full h-full absolute top-0 left-0 bg-custom-h z-50 opacity-50"></div>
+        <div class="relative overflow-hidden block">
+            <div class="img_box overflow-hidden relative block">
+                <div
+                    class="overflow-hidden h-[600px] md:h-[560px] bg-custom-h relative block transition-all duration-500 ease-in">
+                    {% if event.image %}
+                    <img src="{{event.image.url}}"
+                        alt="{{event.title}} image by {{event.organiser.get_full_name}}"
+                        class="absolute top-1/2 left-1/2 h-full -translate-x-1/2 -translate-y-1/2 w-full transition-all duration-500 ease-in group-hover:scale-105 opacity-50 object-cover">
+                    <div class="absolute inset-0 z-[2000] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <a href="{{event.image.url}}" target="_blank" rel="noopener noreferrer"
+                            class="bg-white text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors">
+                            View
+                        </a>
+                    </div>
+                        {% else %}
+                    <img src="{% static 'imgs/no-image.png' %}" alt="{{event.title}}"
+                        class="absolute top-1/2 left-1/2 h-full -translate-x-1/2 -translate-y-1/2 w-full transition-all duration-500 ease-in group-hover:scale-105 opacity-50 object-cover">
+                    {% endif %}
+                    
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- product details section -->
+<section>
+    <div class="container modal-container property-tab pt-[70px] pb-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-[30px]">
+            <!-- details body -->
+            <div class="lg:col-start-1 lg:col-span-8">
+                <!--  top -->
+                <ul class="flex flex-wrap gap-x-[15px] md:gap-x-[35px] gap-y-[15px] items-center mb-[30px]">
+                    <li>
+                        <ul class="flex gap-x-[15px] md:gap-x-[30px] items-center">
+                            
+                            <li>
+                                <a class="text-xs md:text-sm uppercase !text-white px-[15px] py-3 bg-custom-primary hover:text-white font-semibold"
+                                    href="#"><span class="leading-1.8 md:leading-1.8">{{event.status}}</span></a>
+                            </li>
+                            
+                            <li>
+                                <a class="text-xs md:text-sm uppercase !text-white px-[15px] py-3 bg-custom-h font-semibold hover:text-white"
+                                    href="{% url 'events:events-by-category' event.category.slug %}"><span
+                                        class="leading-1.8 md:leading-1.8">{{event.category.label}}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <ul class="flex gap-x-[15px] md:gap-x-[30px] items-center">
+                            <li>
+                                <p class="text-xs md:text-sm font-semibold">
+                                    <span class="leading-1.8 md:leading-1.8"><i
+                                            class="fa-regular fa-calendar-alt text-custom-primary mr-[5px]"></i>
+                                        {{event.date_time_formatter}}</span>
+                                </p>
+                            </li>
+                            <li>
+                                <p class="text-xs md:text-sm font-semibold">
+                                    <span class="leading-1.8 md:leading-1.8"><i class="fa-solid fa-location-dot text-custom-primary mr-[5px]"></i>
+                                        {{event.event_address}}, {{event.venue_name}}</span>
+                                </p>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- main -->
+                <div>
+                    <h4 class="text-2xl md:text-[26px] lg:text-3xl xl:text-4xl font-bold text-custom-h mb-[15px]">
+                        <span class="leading-1.3 lg:leading-1.3 xl:leading-1.3">{{event.title}}</span>
+                    </h4>
+                   
+                    <!-- Description -->
+                    <h4
+                        class="text-[22px] font-semibold leading-1.3 pl-[10px] border-l-2 border-custom-primary text-custom-h my-[30px]">
+                        Description
+                    </h4>
+                    <p class="text-sm lg:text-base ">
+                        <span class="leading-1.8 lg:leading-1.8">{{event.content|safe}}</span>
+                    </p>
+                    <div class="text-base my-10 font-bold text-custom-h">
+                        <p class="py-2">from R{{event.tickettypes.all.0.price}} per ticket</p>
+                        {% if event.status == "Completed" %}
+                        <div class="px-4 group duration-150 w-fit  border-custom-h rounded-md h-14 grid items-center bg-custom-h ">
+                            <p class="text-white text-base grid  duration-150 items-center justify-center w-full h-full font-semibold">Event
+                                completed</p>
+                        </div>
+                        {% else %}
+                        <div
+                            >
+                            
+                                <a href="{% url 'events:create-ticket-order' event_slug=event.slug %}">
+                                    <h5
+                                        class="uppercase text-sm md:text-base text-white relative group whitespace-nowrap font-normal mb-0 transition-all duration-300 border border-custom-primary hover:border-custom-h inline-block z-0">
+                                        <span
+                                            class="inline-block absolute top-0 right-0 w-full h-full bg-custom-primary group-hover:bg-black -z-1 group-hover:w-0 transition-all duration-300"></span>
+                                        <div
+                                            class="relative z-1 px-[30px] lg:px-10 py-3 md:py-[15px] lg:py-[17px] group-hover:text-custom-h leading-1.5 uppercase">
+                                            <p class="!text-white group-hover:!text-black">Reserve tickets</p>
+                                        </div>
+                                    </h5>
+                                </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Facts and Features-->
+
+                    <!-- Gallery -->
+                     {% if event.images %}
+                    <h4
+                        class="text-[22px] font-semibold leading-1.3 pl-[10px] border-l-2 border-custom-primary text-custom-h my-[30px]">
+                        From Our Gallery
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-[30px] mb-[60px]">
+                        {% for image in event.images.all %}
+                        
+                        <div class="group cursor-pointer relative">
+                            <img src="{{image.image.url}}" alt="{{event.title}}"
+                                class="w-full h-48 object-cover rounded-lg transition-transform transform scale-100 group-hover:scale-105" />
+                            <div
+                                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <a href="{{image.image.url}}" target="_blank" rel="noopener noreferrer"
+                                    class="bg-white text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors">
+                                    View
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                    {% endif %}
+
+
+                    <!-- Location -->
+                    {% if event.map_coordinates %}
+                    <h4
+                        class="text-[22px] font-semibold leading-1.3 pl-[10px] border-l-2 border-custom-primary text-custom-h my-[30px]">
+                        Location
+                    </h4>
+                    <div class="h-[360px] mb-[60px] overflow-hidden">
+                        <div class="google-map-locations-area">
+                            <div id="gmap"></div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- Customer Reviews -->
+                     {% if event.reviews %}
+                    <h4
+                        class="text-[22px] font-semibold leading-1.3 pl-[10px] border-l-2 border-custom-primary text-custom-h my-[30px]">
+                        Customer Reviews
+                    </h4>
+                    <div>
+                        <div class="relative flex items-center">
+                            <div class="text-sm text-custom-primary">
+                                <i class="fa-regular fa-star fa-lg font-bold"></i>
+                            </div>
+                            <div class="ml-2">
+                                <p class="text-sm font-normal">{{event.get_average_rating|safe}} Average stars
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-[50px] border-t border-[#ededed] opacity-40">
+                    <!-- reviews -->
+                    <ul class="mb-[20px] w-full">
+                        {% for review in event.reviews.all %}
+                        <li class="flex flex-col md:flex-row gap-x-[30px] gap-y-5 pb-[30px]">
+                            <div class="flex-shrink-0">
+                                <img src="{% if review.commenter.profile_image %}{{review.commenter.profile_image.url}}{% else %}{% static 'imgs/no-image.png' %}{% endif %}"
+                                    alt="{{review.commenter_full_names}}"
+                                    class="w-20 h-20 md:w-100px md:h-100px rounded-full">
+                            </div>
+                            <div class="relative">
+                                <h4 class="text-lg text-custom-h font-semibold mb-[5px]">
+                                    <a href="#" class="leading-1.3">{{review.commenter_full_names}}</a>
+                                </h4>
+                                <div>
+                                    <ul class="text-xs text-ratings flex items-center pt-[22px] md:pt-0 mb-[10px]">
+                                        <li class="pt-2">
+                                            <svg class="w-4 h-4 {% if review.rating_value >= 1 %}text-yellow-300{% else %}text-gray-300{% endif %}"
+                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                fill="currentColor" viewBox="0 0 22 20">
+                                                <path
+                                                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                            </svg>
+                                        </li>
+                                        <li class="pt-2">
+                                            <svg class="w-4 h-4 {% if review.rating_value >= 2 %}text-yellow-300{% else %}text-gray-300{% endif %}"
+                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                fill="currentColor" viewBox="0 0 22 20">
+                                                <path
+                                                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                            </svg>
+                                        </li>
+                                        <li class="pt-2">
+                                            <svg class="w-4 h-4 {% if review.rating_value >= 3 %}text-yellow-300{% else %}text-gray-300{% endif %}"
+                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                fill="currentColor" viewBox="0 0 22 20">
+                                                <path
+                                                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                            </svg>
+                                        </li>
+                                        <li class="pt-2">
+                                            <svg class="w-4 h-4 {% if review.rating_value >= 4 %}text-yellow-300{% else %}text-gray-300{% endif %}"
+                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                fill="currentColor" viewBox="0 0 22 20">
+                                                <path
+                                                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                            </svg>
+                                        </li>
+                                        <li class="pt-2">
+                                            <svg class="w-4 h-4 {% if review.rating_value >= 5 %}text-yellow-300{% else %}text-gray-300{% endif %}"
+                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                fill="currentColor" viewBox="0 0 22 20">
+                                                <path
+                                                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                            </svg>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <p class="text-sm mb-5 md:mb-0">
+                                    <span class="leading-1.8">{{review.comment}}</span>
+                                </p>
+                            </div>
+                        </li>
+                        {% endfor %}
+
+                    </ul>
+                    {% endif %}
+                    <!-- add reviews -->
+                    <form method="post"
+                        class="form-primary bg-white-5 shadow-box-shadow-2 px-[25px] pt-10 pb-[50px] md:p-[50px] md:pt-10 mt-5 mb-[60px]">
+                        {% csrf_token %}
+                        <h4 class="text-[17px] md:text-lg lg:text-xl font-bold text-custom-h mb-5">
+                            <span class="leading-1.3 md:leading-1.3 lg:leading-1.3">
+                                Add a Review</span>
+                        </h4>
+                        <div class="flex gap-[15px] items-center mb-[30px]">
+                            <h5 class="text-sm md:text-[15px] lg:text-base font-bold text-custom-h mb-0">
+                                <span class="leading-1.3 md:leading-1.3 lg:leading-1.3">
+                                    Your Ratings:</span>
+                            </h5>
+                            <div class="flex w-fit mx-auto items-center">
+                                <div class="flex space-x-1" id="star-rating">
+                                    <svg class="w-6 h-6 text-gray-300 hover:text-custom-h cursor-pointer"
+                                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
+                                        data-value="1">
+                                        <path
+                                            d="M9.049 2.927a1 1 0 011.902 0l1.616 4.95a1 1 0 00.95.69h5.174a1 1 0 01.593 1.809l-4.187 3.048a1 1 0 00-.364 1.118l1.617 4.95a1 1 0 01-1.541 1.118l-4.186-3.048a1 1 0 00-1.176 0l-4.186 3.048a1 1 0 01-1.541-1.118l1.617-4.95a1 1 0 00-.364-1.118L2.3 10.376a1 1 0 01.593-1.809h5.174a1 1 0 00.95-.69l1.616-4.95z">
+                                        </path>
+                                    </svg>
+                                    <svg class="w-6 h-6 text-gray-300 hover:text-custom-h cursor-pointer"
+                                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
+                                        data-value="2">
+                                        <path
+                                            d="M9.049 2.927a1 1 0 011.902 0l1.616 4.95a1 1 0 00.95.69h5.174a1 1 0 01.593 1.809l-4.187 3.048a1 1 0 00-.364 1.118l1.617 4.95a1 1 0 01-1.541 1.118l-4.186-3.048a1 1 0 00-1.176 0l-4.186 3.048a1 1 0 01-1.541-1.118l1.617-4.95a1 1 0 00-.364-1.118L2.3 10.376a1 1 0 01.593-1.809h5.174a1 1 0 00.95-.69l1.616-4.95z">
+                                        </path>
+                                    </svg>
+                                    <svg class="w-6 h-6 text-gray-300 hover:text-custom-h cursor-pointer"
+                                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
+                                        data-value="3">
+                                        <path
+                                            d="M9.049 2.927a1 1 0 011.902 0l1.616 4.95a1 1 0 00.95.69h5.174a1 1 0 01.593 1.809l-4.187 3.048a1 1 0 00-.364 1.118l1.617 4.95a1 1 0 01-1.541 1.118l-4.186-3.048a1 1 0 00-1.176 0l-4.186 3.048a1 1 0 01-1.541-1.118l1.617-4.95a1 1 0 00-.364-1.118L2.3 10.376a1 1 0 01.593-1.809h5.174a1 1 0 00.95-.69l1.616-4.95z">
+                                        </path>
+                                    </svg>
+                                    <svg class="w-6 h-6 text-gray-300 hover:text-custom-h cursor-pointer"
+                                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
+                                        data-value="4">
+                                        <path
+                                            d="M9.049 2.927a1 1 0 011.902 0l1.616 4.95a1 1 0 00.95.69h5.174a1 1 0 01.593 1.809l-4.187 3.048a1 1 0 00-.364 1.118l1.617 4.95a1 1 0 01-1.541 1.118l-4.186-3.048a1 1 0 00-1.176 0l-4.186 3.048a1 1 0 01-1.541-1.118l1.617-4.95a1 1 0 00-.364-1.118L2.3 10.376a1 1 0 01.593-1.809h5.174a1 1 0 00.95-.69l1.616-4.95z">
+                                        </path>
+                                    </svg>
+                                    <svg class="w-6 h-6 text-gray-300 hover:text-custom-h cursor-pointer"
+                                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
+                                        data-value="5">
+                                        <path
+                                            d="M9.049 2.927a1 1 0 011.902 0l1.616 4.95a1 1 0 00.95.69h5.174a1 1 0 01.593 1.809l-4.187 3.048a1 1 0 00-.364 1.118l1.617 4.95a1 1 0 01-1.541 1.118l-4.186-3.048a1 1 0 00-1.176 0l-4.186 3.048a1 1 0 01-1.541-1.118l1.617-4.95a1 1 0 00-.364-1.118L2.3 10.376a1 1 0 01.593-1.809h5.174a1 1 0 00.95-.69l1.616-4.95z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                {{form.rating_value}}
+                            </div>
+                        </div>
+                        <div class="mb-4 w-fit mx-auto">
+                            <p id="review-text" class="text-custom-h font-medium text-xl">
+
+                            </p>
+                        </div>
+                        <div class="grid gap-[30px] mb-[35px]">
+                            <!-- message -->
+                            <div class="relative mb-2">
+                                {{form.comment}}
+                                <span class="absolute top-[30px] -translate-y-1/2 right-4">
+                                    <i
+                                        class="fa-solid fa-pencil text-sm lg:text-base text-custom-primary font-bold"></i>
+                                </span>
+                            </div>
+                            <!-- name -->
+                            <div class="relative">
+                                {{form.comment_title}}
+                                <span class="absolute top-1/2 -translate-y-1/2 right-4">
+                                    <i
+                                        class="fa-solid fa-pencil text-sm lg:text-base text-custom-primary font-bold"></i>
+                                </span>
+                            </div>
+                            <!-- email -->
+                            <div class="relative">
+                                {{form.commenter_full_names}}
+                                <span class="absolute top-1/2 -translate-y-1/2 right-4">
+                                    <i class="fa-solid fa-user text-sm lg:text-base text-custom-primary font-bold"></i>
+
+                                </span>
+                            </div>
+
+                            <!-- website -->
+                            <div class="relative">
+                                {{form.commenter_email}}
+                                <span class="absolute top-1/2 -translate-y-1/2 right-4">
+                                    <i
+                                        class="fa-solid fa-envelope text-sm lg:text-base text-custom-primary font-bold"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- agree -->
+                        <div class="text-sm flex items-center mb-[35px]">
+                            <input type="checkbox" id="agree">
+                            <label for="agree" class="text-sm ml-1">
+                                Save my name, email, and website in this browser for the
+                                next time I comment.
+                            </label>
+                        </div>
+
+                        <!-- submit button -->
+
+                        <div>
+                            <h5
+                                class="uppercase text-sm md:text-base !text-white relative group whitespace-nowrap font-normal mb-0 transition-all duration-300 border border-custom-primary hover:border-custom-h inline-block z-0">
+                                <span
+                                    class="inline-block absolute top-0 right-0 w-full h-full bg-custom-primary group-hover:bg-black -z-1 group-hover:w-0 transition-all duration-300"></span>
+                                <button type="submit"
+                                    class="relative z-1 px-5 md:px-[25px] lg:px-10 py-[10px] md:py-[15px] lg:py-[17px] group-hover:text-custom-h leading-23px uppercase">
+                                    Submit
+                                </button>
+                            </h5>
+                        </div>
+                    </form>
+
+                    <!-- Related Properties -->
+
+                </div>
+            </div>
+            <!-- sidebar -->
+            <div class="lg:col-start-9 lg:col-span-4 pt-[60px] lg:pt-0">
+                <!-- author details -->
+                <!-- Popular Properties-->
+                <div class="px-5 pt-[35px] pb-10 xl:pl-[35px] xl:pr-[30px] mb-10 border-2 border-border-color-11">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="mb-[25px] overflow-hidden w-40 h-40">
+                            <img src="{% if event.organiser.profile_image %}{{event.organiser.profile_image.url}}{% else %}{% static 'imgs/R.png' %}{% endif %}" alt="{{event.organiser.get_full_names}}" class="w-140px h-140px rounded-full">
+                        </div>
+                        <h4 class="mb-15px lg:text-lg text-heading-color font-bold">
+                            <span class="leading-1.3 lg:leading-1.3">{{event.organiser.get_full_name}}</span>
+                        </h4>
+                        <p class="text-[12.25px] lg:text-sm">
+                            <span class="lg:leading-1 8"> Event Organiser </span>
+                        </p>
+                        
+                        <p class="text-sm mb-[22px] hyphens-none">
+                            <span class="leading-1.8">{{event.organiser.biography|truncatewords:10}}</span>
+                        </p>
+                        <ul class="text-sm lg:text-base flex gap-[18px] justify-center items-center text-color-1">
+                            {% if event.organiser.facebook %}
+                            <li class="leading-1.8 lg:leading-1.8">
+                                <a href="{{event.organiser.facebook}}"><i class="fab fa-facebook-f"></i></a>
+                            </li>
+                            {% endif %}
+                            {% if event.organiser.twitter %}
+                            <li class="leading-1.8 lg:leading-1.8">
+                                <a href="{{event.organiser.twitter}}"><i class="fab fa-twitter"></i></a>
+                            </li>
+                            {% endif %}
+                            {% if event.organiser.linkedIn %}
+                            <li class="leading-1.8 lg:leading-1.8">
+                                <a href="{{event.organiser.linkedIn}}"><i class="fab fa-linkedin"></i></a>
+                            </li>
+                            {% endif %}
+                            {% if event.organiser.instagram %}
+                            <li class="leading-1.8 lg:leading-1.8">
+                                <a href="{{event.organiser.instagram}}"><i class="fab fa-youtube"></i></a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="px-5 pt-[35px] pb-10 xl:pl-[35px] xl:pr-[30px] mb-10 border-2 border-[#ededed]">
+                    <h4 class="text-lg font-semibold text-custom-h mb-[25px]">
+                        <span class="leading-1.3 pl-[10px] border-l-2 border-custom-primary">Other Organisers</span>
+                    </h4>
+                    {% for organisor in event.organisors.all %}
+                    <div class="pt-4">
+                        <p class="text-base text-custom-h md:text-lg font-medium">{{organisor.full_name}}</p>
+                        {% if organisor.organisor_phone_one %}
+                        <p class="text-sm text-gray-500 md:text-base font-medium space-x-2"><i class="fa-solid text-lg fa-phone"></i>
+                            <span>{{organisor.organisor_phone_one}}</span>
+                        </p>
+                        {% endif %}
+                        <p class="text-sm text-gray-500 md:text-base font-medium space-x-2"><i class="fa-solid text-lg fa-envelope"></i>
+                            <span>{{organisor.organisor_email}}</span>
+                        </p>
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+
+                <!-- Follow Us -->
+                <div class="px-5 pt-[35px] pb-10 xl:pl-[35px] xl:pr-[30px] mb-10 border-2 border-[#ededed]">
+                    <h4 class="text-lg font-semibold text-custom-h mb-[25px]">
+                        <span class="leading-1.3 pl-[10px] border-l-2 border-custom-primary">Follow Us</span>
+                    </h4>
+                    <ul class="flex gap-x-[15px] pt-4">
+                        {% if event.website %}
+                        <li>
+                            <a target="_blank" rel="noopener noreferrer" href="{{event.website}}"
+                                class="text-sm lg:text-base w-10 h-10 bg-[rgb(242_246_247_/_1)] hover:bg-custom-primary hover:text-white flex items-center justify-center"><i
+                                    class="fab fa-globe"></i></a>
+                        </li>
+                        {% endif %}
+                        {% if event.facebook %}
+                        <li>
+                            <a target="_blank" rel="noopener noreferrer" href="{{event.facebook}}"
+                                class="text-sm lg:text-base w-10 h-10 bg-[rgb(242_246_247_/_1)] hover:bg-custom-primary hover:text-white flex items-center justify-center"><i
+                                    class="fab fa-facebook-f"></i></a>
+                        </li>
+                        {% endif %}
+                        {% if event.twitter %}
+                        <li>
+                            <a target="_blank" rel="noopener noreferrer" href="{{event.twitter}}"
+                                class="text-sm lg:text-base w-10 h-10 bg-[rgb(242_246_247_/_1)] hover:bg-custom-primary hover:text-white flex items-center justify-center"><i
+                                    class="fab fa-twitter"></i></a>
+                        </li>
+                        {% endif %}
+                        {% if event.linkedin %}
+                        <li>
+                            <a target="_blank" rel="noopener noreferrer" href="{{event.linkedin}}"
+                                class="text-sm lg:text-base w-10 h-10 bg-[rgb(242_246_247_/_1)] hover:bg-custom-primary hover:text-white flex items-center justify-center"><i
+                                    class="fab fa-linkedin"></i></a>
+                        </li>
+                        {% endif %}
+                        {% if event.instagram %}
+                        <li>
+                            <a target="_blank" rel="noopener noreferrer" href="{{event.instagram}}"
+                                class="text-sm lg:text-base w-10 h-10 bg-[rgb(242_246_247_/_1)] hover:bg-custom-primary hover:text-white flex items-center justify-center"><i
+                                    class="fab fa-instagram"></i></a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+
+{% block js %}
+<script>
+
+
+    const stars = document.querySelectorAll('#star-rating svg');
+    const ratingValueInput = document.getElementById('id_rating_value');
+    const review_text = document.getElementById('review-text');
+
+    stars.forEach((star, index) => {
+        star.addEventListener('click', () => {
+            const rating = index + 1;
+            ratingValueInput.value = rating;
+            console.log(ratingValueInput.value)
+
+            // Reset all stars
+            stars.forEach((s, i) => {
+                if (i < rating) {
+                    s.classList.remove('text-gray-300');
+                    s.classList.add('text-custom-h');
+                } else {
+                    s.classList.remove('text-custom-h');
+                    s.classList.add('text-gray-300');
+                }
+            });
+
+            if (index === 0) {
+                review_text.textContent = "Bad! I won't Go."
+            } else if (index === 1) {
+                review_text.textContent = "Not bad, i'll think about it."
+            } else if (index === 2) {
+                review_text.textContent = "It is okay."
+            } else if (index === 3) {
+                review_text.textContent = "It's really good, i'm going"
+            } else if (index === 4) {
+                review_text.textContent = "Going? A big yes!"
+            } else {
+                review_text.textContent = ""
+            }
+        });
+
+
+    });
+
+    stars.forEach((star, index) => {
+
+
+        start.addEventListener('hover', () => {
+            if (index == 0) {
+                review_text.textContent = "Bad! I won't Go."
+            }
+        })
+    });
+
+</script>
+
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD5_FEFwr5YQFY6SBGyE1RcqNgL_bvyYI&libraries=places&callback=initMap&solution_channel=GMP_QB_addressselection_v1_cAC"
+    async defer></script>
+<script>
+
+
+    function initMap() {
+        // Retrieve the coordinates from the hidden input field on the previous page
+        const coordinatesInput = '{{event.map_coordinates}}';
+        const coordinates = coordinatesInput.split(',');
+        const latitude = parseFloat(coordinates[0]);
+        const longitude = parseFloat(coordinates[1]);
+
+        // Create a map centered on the stored coordinates
+        const map = new google.maps.Map(document.getElementById('gmp-map'), {
+            center: {lat: latitude, lng: longitude},
+            zoom: 12,  // You can adjust the zoom level as needed
+        });
+
+        // Optionally, you can add a marker at the stored coordinates
+        new google.maps.Marker({
+            position: {lat: latitude, lng: longitude},
+            map: map
+        });
+    }
+
+
+
+</script>
+
+{% endblock js %}

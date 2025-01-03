@@ -1,0 +1,67 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}
+<style>
+    #f {
+        color: #071a1d;
+    }
+</style>
+{% endblock title %}
+
+{% block content %}
+<section>
+    <!-- banner section -->
+    <div
+        class="w-full bg-no-repeat bg-cover bg-center relative z-0 after:w-full after:h-full after:absolute after:top-0 after:left-0 after:bg-white after:bg-opacity-30 after:-z-1">
+        <div class="container py-[110px]">
+            <h1 class="text-2xl sm:text-3xl md:text-[26px] lg:text-3xl xl:text-4xl font-bold text-custom-h mb-[15px]">
+                <span class="leading-1.3 md:leading-1.3 lg:leading-1.3 xl:leading-1.3">Create Event</span>
+            </h1>
+            <ul class="breadcrumb flex gap-[30px] items-center text-sm lg:text-base font-bold pt-4">
+                <li class="home relative leading-[1.8] lg:leading-[1.8]">
+                    <a href="{% url 'siyazalana_home:siyazalana-home' %}" class="text-custom-h"><i
+                            class="fa-solid fa-home text-custom-primary"></i> Home</a>
+                </li>
+                <li class="leading-[1.8] lg:leading-[1.8] text-custom-h">
+                    Create Event
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container py-30">
+        <!-- plan tab -->
+        <div class="tab plan-tab">
+            <div
+                class=" flex flex-wrap items-center justify-center gap-x-5 lg:gap-x-[30px] xl:gap-x-[50px] gap-y-[10px] text-sm lg:text-lg xl:text-xl text-custom-h mb-[50px]">
+                <button
+                    class="p-1px border-b-2 border-transparent font-semibold relative leading-1.2 after:w-[10px] after:h-[10px] after:border-[3px] after:border-white after:bg-transparent after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:translate-y-1/2 after:z-10 after:rounded-[100%] {% if request.resolver_match.url_name == 'create-event' or request.resolver_match.url_name == 'create-event-with-slug' %}active{% endif %}">
+                    1. Event Details
+                </button>
+
+                <button
+                    class="p-1px border-b-2 border-transparent font-semibold relative leading-1.2 after:w-[10px] after:h-[10px] after:border-[3px] after:border-white after:bg-transparent after:absolute after:bottom-0  after:left-1/2 after:-translate-x-1/2 after:translate-y-1/2 after:z-10 after:rounded-[100%] {% if request.resolver_match.url_name == 'create-event-address' %}active{% endif %}">
+                    2. Event Address
+                </button>
+
+                <button
+                    class="p-1px border-b-2 border-transparent font-semibold relative leading-1.2 after:w-[10px] after:h-[10px] after:border-[3px] after:border-white after:bg-transparent after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 {% if request.resolver_match.url_name == 'add-event-tickets' %}active{% endif %} after:translate-y-1/2 after:z-10 after:rounded-[100%]">
+                    3. Ticket Types
+                </button>
+            </div>
+
+            <div class="tab-contents">
+
+                {% block event %}
+
+                {% endblock event %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}

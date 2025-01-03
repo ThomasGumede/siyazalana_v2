@@ -1,0 +1,235 @@
+{% extends '_update-campaign.html' %}
+{% load static %}
+
+{% block campaign %}
+
+<section class="w-full  font-sans py-10 h-full bg-white">
+    <div class="">
+        
+        <div class="px-4">
+            {% if forms.errors or form.errors %}
+            <div class="w-full mx-auto">
+                <div class="bg-red-50 border-l-8 border-red-900">
+                    <div class="flex items-center">
+                        <div class="p-2">
+                            <div class="flex items-center">
+                                <div class="ml-2">
+                                    <svg class="h-8 w-8 text-red-900 mr-2 cursor-pointer"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <p class="px-6 py-4 text-red-900 font-semibold text-lg">Please fix the
+                                    following
+                                    errors.</p>
+                            </div>
+
+                            <ul class="px-16 mb-4">
+                                {% if forms.non_field_errors %}
+                                <li class="text-md font-bold p-1 list-none text-red-500 text-sm">
+                                    {{forms.non_field_errors.as_text}}
+                                </li>
+                                {% endif %}
+                                {% if form.non_field_errors %}
+                                <li class="text-md font-bold p-1 list-none text-red-500 text-sm">
+                                    {{form.non_field_errors}}</li>
+                                {% endif %}
+
+                                {% for key, value in form.errors.items %}
+                                <li
+                                    class="text-md font-bold p-1 list-none text-red-500 text-sm flex items-center gap-4">
+                                    {{key|escape}}: {{value|escape}}</li>
+                                {% endfor %}
+
+                                {% for form2 in forms %}
+                                {% for field in form2 %}
+                                {% for err in field.errors %}
+                                <li
+                                    class="text-md font-bold p-1 list-none text-red-500 text-sm flex items-center gap-4">
+                                    {{field.label}}:
+                                    {{err}}</li>
+                                {% endfor%}
+                                {% for err in field.non_field_errors %}
+                                <li
+                                    class="text-md font-bold p-1 list-none text-red-500 text-sm flex items-center gap-4">
+                                    {{err}}</li>
+                                {% endfor%}
+                                {% endfor %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <form method="post" class="form-primary add-property-form">
+                {% csrf_token %}
+                <div class="grid items-start gap-7">
+
+                    <div class="w-full relative">
+                        <h6 class="text-custom-h text-base mt-3 mb-6 font-bold uppercase">
+                            Contact details
+                        </h6>
+                        <div class="flex flex-wrap">
+
+                            <div class="w-full lg:w-6/12 px-4">
+                                <div class="relative w-full mb-3">
+                                    <label for="id_phone">
+                                        Call Number*
+                                    </label>
+                                    <input value="{% if form.phone.value %}{{form.phone.value}}{% endif %}"
+                                        id="id_phone" name="phone" required maxlength="15" type="tel"
+                                        class="text-custom-text pl-5 pr-[50px] outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none focus:ring-0 focus:outline-none placeholder:text-custom-text placeholder:text-sm">
+                                    <span
+                                        class="text-[11px] text-custom-tertiary block font-normal lowercase">{{form.phone.help_text}}</span>
+                                    {% if form.phone.errors %}
+                                    <span
+                                        class="text-[11px] text-red-500 block font-normal lowercase">{{form.phone.errors.as_text}}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="w-full lg:w-6/12 px-4">
+                                <div class="relative w-full mb-3">
+                                    <label for="id_alternative_phone">
+                                        Alternative Call Number (Optional)
+                                    </label>
+                                    <input
+                                        value="{% if form.alternative_phone.value %}{{form.alternative_phone.value}}{% endif %}"
+                                        id="id_alternative_phone" name="alternative_phone" maxlength="15" type="tel"
+                                        class="text-custom-text pl-5 pr-[50px] outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none focus:ring-0 focus:outline-none placeholder:text-custom-text placeholder:text-sm">
+                                    {% if form.alternative_phone.errors %}
+                                    <span
+                                        class="text-[11px] text-red-500 block font-normal lowercase">{{form.alternative_phone.errors.as_text}}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="w-full lg:w-6/12 px-4">
+                                <div class="relative w-full mb-3">
+                                    <label for="id_title">
+                                        Email
+                                    </label>
+                                    {{form.email}}
+                                    <span
+                                        class="text-[11px] text-custom-tertiary block font-normal lowercase">{{form.email.help_text}}</span>
+                                    {% if form.email.errors %}
+                                    <span
+                                        class="text-[11px] text-red-500 block font-normal lowercase">{{form.email.errors.as_text}}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="w-full lg:w-6/12 px-4">
+                                <div class="relative w-full mb-3">
+                                    <label for="id_title">
+                                        website
+                                    </label>
+                                    {{form.website}}
+                                    <span
+                                        class="text-[11px] text-custom-tertiary block font-normal lowercase">{{form.website.help_text}}</span>
+                                    {% if form.website.errors %}
+                                    <span
+                                        class="text-[11px] text-red-500 block font-normal lowercase">{{form.website.errors.as_text}}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="w-full p-4 border border-solid  rounded-lg relative">
+                        <h6 class="text-custom-h text-sm mt-3 mb-6 font-bold uppercase">
+                            Social Links
+                        </h6>
+                        <div class="flex flex-wrap space-y-3 md:space-y-0">
+                            <div class="w-full lg:w-6/12 md:px-4">
+                                <div class="relative w-full mb-3">
+                                    <label for="id_facebook">
+                                        Facebook
+                                    </label>
+
+                                    <input id="id_facebook" name="facebook" type="url"
+                                        value="{% if form.facebook.value %}{{form.facebook.value}}{% endif %}"
+                                        class="text-custom-text pl-5 pr-[50px] outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none focus:ring-0 focus:outline-none placeholder:text-custom-text placeholder:text-sm">
+                                    <span
+                                        class="text-[11px] text-custom-tertiary block font-normal lowercase">{{form.facebook.help_text}}</span>
+                                    {% if form.facebook.errors %}
+                                    <span
+                                        class="text-[11px] text-red-500 block font-normal lowercase">{{form.facebook.errors.as_text}}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="w-full lg:w-6/12 md:px-4">
+                                <div class="relative w-full mb-3">
+                                    <label for="id_twitter">
+                                        Twitter
+                                    </label>
+                                    <input id="id_twitter" name="twitter" type="url"
+                                        value="{% if form.twitter.value %}{{form.twitter.value}}{% endif %}"
+                                        class="text-custom-text pl-5 pr-[50px] outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none focus:ring-0 focus:outline-none placeholder:text-custom-text placeholder:text-sm">
+                                    <span
+                                        class="text-[11px] text-custom-tertiary block font-normal lowercase">{{form.twitter.help_text}}</span>
+                                    {% if form.twitter.errors %}
+                                    <span
+                                        class="text-[11px] text-red-500 block font-normal lowercase">{{form.twitter.errors.as_text}}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="w-full lg:w-6/12 md:px-4">
+                                <div class="relative w-full mb-3">
+                                    <label for="id_instagram">
+                                        Instagram
+                                    </label>
+                                    <input id="id_instagram" name="instagram" type="url"
+                                        value="{% if form.instagram.value %}{{form.instagram.value}}{% endif %}"
+                                        class="text-custom-text pl-5 pr-[50px] outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none focus:ring-0 focus:outline-none placeholder:text-custom-text placeholder:text-sm">
+                                    <span
+                                        class="text-[11px] text-custom-tertiary block font-normal lowercase">{{form.instagram.help_text}}</span>
+                                    {% if form.instagram.errors %}
+                                    <span
+                                        class="text-[11px] text-red-500 block font-normal lowercase">{{form.instagram.errors.as_text}}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="w-full lg:w-6/12 md:px-4">
+                                <div class="relative w-full mb-3">
+                                    <label for="id_linkedIn">
+                                        Linkedln
+                                    </label>
+                                    <input id="id_linkedIn" name="linkedIn" type="url"
+                                        value="{% if form.linkedIn.value %}{{form.linkedIn.value}}{% endif %}"
+                                        class="text-custom-text pl-5 pr-[50px] outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none focus:ring-0 focus:outline-none placeholder:text-custom-text placeholder:text-sm">
+                                    <span
+                                        class="text-[11px] text-custom-tertiary block font-normal lowercase">{{form.linkedIn.help_text}}</span>
+                                    {% if form.linkedIn.errors %}
+                                    <span
+                                        class="text-[11px] text-red-500 block font-normal lowercase">{{form.linkedIn.errors.as_text}}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mt-6 ">
+                    
+                    <div>
+                        <h5
+                            class="uppercase text-sm md:text-base !text-white relative group whitespace-nowrap font-normal mb-0 transition-all duration-300 border border-custom-h hover:border-custom-primary inline-block z-0">
+                            <span
+                                class="inline-block absolute top-0 left-0 w-full h-full bg-custom-h group-hover:bg-custom-primary -z-1 group-hover:w-0 transition-all duration-300"></span>
+                            <button type="submit"
+                                class="relative z-1 px-5 font-sans md:px-[25px] lg:px-10 py-[10px] md:py-[15px] lg:py-[17px] group-hover:text-custom-h leading-1.5 uppercase">
+                                Update
+                            </button>
+                        </h5>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock campaign %}

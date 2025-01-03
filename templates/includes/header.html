@@ -1,0 +1,295 @@
+{% load static %}
+<header>
+  <!-- header top -->
+  <div class="bg-section-bg-6">
+    <div class="container text-white text-[13px] md:text-sm font-bold">
+      <div class="flex justify-center md:justify-between items-center flex-wrap md:flex-nowrap">
+        <div class="flex justify-center md:block pt-2 md:pt-0">
+          <ul class="basis-full md:basis-auto flex gap-6 lg:gap-9 items-center">
+            <li>
+              <a class="hover:text-custom-primary" href="mailto:info@bbgi.co.za">
+                <i class="fa-solid fa-envelope text-custom-primary font-bold mr-0.5"></i>
+                info@bbgi.co.za</a>
+            </li>
+            <li>
+              <a class="hover:text-custom-primary"><i
+                  class="fa-solid fa-location-pin text-custom-primary font-bold mr-0.5"></i>
+                {{address}}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="basis-full md:basis-auto flex justify-center md:block py-[5px] md:py-0">
+          <ul class="text flex items-center gap-[15px]">
+            <li>
+              <a href="{{facebook}}" title="Facebook"><i class="fab fa-facebook-f font-bold"></i></a>
+            </li>
+            <li>
+              <a href="{{instagram}}" title="Instagram"><i class="fab fa-instagram font-bold"></i></a>
+            </li>
+
+            <li>
+              <a href="{{youtube}}" title="YouTube"><i class="fab fa-youtube font-bold"></i></a>
+            </li>
+            <li>
+              <a href="{{linkedin}}" title="Linkedin"><i class="fab fa-linkedin font-bold"></i></a>
+            </li>
+            <li>
+              <a href=""
+                class="px-4 md:px-5 py-0.5 md:py-3 ml-2 lg:ml-5 bg-custom-primary inline-block bg-opacity-100 hover:bg-opacity-60 hover:text-white">Add
+                Listing</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- navbar main -->
+  <div class="sticky-header z-xl bg-white transition-all duration-700">
+    <div class="container flex flex-col md:flex-row justify-center md:justify-between items-center relative py-[21px]">
+      <!-- logo area -->
+      <div class="mt-[10px] mb-[22px] md:mt-0 md:mb-0 h-[71px] w-[170px] overflow-hidden leading-1">
+        <a href="{% url 'siyazalana_home:siyazalana-home' %}">
+          <img src="{% static 'assets/images/logo/logo-1.png'%}" alt="BBGI Logo" class="w-full h-full object-cover">
+        </a>
+      </div>
+      <nav class="flex-grow hidden xl:block">
+        <ul class="flex items-center justify-center gap-[15px] xl:gap-5">
+          <!-- item 1 -->
+          <li>
+            <a href="{% url 'siyazalana_home:siyazalana-home' %}"
+              class="text-lg xl:text-[15px] active xxl:text-lg text-heading-color hover:text-custom-primary font-semibold whitespace-nowrap pl-[10px] py-[22px]">Home
+            </a>
+          </li>
+
+          <li>
+            <a href=""
+              class="text-lg xl:text-[15px] xxl:text-lg text-heading-color hover:text-custom-primary font-semibold whitespace-nowrap pl-[10px] py-[22px]">About
+            </a>
+          </li>
+
+          
+
+
+          <li>
+            <a href=""
+              class="text-lg xl:text-[15px] xxl:text-lg text-heading-color hover:text-custom-primary font-semibold whitespace-nowrap pl-[10px] py-[22px]">Listings
+            </a>
+          </li>
+
+          <li>
+            <a href=""
+              class="text-lg xl:text-[15px] xxl:text-lg text-heading-color hover:text-custom-primary font-semibold whitespace-nowrap pl-[10px] py-[22px]">Events
+            </a>
+          </li>
+
+          <!-- item 5 -->
+          <li>
+            <a href=""
+              class="text-lg xl:text-[15px] xxl:text-lg text-heading-color hover:text-custom-primary font-semibold whitespace-nowrap pl-[10px] py-[22px]">Campaigns
+            </a>
+          </li>
+          <li>
+            <a href=""
+              class="text-lg xl:text-[15px] xxl:text-lg text-heading-color hover:text-custom-primary font-semibold whitespace-nowrap pl-[10px] py-[22px]">Blog
+            </a>
+          </li>
+          <!-- item 6 -->
+          <li>
+            <a href=""
+              class="text-lg xl:text-[15px] xxl:text-lg text-heading-color hover:text-custom-primary font-semibold whitespace-nowrap pl-[10px] py-[22px]">Contact
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- header right -->
+      <div>
+        <ul class="flex items-center gap-[10px]">
+          <li class="relative search-form-container">
+            <a href=""
+              class="search-toggle h-[50px] w-[50px] text-heading-color shadow-box-shadow-1 flex justify-center items-center hover:bg-custom-primary hover:text-white transition-all duration-300">
+              <i class="fa-solid fa-magnifying-glass font-bold"></i>
+              <!-- <i class="fa-solid fa-magnifying-glass font-bold hidden"></i> -->
+            </a>
+
+          </li>
+          <li class="group relative">
+            {% if request.user.is_authenticated %}
+            <a href="#"
+              class="h-[50px] w-[50px] text-heading-color overflow-hidden shadow-box-shadow-1 flex justify-center items-center hover:bg-custom-primary hover:text-white transition-all duration-300">
+              {% if request.user.profile_image %}
+              <img
+                src="{% if request.user.profile_image %}{{request.user.profile_image.url}}{% else %}{% static 'R.png' %}{% endif %}"
+                alt="{{request.user.get_full_name}}" class="w-10 h-10 object-cover">
+              {% else %}<i class="fa-regular fa-user font-bold text-lg"></i>{% endif %}
+            </a>
+            <!-- dropdown -->
+            <ul
+              class="py-[10px] w-[150px] shadow-box-shadow-4 absolute right-0 top-full opacity-0 invisible translate-y-4 bg-white transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 z-xl">
+              <li>
+                <a class="whitespace-nowrap px-[15px] py-[5px]" href="">Add event</a>
+              </li>
+              <li>
+                <a class="whitespace-nowrap px-[15px] py-[5px]" href="">Add
+                  Campaign</a>
+              </li>
+              {% if request.user.is_staff %}
+              <li>
+                <a class="whitespace-nowrap px-[15px] py-[5px]" href="">Dashboard</a>
+              </li>
+              {% endif %}
+              <li>
+                <a class="whitespace-nowrap px-[15px] py-[5px]" href="{% url 'accounts:profile-update' %}">My
+                  Dashboard</a>
+              </li>
+              <li>
+                <a class="whitespace-nowrap px-[15px] py-[5px]" href="{% url 'accounts:logout' %}">Logout</a>
+              </li>
+
+            </ul>
+            {% else %}
+            <a href="{% url 'accounts:login' %}"
+              class="px-4 md:px-5 py-0.5 md:py-2   bg-custom-primary !text-white inline-block bg-opacity-100 hover:bg-opacity-60 hover:text-white">Login</a>
+            {% endif %}
+          </li>
+          <li class="block xl:hidden">
+            <div
+              class="show-drawer d-xl-none h-[50px] w-[50px] text-heading-color shadow-box-shadow-1 flex justify-center items-center transition-all duration-300 relative">
+              <a href="#ltn__utilize-drawer " class="utilize-toggle">
+                <svg viewBox="0 0 800 600">
+                  <path d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200"
+                    id="top"></path>
+                  <path d="M300,320 L540,320" id="middle"></path>
+                  <path d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190"
+                    id="bottom" transform="translate(480, 320) scale(1, -1) translate(-480, -318) ">
+                  </path>
+                </svg>
+              </a>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- mobile menu -->
+  <div class="drawer-container mobile-menu-container">
+    <div
+      class="drawer-overlay fixed top-0 left-0 w-full h-full bg-black -z-1 close-drawer opacity-0 transition-all duration-300 invisible cursor-zoom-out block xl:hidden">
+    </div>
+    <div
+      class="drawer mobile-menu fixed top-0 -left-[300px] xs:-left-[400px] px-5 xs:px-10 py-[50px] w-[300px] xs:w-100 h-full transition-all duration-500 shadow-dropdown-secodary bg-whiteColor z-high block xl:hidden bg-white">
+      <div class="pr-[15px] overflow-auto h-full">
+        <!-- mobile menu wrapper -->
+        <div>
+          <!-- mobile logo area -->
+          <div class="flex justify-between items-center border-b border-border-primary pt-[3px] pb-[10px] mb-[25px]">
+            <div>
+              <a href="/">
+                <img src="https://bbgi.co.za/static/imgs/logo_3.png" alt="">
+              </a>
+            </div>
+            <div>
+              <button class="close-drawer text-black text-3xl px-[15px] py-2">
+                ×
+              </button>
+            </div>
+          </div>
+
+
+
+          <!-- mobile menu accordions -->
+          <div class="border-b border-border-primary dark:border-borderColor-dark pb-8">
+            <ul class="accordion-container">
+              <li class="mt-4">
+                <!-- accordion header -->
+                <a href="{% url 'siyazalana_home:siyazalana-home' %}"
+                  class="accordion-controller flex items-center justify-between cursor-pointer hover:text-custom-primary uppercase text-sm lg:text-base py-2 lg:py-2.5">
+                  HOME</a>
+              </li>
+              <li class="mt-4">
+                <!-- accordion header -->
+                <a href=""
+                  class="accordion-controller flex items-center justify-between cursor-pointer hover:text-custom-primary uppercase text-sm lg:text-base py-2 lg:py-2.5">
+                  ABOUT</a>
+              </li>
+              
+              <li class="mt-4">
+                <!-- accordion header -->
+                <a href=""
+                  class="accordion-controller flex items-center justify-between cursor-pointer hover:text-custom-primary uppercase text-sm lg:text-base py-2 lg:py-2.5">
+                  EVENTS</a>
+              </li>
+              <li class="mt-4">
+                <!-- accordion header -->
+                <a href=""
+                  class="accordion-controller flex items-center justify-between cursor-pointer hover:text-custom-primary uppercase text-sm lg:text-base py-2 lg:py-2.5">
+                  CAMPAIGNS</a>
+              </li>
+              <li class="mt-4">
+                <!-- accordion header -->
+                <a href=""
+                  class="accordion-controller flex items-center justify-between cursor-pointer hover:text-custom-primary uppercase text-sm lg:text-base py-2 lg:py-2.5">
+                  BLOG</a>
+              </li>
+              <li class="mt-4">
+                <!-- accordion header -->
+                <a href=""
+                  class="accordion-controller flex items-center justify-between cursor-pointer hover:text-custom-primary uppercase text-sm lg:text-base py-2 lg:py-2.5">
+                  CONTACT</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- my account -->
+          <div>
+            <ul class="mb-[30px] pb-5 pt-[5px] border-b border-border-primary">
+              <li class="group mt-4">
+                <!-- accordion header -->
+                {% if request.user.is_authenticated %}
+                <a href="" class="text-sm lg:text-base">
+                  <span
+                    class="inline-block h-[50px] w-[50px] border-2 border-border-color-1 text-center leading-[50px] mr-3">
+                    <i class="far fa-user"></i>
+                  </span>
+                  My Account
+                </a>
+                {% else %}
+                <a href="{% url 'accounts:login' %}" class="text-sm lg:text-base">
+                  <span
+                    class="inline-block h-[50px] w-[50px] border-2 border-border-color-1 text-center leading-[50px] mr-3">
+                    <i class="far fa-user"></i>
+                  </span>
+                  Login
+                </a>
+                {% endif %}
+              </li>
+
+            </ul>
+          </div>
+          <!-- Mobile menu social area -->
+          <div>
+            <ul class="flex gap-3 items-center pt-4">
+              <li>
+                <a class="h-10 w-10 bg-section-bg-1 hover:bg-custom-primary hover:text-white text-center text-sm lg:text-base"
+                  href="{{facebook}}"><i class="fab fa-facebook-f leading-10"></i></a>
+              </li>
+              <li>
+                <a class="h-10 w-10 bg-section-bg-1 hover:bg-custom-primary hover:text-white text-center text-sm lg:text-base"
+                  href="{{youtube}}"><i class="fab fab fa-youtube leading-10"></i></a>
+              </li>
+              <li>
+                <a class="h-10 w-10 bg-section-bg-1 hover:bg-custom-primary hover:text-white text-center text-sm lg:text-base"
+                  href="{{linkedin}}"><i class="fab fa-linkedin leading-10"></i></a>
+              </li>
+              <li>
+                <a class="h-10 w-10 bg-section-bg-1 hover:bg-custom-primary hover:text-white text-center text-sm lg:text-base"
+                  href="{{instagram}}"><i class="fab fa-instagram leading-10"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

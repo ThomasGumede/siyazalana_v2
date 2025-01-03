@@ -1,0 +1,247 @@
+{% extends '_update_event.html' %}
+{% load static %}
+
+
+
+{% block event %}
+
+<section class="w-full  font-sans py-10 h-full">
+    <div class="">
+        <div class="">
+            {% if form.errors %}
+            <div class="w-full mx-auto">
+                <div class="bg-red-50 border-l-8 border-red-900">
+                    <div class="flex items-center">
+                        <div class="p-2">
+                            <div class="flex items-center">
+                                <div class="ml-2">
+                                    <svg class="h-8 w-8 text-red-900 mr-2 cursor-pointer"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <p class="px-6 py-4 text-red-900 font-semibold text-lg">Please fix the
+                                    following
+                                    errors.</p>
+                            </div>
+
+                            <ul class="px-16 mb-4">
+                                {% for field in form %}
+                                {% if field.errors %}
+                                <li class="text-md font-bold text-red-500 text-sm">{{field.label}}:
+                                    {{field.errors.as_text}}</li>
+                                {% endif %}
+                                {% endfor %}
+                                {% if form.non_field_errors %}
+
+                                <li class="text-md font-bold text-red-500 text-sm">Form error:
+                                    {{form.non_field_errors.as_text}}
+                                </li>
+
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <form method="post" enctype="multipart/form-data" class="w-full md:w-6/12 mx-auto text-center">
+                {% csrf_token %}
+                <div class="grid items-start gap-7">
+                    <div class="p-4 rounded-lg w-full">
+                        <h6 class="text-custom-h text-xl md:text-2xl mt-3 mb-6 font-bold uppercase">
+                            Where do you plan to host your event?
+                        </h6>
+                        <div class="mb-6">
+                            <p class="text-sm text-custom-text">
+                                Provide a physical business address so customers can find you when searching for
+                                events in your area
+                            </p>
+                            <p class="text-sm text-custom-text">
+                                This can be your event venue, a community hall, a public school or even your street
+                                address if you run your
+                                event
+                                from home.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-wrap">
+
+
+                            <div class="w-full lg:w-12/12 ">
+                                <div class="relative w-full mb-3">
+                                    <label for="id_title">
+                                        Search or Type Your Address*
+                                    </label>
+                                    {{form.event_address}}
+                                    <span
+                                        class="text-[11px] text-custom-text block font-normal lowercase">{{form.event_address.help_text}}</span>
+                                    {% if form.event_address.errors %}
+                                    <span
+                                        class="text-[11px] text-red-500 block font-normal lowercase">{{form.event_address.errors.as_text}}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="w-full lg:w-12/12 ">
+                                <div class="relative w-full mb-3">
+                                    <label for="id_title">
+                                        Type Your Event Venue Name*
+                                    </label>
+                                    {{form.venue_name}}
+                                    <span
+                                        class="text-[11px] text-custom-text block font-normal uppercase">{{form.venue_name.help_text}}</span>
+                                    {% if form.venue_name.errors %}
+                                    <span
+                                        class="text-[11px] text-red-500 block font-normal lowercase">{{form.venue_name.errors.as_text}}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="w-full lg:w-12/12  h-96" id="gmp-map">
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                    {{form.map_coordinates}}
+                </div>
+                <div class="mt-6 ">
+                    
+                    <div>
+                        <h5
+                            class="uppercase text-sm md:text-base text-white relative group whitespace-nowrap font-normal mb-0 transition-all duration-300 border border-custom-h hover:border-custom-primary inline-block z-0">
+                            <span
+                                class="inline-block absolute top-0 left-0 w-full h-full bg-custom-h group-hover:bg-custom-primary -z-1 group-hover:w-0 transition-all duration-300"></span>
+                            <button type="submit"
+                                class="relative z-1 px-5 font-sans md:px-[25px] lg:px-10 py-[10px] md:py-[15px] lg:py-[17px] group-hover:text-custom-h leading-1.5 uppercase">
+                                Update Address
+                            </button>
+                        </h5>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock event %}
+{% block js %}
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD5_FEFwr5YQFY6SBGyE1RcqNgL_bvyYI&libraries=places&callback=initMap&solution_channel=GMP_QB_addressselection_v1_cAC"
+    async defer></script>
+<script>
+    "use strict";
+
+    function initMap() {
+        const CONFIGURATION = {
+            "ctaTitle": "Checkout",
+            "mapOptions": {"center": {"lat": -33.918861, "lng": 18.423300}, "fullscreenControl": true, "mapTypeControl": true, "streetViewControl": true, "zoom": 11, "zoomControl": true, "maxZoom": 22, "mapId": ""},
+            "capabilities": {"addressAutocompleteControl": true, "mapDisplayControl": true, "ctaControl": true}
+        };
+
+
+        const map = new google.maps.Map(document.getElementById("gmp-map"), {
+            zoom: CONFIGURATION.mapOptions.zoom,
+            center: {lat: -33.918861, lng: 18.423300},
+            mapTypeControl: true,
+            fullscreenControl: CONFIGURATION.mapOptions.fullscreenControl,
+            zoomControl: CONFIGURATION.mapOptions.zoomControl,
+            streetViewControl: CONFIGURATION.mapOptions.streetViewControl
+        });
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                position => {
+                    const clientLocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    map.setCenter(clientLocation);
+                    const marker = new google.maps.Marker({position: clientLocation, map: map, draggable: false});
+                    const geocoder = new google.maps.Geocoder();
+                    geocoder.geocode({location: clientLocation}, (results, status) => {
+                        if (status === 'OK') {
+                            fillInAddress(results[0]);
+                        } else {
+                            alert("Sorry, we couldn't find address suggestion for your current location")
+                        }
+                    })
+                },
+                () => {
+
+                }
+            )
+        }
+        const marker = new google.maps.Marker({map: map, draggable: false});
+        google.maps.event.addListener(map, 'click', (event) => {
+            marker.setPosition(event.latLng);
+            const geocoder = new google.maps.Geocoder();
+            geocoder.geocode({location: event.latLng}, (results, status) => {
+                if (status === 'OK') {
+                    console.log(results)
+                    fillInAddress(results[0]);
+                } else {
+                    alert("Sorry, we couldn't find address suggestions for your location")
+                }
+            })
+        })
+
+        const autocompleteInput = document.getElementById('id_event_address');
+
+
+        const autocomplete = new google.maps.places.Autocomplete(autocompleteInput, {
+            fields: ["place_id", "address_components", "geometry", "name"],
+            types: ["address"],
+        });
+
+        autocomplete.setComponentRestrictions(
+            {'country': ['za']});
+        autocomplete.addListener('place_changed', function () {
+
+            const place = autocomplete.getPlace();
+            if (!place.geometry) {
+                // User entered the name of a Place that was not suggested and
+                // pressed the Enter key, or the Place Details request failed.
+                window.alert('No details available for input: \'' + place.name + '\'');
+                return;
+            }
+            const latitude = place.geometry.location.lat();
+            const longitude = place.geometry.location.lng();
+            if (latitude && longitude) {
+                document.getElementById('id_map_coordinates').value = latitude + ',' + longitude;
+            }
+            renderAddress(place)
+            fillInAddress(place);
+        });
+
+        function fillInAddress(place) {
+            const addressNameFormat = {
+                'street_number': 'short_name',
+                'route': 'long_name',
+                'locality': 'long_name',
+                'administrative_area_level_1': 'short_name',
+                'country': 'long_name',
+                'postal_code': 'short_name',
+            };
+            const getAddressComp = function (type) {
+                for (const component of place.address_components) {
+                    if (component.types[0] === type) {
+                        return component[addressNameFormat[type]];
+                    }
+                }
+                return '';
+            };
+
+            autocompleteInput.value = `${getAddressComp('route')}, ${getAddressComp('locality')}, ${getAddressComp('administrative_area_level_1')}, ${getAddressComp('postal_code')}, South Africa`
+        }
+
+        function renderAddress(place) {
+            map.setCenter(place.geometry.location);
+            marker.setPosition(place.geometry.location);
+            marker.setVisible(true);
+        }
+    }
+</script>
+{% endblock js %}

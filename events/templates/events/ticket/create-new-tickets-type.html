@@ -1,0 +1,179 @@
+{% extends '_add_event.html' %}
+{% load static %}
+
+{% block title %}Create event{% endblock title %}
+
+{% block event %}
+
+<section class="w-full pb-20 overflow-hidden">
+    <div class="">
+        <div class="relative block">
+            
+            <div class="space-y-4 bg-white w-full relative">
+                {% include "includes/errors.html" %}
+                <div class="px-4">
+                    <form id="ticket_form" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="w-full">
+                            <div class="bg-white w-full relative">
+                                <h6 class="text-custom-h text-base mt-3 mb-6 font-bold uppercase">
+                                    Event Ticket Types
+                                </h6>
+                                <div class="flex flex-wrap gap-y-4">
+                                    
+                                    <div class="w-full md:px-4">
+                                        <div class="relative w-full mb-3">
+                                            <label for="id_title">
+                                                Title*
+                                            </label>
+                                            {{form.title}}
+                                            <span
+                                                class="text-[11px] text-custom-tertiary block font-normal lowercase">{{form.title.help_text}}</span>
+                                            {% if form.title.errors %}
+                                            <span
+                                                class="text-[11px] text-red-500 block font-normal lowercase">{{form.title.errors.as_text}}</span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="w-full lg:w-6/12 md:px-4">
+                                        <div class="relative w-full mb-3">
+                                            <label for="id_available_seats">
+                                                Available seats*
+                                            </label>
+                                            {{form.available_seats}}
+                                            <span class="text-[11px] text-custom-tertiary block font-normal lowercase">{{form.available_seats.help_text}}</span>
+                                            {% if form.available_seats.errors %}
+                                            <span class="text-[11px] text-red-500 block font-normal lowercase">{{form.available_seats.errors.as_text}}</span>
+                                            {% endif %}
+                                    
+                                        </div>
+                                    </div>
+                                    <div class="w-full lg:w-6/12 md:px-4">
+                                        <div class="relative w-full mb-3">
+                                            <label for="id_price">
+                                                Ticket Price*
+                                            </label>
+                                            {{form.price}}
+                                            <span class="text-[11px] text-custom-tertiary block font-normal lowercase">{{form.price.help_text}}</span>
+                                            {% if form.price.errors %}
+                                            <span class="text-[11px] text-red-500 block font-normal lowercase">{{form.price.errors.as_text}}</span>
+                                            {% endif %}
+                                    
+                                        </div>
+                                    </div>
+                                    <div class="w-full lg:w-6/12 md:px-4">
+                                        <div class="relative w-full mb-3">
+                                            <label for="id_sale_start">
+                                                Ticket Sale Starts at?*
+                                            </label>
+                                            {{form.sale_start}}
+                                            <span
+                                                class="text-[11px] text-custom-tertiary block font-normal lowercase">{{form.sale_start.help_text}}</span>
+                                            {% if form.sale_start.errors %}
+                                            <span
+                                                class="text-[11px] text-red-500 block font-normal lowercase">{{form.sale_start.errors.as_text}}</span>
+                                            {% endif %}
+
+                                        </div>
+                                    </div>
+                                    <div class="w-full lg:w-6/12 md:px-4">
+                                        <div class="relative w-full mb-3">
+                                            <label for="id_sale_end">
+                                                Ticket Sale Ends at?*
+                                            </label>
+                                            {{form.sale_end}}
+                                            <span
+                                                class="text-[11px] text-custom-tertiary block font-normal lowercase">{{form.sale_end.help_text}}</span>
+                                            {% if form.sale_end.errors %}
+                                            <span
+                                                class="text-[11px] text-red-500 block font-normal lowercase">{{form.sale_end.errors.as_text}}</span>
+                                            {% endif %}
+
+                                        </div>
+                                    </div>
+
+                                    
+
+                                </div>
+                            </div>
+                            <input type="text" name="add_another" id="id_add_another" class="hidden">
+                        </div>
+                        <hr class="mt-6 border-b-1 border-gray-300">
+                        
+                        <div class="flex flex-wrap items-center justify-between gap-4 mt-6 ">
+                            <a href="{% url 'events:create-event-address' event.slug %}">
+                                <h5
+                                    class="uppercase text-sm md:text-base text-white relative group whitespace-nowrap font-normal mb-0 transition-all duration-300 border border-custom-primary hover:border-custom-h inline-block z-0">
+                                    <span
+                                        class="inline-block absolute top-0 right-0 w-full h-full bg-custom-primary group-hover:bg-black -z-1 group-hover:w-0 transition-all duration-300"></span>
+                                    <div
+                                        class="relative z-1 px-[30px] lg:px-10 py-3 md:py-[15px] lg:py-[17px] group-hover:text-custom-h leading-1.5 uppercase">
+                                        <p>Previous step</p>
+                                    </div>
+                                </h5>
+                            </a>
+                            <div class="flex flex-wrap mt-4 gap-4 justify-start">
+                                <h5 id="add_another"
+                                    class="uppercase cursor-pointer text-sm md:text-base text-white relative group whitespace-nowrap font-normal mb-0 transition-all duration-300 border border-custom-primary hover:border-custom-h inline-block z-0">
+                                    <span
+                                        class="inline-block absolute top-0 right-0 w-full h-full bg-custom-primary group-hover:bg-black -z-1 group-hover:w-0 transition-all duration-300"></span>
+                                    <div 
+                                        class="relative z-1 px-[30px] lg:px-10 py-3 md:py-[15px] lg:py-[17px] group-hover:text-custom-h leading-1.5 uppercase">
+                                        Save & Add Another
+                                    </div>
+                                </h5>
+                                <h5
+                                    class="uppercase text-sm md:text-base text-white relative group whitespace-nowrap font-normal mb-0 transition-all duration-300 border border-custom-primary hover:border-custom-h inline-block z-0">
+                                    <span
+                                        class="inline-block absolute top-0 right-0 w-full h-full bg-custom-primary group-hover:bg-black -z-1 group-hover:w-0 transition-all duration-300"></span>
+                                    <button type="submit"
+                                        class="relative z-1 px-[30px] lg:px-10 py-3 md:py-[15px] lg:py-[17px] group-hover:text-custom-h leading-1.5 uppercase">
+                                        Save & Complete
+                                    </button>
+                                </h5>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock event %}
+{% block js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('add_another').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Add the value 'add another' to the hidden input field
+            document.getElementById('id_add_another').value = 'add another';
+
+            // Submit the form
+            document.getElementById('ticket_form').submit();
+        });
+    });
+</script>
+<script>
+
+    $(document).ready(function () {
+        // Initialize DateTimePicker for startDatetime
+        $('#id_sale_start').datetimepicker({
+            format: 'Y-m-d H:i:s',
+            minDate: 0,  // Set minimum date to the current date
+            step: 15,   // Set the time step to 15 minutes (optional)
+        });
+
+        // Initialize DateTimePicker for endDatetime
+        $('#id_sale_end').datetimepicker({
+            format: 'Y-m-d H:i:s',
+            minDate: 0,  // Set minimum date to the current date
+            step: 15,   // Set the time step to 15 minutes (optional)
+        });
+    });
+</script>
+
+{% endblock js %}

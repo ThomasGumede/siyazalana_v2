@@ -1,0 +1,257 @@
+{% extends '_manage.html' %} 
+{% load static %} 
+{% block title %}Create event{% endblock title %} 
+{% block content_v2 %}
+
+<section class="w-full pb-20 overflow-hidden">
+  <div class="bg-gray-50">
+    <div class="relative block">
+      <div class="bg-white w-full p-2 pb-2">
+        <div class="mb-2">
+          <h4 class="text-lg">
+            Available Event Tickets
+          </h4>
+        </div>
+        <div class="mb-4 overflow-x-auto w-full">
+          <div class="align-middle inline-block min-w-full overflow-hidden bg-white px-4 pt-3 rounded-bl-lg rounded-br-lg">
+            <table class="border-collapse w-full">
+              <thead>
+                <tr>
+                  <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                    Type</th>
+                  <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                    Seats</th>
+                  <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                    Price</th>
+                  <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                    Trans costs</th>
+                  <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                    Sold</th>
+                  <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                    Actions</th>
+                </tr>
+              </thead>
+        
+              <tbody>
+                {% for ticket in event.tickettypes.all %}
+                <tr
+                  class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+                  <td
+                    class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                    <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Type</span>
+                    {{ticket.title}}
+                  </td>
+                  <td
+                    class="w-full lg:w-auto p-3 text-gray-800 border border-b text-center block lg:table-cell relative lg:static">
+                    <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Seats</span>
+                    {{ticket.available_seats}}
+                  </td>
+                  <td
+                    class="w-full lg:w-auto p-3 text-gray-800 border border-b text-center block lg:table-cell relative lg:static">
+                    <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Price</span>
+                    R{{ticket.total_price}}
+                  </td>
+                  <td
+                    class="w-full lg:w-auto p-3 text-gray-800 border border-b text-center block lg:table-cell relative lg:static">
+                    <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Trans
+                      Cost</span>
+                    R{{ticket.transaction_cost}}
+                  </td>
+                  <td
+                    class="w-full lg:w-auto p-3 text-gray-800 border border-b text-center block lg:table-cell relative lg:static">
+                    <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Sold</span>
+                    {{ticket.tickets.count}}
+                  </td>
+        
+                  <td
+                    class="w-full lg:w-auto p-3 text-gray-800 border border-b text-center block lg:table-cell relative lg:static">
+                    <span
+                      class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Actions</span>
+                    <a href="{% url 'events:update-ticket-type' event_slug=event.slug ticket_type_id=ticket.id %}"
+                      class="text-blue-400 hover:text-blue-600 underline">Edit</a>
+                    <a href="{% url 'events:delete-ticket-type' event_slug=event.slug ticket_type_id=ticket.id %}"
+                      class="text-blue-400 hover:text-blue-600 underline  pl-6">Delete</a>
+        
+                  </td>
+                </tr>
+        
+                {% endfor %}
+              </tbody>
+            </table>
+        
+          </div>
+        </div>
+      </div>
+      <div class="space-y-4 bg-white w-full relative">
+        {% include "includes/errors.html" %}
+        <div class="px-4">
+          <form method="post" id="ticket_form" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div>
+              <input
+                type="hidden"
+                name="form-TOTAL_FORMS"
+                id="id_form-TOTAL_FORMS" value="1"
+              /><input
+                type="hidden"
+                name="form-INITIAL_FORMS"
+                id="id_form-INITIAL_FORMS" value='1'
+              /><input
+                type="hidden"
+                name="form-MIN_NUM_FORMS"
+                id="id_form-MIN_NUM_FORMS" value="1"
+              /><input
+                type="hidden"
+                name="form-MAX_NUM_FORMS"
+                id="id_form-MAX_NUM_FORMS" value="5"
+              />
+            </div>
+            <div class="w-full grid bg-white gap-5">
+                <div class="">
+                    <h6 class="text-custom-h w-fit text-base mt-3 mb-6 font-bold uppercase">
+                        Add Ticket types
+                    </h6>
+                    
+                </div>
+             
+              <div id="forms_container" data-max-forms="{{max_forms}}" class="grid bg-white gap-5 w-full">
+                
+
+                <div id="form_content_0" class="w-full mb-2 p-4 relative block">
+                    <div class="flex flex-wrap">
+                        <div class="w-full lg:w-4/12 md:px-4">
+                            <div class="relative w-full mb-3">
+                            <label for="{{form.title.id_for_label}}">
+                                ticket name*
+                            </label>
+                            {{form.title}}
+                            <span
+                                class="text-[11px] text-custom-tertiary block font-normal lowercase"
+                                >{{form.title.help_text}}</span
+                            >
+                            {% if form.title.errors %}
+                            <span
+                                class="text-[11px] text-red-500 block font-normal lowercase"
+                                >{{form.title.errors.as_text}}</span
+                            >
+                            {% endif %}
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-4/12 md:px-4">
+                            <div class="relative w-full mb-3">
+                            <label for="{{form.price.id_for_label}}"> Price* </label>
+                            {{form.price}}
+                            <span
+                                class="text-[11px] text-custom-tertiary block font-normal lowercase"
+                                >{{form.price.help_text}}</span
+                            >
+                            {% if form.price.errors %}
+                            <span
+                                class="text-[11px] text-red-500 block font-normal lowercase"
+                                >{{form.price.errors.as_text}}</span
+                            >
+                            {% endif %}
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-4/12 md:px-4">
+                            <div class="relative w-full mb-3">
+                            <label for="{{form.available_seats.id_for_label}}">
+                                total seats*
+                            </label>
+                            {{form.available_seats}}
+                            <span
+                                class="text-[11px] text-custom-tertiary block font-normal lowercase"
+                                >{{form.available_seats.help_text}}</span
+                            >
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-6/12 md:px-4">
+                          <div class="relative w-full mb-3">
+                            <label for="{{form.sale_start.id_for_label}}">
+                              ticket sale start date*
+                            </label>
+                            {{form.sale_start}}
+                            <span class="text-[11px] text-custom-tertiary block font-normal lowercase">Add ticket sale start date</span>
+                        
+                          </div>
+                        </div>
+                        <div class="w-full lg:w-6/12 md:px-4">
+                          <div class="relative w-full mb-3">
+                            <label for="{{form.sale_end.id_for_label}}">
+                              ticket sale end date*
+                            </label>
+                            {{form.sale_end}}
+                            <span class="text-[11px] text-custom-tertiary block font-normal lowercase">Add ticket sale end date</span>
+                        
+                          </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <input type="text" name="add_another" id="id_add_another" class="hidden">
+                </div>
+            </div>
+            <div class="mt-3 flex items-center space-x-7">
+              <div
+                class="text-center duration-500 group hover:bg-white border-2 border-custom-primary inline-block h-12 bg-custom-primary w-[150px] rounded-md cursor-pointer"
+              >
+                <input
+                  type="submit"
+                  value="submit"
+                  class="text-white group-hover:text-custom-primary duration-500 w-full h-full cursor-pointer text-sm font-semibold"
+                />
+              </div>
+              <div id="add_another"
+                class="text-center duration-500 grid items-center group hover:bg-white border-2 border-custom-primary justify-center h-12 bg-custom-primary w-fit px-2 rounded-md cursor-pointer">
+                <p
+                  class="text-white group-hover:text-custom-primary duration-500 text-sm font-semibold">
+                  save and add another</p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content_v2 %} 
+{% block js %} 
+<script src="{% static 'js/scripts.js' %}">
+
+</script>
+<script>
+
+  $(document).ready(function () {
+    // Initialize DateTimePicker for startDatetime
+    $(document).ready(function () {
+      // Initialize DateTimePicker for startDatetime
+      $('#id_sale_end').datetimepicker({
+        format: 'Y-m-d H:i:s',
+        minDate: 0,  // Set minimum date to the current date
+        step: 15,   // Set the time step to 15 minutes (optional)
+      });
+      $('#id_sale_start').datetimepicker({
+        format: 'Y-m-d H:i:s',
+        minDate: 0,  // Set minimum date to the current date
+        step: 15,   // Set the time step to 15 minutes (optional)
+      });
+    });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('add_another').addEventListener('click', function (event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      // Add the value 'add another' to the hidden input field
+      document.getElementById('id_add_another').value = 'add another';
+
+      // Submit the form
+      document.getElementById('ticket_form').submit();
+    });
+  });
+</script>
+{% endblock js %}

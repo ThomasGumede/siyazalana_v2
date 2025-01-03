@@ -1,0 +1,250 @@
+{% extends '_base.html' %}
+{% load static %}
+{{form.media}}
+
+
+{% block seo_tags %}
+<title>{{event.title}}</title>
+<meta name="description" content="{{event.small_description|truncatechars:157}}">
+<meta name="title" content="{{event.title}}" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://bbgi.co.za/events/add" />
+<meta property="og:title" content="{{event.title}}" />
+<meta property="og:description" content="{{event.small_description|truncatechars:157}}" />
+{% if event.image %}
+<meta property="og:image" content="https://bbgi.co.za{{event.image.url}}" />
+{% else %}
+<meta property="og:image" content="https://bbgi.co.za{% static 'imgs/logo/logo.jpeg' %}" />
+{% endif %}
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://bbgi.co.za/events/add" />
+<meta property="twitter:title" content="{{event.title}}" />
+<meta property="twitter:description" content="{{event.small_description|truncatechars:157}}" />
+{% if event.image %}
+<meta property="twitter:image" content="https://bbgi.co.za{{event.image.url}}" />
+{% else %}
+<meta property="twitter:image" content="https://bbgi.co.za{% static 'imgs/logo/logo.jpeg' %}" />
+{% endif %}
+{% endblock seo_tags %}
+
+{% block content %}
+
+<section class="relative py-16 font-sans block">
+    <div class="container">
+        <div class="flex flex-col md:flex-row items-start -mx-4">
+            <div class="w-full max-w-full px-4 flex-shrink-0 md:w-7/12 lg:w-8/12 h-full">
+                <div class="relative block ">
+                    <div class="relativ block lg:h-96 rounded-md overflow-hidden">
+                        {% if event.image %}
+                        <img src="{{event.image.url}}" alt="{{event.title}}" class="w-full h-full object-cover" />
+                        {% else %}
+                        <img src="{% static 'images/global/image-no.jpg' %}" alt="{{event.title}}" srcset=""
+                            class="object-cover block h-full w-full">
+                        {% endif %}
+                    </div>
+                    <div class="relative block mt-3 mb-6 space-y-5">
+                        <ul class="relative flex items-center pl-0">
+                            <li>
+                                <a href="" class="text-sm font-normal text-custom-h">
+                                    <i class="fa-solid fa-calendar text-custom-primary pr-1"></i>
+                                    {{event.date_time_formatter}}
+                                </a>
+                            </li>
+
+                        </ul>
+                        <h3 class="text-3xl font-bold m-0 text-custom-h">{{event.title}}</h3>
+                        <div>
+                            {{event.content|safe}}
+                        </div>
+                            
+                        <div class="text-base font-bold text-custom-h">
+                            <p>from R{{event.tickettypes.all.0.price}} per ticket</p>
+                        </div>
+                        {% if event.status == "Completed" %}
+                        <div
+                            class="px-4 group duration-150 w-fit  border-custom-h rounded-md h-14 grid items-center bg-custom-h ">
+                            <p
+                                class="text-white text-base grid  duration-150 items-center justify-center w-full h-full font-semibold">Event completed</p>
+                        </div>
+                        {% else %}
+                        <div class="px-4 group duration-150 w-fit hover:bg-white border border-custom-h rounded-md h-14 grid items-center bg-custom-h ">
+                            <a href="{% url 'events:create-ticket-order' event_slug=event.slug %}" class="text-white text-base grid group-hover:text-custom-h duration-150 items-center justify-center w-full h-full font-semibold">Book ticket</a>
+                        </div>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="w-full max-w-full flex-shrink-0 px-4 md:w-5/12 lg:w-4/12">
+                <div class="relative space-y-5">
+                    <div class="flex items-center my-5 w-fit justify-between flex-wrap gap-4">
+                        <span class="text-lg  font-bold text-custom-h">Share: </span>
+                    
+                    
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"
+                            class="relative text-white text-sm h-8 w-8 rounded-full grid items-center justify-center font-bold bg-custom-primary">
+                            <i class="fa-brands fa-lg fa-facebook"></i>
+                        </a>
+                        <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ event.title }}"
+                            class="relative text-white text-sm h-8 w-8 rounded-full grid items-center justify-center font-bold bg-custom-primary">
+                            <i class="fa-brands fa-lg fa-twitter"></i>
+                        </a>
+                        <a href="https://wa.me/?text={{ event.title }}%20{{ request.build_absolute_uri }}"
+                            class="relative text-white text-sm h-8 w-8 rounded-full grid items-center justify-center font-bold bg-custom-primary">
+                            <i class="fa-brands fa-lg fa-whatsapp"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ event.title }}&summary={{event.small_description|truncatechars:157}}"
+                            class="relative text-white text-sm h-8 w-8 rounded-full grid items-center justify-center font-bold bg-custom-primary">
+                            <i class="fa-brands fa-lg fa-linkedin"></i>
+                        </a>
+                    
+                    </div>
+                    <div class="relative block overflow-hidden p-[46px_30px_30px] bg-[#f2f7f7]">
+                        <div class="space-y-5">
+                            <h3 class="text-base text-custom-h md:text-lg font-bold">Event venue</h3>
+                            <p class="text-sm text-gray-500 md:text-base font-medium">{{event.venue_name}}</p>
+                            <address class="text-sm text-gray-500 md:text-base font-medium">{{event.event_address}}</address>
+                            
+                            <p class="text-sm text-gray-500 md:text-base font-medium space-x-2"><i class="fa-brands text-lg fa-chrome"></i>
+                                <a href="{{event.event_link}}">{% if event.event_link %}{{event.event_link}}{% else %}-{% endif %}</a>
+                            </p>
+                            <a href="tel:{{event.phone}}" class="text-sm block hover:text-custom-primary text-gray-500 md:text-base font-medium space-x-2"><i class="fa-solid text-lg fa-phone"></i>
+                                <span>{{event.phone}}</span></a>
+                            <a href="emailto:{{event.email}}" class="text-sm block hover:text-custom-primary text-gray-500 md:text-base font-medium space-x-2"><i class="fa-solid text-lg fa-envelope"></i>
+                                <span>{{event.email}}</span></a>
+                        </div>
+
+                    </div>
+                    {% if event.map_coordinates %}
+                    <div class="relative block overflow-hidden h-[400px] bg-[#f2f7f7]">
+                        <div class="w-full h-full" id="gmp-map">
+                            
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="relative block overflow-hidden p-[46px_30px_30px] bg-[#f2f7f7]">
+                        <div class="space-y-5">
+                            <h3 class="text-base md:text-lg font-bold">Event Organisers</h3>
+                            <div>
+                                <p class="text-base text-custom-h md:text-lg font-medium">{{event.organiser.get_full_name}}</p>
+                                <p class="text-sm text-gray-500 md:text-base font-medium space-x-2"><i class="fa-solid text-lg fa-phone"></i>
+                                    <span>{% if event.organiser.phone %}{{event.organiser.phone}}{% else %}-{% endif %}</span>
+                                </p>
+                                <p class="text-sm text-gray-500 md:text-base font-medium space-x-2"><i class="fa-solid text-lg fa-envelope"></i>
+                                    <span>{{event.organiser.email}}</span>
+                                </p>
+                                <div class="flex items-center w-full justify-between">
+                                    {% if event.organiser.sociallinks.facebook %}
+                                    <div>
+                                        <a href="{{event.organiser.sociallinks.facebook}}"><i
+                                                class="fa-brands text-4xl text-gray-600 fa-facebook"></i></a>
+                                    </div>
+                                    {% endif %}
+                                    {% if event.organiser.sociallinks.twitter %}
+                                    <div>
+                                        <a href="{{event.organiser.sociallinks.twitter}}"><i
+                                                class="fa-brands text-4xl text-gray-600 fa-twitter"></i></a>
+                                    </div>
+                                    {% endif %}
+                                    {% if event.organiser.sociallinks.instagram %}
+                                    <div>
+                                        <a href="{{event.organiser.sociallinks.instagram}}"><i
+                                                class="fa-brands text-4xl text-gray-600 fa-instagram"></i></a>
+                                    </div>
+                                    {% endif %}
+                                    {% if event.organiser.sociallinks.linkedin %}
+                                    <div>
+                                        <a href="{{event.organiser.sociallinks.linkedin}}"><i
+                                                class="fa-brands text-4xl text-gray-600 fa-linkedin"></i></a>
+                                    </div>
+                                    {% endif %}
+                                
+                                </div>
+                            </div>
+                            {% for organisor in event.organisors.all %}
+                            <div>
+                                <p class="text-base text-custom-h md:text-lg font-medium">{{organisor.full_name}}</p>
+                                {% if organisor.organisor_phone_one %}
+                                <p class="text-sm text-gray-500 md:text-base font-medium space-x-2"><i class="fa-solid text-lg fa-phone"></i>
+                                    <span>{{organisor.organisor_phone_one}}</span>
+                                </p>
+                                {% endif %}
+                                <p class="text-sm text-gray-500 md:text-base font-medium space-x-2"><i class="fa-solid text-lg fa-envelope"></i>
+                                    <span>{{organisor.organisor_email}}</span>
+                                </p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="relative block overflow-hidden p-[46px_30px_30px] bg-[#f2f7f7]">
+                        <h3 class="text-lg mb-1 font-extrabold">Latest Events</h3>
+                        <ul class="space-y-4">
+                            {% for recent in recent_events %}
+                            <li class="flex items-center ">
+                                <div class="pr-5 w-20 h-16 overflow-hidden">
+                                    {% if recent.image %}
+                                    <img alt="{{recent.title}}" src="{{recent.image.url}}" alt="" class="w-full h-full object-cover">
+                                    {% else %}
+                                    <img alt="{{recent.title}}" src="{% static 'images/global/image-no.jpg' %}" alt="" class="w-full h-full object-cover">
+                                    {% endif %}
+                                </div>
+                                <div class="relative top-[-3px]">
+                                    <h3 class="text-lg m-0 text-custom-h">
+                                        <span class="text-sm font-normal !text-gray-500">
+                                            <i
+                                                class="fa-solid fa-clock text-base pr-1 text-custom-primary before:content-['\f017']"></i>
+                                            {{recent.date_time_formatter}}
+                                        </span>
+                                        <a href="{{recent.get_absolute_url}}" class="block text-base text-black font-extrabold">
+                                            {{recent.title}}
+                                        </a>
+                                    </h3>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+
+{% block js %}
+
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD5_FEFwr5YQFY6SBGyE1RcqNgL_bvyYI&libraries=places&callback=initMap&solution_channel=GMP_QB_addressselection_v1_cAC"
+    async defer></script>
+<script>
+
+
+    function initMap() {
+            // Retrieve the coordinates from the hidden input field on the previous page
+            const coordinatesInput = '{{event.map_coordinates}}';
+            const coordinates = coordinatesInput.split(',');
+            const latitude = parseFloat(coordinates[0]);
+            const longitude = parseFloat(coordinates[1]);
+
+            // Create a map centered on the stored coordinates
+            const map = new google.maps.Map(document.getElementById('gmp-map'), {
+                center: {lat: latitude, lng: longitude},
+                zoom: 12,  // You can adjust the zoom level as needed
+            });
+
+            // Optionally, you can add a marker at the stored coordinates
+            new google.maps.Marker({
+                position: {lat: latitude, lng: longitude},
+                map: map
+            });
+        }
+
+
+
+</script>
+
+{% endblock js %}

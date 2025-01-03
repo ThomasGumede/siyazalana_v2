@@ -1,0 +1,205 @@
+{% extends '_account.html' %}
+{% load static %}
+
+{% block title %}Edit Contact{% endblock title %}
+
+{% block content_v2 %}
+<div class="transition-all duration-300">
+    <p class="p-5 bg-section-bg-1 mb-5 lg:mb-6 text-sm lg:text-base">
+        <span class="leading-1.8 lg:leading-1.8">The following addresses will be used on the checkout
+            page
+            by default.</span>
+    </p>
+    <!-- form -->
+    {% include "includes/errors.html" %}
+    <form method="post" class="form-primary bg-white">
+        {% csrf_token %}
+        <div class="mb-20">
+            <div class="relative">
+                <p class="text-sm lg:text-base">
+                    <span class="leading-1.8 lg:leading-1.8">Username:</span>
+                </p>
+                <input type="text" name="username" id="id_username"
+                    value="{% if form.username.value %}{{form.username.value}}{% endif %}"
+                    class="text-paragraph-color pl-5 pr-[50px] outline-none border-2 border-border-color-9 focus:border focus:border-secondary-color h-[65px] block w-full rounded-none placeholder:text-paragraph-color placeholder:text-sm placeholder:text-opacity-85">
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-[30px] mb-20">
+                <!-- 1st name -->
+                <div class="relative">
+                    <p class="text-sm lg:text-base">
+                        <span class="leading-1.8 lg:leading-1.8">Email:</span>
+                    </p>
+                    <input type="email" name="email" id="id_email"
+                        value="{% if form.email.value %}{{form.email.value}}{% endif %}"
+                        class="text-paragraph-color pl-5 pr-[50px] outline-none border-2 border-border-color-9 focus:border focus:border-secondary-color h-[65px] block w-full rounded-none placeholder:text-paragraph-color placeholder:text-sm placeholder:text-opacity-85">
+                </div>
+                <!-- last name -->
+                <div class="relative">
+                    <p class="text-sm lg:text-base">
+                        <span class="leading-1.8 lg:leading-1.8">
+                            Cellphone:</span>
+                    </p>
+                    <input type="tel" name="phone" id="id_phone"
+                        value="{% if form.phone.value %}{{form.phone.value}}{% endif %}"
+                        class="text-paragraph-color pl-5 pr-[50px] outline-none border-2 border-border-color-9 focus:border focus:border-secondary-color h-[65px] block w-full rounded-none placeholder:text-paragraph-color placeholder:text-sm placeholder:text-opacity-85">
+                </div>
+
+                <!-- display name -->
+                <div class="relative">
+                    <p class="text-sm lg:text-base">
+                        <span class="leading-1.8 lg:leading-1.8">Address one:</span>
+                    </p>
+                    <input type="text" name="address_one" id="id_address_one"
+                        value="{% if form.address_one.value %}{{form.address_one.value}}{% endif %}"
+                        class="text-paragraph-color pl-5 pr-[50px] outline-none border-2 border-border-color-9 focus:border focus:border-secondary-color h-[65px] block w-full rounded-none placeholder:text-paragraph-color placeholder:text-sm placeholder:text-opacity-85">
+                </div>
+                <!--  Display Email -->
+                <div class="relative">
+                    <p class="text-sm lg:text-base">
+                        <span class="leading-1.8 lg:leading-1.8">
+                            Address two:</span>
+                    </p>
+                    <input type="text" name="address_two" id="id_address_two"
+                        value="{% if form.address_two.value %}{{form.address_two.value}}{% endif %}"
+                        class="text-paragraph-color pl-5 pr-[50px] outline-none border-2 border-border-color-9 focus:border focus:border-secondary-color h-[65px] block w-full rounded-none placeholder:text-paragraph-color placeholder:text-sm placeholder:text-opacity-85">
+                </div>
+                <div class="relative">
+                    <p class="text-sm lg:text-base">
+                        <span class="leading-1.8 lg:leading-1.8">City:</span>
+                    </p>
+                    <input type="text" name="city" id="id_city"
+                        value="{% if form.city.value %}{{form.city.value}}{% endif %}"
+                        class="text-paragraph-color pl-5 pr-[50px] outline-none border-2 border-border-color-9 focus:border focus:border-secondary-color h-[65px] block w-full rounded-none placeholder:text-paragraph-color placeholder:text-sm placeholder:text-opacity-85">
+                </div>
+                <div class="relative">
+                    <p class="text-sm lg:text-base">
+                        <span class="leading-1.8 lg:leading-1.8">Province:</span>
+                    </p>
+                    <select name="province" id="id_province"
+                        class="selectize boerder-2 border-border-color-9 text-[14px] leading-[60px] h-[65px]" style="
+                                opacity: 0;
+                                width: 0px;
+                                padding: 0px;
+                                height: 0px;
+                                ">
+                        <option value="" data-display="Select">
+                            Select Province
+                        </option>
+                        <option {% if form.province.value == "wc" %}selected{% endif %} value="wc">
+                            Western Cape
+                        </option>
+                        <option {% if form.province.value == "ec" %}selected{% endif %} value="ec">
+                            Eastern Cape
+                        </option>
+                        <option {% if form.province.value == "fs" %}selected{% endif %} value="fs">
+                            Free-state
+                        </option>
+                        <option {% if form.province.value == "nw" %}selected{% endif %} value="nw">North West</option>
+                        <option {% if form.province.value == "kzn" %}selected{% endif %} value="kzn">KwaZulu-Natal
+                        </option>
+                        <option {% if form.province.value == "gp" %}selected{% endif %} value="gp">Gauteng</option>
+                        <option {% if form.province.value == "lp" %}selected{% endif %} value="lp">Limpopo</option>
+                        <option {% if form.province.value == "mp" %}selected{% endif %} value="mp">Mpumalanga</option>
+                        <option {% if form.province.value == "nc" %}selected{% endif %} value="nc">Northern Cape</option>
+                    </select>
+                </div>
+                <!--  Display Email -->
+                <div class="relative">
+                    <p class="text-sm lg:text-base">
+                        <span class="leading-1.8 lg:leading-1.8">
+                            Zipcode:</span>
+                    </p>
+                    <input type="number" name="zipcode" id="id_zipcode"
+                        value="{% if form.zipcode.value %}{{form.zipcode.value}}{% endif %}"
+                        class="text-paragraph-color pl-5 pr-[50px] outline-none border-2 border-border-color-9 focus:border focus:border-secondary-color h-[65px] block w-full rounded-none placeholder:text-paragraph-color placeholder:text-sm placeholder:text-opacity-85">
+                </div>
+                <div class="relative">
+                    <p class="text-sm lg:text-base">
+                        <span class="leading-1.8 lg:leading-1.8">
+                            Country:</span>
+                    </p>
+                    <input type="text" name="country" id="id_country"
+                        value="{% if form.country.value %}{{form.country.value}}{% endif %}"
+                        class="text-paragraph-color pl-5 pr-[50px] outline-none border-2 border-border-color-9 focus:border focus:border-secondary-color h-[65px] block w-full rounded-none placeholder:text-paragraph-color placeholder:text-sm placeholder:text-opacity-85">
+                </div>
+            </div>
+        </div>
+        <!-- submit button -->
+
+        <div>
+            <h5
+                class="uppercase text-sm md:text-base text-white relative group whitespace-nowrap font-normal mb-0 transition-all duration-300 border border-secondary-color hover:border-heading-color inline-block z-0">
+                <span
+                    class="inline-block absolute top-0 right-0 w-full h-full bg-secondary-color group-hover:bg-black -z-1 group-hover:w-0 transition-all duration-300"></span>
+                <button type="submit"
+                    class="relative z-1 px-5 md:px-[25px] lg:px-10 py-[10px] md:py-[15px] lg:py-[17px] group-hover:text-heading-color leading-[23px] uppercase">
+                    Save Changes
+                </button>
+            </h5>
+        </div>
+    </form>
+</div>
+
+{% endblock content_v2 %}
+
+{% block js %}
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD5_FEFwr5YQFY6SBGyE1RcqNgL_bvyYI&libraries=places&callback=initMap&solution_channel=GMP_QB_addressselection_v1_cAC"
+    async defer></script>
+<script>
+    "use strict";
+
+    function initMap() {
+
+        const autocompleteInput = document.getElementById('id_address_one');
+        const provinceInput = document.getElementById('id_province');
+        const cityInput = document.getElementById('id_city');
+        const zipcodeInput = document.getElementById('id_zipcode');
+        const addressTwoInput = document.getElementById('id_address_two');
+
+        const autocomplete = new google.maps.places.Autocomplete(autocompleteInput, {
+            fields: ["place_id", "address_components"],
+            types: ["address"],
+        });
+        autocomplete.setComponentRestrictions(
+            {'country': ['za']});
+        autocomplete.addListener('place_changed', function () {
+            // console.log(autocomplete)
+            const place = autocomplete.getPlace();
+            /* if (!place.geometry) {
+            // User entered the name of a Place that was not suggested and
+            // pressed the Enter key, or the Place Details request failed.
+            window.alert('No details available for input: \'' + place.name + '\'');
+            return;
+            } */
+            // console.log(place)
+            fillInAddress(place);
+        });
+
+        function fillInAddress(place) {  // optional parameter
+            const addressNameFormat = {
+                'street_number': 'short_name',
+                'route': 'long_name',
+                'locality': 'long_name',
+                'administrative_area_level_1': 'short_name',
+                'country': 'long_name',
+                'postal_code': 'short_name',
+            };
+            const getAddressComp = function (type) {
+                for (const component of place.address_components) {
+                    if (component.types[0] === type) {
+                        return component[addressNameFormat[type]];
+                    }
+                }
+                return '';
+            };
+
+            autocompleteInput.value = getAddressComp('route')
+            addressTwoInput.value = getAddressComp('street_number')
+            provinceInput.value = getAddressComp('administrative_area_level_1')
+            cityInput.value = getAddressComp('locality')
+            zipcodeInput.value = getAddressComp('postal_code')
+        }
+    }
+</script>
+{% endblock js %}

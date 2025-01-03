@@ -1,0 +1,189 @@
+{% extends '_update_event.html' %}
+{% load static %}
+
+
+{% block event %}
+<section class="w-full  font-sans py-10 h-full">
+<div class="w-full font-sans h-full bg-white">
+    <div class="space-y-4 bg-white w-full relative">
+        <div class="px-4">
+            {% if form.errors %}
+            <div class="w-full mx-auto">
+                <div class="bg-red-50 border-l-8 border-red-900">
+                    <div class="flex items-center">
+                        <div class="p-2">
+                            <div class="flex items-center">
+                                <div class="ml-2">
+                                    <svg class="h-8 w-8 text-red-900 mr-2 cursor-pointer"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <p class="px-6 py-4 text-red-900 font-semibold text-lg">Please fix the
+                                    following
+                                    errors.</p>
+                            </div>
+
+                            <ul class="px-16 mb-4">
+                                {% if forms.non_field_errors %}
+                                <li class="text-md font-bold p-1 list-none text-red-500 text-sm">
+                                    {{forms.non_field_errors.as_text}}
+                                </li>
+                                {% endif %}
+                                {% if form.non_field_errors %}
+                                <li class="text-md font-bold p-1 list-none text-red-500 text-sm">
+                                    {{form.non_field_errors}}</li>
+                                {% endif %}
+
+                                {% for key, value in form.errors.items %}
+                                <li
+                                    class="text-md font-bold p-1 list-none text-red-500 text-sm flex items-center gap-4">
+                                    {{key|escape}}: {{value|escape}}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <div class="w-full relative block mx-auto">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+                    {% for content in event.images.all %}
+                    <div class="group cursor-pointer relative">
+                        <img src="{{content.image.url}}" alt="{{event.title}}"
+                            class="w-full h-48 object-cover rounded-lg transition-transform transform scale-100 group-hover:scale-105" />
+                        <div
+                            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <a href="{% url 'events:delete-event-content' event_slug=event.slug content_id=content.id %}"
+                                class="bg-custom-h !text-white px-4 py-2 rounded-lg hover:bg-gray-200 hover:text-custom-h transition-colors">
+                                Delete
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <form method="post" enctype="multipart/form-data" class="form-primary add-property-form">
+                {% csrf_token %}
+                <div class="w-full relative">
+                    <h6 class="text-custom-h text-sm mt-3 mb-6 font-bold uppercase">
+                        Add More Event Image(s)
+                    </h6>
+                    <input type="file" name="files" size="5" id="id_files" multiple
+                        accept="image/jpg,image/jpeg,image/pjpeg,image/png,image/apng,image/x-png,image/gif,image/webp"
+                        class="w-[0.1px] h-[0.1px] opacity-0 overflow-hidden absolute -z-[1]" />
+                    <div class="flex flex-wrap space-y-3 md:space-y-0">
+                        <div id="additional_files_container" class="w-full space-x-4 flex items-center flex-wrap">
+                            <div id="additional_files"
+                                class="cursor-pointer w-full h-28 flex flex-wrap items-center justify-center rounded-md border-2 border-dotted text-center">
+                                <div>
+                                    <p class="text-xl text-[#ea4c89]">Add more image files(Max 5 additional files)</p>
+                                    <div class="text-[#6e6d7a] font-normal text-sm">
+                                        <span>1600x1200 or higher recommended.</span>
+                                        <span>Max 5MB each</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 ">
+                
+                    <div>
+                        <h5
+                            class="uppercase text-sm md:text-base text-white relative group whitespace-nowrap font-normal mb-0 transition-all duration-300 border border-custom-h hover:border-custom-primary inline-block z-0">
+                            <span
+                                class="inline-block absolute top-0 left-0 w-full h-full bg-custom-h group-hover:bg-custom-primary -z-1 group-hover:w-0 transition-all duration-300"></span>
+                            <button type="submit"
+                                class="relative z-1 px-5 font-sans md:px-[25px] lg:px-10 py-[10px] md:py-[15px] lg:py-[17px] group-hover:text-custom-h leading-1.5 uppercase">
+                                Update Content
+                            </button>
+                        </h5>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</section>
+{% endblock event %}
+{% block js %}
+<script>
+    const additional_files = document.querySelector("#additional_files")
+    const files = document.querySelector("#id_files")
+    const additional_files_container = document.querySelector("#additional_files_container")
+
+    files.addEventListener('change', handleFileUpload)
+    // document.querySelector("#id_files_2").addEventListener('change', addFile)
+
+    function removeImage(id) {
+        let string_id = `#additional_files_${id}`;
+        const images = Array.from(files.files);
+        images.splice(id, 1);
+        files.value = '';
+        const dataTransfer = new DataTransfer();
+        images.forEach(file => dataTransfer.items.add(file))
+        files.files = dataTransfer.files
+        let image_container = document.querySelector(string_id)
+
+        console.log(files.files[id])
+        additional_files_container.removeChild(image_container)
+    }
+
+    additional_files.addEventListener("click", () => {
+        files.click()
+    })
+
+
+    function addNewFile() {
+        document.querySelector("#id_files_2").click();
+    }
+
+    function handleFileUpload(event) {
+        const newfiles = Array.from(event.target.files);
+        if (newfiles.length === 0) {
+            alert("Select atleast 1 file")
+            return;
+        } else {
+            additional_files_container.innerHTML = ''
+            additional_files_container.innerHTML += `
+                        <div id="additional_files_new" onclick="addNewFile()" class="w-28 cursor-pointer h-28 flex items-center justify-center rounded-md border-2 border-dotted text-center">
+                            <input type="file" name="files" size="5" id="id_files_2" multiple onchange="addFile(event)"
+                            accept="image/jpg,image/jpeg,image/pjpeg,image/png,image/apng,image/x-png,image/gif,image/webp"
+                            class="w-[0.1px] h-[0.1px] opacity-0 overflow-hidden absolute -z-[1]" />
+                            <p>Add files</p>
+                        </div>
+                    `
+            newfiles.forEach((file, index) => {
+                additional_files_container.innerHTML += `
+                        <div id="additional_files_${index}" onclick="removeImage(${index})" class="w-28 h-28 cursor-pointer flex items-center justify-center rounded-md border-2 border-dotted text-center">
+                            <img src="${window.URL.createObjectURL(file)}" alt="${file.name}" class="w-full h-full object-cover" />
+                        </div>
+                    `
+            })
+
+
+        }
+
+    }
+
+
+    function addFile(event) {
+        const images = Array.from(files.files);
+        const newFile = event.target.files[0];
+        if (!newFile) return;
+        files.value = '';
+        const dataTransfer = new DataTransfer();
+        images.forEach(file => dataTransfer.items.add(file));
+        dataTransfer.items.add(newFile)
+        files.files = dataTransfer.files
+
+        handleFileUpload({target: files})
+
+    }
+
+</script>
+{% endblock js %}

@@ -1,0 +1,359 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block styles %}
+<style>
+    #hero-section-bg {
+        background-image: url("{% static 'imgs/home.jpg' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-blend-mode: overlay;
+    }
+</style>
+{% endblock styles %}
+{% block content %}
+
+<section>
+    <!-- banner section -->
+    <div id="hero-section-"
+        class="w-full bg-no-repeat bg-cover bg-center relative z-0 after:w-full after:h-full after:absolute after:top-0 after:left-0 after:bg-white after:bg-opacity-30 after:-z-1">
+        <div class="container py-[110px]">
+            <h1 class="text-2xl sm:text-3xl md:text-[26px] lg:text-3xl xl:text-4xl font-bold text-custom-h mb-4">
+                <span class="leading-1.3 md:leading-1.3 lg:leading-1.3 xl:leading-1.3">Account</span>
+            </h1>
+            <ul class="breadcrumb flex gap-7 items-center text-sm lg:text-base font-bold pt-4">
+                <li class="home relative leading-1.8 lg:leading-1.8">
+                    <a href="{% url 'siyazalana_home:siyazalana-home' %}"><i class="fas fa-home text-custom-primary"></i> Home</a>
+                </li>
+                <li class="leading-1.8 lg:leading-1.8 text-custom-h">
+                    Register
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container pt-32 pb-[90px] lg:pb-32 flex lg:justify-center">
+        <div class="">
+            <!-- heading -->
+            <div class="text-center mb-[50px]">
+                <h1
+                    class="text-2xl sm:text-3xl md:text-[26px] lg:text-3xl xl:text-[44px] font-bold text-heading-color mb-[15px]">
+                    <span class="leading-1.3 md:leading-1.3 lg:leading-1.3 xl:leading-1.3">Register <br>
+                        Your Account
+                    </span>
+                </h1>
+                <p class="text-sm lg:text-base">
+                    <span class="leading-1.8 lg:leading-1.8">The Black Business Growth Initiative supports Black African
+                        businesses and careers by providing a unified platform for
+                        entrepreneurs and professionals to showcase their expertise and promote unity and
+                        cooperation.</span>
+                </p>
+            </div>
+            <!-- form -->
+            <div class="w-full">
+                {% include "includes/errors.html" %}
+                <form method="post" class="form-primary w-full bg-white px-[25px] md:px-[50px] pt-10 pb-[50px]">
+                    {% csrf_token %}
+                    <div>
+                        <div class="grid w-full grid-cols-1 gap-[30px] pb-[30px]">
+                            <!-- 1st name -->
+                            <div class="relative">
+                                <input type="text" placeholder="Username*" name="username" id="id_username"
+                                    value="{% if form.username.value %}{{form.username.value}}{% endif %}"
+                                    class="text-paragraph-color pl-5 pr-[50px] outline-none border-2 border-border-color-9 focus:border focus:border-secondary-color h-[65px] block w-full rounded-none placeholder:text-paragraph-color placeholder:text-sm placeholder:text-opacity-60">
+                            </div>
+                            <div class="grid w-full grid-cols-1 lg:grid-cols-2 gap-[30px]">
+                                <div class="relative">
+                                    <input type="text" placeholder="First Name" name="first_name" id="id_first_name"
+                                        value="{% if form.first_name.value %}{{form.first_name.value}}{% endif %}"
+                                        class="text-paragraph-color pl-5 pr-[50px] outline-none border-2 border-border-color-9 focus:border focus:border-secondary-color h-[65px] block w-full rounded-none placeholder:text-paragraph-color placeholder:text-sm placeholder:text-opacity-60">
+                                </div>
+                                <!-- 2nd name -->
+                                <div class="relative">
+                                    <input type="text" placeholder="Last Name*" name="last_name" id="id_last_name"
+                                        value="{% if form.last_name.value %}{{form.last_name.value}}{% endif %}"
+                                        class="text-paragraph-color pl-5 pr-[50px] outline-none border-2 border-border-color-9 focus:border focus:border-secondary-color h-[65px] block w-full rounded-none placeholder:text-paragraph-color placeholder:text-sm placeholder:text-opacity-60">
+                                </div>
+                                <!-- email -->
+                                <div class="relative">
+                                    <input type="email" placeholder="Email*" name="email" id="id_email"
+                                        value="{% if form.email.value %}{{form.email.value}}{% endif %}"
+                                        class="text-paragraph-color pl-5 pr-[50px] outline-none border-2 border-border-color-9 focus:border focus:border-secondary-color h-[65px] block w-full rounded-none placeholder:text-paragraph-color placeholder:text-sm placeholder:text-opacity-60">
+                                </div>
+                                <div class="relative">
+                                    <input type="email" placeholder="Confirm Email*" name="confirm_email"
+                                        id="id_confirm_email"
+                                        value="{% if form.confirm_email.value %}{{form.confirm_email.value}}{% endif %}"
+                                        class="text-paragraph-color pl-5 pr-[50px] outline-none border-2 border-border-color-9 focus:border focus:border-secondary-color h-[65px] block w-full rounded-none placeholder:text-paragraph-color placeholder:text-sm placeholder:text-opacity-60">
+                                </div>
+
+                                <!-- password -->
+                                <div class="relative">
+                                    <input type="password" placeholder="Password*" name="password1" id="id_password1"
+                                        class="text-paragraph-color pl-5 pr-[50px] outline-none border-2 border-border-color-9 focus:border focus:border-secondary-color h-[65px] block w-full rounded-none placeholder:text-paragraph-color placeholder:text-sm placeholder:text-opacity-60 tracking-[3px]">
+                                </div>
+                                <!-- Confirm new password -->
+                                <div class="relative">
+                                    <input type="password" placeholder="Confirm Password*" name="password2"
+                                        id="id_password2"
+                                        class="text-paragraph-color pl-5 pr-[50px] outline-none border-2 border-border-color-9 focus:border focus:border-secondary-color h-[65px] block w-full rounded-none placeholder:text-paragraph-color placeholder:text-sm placeholder:text-opacity-60 tracking-[3px]">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- agree -->
+                    <!-- <div>
+                        <div class="text-sm mb-2">
+                            <input type="checkbox" id="agree" class="float-left clear-both mt-1">
+                            <label for="agree" class="text-sm ml-1 leading-1.8">
+                                I consent to Herboil processing my personal data in order
+                                to send personalized marketing material in accordance with
+                                the consent form and the privacy policy.
+                            </label>
+                        </div>
+                        <div class="text-sm mb-[35px]">
+                            <input type="checkbox" id="agree2" class="float-left clear-both mt-1">
+                            <label for="agree2" class="text-sm ml-1 leading-1.8">
+                                By clicking "create account", I consent to the privacy
+                                policy.
+                            </label>
+                        </div>
+                    </div> -->
+                    <!-- submit button -->
+
+                    <div>
+                        <h5
+                            class="uppercase text-sm md:text-base text-white relative group whitespace-nowrap font-normal mb-0 transition-all duration-300 border bg-secondary-color border-secondary-color hover:border-primary-color hover:bg-primary-color inline-block z-0">
+                            <button type="submit"
+                                class="relative z-1 px-[30px] lg:px-10 py-3 md:py-[15px] lg:py-[17px] group-hover:text-white leading-[23px] uppercase h">
+                                CREATE ACCOUNT
+                            </button>
+                        </h5>
+                    </div>
+                </form>
+                <!-- create account -->
+                <div class="bg-white text-center">
+                    <div>
+                        <p class="text-sm lg:text-base mb-5 lg:mb-6">
+                            <span class="leading-1.8 lg:leading-1.8">By creating an account, you agree to our:</span>
+                        </p>
+                        <a href="" class="uppercase text-sm lg:text-base block">
+                            <span class="leading-1.8 lg:leading-1.8">TERMS OF CONDITIONS &nbsp; &nbsp; | &nbsp; &nbsp;
+                                PRIVACY
+                                POLICY</span>
+                        </a>
+                        <a href="{% url 'accounts:login' %}" class="uppercase text-sm lg:text-base mt-[50px]">
+                            <span class="leading-1.8 lg:leading-1.8">ALREADY HAVE AN ACCOUNT ?</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+
+{% block js %}
+
+
+<script>
+
+    const file_picker = document.querySelector("#id_profile_image"),
+        pick_image = document.querySelector("#pick_image"),
+        register_form = document.querySelector("#register_form"),
+        email = document.querySelector("#id_email"),
+        confirm_email = document.querySelector("#id_confirm_email"),
+        confirm_email_error = document.querySelector("#confirm_email_error")
+
+    pick_image.addEventListener('click', () => {
+        file_picker.click()
+    })
+
+
+    file_picker.onchange = ({target}) => {
+        const no_image = document.querySelector("#no_image");
+        const img_container = document.querySelector("#img_container")
+        const img = document.querySelector("#img")
+        const file = target.files[0]
+        if (file) {
+            // console.log(no_image)
+            if (no_image) {
+                // console.log(img_container)
+
+                img_container.removeChild(no_image);
+                img_container.innerHTML += `
+                    <img
+                        src="${window.URL.createObjectURL(file)}"
+                        alt="{{request.user.first_name}}"
+                        class="w-full h-full object-cover"
+                        id="img"
+                    />
+                `
+            } else {
+                img.src = window.URL.createObjectURL(file)
+            }
+
+        } else {
+            alert("no file selected")
+        }
+
+    };
+
+    var max_words = 150;
+
+    $("textarea[name=biography]").on("keyup", function () {
+        var str = $(this).val();
+        if (str.split(/[\s]+/).length > max_words) {
+            alert("You cannot put more than" + max_words + " words in this text area.")
+            var new_str = str.split(/[\s]+/).splice(0, max_words).join(' ');
+            $(this).val(new_str);
+        }
+    })
+
+    confirm_email.addEventListener("keyup", function (e) {
+        e.preventDefault();
+        console.log(email.value)
+        if (confirm_email.value !== email.value) {
+            if (confirm_email_error.classList.contains("hidden")) {
+                confirm_email_error.classList.remove("hidden");
+                confirm_email_error.classList.add("block");
+            }
+        } else {
+            if (confirm_email_error.classList.contains("block")) {
+                confirm_email_error.classList.remove("block");
+                confirm_email_error.classList.add("hidden");
+            }
+        }
+    })
+</script>
+<script>
+    "use strict";
+
+    function initMap() {
+
+        const CONFIGURATION = {
+            "ctaTitle": "Checkout",
+            "mapOptions": {"center": {"lat": -33.918861, "lng": 18.423300}, "fullscreenControl": true, "mapTypeControl": false, "streetViewControl": true, "zoom": 11, "zoomControl": true, "maxZoom": 22, "mapId": ""},
+            "capabilities": {"addressAutocompleteControl": true, "mapDisplayControl": true, "ctaControl": true}
+        };
+
+        const componentForm = [
+            'location',
+            'locality',
+            'administrative_area_level_1',
+            'country',
+            'postal_code',
+        ];
+
+
+        const getFormInputElement = (component) => document.getElementById(component + '-input');
+        const autocompleteInput = document.getElementById('id_address_one');
+        const provinceInput = document.getElementById('id_province');
+        const cityInput = document.getElementById('id_city');
+        const zipcodeInput = document.getElementById('id_zipcode');
+        const addressTwoInput = document.getElementById('id_address_two');
+
+        const map = new google.maps.Map(document.getElementById("gmp-map-account"), {
+            zoom: CONFIGURATION.mapOptions.zoom,
+            center: {lat: -33.918861, lng: 18.423300},
+            mapTypeControl: true,
+            fullscreenControl: CONFIGURATION.mapOptions.fullscreenControl,
+            zoomControl: CONFIGURATION.mapOptions.zoomControl,
+            streetViewControl: CONFIGURATION.mapOptions.streetViewControl
+        });
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                position => {
+                    const clientLocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    map.setCenter(clientLocation);
+                    const marker = new google.maps.Marker({position: clientLocation, map: map, draggable: false});
+                    const geocoder = new google.maps.Geocoder();
+                    geocoder.geocode({location: clientLocation}, (results, status) => {
+                        if (status === 'OK') {
+                            fillInAddress(results[0]);
+                        } else {
+                            alert("Sorry, we couldn't find address suggestion for your current location")
+                        }
+                    })
+                },
+                () => {
+
+                }
+            )
+        }
+
+        const marker = new google.maps.Marker({map: map, draggable: false});
+        google.maps.event.addListener(map, 'click', (event) => {
+            marker.setPosition(event.latLng);
+            const geocoder = new google.maps.Geocoder();
+            geocoder.geocode({location: event.latLng}, (results, status) => {
+                if (status === 'OK') {
+                    console.log(results)
+                    fillInAddress(results[0]);
+                } else {
+                    alert("Sorry, we couldn't find address suggestions for your location")
+                }
+            })
+        })
+        const autocomplete = new google.maps.places.Autocomplete(autocompleteInput, {
+            fields: ["place_id", "address_components", "geometry", "name"],
+            types: ["address"],
+        });
+
+        autocomplete.setComponentRestrictions(
+            {'country': ['za']});
+
+        autocomplete.addListener('place_changed', function () {
+
+            const place = autocomplete.getPlace();
+            if (!place.geometry) {
+                window.alert('No details available for input: \'' + place.name + '\'');
+                return;
+            }
+            console.log(place)
+            renderAddress(place);
+            fillInAddress(place);
+        });
+
+        function fillInAddress(place) {
+            const addressNameFormat = {
+                'street_number': 'short_name',
+                'route': 'long_name',
+                'locality': 'long_name',
+                'administrative_area_level_1': 'short_name',
+                'country': 'long_name',
+                'postal_code': 'short_name',
+            };
+            const getAddressComp = function (type) {
+                for (const component of place.address_components) {
+                    if (component.types[0] === type) {
+                        return component[addressNameFormat[type]];
+                    }
+                }
+                return '';
+            };
+
+            autocompleteInput.value = getAddressComp('route')
+            addressTwoInput.value = getAddressComp('street_number')
+            provinceInput.value = getAddressComp('administrative_area_level_1')
+            cityInput.value = getAddressComp('locality')
+            zipcodeInput.value = getAddressComp('postal_code')
+        }
+
+        function renderAddress(place) {
+            map.setCenter(place.geometry.location);
+            marker.setPosition(place.geometry.location);
+            marker.setVisible(true);
+        }
+    }
+</script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1vMyd0KzU7mTn_AkMW3zd2V4cJC9w31I&libraries=places&callback=initMap&solution_channel=GMP_QB_addressselection_v1_cAC"
+    async defer></script>
+
+{% endblock js %}

@@ -1,0 +1,86 @@
+{% load static %}
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% tailwind_preload_css %}
+    {% tailwind_css %}
+    {{form.media}}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="These template is suitable for charity , NGO , non-profit organization , donation , church or a fundraising website.">
+    <meta name="keywords"
+        content="charity, causes, donate, charity foundation, charity hub, charity theme, donations, non profit, fundraiser,social, ngo, non-profit, nonprofit, organization, volunteer">
+    <meta name="author" content="initTheme">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Siyazalana &dash; We Care, You Care">
+    <meta property="og:site_name" content="donate Website">
+    <meta property="og:site_name" content="siyazalana">
+    <meta property="og:url" content="www.siyazalana.com">
+    <meta property="og:image" content="www.siyazalana.com">
+    <meta property="og:description"
+        content="These template is suitable for charity , NGO ,donate,fundraiser, non-profit organization">
+    <meta name="twitter:title" content="Siyazalana &dash; We Care, You Care">
+    <meta name="twitter:description"
+        content="These template is suitable for charity , NGO ,donate,fundraiser, non-profit organization">
+    <meta name="twitter:image" content="www.siyazalana.com">
+    <meta name="twitter:card" content="summary">
+    <title>Siyazalana &dash; We Care, You Care</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'assets/site.webmanifest' %}">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/font-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select2.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/glightbox.css' %}">
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/custom.css' %}">
+
+</head>
+<body class="font-body-font">
+    {% include 'includes/header.html' %}
+    {% include "includes/messages.html" %}
+    <main>
+        {% block content %}
+        {% endblock content %}
+    </main>
+    {% include 'includes/footer.html' %}
+    <!-- Scroll Up  -->
+    <button
+        class="scroll-up w-[30px] h-[30px] lg:w-10 lg:h-10 lg:text-xl bg-section-bg-1 text-heading-color hover:bg-secondary-color hover:text-white rotate-[45deg] shadow-box-shadow-3 fixed bottom-[50px] lg:bottom-[70px] right-[3%] flex justify-center items-center z-xl">
+        <i class="fas fa-angle-up leading-1 -rotate-[45deg] inline-block"></i>
+    </button>
+    <!-- jquery-->
+    <script src="{% static 'assets/js/jquery-3.7.0.min.js' %}"></script>
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+    <script src="{% static 'assets/js/stickyHeader.js' %}"></script>
+    <script src="{% static 'assets/js/accordion.js' %}"></script>
+    <script src="{% static 'assets/js/service.js' %}"></script>
+    <script src="{% static 'assets/js/nice-select2.js' %}"></script>
+    <script src="{% static 'assets/js/search.js' %}"></script>
+    <script src="{% static 'assets/js/drawer.js' %}"></script>
+    <script src="{% static 'assets/js/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/silder.js' %}"></script>
+    <script src="{% static 'assets/js/counterup.js' %}"></script>
+    <script src="{% static 'assets/js/modal.js' %}"></script>
+    <script src="{% static 'assets/js/tabs.js' %}"></script>
+    <script src="{% static 'assets/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'assets/js/scrollUp.js' %}"></script>
+    <script src="{% static 'assets/js/smoothScroll.js' %}"></script>
+    <script src="{% static 'assets/js/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'assets/js/filter.js' %}"></script>
+    <script src="{% static 'assets/js/nice_checkbox.js' %}"></script>
+    <script src="{% static 'assets/js/count.js' %}"></script>
+    <!-- Main js-->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    {% block js %}
+    {% endblock js %}
+</body>
+</html>

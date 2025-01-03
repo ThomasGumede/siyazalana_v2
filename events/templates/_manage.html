@@ -1,0 +1,136 @@
+{% extends '_base.html' %}
+{% load static %}
+
+
+
+{% block seo_tags %}
+<!-- Primary Meta Tags -->
+<title>BBGI - The Leading Business Growth Initiative</title>
+<meta name="title" content="BBGI - The Leading Business Growth Initiative" />
+<meta name="description"
+    content="Black Business Growth Initiative was formed with the intention of creating a gathering of black African business owners  and professionals. It is..." />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://siyazalana/about-us" />
+<meta property="og:title" content="BBGI - The Leading Business Growth Initiative" />
+<meta property="og:description"
+    content="Black Business Growth Initiative was formed with the intention of creating a gathering of black African business owners  and professionals. It is..." />
+<meta property="og:image" content="https://siyazalana{% static 'imgs/logo/logo.jpeg' %}" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://siyazalana/about-us" />
+<meta property="twitter:title" content="BBGI - The Leading Business Growth Initiative" />
+<meta property="twitter:description"
+    content="Black Business Growth Initiative was formed with the intention of creating a gathering of black African business owners  and professionals. It is..." />
+<meta property="twitter:image" content="https://siyazalana{% static 'imgs/logo/logo.jpeg' %}" />
+
+<!-- Meta Tags Generated with https://metatags.io -->
+{% endblock seo_tags %}
+
+{% block styles %}
+<style>
+    #hero-section-bg {
+        background-image: url("{% static 'imgs/home.jpg' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-blend-mode: overlay;
+    }
+</style>
+{% endblock styles %}
+
+{% block content %}
+<!-- Banner -->
+<section>
+    <!-- banner section -->
+    <div id="hero-section-"
+        class="w-full bg-no-repeat bg-cover bg-center relative z-0 after:w-full after:h-full after:absolute after:top-0 after:left-0 after:bg-white after:bg-opacity-30 after:-z-1">
+        <div class="container py-[110px]">
+            <h1 class="text-2xl sm:text-3xl md:text-[26px] lg:text-3xl xl:text-4xl font-bold text-custom-h mb-4">
+                <span class="leading-1.3 md:leading-1.3 lg:leading-1.3 xl:leading-1.3">Event Management</span>
+            </h1>
+            <ul class="breadcrumb flex gap-7 items-center text-sm lg:text-base font-bold pt-4">
+                <li class="home relative leading-1.8 lg:leading-1.8">
+                    <a href="{% url 'events:manage-events' %}"><i class="fas fa-home text-custom-primary"></i> Manage events</a>
+                </li>
+                <li class="leading-1.8 lg:leading-1.8 text-custom-h">
+                    {{event.title}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container pb-[90px] lg:pb-32">
+        <div class="tab account-tab grid grid-cols-1 lg:grid-cols-12 gap-x-[30px] gap-y-[50px]">
+            <!-- sidebar navigation -->
+            <div class="lg:col-start-1 lg:col-span-4">
+                <ul class="tab-links lg:mr-[30px] border border-b-0 border-border-color-1">
+                    <li
+                        class="border-b border-border-color-1 {% if request.resolver_match.url_name == 'manage-event' %}active{% endif %}">
+                        <a href="{% url 'events:manage-event' event.slug %}"
+                            class="flex justify-between items-center  px-5 py-[15px] w-full text-sm lg:text-base hover:text-secondary-color transition-all duration-300 capitalize">
+                            <span class="leading-1.8 lg:leading-1.8"> Event </span>
+                            <i class="fas fa-home text-sm"></i>
+                        </a>
+                    </li>
+                    <li
+                        class="border-b border-border-color-1 {% if request.resolver_match.url_name == 'ticket-orders' %}active{% endif %}">
+                        <a href="{% url 'events:ticket-orders' event.id %}"
+                            class="flex justify-between items-center px-5 py-[15px] w-full text-sm lg:text-base hover:text-secondary-color transition-all duration-300 capitalize">
+                            <span class="leading-1.8 lg:leading-1.8">Ticket Orders</span>
+                            <i class="fas fa-cart-plus text-sm"></i>
+                        </a>
+                    </li>
+                    <li
+                        class="border-b border-border-color-1  {% if request.resolver_match.url_name == 'create-ticket-types' or request.resolver_match.url_name == 'update-ticket-type' %}active{% endif %}">
+                        <a href="{% url 'events:create-ticket-types' event_id=event.id %}"
+                            class="flex justify-between items-center px-5 py-[15px] w-full text-sm lg:text-base hover:text-secondary-color transition-all duration-300 capitalize">
+                            <span class="leading-1.8 lg:leading-1.8">
+                                Ticket Types
+                            </span>
+                            <i class="fa-solid fa-ticket text-sm"></i>
+                        </a>
+                    </li>
+                    <li
+                        class="border-b border-border-color-1 {% if request.resolver_match.url_name == 'add-event-organisor' %}active{% endif %}">
+                        <a href="{% url 'events:add-event-organisor' event_slug=event.slug %}"
+                            class="flex justify-between items-center px-5 py-[15px] w-full text-sm lg:text-base hover:text-secondary-color transition-all duration-300 capitalize">
+                            <span class="leading-1.8 lg:leading-1.8"> Event Organisors </span>
+                            <i class="fas fa-user-group text-sm"></i>
+                        </a>
+                    </li>
+                    
+                    <li class="border-b border-border-color-1">
+                        <a href="{% url 'events:update-event' event.slug %}"
+                            class="flex justify-between items-center px-5 py-[15px] w-full text-sm lg:text-base hover:text-secondary-color transition-all duration-300 capitalize">
+                            <span class="leading-1.8 lg:leading-1.8">Update Event </span>
+                            <i class="fas fa-pen text-sm"></i>
+                        </a>
+                    </li>
+
+                    <li class="border-b border-border-color-1">
+                        <a href="{% url 'events:delete-event' event_slug=event.slug %}"
+                            class="flex justify-between items-center px-5 py-[15px] w-full text-sm lg:text-base hover:text-secondary-color transition-all duration-300 capitalize">
+                            <span class="leading-1.8 lg:leading-1.8">Delete Event </span>
+                            <i class="fas fa-trash text-sm"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- main content -->
+            <div class="tab-contents bg-custom-bg lg:col-start-5 lg:col-span-8">
+                <!-- content 1 -->
+                {% block content_v2 %}
+
+                {% endblock content_v2 %}
+                <!-- content 2 -->
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

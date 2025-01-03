@@ -1,0 +1,35 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block title %}Ticket Verification{% endblock title %}
+
+{% block content %}
+
+<section class="py-16 h-full bg-white font-sans">
+    <div class="container">
+        <div
+            class="w-full max-w-full rounded-xl my-auto bg-gray-50 mx-auto md:w-1/2 lg:w-5/12 relative shadow-xl text-center">
+            <div class="p-5 md:p-7">
+                <div class="space-y-6">
+                    <h3 class="text-custom-h text-2xl md:text-4xl font-extrabold">Ticket Verified</h3>
+                    <div>
+                        <i class="fa-regular fa-check-circle text-8xl font-extralight text-custom-h"></i>
+                    </div>
+                    <p class="text-custom-h text-lg font-medium">
+                        Ticket Number {{ticket.ticket_order.order_number}} valid and verified
+                    </p>
+                    <p class="text-gray-500 text-lg font-medium">
+                        Your ticket is valid and verified successfully! Note ticket can be verified ONLY once.
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}
+{% block js %}
+
+
+{% endblock js %}

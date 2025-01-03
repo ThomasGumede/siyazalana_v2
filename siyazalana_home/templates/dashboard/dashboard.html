@@ -1,0 +1,268 @@
+{% extends '_dashboard.html' %}
+{% load static %}
+{{form.media}}
+
+{% block content %}
+<section class="w-full bg-custom-bg py-10 relative block px-4">
+    
+    <div class="">
+        <div class="relative overflow-hidden block">
+            <div class="grid items-center gap-7 mb-7 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                <div class="flex items-center p-8 bg-white shadow rounded-lg">
+                    <div
+                        class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-purple-600 bg-purple-100 rounded-full mr-6">
+                        <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            class="stroke-current text-custom-h  transform transition-transform duration-500 ease-in-out">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="block text-2xl font-bold">{{events.count}}</span>
+                        <span class="block text-gray-500">Events</span>
+                    </div>
+                </div>
+                <div class="flex items-center p-8 bg-white shadow rounded-lg">
+                    <div
+                        class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-purple-600 bg-purple-100 rounded-full mr-6">
+                        <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            class="stroke-current text-custom-h  transform transition-transform duration-500 ease-in-out">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="block text-2xl font-bold">{{campaigns.count}}</span>
+                        <span class="block text-gray-500">campaigns</span>
+                    </div>
+                </div>
+                
+                <div class="flex items-center p-8 bg-white shadow rounded-lg">
+                    <div
+                        class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-purple-600 bg-purple-100 rounded-full mr-6">
+                        <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            class="stroke-current text-custom-h  transform transition-transform duration-500 ease-in-out">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="block text-2xl font-bold">{{qoutations.count}}</span>
+                        <span class="block text-gray-500">Accounts</span>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full">
+                <div class="py-7">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-2">
+                        <div class="bg-white p-4 rounded-md">
+                            <h2 class="text-gray-500 text-lg font-semibold pb-4">Latest Campaigns</h2>
+                            <div class="my-1"></div>
+
+                            <table class="w-full text-left table-auto min-w-max">
+                                <thead>
+                                    <tr>
+                                        <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                            <p
+                                                class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                Campaign
+                                            </p>
+                                        </th>
+
+                                        <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                            <p
+                                                class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                Status
+                                            </p>
+                                        </th>
+                                        <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                            <p
+                                                class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                            </p>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for campaign in campaigns.all %}
+                                    <tr>
+                                        <td class="p-2 border-b border-blue-gray-50">
+                                            <a href="{% url 'campaigns:campaign' campaign.slug %}"
+                                                class="flex items-center gap-3">
+                                                {% if campaign.image %}
+                                                <img src="{{campaign.image.url}}" alt="{{campaign.title}}"
+                                                    class="relative inline-block h-12 w-12 !rounded-full border border-blue-gray-50 bg-blue-gray-50/50 object-contain object-center p-1" />
+                                                {% else %}
+                                                <img src="{% static 'imgs/no-image.png' %}"
+                                                    alt="{{campaign.title}}"
+                                                    class="relative inline-block h-12 w-12 !rounded-full border border-blue-gray-50 bg-blue-gray-50/50 object-contain object-center p-1" />
+                                                {% endif %}
+                                                <p
+                                                    class="block font-sans text-sm antialiased font-bold leading-normal text-blue-gray-900">
+                                                    {{campaign.title|truncatewords:2}}
+                                                </p>
+                                            </a>
+                                        </td>
+
+                                        <td class="p-2 border-b border-blue-gray-50">
+                                            <div class="w-max">
+                                                <div
+                                                    class="relative grid items-center px-2 py-1 font-sans text-xs font-bold {% if campaign.status == 'APPROVED' %} bg-green-500/20 text-green-900{% elif campaign.status == 'PENDING' %}bg-amber-500/20 text-amber-900 {% else %}bg-red-500/20 text-red-900{% endif %}  uppercase rounded-md select-none whitespace-nowrap ">
+                                                    <span class="">{{campaign.status}}</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+
+                            {% if campaigns.count == 5 %}
+                            <div class="text-right mt-4">
+                                <a href=""
+                                    class="bg-custom-h hover:bg-custom-h text-white font-semibold py-2 px-4 rounded">
+                                    View more
+                                </a>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="bg-white p-4 rounded-md">
+                            <h2 class="text-gray-500 text-lg font-semibold pb-4">Latest Events</h2>
+                            <div class="my-1"></div>
+
+                            <table class="w-full text-left table-auto min-w-max">
+                                <thead>
+                                    <tr>
+                                        <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                            <p
+                                                class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                Event
+                                            </p>
+                                        </th>
+
+                                        <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                            <p
+                                                class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                Status
+                                            </p>
+                                        </th>
+                                        <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                            <p
+                                                class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                            </p>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for event in events.all %}
+                                    <tr>
+                                        <td class="p-2 border-b border-blue-gray-50">
+                                            <a href="{% url 'events:event-details' event.slug %}"
+                                                class="flex items-center gap-3">
+                                                {% if event.image %}
+                                                <img src="{{event.image.url}}" alt="{{event.title}}"
+                                                    class="relative inline-block h-12 w-12 !rounded-full border border-blue-gray-50 bg-blue-gray-50/50 object-contain object-center p-1" />
+                                                {% else %}
+                                                <img src="{% static 'imgs/no-image.png' %}"
+                                                    alt="{{event.title}}"
+                                                    class="relative inline-block h-12 w-12 !rounded-full border border-blue-gray-50 bg-blue-gray-50/50 object-contain object-center p-1" />
+                                                {% endif %}
+                                                <p
+                                                    class="block font-sans text-sm antialiased font-bold leading-normal text-blue-gray-900">
+                                                    {{event.title|truncatewords:2}}
+                                                </p>
+                                            </a>
+                                        </td>
+
+                                        <td class="p-2 border-b border-blue-gray-50">
+                                            <div class="w-max">
+                                                <div
+                                                    class="relative grid items-center px-2 py-1 font-sans text-xs font-bold {% if event.status == 'APPROVED' %} bg-green-500/20 text-green-900{% elif event.status == 'PENDING' %}bg-amber-500/20 text-amber-900 {% else %}bg-red-500/20 text-red-900{% endif %}  uppercase rounded-md select-none whitespace-nowrap ">
+                                                    <span class="">{{event.status}}</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            {% if events.count == 5 %}
+                            <div class="text-right mt-4">
+                                <a href=""
+                                    class="bg-custom-h hover:bg-custom-h text-white font-semibold py-2 px-4 rounded">
+                                    View more
+                                </a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="py-7">
+                    <h2 class="text-xl font-semibold text-custom-h mb-8">This week's popular deals</h2>
+                    <div class="relative block">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                            {% for service in popular_services %}
+                            <div class="w-full h-96 sm:w-72">
+                                <div class="relative w-full h-full rounded-3xl overflow-hidden">
+                                    <div class="w-full border h-full">
+                                        {% if service.image %}
+                                        <img src="{{service.image.url}}" alt="{{service.title}}" class="w-full h-full object-cover object-top" />
+                                        {% else %}
+                                        <img src="{% static 'imgs/about/About-1.png' %}" class="w-full h-full object-cover object-top" />
+                                        {% endif %}
+                                    </div>
+                                    <div class="absolute bg-gradient-to-t from-custom-h to-[#f8fafc55]  w-full h-full top-0 left-0 z-20 p-8">
+                                        <div class="space-y-6">
+                                            <div class="business space-y-2">
+                                                <div class="w-16 h-16 bg-custom-primary rounded-full overflow-none">
+                                                    {% if service.business.logo %}
+                                                    <img src="{{service.business.logo.url}}" alt="{{service.business.title}}" class="w-full h-full object-cover object-top" />
+                                                    {% else %}
+                                                    <div class="w-full h-full text-center rounded-full">
+                                                        <p class="text-white font-bold text-lg">{{service.business.title.0}}{{service.business.title.1}}</p>
+                                                    </div>
+                                                    {% endif %}
+                                                </div>
+                                                <h4 class="font-bold text-xl text-white">{{service.business.title}}</h4>
+                                                <div class="relative gap-2 flex items-center">
+                                                    <div class="text-sm text-custom-primary">
+                                                        <i class="fa-solid fa-location-dot fa-lg font-bold"></i>
+                                                    </div>
+                                                    <div class="">
+                                                        <p class="text-sm font-medium text-white">{{service.business.city}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="space-y-2">
+                                                <h5 class="font-bold text-2xl text-white">{{service.discount_percentage}} Off</h5>
+                                                <p class="text-sm font-medium text-white">{{service.discount_description}}</p>
+                                                <p class="text-sm font-normal text-white underline">T's & C's apply</p>
+                                            </div>
+                                            <div>
+                                            <a href="{% url 'markets:create-quotation' service.id %}" id="add-listing w-full" class="rounded-sm">
+                                                
+                                                <span
+                                                    class="rounded-xl w-36 h-12 font-semibold md:grid justify-center items-center text-white bg-custom-h">
+                                            
+                                                    Get a qoute
+                                                </span>
+                                            </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

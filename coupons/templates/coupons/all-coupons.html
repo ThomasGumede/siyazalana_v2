@@ -1,0 +1,97 @@
+{% extends '_dashboard.html' %}
+{% load static %}
+
+{% block title %}All Coupons{% endblock title %}
+
+{% block content %}
+<div class="relative block bg-white">
+    <div class=" py-2 overflow-x-auto">
+        {% if event %}
+        <div class="mb-4">
+            <h2 class="text-2xl font-semibold text-custom-h">
+                Contributions Orders for '{{event.title}}' event.
+            </h2>
+        </div>
+        {% endif %}
+
+        <div class="relative flex flex-col w-full h-full text-gray-700 bg-white">
+            <div class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white rounded-none bg-clip-border">
+                <div class="flex flex-col justify-between gap-8 mb-4 md:flex-row md:items-center">
+                    <div>
+                        <h5
+                            class="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                            All coupons
+                        </h5>
+                        <p class="block mt-1 font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
+                            These are details of all coupons listed
+                        </p>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="p-6 px-0 overflow-x-auto">
+                <table class="w-full text-left table-auto min-w-max">
+                    <thead>
+                        <tr>
+                            <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                <p
+                                    class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                    ID
+                                </p>
+                            </th>
+                            <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                <p
+                                    class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                    Valid from till
+                                </p>
+                            </th>
+                            
+                            <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                <p
+                                    class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                    Status
+                                </p>
+                            </th>
+                            <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                <p
+                                    class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                    Action
+                                </p>
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for coupon in coupons %}
+                        <tr>
+                            <td class="p-4 border-b border-blue-gray-50">
+                                <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                    {{coupon.code}}
+                                </p>
+                            </td>
+                            <td class="p-4 border-b border-blue-gray-50">
+                                <p
+                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                    {{coupon.get_formated_date}}
+                                </p>
+                            </td>
+                            <td class="p-4 border-b border-blue-gray-50">
+                                <div class="w-max">
+                                    <div
+                                        class="relative grid items-center px-2 py-1 font-sans text-xs font-bold {% if coupon.active%} bg-green-500/20 text-green-900 {% else %}bg-red-500/20 text-red-900{% endif %}  uppercase rounded-md select-none whitespace-nowrap ">
+                                        <span class="">{{coupon.active}}</span>
+                                    </div>
+                                </div>
+                            </td>
+                            
+
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock content %}

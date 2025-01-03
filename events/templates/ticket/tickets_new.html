@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tickets</title>
+    <style rel="stylesheet" type="text/css">
+        @import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+        * {
+            box-sizing: border-box;
+        }
+
+        .ts-row::after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+
+    
+    {% for ticket in tickets %}
+
+    <div style=" margin: 30px auto;
+            max-height: 500px;
+            max-width: 270px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgb(202, 202, 204); color: white;
+            background-color: hsl(188, 63%, 7%);
+            border-radius: 2px; font-family: 'Roboto' sans-serif; border-radius: 10px;">
+        <div style=" background-color: hsl(188, 63%, 7%);">
+            <div
+                style="display: table; width: 100%; table-layout: fixed; margin: 0px auto;  background-color: hsl(188, 63%, 7%);">
+                <div
+                    style="display: table-cell; padding: 37px 0px; background-repeat: no-repeat; background-image: radial-gradient(circle at 0 96% , rgba(0,0,0,0) .2em, gray .3em,  hsl(188, 63%, 7%) .1em);">
+                </div>
+                <div style="display: table-cell; padding: 37px 0px; background:hsl(188, 63%, 7%);">
+                    <div id="qrcode">
+                        <img src="{{protocol}}://{{domain}}{{ticket.qrcode_image.url}}"
+                            style="height:70px; width:70px; margin: 0 auto;" alt="{{ticket.qrcode_url}}">
+                    </div>
+                </div>
+                <div
+                    style="display: table-cell; padding: 37px 0px; background-repeat: no-repeat; background-image: radial-gradient(circle at 100% 96% , rgba(0,0,0,0) .2em, gray .3em,  hsl(188, 63%, 7%) .1em);">
+                </div>
+            </div>
+        </div>
+        <div style="padding: 26px; background:hsl(188, 63%, 7%); border-top: 1px dashed #c3c3c3;">
+            <div
+                style="font-size: 0.5em; font-weight: 300; color: #c3c3c3; font-family: 'Roboto', sans-serif; text-transform: uppercase; letter-spacing: 1px; margin:7px 0;">
+                attendee
+            </div>
+            <div
+                style="font-size: 0.7em; word-wrap: break-word; font-weight: 400; font-family: 'Roboto', sans-serif; letter-spacing: 0.5px; margin:7px 0; font-size: 1.3em; font-weight: 300;">
+                {{ticket.guest_full_name}}
+            </div>
+            <div style="font-size: 0.5em;
+            font-weight: 300;
+            color: #c3c3c3;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin:7px 0;">
+                ticket
+            </div>
+            <div style="font-size: 0.7em;
+            font-weight: 400;
+            font-family: 'Roboto', sans-serif;
+            letter-spacing: 0.5px;
+            margin:7px 0;">
+                {{ticket.ticket_type.title}} - R{{ticket.ticket_type.total_price}}
+            </div>
+            <div style="font-size: 0.5em;
+            font-weight: 300;
+            color: #c3c3c3;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin:7px 0;">
+                event
+            </div>
+            <div style="font-size: 0.7em;
+            font-weight: 400;
+            font-family: 'Roboto', sans-serif;
+            letter-spacing: 0.5px;
+            margin:7px 0;">
+                {{event.title}}
+            </div>
+            <div style="display:block;">
+                <div style="width:49%;
+            display:inline-table;">
+                    <div style="font-size: 0.5em;
+            font-weight: 300;
+            color: #c3c3c3;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin:7px 0;">
+                        date
+                    </div>
+                    <div style="font-size: 0.7em;
+            font-weight: 400;
+            font-family: 'Roboto', sans-serif;
+            letter-spacing: 0.5px;
+            margin:7px 0; letter-spacing: 0px; text-transform: uppercase;">
+                        {{event.date_time_formatter}}
+                    </div>
+                </div>
+                <div style="width:100%;
+            display:inline-table;">
+                    <div style="font-size: 0.5em;
+            font-weight: 300;
+            color: #c3c3c3;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin:7px 0;">
+                        location
+                    </div>
+                    <div style="font-size: 0.7em;
+            font-weight: 400;
+            font-family: 'Roboto', sans-serif;
+            letter-spacing: 0.5px;
+            margin:7px 0; letter-spacing: 0px; width: 100%;">
+                        {{event.event_address}}
+                    </div>
+                    <div style="font-size: 0.5em;
+                                font-weight: 300;
+                                color: #c3c3c3;
+                                font-family: 'Roboto', sans-serif;
+                                text-transform: uppercase;
+                                letter-spacing: 1px;
+                                margin:7px 0;">
+                        venue
+                    </div>
+                    <div style="font-size: 0.7em;
+                                font-weight: 400;
+                                font-family: 'Roboto', sans-serif;
+                                letter-spacing: 0.5px;
+                                margin:7px 0; letter-spacing: 0px; width: 100%;">
+                        {{event.venue_name}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+    </div>
+</body>
+
+</html>

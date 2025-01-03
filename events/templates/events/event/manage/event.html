@@ -1,0 +1,108 @@
+{% extends '_manage.html' %}
+{% load static %}
+{{form.media}}
+{% block title %}{{event.title}}{% endblock title %}
+{% block content_v2 %}
+<section class="w-full relative block">
+    <div class="">
+        <div class="relative overflow-hidden block">
+            <div class="grid items-center gap-7 mb-7 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                
+                <div class="flex items-center p-8 bg-white shadow rounded-lg">
+                    <div
+                        class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-purple-600 bg-purple-100 rounded-full mr-6">
+                        <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            class="stroke-current text-blue-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                        </svg>
+                        
+                    </div>
+                    <div>
+                        <span class="block text-2xl font-bold">{{event.ticket_orders.count}}</span>
+                        <span class="block text-gray-500">Orders</span>
+                    </div>
+                </div>
+                <div class="flex items-center p-8 bg-white shadow rounded-lg">
+                    <div
+                        class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-purple-600 bg-purple-100 rounded-full mr-6">
+                        <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            class="stroke-current text-blue-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="block text-2xl font-bold">R{{sale}}</span>
+                        <span class="block text-gray-500">Sales</span>
+                    </div>
+                </div>
+                <div class="flex items-center p-8 bg-white shadow rounded-lg">
+                    <div
+                        class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-purple-600 bg-purple-100 rounded-full mr-6">
+                        <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            class="stroke-current text-blue-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="block text-2xl font-bold">R{{sale}}</span>
+                        <span class="block text-gray-500">Balance</span>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full">
+                <div class="px-4 w-full mb-4">
+                    <article class="mb-4 mx-auto space-y-4 w-fit">
+                        <div id="image_container" class="w-full mx-auto h-96 rounded-md overflow-hidden">
+                            
+                            <img src="{% if event.image %}{{event.image.url}}{% else %}{% static 'imgs/no-image.png' %}{% endif %}" alt="{{event.title}}" class="w-full h-full object-cover object-center" />
+
+                        </div>
+                        <div id="order_content" class="w-full mx-auto items-center justify-center h-full grid">
+                            <div class="mb-4 text-center">
+                                <h2 class="text-xl lg:text-3xl mb-1 font-normal">{{event.title}}</h2>
+                                <div class="space-y-1 py-2">
+                                    <p class="text-sm text-gray-600"><i
+                                            class="fa-solid fa-calendar fa-lg mr-1"></i>{{event.date_time_formatter}}</p>
+                                    <p class="text-sm text-gray-600"><i class="fa-solid fa-user text-sm lg:text-base mr-1"></i>By
+                                        {{event.organiser.get_full_name}}</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-custom-text">{{event.small_description}}</p>
+                                </div>
+                            </div>
+                            <div class="flex py-3 items-center gap-4 w-fit mx-auto flex-wrap self-end">
+                                <div class="bg-custom-primary  py-2 px-4 rounded-md duration-300 group hover:bg-white border-2 border-custom-primary text-center">
+                                    <a href="{% url 'events:update-event' event.slug %}" class="text-base p-0 group-hover:text-custom-primary text-white">update</a>
+                                </div>
+                                <div class="bg-red-600  py-2 px-4 rounded-md duration-300 group hover:bg-white border-2 border-red-600 text-center">
+                                    <a href="{% url 'events:delete-event' event_slug=event.slug %}" class="text-base p-0 group-hover:text-red-600 text-white">delete</a>
+                                </div>
+                                <div class="bg-custom-h  py-2 px-4 rounded-md duration-300 group hover:bg-white border-2 border-custom-h text-center">
+                                    <a href="{% url 'events:add-event-content' event_slug=event.slug %}"
+                                        class="text-sm lg:text-base p-0 group-hover:text-custom-h text-white">add image</a>
+                                </div>
+                                <div class="bg-custom-h  py-2 px-4 rounded-md duration-300 group hover:bg-white border-2 border-custom-h text-center">
+                                    <a href="{% url 'events:add-event-organisor' event.slug %}"
+                                        class="text-sm lg:text-base p-0 group-hover:text-custom-h text-white">add organisor</a>
+                                </div>
+                                <div class="bg-custom-h  py-2 px-4 rounded-md duration-300 group hover:bg-white border-2 border-custom-h text-center">
+                                    <a href="{% url 'events:create-ticket-types' event_id=event.id %}" class="text-sm lg:text-base p-0 group-hover:text-custom-h text-white">add tickets</a>
+                                </div>
+                                <div class="bg-custom-h  py-2 px-4 rounded-md duration-300 group hover:bg-white border-2 border-custom-h text-center">
+                                    <a href="{% url 'events:generate-guest-list' event_id=event.id %}"
+                                        class="text-sm lg:text-base p-0 group-hover:text-custom-h text-white">get guest list</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content_v2 %}

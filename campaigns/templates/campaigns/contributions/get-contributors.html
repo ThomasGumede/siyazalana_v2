@@ -1,0 +1,105 @@
+{% extends '_manage-campaign.html' %}
+{% load static %}
+
+{% block title %}All contributions{% endblock title %}
+
+{% block content_v2 %}
+<div class="relative block bg-white">
+    {% include "includes/messages.html" %}
+    <div class=" py-2 overflow-x-auto">
+        {% if campaign %}
+        <div class="mb-4">
+            <h2 class="text-2xl font-semibold text-custom-h">
+                Contributers of '{{campaign.title}}' campaign.
+            </h2>
+        </div>
+        {% endif %}
+
+        <div class="relative flex flex-col w-full h-full text-gray-700 bg-white">
+
+            <div class="p-6 px-0 overflow-x-auto">
+                <table class="w-full text-left table-auto min-w-max">
+                    <thead>
+                        <tr>
+                            <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                <p
+                                    class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                    Contributor
+                                </p>
+                            </th>
+                            <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                <p
+                                    class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                    Amount
+                                </p>
+                            </th>
+                            <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                <p
+                                    class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                    Date
+                                </p>
+                            </th>
+                            <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                <p
+                                    class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                    Status
+                                </p>
+                            </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in contributions %}
+                        <tr>
+                            <td class="p-4 border-b border-blue-gray-50">
+                                <a href="{% url 'accounts:user-details' username=order.contributor.username %}"
+                                    class="flex items-center gap-3">
+                                    {% if order.contributor.profile_image %}
+                                    <img src="{{order.contributor.profile_image.url}}" alt="{{order.contributor.get_full_name}}"
+                                        class="relative inline-block h-12 w-12 !rounded-full border border-blue-gray-50 bg-blue-gray-50/50 object-contain object-center p-1" />
+                                    {% else %}
+                                    <img src="{% static 'images/global/no-image-available.webp' %}"
+                                        alt="{{order.contributor.get_full_name}}"
+                                        class="relative inline-block h-12 w-12 !rounded-full border border-blue-gray-50 bg-blue-gray-50/50 object-contain object-center p-1" />
+                                    {% endif %}
+                                    <p
+                                        class="block font-sans text-sm antialiased font-bold leading-normal text-blue-gray-900">
+
+
+                                        {{order.contributor.get_full_name}}
+                                    </p>
+                                </a>
+                            </td>
+                            <td class="p-4 border-b border-blue-gray-50">
+                                <p
+                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                    R{{order.total_amount}}
+                                </p>
+                            </td>
+                            <td class="p-4 border-b border-blue-gray-50">
+                                <p
+                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                    {{order.created}}
+                                </p>
+                            </td>
+                            <td class="p-4 border-b border-blue-gray-50">
+                                <div class="w-max">
+                                    <div
+                                        class="relative grid items-center px-2 py-1 font-sans text-xs font-bold {% if order.paid == 'PAID' %} bg-green-500/20 text-green-900{% elif order.paid == 'PENDING' %}bg-amber-500/20 text-amber-900 {% else %}bg-red-500/20 text-red-900{% endif %}  uppercase rounded-md select-none whitespace-nowrap ">
+                                        <span class="">{{order.paid}}</span>
+                                    </div>
+                                </div>
+                            </td>
+                            
+                            
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+{% endblock content_v2 %}

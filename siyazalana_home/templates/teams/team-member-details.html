@@ -1,0 +1,99 @@
+{% extends '_base.html' %}
+{% load static %}
+
+
+
+{% block seo_tags %}
+<!-- Primary Meta Tags -->
+<title>BBGI - The Leading Business Growth Initiative</title>
+<meta name="title" content="BBGI - The Leading Business Growth Initiative" />
+<meta name="description"
+    content="Black Business Growth Initiative was formed with the intention of creating a gathering of black African business owners  and professionals. It is..." />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://bbgi.co.za/about-us" />
+<meta property="og:title" content="BBGI - The Leading Business Growth Initiative" />
+<meta property="og:description"
+    content="Black Business Growth Initiative was formed with the intention of creating a gathering of black African business owners  and professionals. It is..." />
+<meta property="og:image" content="https://bbgi.co.za{% static 'imgs/logo/logo.jpeg' %}" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://bbgi.co.za/about-us" />
+<meta property="twitter:title" content="BBGI - The Leading Business Growth Initiative" />
+<meta property="twitter:description"
+    content="Black Business Growth Initiative was formed with the intention of creating a gathering of black African business owners  and professionals. It is..." />
+<meta property="twitter:image" content="https://bbgi.co.za{% static 'imgs/logo/logo.jpeg' %}" />
+
+<!-- Meta Tags Generated with https://metatags.io -->
+{% endblock seo_tags %}
+
+{% block styles %}
+<style>
+    #hero-section {
+        background-image: url("{% static 'imgs/home.jpg' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-blend-mode: overlay;
+    }
+</style>
+{% endblock styles %}
+
+{% block content %}
+<!-- Banner -->
+<section class="section-banner">
+    <div id="hero-section"
+        class="banner-image flex flex-wrap w-full justify-center sm:h-[400px] h-[300px] m-0 bg-cover bg-bottom">
+        <div class="w-full sm:h-[400px] h-[300px] absolute bg-[#000000bf]"></div>
+        <div class="banner-section flex items-center justify-center text-center z-[70]">
+            <div class="lh-banner-contain mt-[65px] text-white">
+                <h2 class="mb-3  md:text-4xl sm:text-3xl text-2xl font-bold text-white">
+                    About Us</h2>
+                <div class="lh-breadcrumb">
+                    <h5 class="text-[16px]">
+                        <span>
+                            <a href="{% url 'bbgi_home:bbgi-home' %}" class="text-white hover:text-white">Home</a>
+                        </span>
+                        <span class="font-bold"> / </span>
+                        <span>
+                            <a href="javascript:void(0)" class="text-white hover:text-white">Team member</a>
+                        </span>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- start team-single page -->
+<div class="team-pg-area">
+    <div class="section-wrap bg-[#f3f4f4]">
+        <div class="container">
+            <div class="grid grid-cols-1 md:grid-cols-2 items-center">
+                <div class="">
+                    <div
+                        class="p-[40px] sm:p-[30px] shadow-[0px_6px_20.1px_4.9px_rgba(176,191,238,.12)] relative z-[1] bg-white">
+                        <img src="{% if member.image %}{{member.image.url}}{% else %}{% static 'imgs/R.png' %}{% endif %}" alt="" class="w-full h-[565px] object-cover md:h-full">
+                        <div class="absolute left-0 top-0 -z-[1]">
+                            <img src="assets/images/team/shape6.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="p-2">
+                    <div class="pl-[30px] md:mt-[20px]">
+                        <h2 class="text-[30px] font-bold">{{member.full_names}}</h2>
+                        <span class="block mb-[20px] font-normal text-[15px] text-custom-primary">{{member.role}}</span>
+                        <div class="mb-4 !text-custom-text !font-sans">
+                            {{member.decription|safe}}
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

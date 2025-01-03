@@ -1,0 +1,106 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block seo_tags %}
+<title>BBGI - Blog</title>
+<meta name="description"
+    content="The Black Business Growth Initiative supports Black African businesses and careers by providing a unified platform for entrepreneurs and professionals to showcase their expertise and promote unity and cooperation.">
+<meta name="title" content="BBGI -  Black Business Growth Initiative" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://bbgi.co.za/blogs" />
+<meta property="og:title" content="BBGI - Blog" />
+<meta property="og:description"
+    content="The Black Business Growth Initiative supports Black African businesses and careers by providing a unified platform for entrepreneurs and professionals to showcase their expertise and promote unity and cooperation." />
+<meta property="og:image" content="https://bbgi.co.za{% static 'imgs/logo/logo.jpeg' %}" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://bbgi.co.za/blogs" />
+<meta property="twitter:title" content="BBGI - Blog" />
+<meta property="twitter:description"
+    content="The Black Business Growth Initiative supports Black African businesses and careers by providing a unified platform for entrepreneurs and professionals to showcase their expertise and promote unity and cooperation." />
+<meta property="twitter:image" content="https://bbgi.co.za{% static 'imgs/logo/logo.jpeg' %}" />
+{% endblock seo_tags %}
+
+{% block content %}
+
+<section class="w-full bg-gray-50 relative py-20">
+    <div class="container font-sans">
+        <div class="overflow-hidden w-full">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {% if posts.count != 0 %}
+                    {% for post in posts %}
+                    <div class=" mb-[65px] xl:mb-[50px] px-[15px] cursor-default">
+                        <div class="group">
+                            <!-- card thumbs -->
+                            <div class="relative leading-1">
+                                <a href="{{post.get_absolute_url}}" class="overflow-hidden w-full h-52">
+                                    <img src="{% if post.image %}{{post.image.url}}{% else %}{% static 'imgs/no-image.png'  %}{% endif %}"
+                                        class="w-full group-hover:scale-110 transition-all duration-700 object-fit" alt="">
+                                </a>
+                            </div>
+                            <!-- card body -->
+                            <div class="p-[30px] shadow-box-shadow-4">
+                                <ul class="mb-[15px] flex gap-x-[25px] items-center">
+                                    <li class="text-xs md:text-sm font-semibold">
+                                        <a href="#" class="leading-1.8 hover:text-secondary-color flex gap-[5px] items-center"><i
+                                                class="far fa-user text-secondary-color"></i>
+                                            by: Admin</a>
+                                    </li>
+                                    <li class="text-xs md:text-sm font-semibold">
+                                        <a href="#" class="leading-1.8 hover:text-secondary-color flex gap-[5px] items-center"><i
+                                                class="fas fa-tags text-secondary-color"></i>
+                                            {{post.category.label}}</a>
+                                    </li>
+                                </ul>
+                                <h4 class="text-lg md:text-xl lg:text-[22px] font-semibold text-heading-color">
+                                    <a href="{{post.get_absolute_url}}" class="hover:text-secondary-color leading-1.3">{{post.title}}</a>
+                                </h4>
+                                <div class="pt-5 mt-5 lg:pt-5 border-t border-border-color-1">
+                                    <ul class="flex justify-between items-center">
+                                        <li class="text-xs md:text-sm font-semibold">
+                                            <p class="leading-1.8 flex gap-[5px] items-center">
+                                                <i class="far fa-calendar-alt text-secondary-color"></i>
+                                                {{post.created|date:"M d, Y"}}
+                    
+                                            </p>
+                                        </li>
+                                        <li class="text-xs md:text-sm font-semibold">
+                                            <a href="{{post.get_absolute_url}}" class="leading-1.8 text-secondary-color uppercase">
+                                                Read more</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="w-fit mx-auto text-gray-500 font-normal text-2xl">No posts available</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}
+
+{% block javascripts %}
+<script>
+
+    const categoryBtn = document.getElementById("category_button");
+    const categoryMenu = document.getElementById("category_menu");
+
+    categoryBtn.addEventListener("click", function () {
+        if (categoryMenu.classList.contains("hidden")) {
+            categoryMenu.classList.remove("hidden")
+            categoryMenu.classList.add("block")
+        } else {
+            categoryMenu.classList.remove("block")
+            categoryMenu.classList.add("hidden")
+        }
+    })
+</script>
+{% endblock javascripts %}

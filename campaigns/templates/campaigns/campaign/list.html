@@ -1,0 +1,502 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block seo_tags %}
+<title>BBGI - Campaigns</title>
+<meta name="description" content="From educational initiatives to healthcare support, our campaigns are a testament to the transformative impact of unity">
+<meta name="title" content="BBGI - Campaigns" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://bbgi.co.za/campaigns" />
+<meta property="og:title" content="BBGI - Campaigns" />
+<meta property="og:description" content="From educational initiatives to healthcare support, our campaigns are a testament to the transformative impact of unity" />
+<meta property="og:image" content="https://bbgi.co.za{{listing.background_image.url}}" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://bbgi.co.za/campaigns" />
+<meta property="twitter:title" content="BBGI - Campaigns" />
+<meta property="twitter:description" content="From educational initiatives to healthcare support, our campaigns are a testament to the transformative impact of unity" />
+<meta property="twitter:image" content="https://bbgi.co.za{% static 'imgs/logo/logo.jpeg' %}" />
+
+{% endblock seo_tags %}
+
+{% block description %}
+<meta name="description"
+    content="From educational initiatives to healthcare support, our campaigns are a testament to the transformative impact of unity">
+{% endblock description %}
+
+{% block content %}
+
+
+
+<div x-data="{ mobileFilterOpen: false, sortMenuOpen: false, searchBarOpen: false, bbeeMenuOpen: false, provinceMenuOpen: false, category: false }"
+    class="bg-custom-bg">
+    <!-- Mobile filter dialog -->
+    <div x-cloak x-show="mobileFilterOpen" class="fixed inset-0 flex z-[800]" role="dialog" aria-modal="true">
+
+        <div x-show="mobileFilterOpen" x-transition:enter="transition-opacity ease-linear duration-300"
+            x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+            x-transition:leave="transition-opacity ease-linear duration-300" x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0" class="fixed inset-0 bg-black bg-opacity-25" aria-hidden="true"></div>
+
+
+        <div x-show="mobileFilterOpen" x-transition:enter="transition ease-in-out duration-300 transform"
+            x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
+            x-transition:leave="transition ease-in-out duration-300 transform" x-transition:leave-start="translate-x-0"
+            x-transition:leave-end="translate-x-full"
+            class="ml-auto relative max-w-xs w-full h-full bg-white shadow-xl py-4 pb-6 flex flex-col overflow-y-auto">
+            <div class="px-4 flex items-center justify-between">
+                <h2 class="text-lg font-medium text-gray-900">Filters</h2>
+                <button @click="mobileFilterOpen = false" type="button"
+                    class="-mr-2 w-10 h-10 bg-white p-2 rounded-md flex items-center justify-center text-gray-400 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <span class="sr-only">Close menu</span>
+
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+
+
+
+            <form method="get"
+                action="{% if category %}{% url 'campaigns:campaign-by-category' category %}{% else %}{% url 'campaigns:campaigns' %}{% endif %}"
+                class="mt-4">
+
+
+                <div class="border-t border-gray-200 px-4 py-6">
+                    <h3 class="-mx-2 -my-3 flow-root">
+                        <!-- Expand/collapse question button -->
+                        <button @click="sortMenuOpen = !sortMenuOpen" type="button"
+                            class="px-2 py-3 bg-white w-full flex items-center justify-between text-sm text-gray-400"
+                            aria-controls="filter-section-1" aria-expanded="false">
+                            <span class="font-medium text-gray-900"> Sort By </span>
+                            <span class="ml-6 flex items-center">
+                                <!--
+                                  Expand/collapse icon, toggle classes based on question open state.
+                
+                                  Heroicon name: solid/chevron-down
+                
+                                  Open: "-rotate-180", Closed: "rotate-0"
+                                -->
+                                <svg class="rotate-0 h-5 w-5 transform" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                        </button>
+                    </h3>
+                    <div x-cloak x-show="sortMenuOpen" @click.away="sortMenuOpen = false" class="pt-6"
+                        id="filter-section-1">
+                        <div class="space-y-6">
+                            <div class="flex items-center">
+                                <input id="filter-mobile-sort_by-0" name="sort_by" value="best-rating" type="radio" {% if sort_by == 'best-rating' %} checked {% endif %}
+                                    class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                                <label for="filter-mobile-sort_by-0" class="ml-3 text-sm text-gray-500"> Best rating
+                                </label>
+                            </div>
+
+                            <div class="flex items-center">
+                                <input id="filter-mobile-sort_by-1" name="sort_by" value="newest" type="radio" {% if sort_by == 'newest' %} checked {% endif %}
+                                    class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                                <label for="filter-mobile-sort_by-1" class="ml-3 text-sm text-gray-500"> Newest </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-gray-200 px-4 py-6">
+                    <h3 class="-mx-2 -my-3 flow-root">
+                        <!-- Expand/collapse question button -->
+                        <button @click="provinceMenuOpen = !provinceMenuOpen" type="button"
+                            class="px-2 py-3 bg-white w-full flex items-center justify-between text-sm text-gray-400"
+                            aria-controls="filter-section-1" aria-expanded="false">
+                            <span class="font-medium text-gray-900"> Province </span>
+                            <span class="ml-6 flex items-center">
+                                <!--
+                                                  Expand/collapse icon, toggle classes based on question open state.
+                                
+                                                  Heroicon name: solid/chevron-down
+                                
+                                                  Open: "-rotate-180", Closed: "rotate-0"
+                                                -->
+                                <svg class="rotate-0 h-5 w-5 transform" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                        </button>
+                    </h3>
+                    <div x-cloak x-show="provinceMenuOpen" @click.away="provinceMenuOpen = false" class="pt-6"
+                        id="filter-section-1">
+                        <div class="flex flex-wrap gap-2">
+                            <div class="flex items-center">
+                                <input id="filter-mobile-province-0" name="province" {% if province == 'wc' %}checked{% endif %} value="wc" type="radio"
+                                    class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                                <label for="filter-mobile-province-0" class="ml-3 text-sm text-gray-500"> Western Cape
+                                </label>
+                            </div>
+
+                            <div class="flex items-center">
+                                <input id="filter-mobile-province-1" name="province" {% if province == 'ec' %}checked{% endif %} value="ec" type="radio"
+                                    class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                                <label for="filter-mobile-province-1" class="ml-3 text-sm text-gray-500"> Eastern Cape
+                                </label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="filter-mobile-province-2" name="province" {% if province == 'lp' %}checked{% endif %} value="lp" type="radio"
+                                    class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                                <label for="filter-mobile-province-2" class="ml-3 text-sm text-gray-500"> Limpopo
+                                </label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="filter-mobile-province-3" name="province" {% if province == 'nw' %}checked{% endif %} value="nw" type="radio"
+                                    class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                                <label for="filter-mobile-province-3" class="ml-3 text-sm text-gray-500"> North West
+                                </label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="filter-mobile-province-4" name="province" {% if province == 'gp' %}checked{% endif %} value="gp" type="radio"
+                                    class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                                <label for="filter-mobile-province-4" class="ml-3 text-sm text-gray-500"> Gauteng
+                                </label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="filter-mobile-province-5" name="province" {% if province == 'mp' %}checked{% endif %} value="mp" type="radio"
+                                    class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                                <label for="filter-mobile-province-5" class="ml-3 text-sm text-gray-500"> Mpumalanga
+                                </label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="filter-mobile-province-6" name="province" {% if province == 'kzn' %}checked{% endif %} value="kzn" type="radio"
+                                    class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                                <label for="filter-mobile-province-6" class="ml-3 text-sm text-gray-500"> KwaZulu Natal
+                                </label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="filter-mobile-province-7" name="province" {% if province == 'fs' %}checked{% endif %} value="fs" type="radio"
+                                    class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                                <label for="filter-mobile-province-7" class="ml-3 text-sm text-gray-500"> Free State
+                                </label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="filter-mobile-province-8" name="province" {% if province == 'nc' %}checked{% endif %} value="nc" type="radio"
+                                    class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                                <label for="filter-mobile-province-8" class="ml-3 text-sm text-gray-500"> Northern Cape
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-4 py-6 flex gap-4">
+                    <button type="submit" value="submit"
+                        class="px-4 py-3 w-fit bg-custom-h rounded-md flex items-center justify-between text-sm text-white">
+                        <span class="font-medium text-white"> Apply Filter </span>
+                    </button>
+                    <div
+                        class="px-4 py-3 w-fit border border-custom-h rounded-md flex items-center justify-between text-sm text-custom-h">
+                        <a href="{% url 'events:events' %}" class="font-medium text-custom-h"> Clear Filter </a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="container py-20">
+        <section aria-labelledby="filter-heading" class="mb-20">
+            <div class="flex items-center px-4 md:px-0 justify-between">
+                <div class="flex items-center gap-8">
+
+                    <div class="text-left">
+                        <div>
+                            <button @click="searchBarOpen = !searchBarOpen" type="button"
+                                class="group inline-flex justify-center text-sm font-medium text-custom-h hover:text-gray-900"
+                                id="mobile-menu-button" aria-expanded="false" aria-haspopup="true">
+                                <i class="fa-solid fa-search fa-lg"></i>
+
+                            </button>
+                        </div>
+
+
+                        <!-- Dropdown menu -->
+                        <div x-cloak x-show="searchBarOpen" x-transition:enter="transition ease-out duration-100"
+                            x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
+                            x-transition:leave="transition ease-in duration-100"
+                            x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90"
+                            class="fixed z-[80] h-screen left-0 overflow-y-auto top-0 bg-white w-full">
+                            <div class=" relative w-full mb-8 h-full bg-white overflow-y-auto mt-24">
+                                <div class="text-center mb-8">
+                                    <p class="text-custom-primary mb-3 font-semibold text-lg">Search</p>
+                                    <h4 class="text-4xl text-custom-h font-bold">Search for Campaign</h4>
+                                </div>
+                                <div class="mb-8 w-full mx-auto sm:flex sm:justify-center relative">
+                                    <form method="get" action="{% url 'campaigns:campaigns' %}"
+                                        class="flex flex-wrap bg-white p-3 shadow-lg rounded-xl overflow-hidden gap-2 items-center">
+                                        <div class="relative">
+                                            <div class="flex bg-white items-center gap-1 text-custom-h">
+                                                <div>
+                                                    <i class="fa-solid text-custom-h fa-search fa-xl"></i>
+                                                </div>
+                                                <input id="search-service-input"
+                                                    class="border-none font-medium h-14 focus:ring-0 text-custom-h outline-none focus:outline-none focus:border-none"
+                                                    style="padding-right:50px" type="text" name="query"
+                                                    placeholder="Birthday, Business..."
+                                                    value="{% if query %}{{query}}{% endif %}">
+                                            </div>
+                                        </div>
+                                        <div class="w-[1px] h-full bg-custom-h mx-1 hidden md:block"></div>
+                                        <div class="relative">
+                                            <div class="flex bg-white items-center gap-1 text-custom-h">
+                                                <div>
+                                                    <i class="fa-solid text-custom-h fa-location-dot fa-xl"></i>
+                                                </div><input placeholder="eg. Southdowns"
+                                                    class="border-none font-medium h-14 focus:ring-0 text-custom-h outline-none focus:outline-none focus:border-none"
+                                                    style="padding-right:50px" type="text" name="place"
+                                                    value="{% if place %}{{place}}{% endif %}">
+                                            </div>
+                                        </div>
+                                        <button type="submit" value="submit"
+                                            class="text-white bg-custom-h h-12 w-full md:w-fit p-4 text-center grid items-center justify-center rounded-md mt-2 md:mt-0">
+                                            <svg width="13" height="15" viewBox="0 0 13 15" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M1 6.68359C1 8.00968 1.52678 9.28145 2.46447 10.2191C3.40215 11.1568 4.67392 11.6836 6 11.6836C7.32608 11.6836 8.59785 11.1568 9.53553 10.2191C10.4732 9.28145 11 8.00968 11 6.68359C11 5.35751 10.4732 4.08574 9.53553 3.14806C8.59785 2.21038 7.32608 1.68359 6 1.68359C4.67392 1.68359 3.40215 2.21038 2.46447 3.14806C1.52678 4.08574 1 5.35751 1 6.68359V6.68359Z"
+                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round"></path>
+                                                <path d="M12 13.6836L9 10.6836" stroke="currentColor" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                        </button>
+                                    </form>
+                                    <div
+                                        class="absolute hidden top-full left-0 w-full bg-white shadow-lg rounded-xl p-4">
+                                        <button class="text-custom-h font-medium">
+                                            Use my current location</button>
+                                    </div>
+                                </div>
+                                <button @click="searchBarOpen = false" id="add-listing w-full"
+                                    class="focus:ring-0 w-36 h-12  font-semibold grid justify-center items-center rounded-sm text-white bg-custom-h outline-none border-none mx-auto">
+
+                                    <span class="">
+
+                                        close
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-left">
+                        <div>
+                            <button @click="category = !category" type="button"
+                                class="group inline-flex justify-center text-sm font-medium text-custom-h hover:text-gray-900"
+                                id="mobile-menu-button" aria-expanded="false" aria-haspopup="true">
+                                <i class="fa-solid fa-list fa-lg"></i>
+
+                            </button>
+                        </div>
+
+
+                        <!-- Dropdown menu -->
+                        <div x-cloak x-show="category" x-transition:enter="transition ease-out duration-100"
+                            x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
+                            x-transition:leave="transition ease-in duration-100"
+                            x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90"
+                            class="fixed z-[80] h-screen left-0 overflow-y-auto top-0 bg-white w-full">
+                            <div @click="iscategories = false"
+                                class=" relative w-full mb-8 h-full bg-white overflow-y-auto mt-24">
+                                <div class="text-center mb-8">
+                                    <p class="text-custom-primary mb-3 font-semibold text-lg">Categories</p>
+                                    <h4 class="text-4xl text-custom-h font-bold">Our Top Categories</h4>
+                                </div>
+                                <div
+                                    class="flex items-center justify-center mb-8 overflow-y-auto text-center w-full flex-wrap gap-4">
+                                    <div>
+                                        <div
+                                            class="w-48 relative bg-white  rounded-md shadow-[0_16px_32px_hsla(188,_63%,_7%,_0.1)]">
+                                            <a href="{% url 'campaigns:campaigns' %}"
+                                                class="features-card text-center flex flex-col items-center py-4 justify-center">
+
+                                                <div class="card-icon w-16 mb-3 h-16 overflow-hidden">
+
+                                                    <img src="{% static 'imgs/no-image.png' %}" alt="Medical Category"
+                                                        class="w-full  h-full object-cover">
+
+                                                </div>
+                                                <div>
+                                                    <h3 class="card-title text-lg font-bold text-custom-h">
+                                                        All
+                                                    </h3>
+                                                    <p class="text-sm text-custom-text">{{campaigns.count}}+ campaigns</p>
+                                                </div>
+
+
+                                            </a>
+                                        </div>
+                                    </div>
+                                    {% for category in blog_categories %}
+                                    <div>
+                                        <div
+                                            class="w-48 relative bg-white  rounded-md shadow-[0_16px_32px_hsla(188,_63%,_7%,_0.1)]">
+                                            <a href="{% url 'campaigns:campaign-by-category' category.slug %}"
+                                                class="features-card text-center flex flex-col items-center py-4 justify-center">
+
+                                                <div class="card-icon w-16 mb-3 h-16 overflow-hidden">
+                                                    {% if category.thumbnail %}
+                                                    <img src="{{category.thumbnail.url}}" alt="Medical Category"
+                                                        class="w-full  h-full object-cover">
+                                                    {% else %}
+                                                    <img src="{% static 'imgs/no-image.png' %}" alt="Medical Category"
+                                                        class="w-full  h-full object-cover">
+                                                    {% endif %}
+                                                </div>
+                                                <div>
+                                                    <h3 class="card-title text-lg font-bold text-custom-h">
+                                                        {{category.label|truncatechars:10}}
+                                                    </h3>
+                                                    <p class="text-sm text-custom-text">{{category.campaigns.count}}+
+                                                        campaigns</p>
+                                                </div>
+
+
+                                            </a>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                <button @click="category = false" id="add-listing w-full"
+                                    class="focus:ring-0 w-36 h-12  font-semibold grid justify-center items-center rounded-sm text-white bg-custom-h outline-none border-none mx-auto">
+
+                                    <span class="">
+
+                                        close
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <button @click="mobileFilterOpen = true" type="button"
+                    class="inline-block text-sm font-medium text-custom-h hover:text-gray-900">
+                    <span class="hidden md:block">Sorts & Filters</span>
+                    <span class=" md:hidden"><i class="fa-solid fa-filter fa-lg"></i></span>
+                </button>
+            </div>
+
+        </section>
+        <section class="w-full bg-gray-50">
+            <div class="container font-sans">
+                <div class="overflow-hidden w-full">
+                    {% if campaigns.count != 0 %}
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+                        {% for campaign in campaigns %}
+                        <div class="group">
+                            <div class="relative mb-7 block">
+                                <div class="img_box relative block">
+                                    <div class="overflow-hidden h-64 bg-custom-h relative block transition-all duration-500 ease-in">
+                                        {% if campaign.image %}
+                                        <img src="{{campaign.image.url}}" alt="{{campaign.title}} image by {{campaign.organiser.get_full_name}}"
+                                            class="w-full transition-all duration-500 ease-in group-hover:scale-105 group-hover:opacity-50 h-full object-cover">
+                                        {% else %}
+                                        <img src="{% static 'images/global/image-no.jpg' %}" alt="{{campaign.title}} image by {{campaign.organiser.get_full_name}}"
+                                            class="w-full transition-all duration-500 ease-in group-hover:scale-105 group-hover:opacity-50 h-full object-cover">
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="block text-center bg-white p-[26px_30px_20px] shadow-[0px_10px_30px_0px_rgba(0,_0,_0,_0.07)]">
+                                    <div class="inline-block relative text-center bg-custom-primary p-[7px_19px_8px]">
+                                        <p class="font-bold text-white text-xs leading-3">
+                                            {{campaign.category.label}}
+                                        </p>
+                                    </div>
+                                    <h3 class="text-custom-h m-0 transition-all duration-500 text-xl font-bold mt-4 mb-2">
+                                        <a href="{{campaign.get_absolute_url}}"
+                                            class="text-custom-h transition-all duration-500 ease-in group-hover:text-custom-primary">{{campaign.title|truncatewords:3}}</a>
+                                    </h3>
+                                    <div class="relative flex justify-center items-center">
+                                        <div class="text-sm text-custom-primary">
+                                            <i class="fa-solid fa-clock font-bold"></i>
+                                        </div>
+                                        <div class="ml-1">
+                                            <p class="text-xs font-normal">{{campaign.get_days}} remaining {% if campaign.status == "Completed"  %}<span class="text-sm rounded-sm p-1 bg-green-300 text-black font-normal">Completed</span>{% endif %}</p>
+                                        </div>
+                                    </div>
+                                    <div class="relative block mt-4 mb-1">
+                                        <div class="relative bg-[#f2f7f7] py-3 px-2 block w-full">
+                                            <div class="relative flex items-center justify-between space-x-2 w-full">
+                                                <div class="text-sm font-bold text-custom-h leading-4">
+                                                    Raised</div>
+                                                <div class="relative block w-full">
+                                                    <div class="w-full relative h-[3px] bg-white rounded-none">
+                                                        <div data-style="{{campaign.get_percentage_of_donated_fund}}" id=""
+                                                            class=" bg-custom-primary campaign_percentage_w h-[3px] rounded-none relative before:absolute before:content-[''] before:h-3 before:w-3 before:right-0 before:-top-1 before:bg-custom-primary before:rounded-full">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center p-0 w-10 h-5 flex items-center">
+                                                    <span
+                                                        class="text-gray-500 relative leading-3 font-medium float-none inline-block text-sm">{{campaign.get_percentage_of_donated_fund}}</span>
+                                                    <span class="text-sm ml-[-2px] float-none font-medium text-gray-500 leading-3">%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="relative flex items-center justify-between">
+                                        <p class="text-xs text-gray-500 font-semibold">Achieved: <span
+                                                class="font-bold text-custom-h">R{{campaign.current_amount}}</span></p>
+                                        <p class="text-xs text-gray-500 font-semibold">Goal: <span
+                                                class="font-bold text-custom-h">R{{campaign.target}}</span></p>
+                                    </div>
+                        
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <div class="text-center w-fit mx-auto">
+                        <p class="text-custom-h text-3xl">Not campaigns available on this category</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block js %}
+<script>
+    var campaign_percentage_w = document.getElementsByClassName("campaign_percentage_w");
+    const categoryBtn = document.getElementById("category_button");
+    const categoryMenu = document.getElementById("category_menu");
+    window.onload = () => {
+        for (let index = 0; index < campaign_percentage_w.length; index++) {
+            const element = campaign_percentage_w[index];
+            element.style.width = `${element.getAttribute("data-style")}%`
+        }
+
+    }
+
+    categoryBtn.addEventListener("click", function () {
+        if (categoryMenu.classList.contains("hidden")) {
+            categoryMenu.classList.remove("hidden")
+            categoryMenu.classList.add("block")
+        } else {
+            categoryMenu.classList.remove("block")
+            categoryMenu.classList.add("hidden")
+        }
+    })
+</script>
+{% endblock js %}

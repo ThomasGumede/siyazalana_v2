@@ -1,0 +1,45 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="w-full font-sans mb-20">
+
+    <div class="container">
+        <div class="max-w-xl mx-auto px-4 py-10">
+            <div>
+                <div class="bg-white rounded-lg p-10 flex items-center shadow justify-between">
+                    <div class="text-center space-y-4">
+                        <div>
+                            <i class="fa-solid fa-heart-circle-check text-6xl"></i>
+                        </div>
+                        <h2 class="text-2xl mb-4 text-custom-h text-center font-bold">Registration Success</h2>
+
+                        <div class="text-custom-text mb-8">
+                            To activate your Siyazalana account, we first need to verify your email address. Check your inbox.
+                            If you haven't received
+                            it, please check your spam folder.
+                        </div>
+                        <div class="text-custom-text mb-8">
+                            If you haven't receive an email, wait for 30 minutes and try to login to resend the
+                            activation link. You have 24hours to activate your account before it gets deleted.
+                        </div>
+                        <div>
+                            <a href="{% url 'accounts:login' %}">
+                                <h5
+                                    class="uppercase text-sm md:text-base text-white relative group whitespace-nowrap font-normal mb-0 transition-all duration-300 border border-custom-primary hover:border-custom-h inline-block z-0">
+                                    <span
+                                        class="inline-block absolute top-0 right-0 w-full h-full bg-custom-primary group-hover:bg-black -z-1 group-hover:w-0 transition-all duration-300"></span>
+                                    <div
+                                        class="relative z-1 px-[30px] lg:px-10 py-3 md:py-[15px] lg:py-[17px] group-hover:text-custom-h leading-1.5 uppercase">
+                                        <p>Log in</p>
+                                    </div>
+                                </h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
