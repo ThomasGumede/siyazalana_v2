@@ -2,4 +2,341 @@
 {% load static %}
 
 {% block content %}
+<section>
+    <!-- banner section -->
+    <div
+        class="w-full bg-[url('../img/bg/14.html')] bg-no-repeat bg-cover bg-center relative z-0 after:w-full after:h-full after:absolute after:top-0 after:left-0 after:bg-white after:bg-opacity-30 after:-z-1">
+        <div class="container py-[110px]">
+            <h1 class="text-2xl sm:text-3xl md:text-[26px] lg:text-3xl xl:text-4xl font-bold text-heading-color mb-[15px]">
+                <span class="leading-1.3 md:leading-1.3 lg:leading-1.3 xl:leading-1.3">About Us</span>
+            </h1>
+            <ul class="breadcrumb flex gap-[30px] items-center text-sm lg:text-base font-bold pt-4">
+                <li class="home relative leading-1.8 lg:leading-1.8">
+                    <a href="{% url 'siyazalana_home:siyazalana-home' %}"><i class="fas fa-home text-secondary-color"></i> Home</a>
+                </li>
+                <li class="leading-1.8 lg:leading-1.8 text-heading-color">
+                    About Us
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- about section -->
+<section>
+    <div class="container pt-32 pb-[90px]">
+        <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-[30px]">
+            <!-- about left -->
+            <div class="lg:mr-[30px] relative mb-10 lg:mb-0">
+                <img src="{% static 'assets/images/gallery/about-3.png' %}" alt="" class="max-w-full">
+                
+            </div>
+            <!-- about right -->
+            <div>
+                <div class="mb-5">
+                    <p
+                        class="text-sm md:text-[15px] lg:text-base text-secondary-color bg-[#005a4a69] capitalize mb-[15px] py-[1px] px-5 rounded-full inline-block font-semibold">
+                        <span class="leading-1.3">about us</span>
+                    </p>
+                    <h2
+                        class="text-2xl sm:text-3xl md:text-[26px] lg:text-3xl xl:text-[44px] text-heading-color font-bold mb-[15px]">
+                        <span class="leading-1.3">
+                            The Leading Real Estate Rental Marketplace
+                        </span>
+                    </h2>
+                    <p class="text-sm lg:text-base max-w-[500px]">
+                        <span class="leading-1.8 lg:leading-1.8">Over 39,000 people work for us in more than 70
+                            countries
+                            all over the This breadth of global coverage, combined with
+                            specialist services</span>
+                    </p>
+                </div>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-4 pt-4">
+                    <li class="text-sm lg:text-base flex items-center">
+                        <i
+                            class="flaticon-home-2 text-xl text-secondary-color bg-color-6 w-[45px] h-[45px] flex items-center justify-center mr-[25px] rounded-full"></i>
+                        <span class="leading-1.8">Smart Home Design</span>
+                    </li>
+                    <li class="text-sm lg:text-base flex items-center">
+                        <i
+                            class="flaticon-mountain text-xl text-secondary-color bg-color-6 w-[45px] h-[45px] flex items-center justify-center mr-[25px] rounded-full"></i>
+                        <span class="leading-1.8">Beautiful Scene Around</span>
+                    </li>
+                    <li class="text-sm lg:text-base flex items-center">
+                        <i
+                            class="flaticon-heart text-xl text-secondary-color bg-color-6 w-[45px] h-[45px] flex items-center justify-center mr-[25px] rounded-full"></i>
+                        <span class="leading-1.8">Exceptional Lifestyle</span>
+                    </li>
+                    <li class="text-sm lg:text-base flex items-center">
+                        <i
+                            class="flaticon-secure text-xl text-secondary-color bg-color-6 w-[45px] h-[45px] flex items-center justify-center mr-[25px] rounded-full"></i>
+                        <span class="leading-1.8">Complete 24/7 Security</span>
+                    </li>
+                </ul>
+
+                <div class="bg-[#005a4a69] bg-opacity-5 mt-[30px] mb-10">
+                    <p class="text-sm lg:text-base p-5 border-l-4 border-secondary-color">
+                        <span class="leading-1.8">
+                            "Enimad minim veniam quis nostrud exercitation <br>
+                            llamco laboris. Lorem ipsum dolor sit amet"
+                        </span>
+                    </p>
+                </div>
+                <div>
+                    <h5
+                        class="uppercase text-sm md:text-base text-white relative group whitespace-nowrap font-normal mb-0 transition-all duration-300 border border-secondary-color hover:border-heading-color inline-block">
+                        <span
+                            class="inline-block absolute top-0 right-0 w-full h-full bg-secondary-color group-hover:bg-black hover:bg-primary-cogroup-lor z-1 group-hover:w-0 transition-all duration-300"></span>
+                        <a href="service.html"
+                            class="relative z-10 px-5 md:px-[25px] lg:px-10 py-[10px] md:py-3 lg:py-[17px] group-hover:text-heading-color leading-[23px]">OUR
+                            SERVICES</a>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container pt-[115px] pb-[90px]">
+        <!-- section heading -->
+        <div class="text-center mb-[50px]">
+            <p
+                class="text-sm md:text-[15px] lg:text-base text-secondary-color bg-[#005a4a69] capitalize 1b-[15px] py-0.5 px-5 rounded-full inline-block font-semibold mb-5">
+                <span class="leading-1.3">Our Services</span>
+            </p>
+            <h2 class="text-2xl sm:text-3xl md:text-[26px] lg:text-3xl xl:text-[44px] text-heading-color font-bold">
+                <span class="leading-1.3"> Our Main Focus </span>
+            </h2>
+        </div>
+        <!-- services cards  -->
+
+        <div class="service-cards flex flex-wrap justify-center items-center text-center -mx-[15px]">
+            <!-- card 1 -->
+            <div class="service-card basis-full sm:basis-1/2 lg:basis-1/3 px-[15px] mb-[30px]">
+                <div
+                    class="border border-border-color-1 shadow-box-shadow-1 bg-white relative py-10 pb-[35px] px-[30px] transition-all duration-300">
+                    <div
+                        class="mb-5 rounded-full w-[120px] h-[120px] leading-[120px] bg-[#f5f5f5] text-center mx-auto text-[50px]">
+                        <i class="fa-solid fa-business-time text-custom-primary"></i>
+                    </div>
+                    <h6 class="text-lg md:text-xl lg:text-[22px] xl:text-2xl text-heading-color font-bold">
+                        <a class="hover:text-secondary-color leading-1.3 mb-1" href="">Business
+                            Listing</a>
+                    </h6>
+                    <p class="text-sm mb-[25px]">
+                        <span class="leading-1.8">Our business/shops listing service offers a dedicated space for Black
+                            African business owners to showcase their products
+                            and services..</span>
+                    </p>
+                    <div class="text-sm text-color-1 font-bold">
+                        <a class="find-service hover:text-secondary-color flex items-center justify-center" href="">Add
+                            listing
+                            <i class="flaticon-right-arrow inline-block leading-1"></i></a>
+                    </div>
+                    <span
+                        class="hover-line absolute bottom-0 left-0 w-0 h-1 bg-secondary-color transition-all duration-300 block"></span>
+                </div>
+            </div>
+            <!-- card 2 -->
+            <div class="service-card active basis-full sm:basis-1/2 lg:basis-1/3 px-[15px] mb-[30px]">
+                <div
+                    class="border border-border-color-1 shadow-box-shadow-1 bg-white relative py-10 pb-[35px] px-[30px] transition-all duration-300">
+                    <div
+                        class="mb-5 rounded-full w-[120px] h-[120px] leading-[120px] bg-[#f5f5f5] text-center mx-auto text-[50px]">
+                        <i class="fa-solid fa-magnifying-glass-dollar text-custom-primary"></i>
+                    </div>
+                    <h6 class="text-lg md:text-xl lg:text-[22px] xl:text-2xl text-heading-color font-bold">
+                        <a class="hover:text-secondary-color leading-1.3 mb-1"
+                            href="{% url 'campaigns:create-campaign' %}">Fundraise
+                            Listing</a>
+                    </h6>
+                    <p class="text-sm mb-[25px]">
+                        <span class="leading-1.8">Our fundraising campaigns listing service provides a platform for
+                            Black African business owners to showcase their
+                            fundraising efforts.</span>
+                    </p>
+                    <div class="text-sm text-color-1 font-bold">
+                        <a class="find-service hover:text-secondary-color flex items-center justify-center"
+                            href="{% url 'campaigns:create-campaign' %}">Add Campaign
+                            <i class="flaticon-right-arrow inline-block leading-1"></i></a>
+                    </div>
+                    <span
+                        class="hover-line absolute bottom-0 left-0 w-0 h-1 bg-secondary-color transition-all duration-300 block"></span>
+                </div>
+            </div>
+            <!-- card 3 -->
+            <div class="service-card basis-full sm:basis-1/2 lg:basis-1/3 px-[15px] mb-[30px]">
+                <div
+                    class="border border-border-color-1 shadow-box-shadow-1 bg-white relative py-10 pb-[35px] px-[30px] transition-all duration-300">
+                    <div
+                        class="mb-5 rounded-full w-[120px] h-[120px] leading-[120px] bg-[#f5f5f5] text-center mx-auto text-[50px]">
+                        <i class="fa-solid fa-calendar-check text-custom-primary"></i>
+                    </div>
+                    <h6 class="text-lg md:text-xl lg:text-[22px] xl:text-2xl text-heading-color font-bold">
+                        <a class="hover:text-secondary-color leading-1.3 mb-1"
+                            href="{% url 'events:create-event' %}">Business
+                            Events</a>
+                    </h6>
+                    <p class="text-sm mb-[25px]">
+                        <span class="leading-1.8">The business events listing service allows you to promote your
+                            business-related events to a wider audience.</span>
+                    </p>
+                    <div class="text-sm text-color-1 font-bold">
+                        <a class="find-service hover:text-secondary-color flex items-center justify-center"
+                            href="{% url 'events:create-event' %}">Add Event
+                            <i class="flaticon-right-arrow inline-block leading-1"></i></a>
+                    </div>
+                    <span
+                        class="hover-line absolute bottom-0 left-0 w-0 h-1 bg-secondary-color transition-all duration-300 block"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- team section -->
+ {% if members.count > 0 %}
+<section>
+    <div class="container pt-[115px] pb-[90px]">
+        <!-- section heading -->
+        <div class="text-center mb-[50px]">
+            <p
+                class="text-sm md:text-[15px] lg:text-base text-secondary-color bg-[#005a4a69] bg-opacity-10 capitalize mb-[15px] py-0.5 px-5 rounded-full inline-block font-semibold">
+                <span class="leading-1.3">Team</span>
+            </p>
+            <h2 class="text-2xl sm:text-3xl md:text-[26px] lg:text-3xl xl:text-[44px] text-heading-color font-bold">
+                <span class="leading-1.3"> Property Agents </span>
+            </h2>
+        </div>
+        <!-- team cards  -->
+
+        <div class="service-cards flex flex-wrap justify-center items-center text-center -mx-[15px]">
+            <!-- card 1 -->
+             {% for member in members %}
+            <div class="service-card basis-full sm:basis-1/2 lg:basis-1/3 px-[15px] mb-[30px]">
+                <div
+                    class="border border-white-6 hover:shadow-box-shadow-1 bg-white relative transition-all duration-300">
+                    <div class="text-center mb-5">
+                        <img src="{% if member.image %}{{member.image.url}}{% else %}{% static 'R.png' %}{% endif %}" alt="{{member.full_names}}" class="inline-block w-full">
+                    </div>
+                    <div class="text-center px-[15px] py-[25px]">
+                        <h6 class="text-[17px] md:text-lg lg:text-xl text-heading-color font-bold mb-[15px]">
+                            <a class="hover:text-secondary-color leading-1.3 md:leading-1.3 lg:leading-1.3"
+                                href="team-details.html">{{member.full_names}}</a>
+                        </h6>
+                        <h6 class="text-sm md:text-[15px] lg:text-base font-bold mb-[15px]">
+                            <span class="text-secondary-color leading-1.3 md:leading-1.3 lg:leading-1.3">{{member.role}}</span>
+                        </h6>
+                        <!-- socila -->
+                        <ul class="text-sm lg:text-base flex gap-[15px] justify-center items-center">
+                            <li class="leading-1.8 lg:leading-1.8">
+                                <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                            </li>
+                            <li class="leading-1.8 lg:leading-1.8">
+                                <a href="https://x.com/"><i class="fab fa-twitter"></i></a>
+                            </li>
+                            <li class="leading-1.8 lg:leading-1.8">
+                                <a href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<section>
+    <div>
+        <div class="container pb-[70px]">
+            <!-- section heading -->
+            <div class="text-center mb-[50px]">
+                <p
+                    class="text-sm md:text-[15px] lg:text-base text-secondary-color bg-[#005a4a69] bg-opacity-10 capitalize mb-[15px] py-0.5 px-5 rounded-full inline-block font-semibold">
+                    <span class="leading-1.3">News & Blogs</span>
+                </p>
+                <h2 class="text-2xl sm:text-3xl md:text-[26px] lg:text-3xl xl:text-[44px] text-heading-color font-bold">
+                    <span class="leading-1.3">Leatest News Feeds </span>
+                </h2>
+            </div>
+
+            <div class="news-slider-container swiper-container relative -mx-[15px]">
+                <!-- apartment cards  -->
+                <div class="swiper news-slider static">
+                    <div class="swiper-wrapper">
+                        <!-- card 1 -->
+                        {% for post in posts %}
+                        <div class="swiper-slide mb-[65px] xl:mb-[50px] px-[15px] cursor-default">
+                            <div class="group">
+                                <!-- card thumbs -->
+                                <div class="relative leading-1">
+                                    <a href="{{post.get_absolute_url}}" class="overflow-hidden w-full h-52">
+                                        <img src="{% if post.image %}{{post.image.url}}{% else %}{% static 'imgs/no-image.png'  %}{% endif %}"
+                                            class="w-full group-hover:scale-110 transition-all duration-700 object-fit" alt="">
+                                    </a>
+                                </div>
+                                <!-- card body -->
+                                <div class="p-[30px] shadow-box-shadow-4">
+                                    <ul class="mb-[15px] flex gap-x-[25px] items-center">
+                                        <li class="text-xs md:text-sm font-semibold">
+                                            <a href="#" class="leading-1.8 hover:text-secondary-color flex gap-[5px] items-center"><i
+                                                    class="far fa-user text-secondary-color"></i>
+                                                by: Admin</a>
+                                        </li>
+                                        <li class="text-xs md:text-sm font-semibold">
+                                            <a href="#" class="leading-1.8 hover:text-secondary-color flex gap-[5px] items-center"><i
+                                                    class="fas fa-tags text-secondary-color"></i>
+                                                {{post.category.label}}</a>
+                                        </li>
+                                    </ul>
+                                    <h4 class="text-lg md:text-xl lg:text-[22px] font-semibold text-heading-color">
+                                        <a href="{{post.get_absolute_url}}" class="hover:text-secondary-color leading-1.3">{{post.title}}</a>
+                                    </h4>
+                                    <div class="pt-5 mt-5 lg:pt-5 border-t border-border-color-1">
+                                        <ul class="flex justify-between items-center">
+                                            <li class="text-xs md:text-sm font-semibold">
+                                                <p class="leading-1.8 flex gap-[5px] items-center">
+                                                    <i class="far fa-calendar-alt text-secondary-color"></i>
+                                                    {{post.created|date:"M d, Y"}}
+                        
+                                                </p>
+                                            </li>
+                                            <li class="text-xs md:text-sm font-semibold">
+                                                <a href="{{post.get_absolute_url}}" class="leading-1.8 text-secondary-color uppercase">
+                                                    Read more</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- pagination -->
+                    <div
+                        class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal !-bottom-[6px] block xl:hidden">
+                        <span class="swiper-pagination-bullet" tabindex="0" role="button"
+                            aria-label="Go to slide 1"></span><span
+                            class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button"
+                            aria-label="Go to slide 2" aria-current="true"></span><span class="swiper-pagination-bullet"
+                            tabindex="0" role="button" aria-label="Go to slide 3"></span>
+                    </div>
+                    <!--  navigation -->
+                    <div class="hidden xl:block">
+                        <div class="swiper-button-next bg-white z-1">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="swiper-button-prev bg-white z-1">
+                            <i class="fas fa-arrow-left"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock content %}

@@ -1,0 +1,36 @@
+{% extends '_dashboard.html' %}
+{% load static %}
+
+{% block title %}
+ Update Listing
+{% endblock title %}
+
+{% block content %}
+
+<div class="w-full h-full space-y-5">
+    <div class="relative block">
+        <div class="py-3 ml-4 mr-4 border-b border-b-custom-h">
+            <div class="flex flex-wrap gap-4">
+                <div class="text-custom-h w-fit text-base font-normal px-3 py-2 rounded-md bg-custom-h">
+                    <a href="{% url 'siyazalana_home:team-members' %}"
+                        class="font-normal  duration-500 text-white rounded ">Team members</a>
+                </div>
+                
+
+                <div class="text-custom-h w-fit text-base font-normal px-3 py-2 rounded-md bg-custom-h">
+                    <a href="{% url 'accounts:update-company-details' %}"
+                        class="font-normal  duration-500 text-white rounded ">Company Details</a>
+                </div>
+                
+
+            </div>
+        </div>
+    </div>
+    <div class="relative block ">
+        {% block businessblock %}
+        {% endblock businessblock %}
+    </div>
+</div>
+
+
+{% endblock content %}

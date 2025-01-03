@@ -19,13 +19,13 @@
                             </p>
                         </div>
                         <div>
-                            <a href="{% url 'bbgi_home:create-blog' %}"
+                            <a href="{% url 'siyazalana_home:create-blog' %}"
                                 class="text-base font-normal px-3 py-2 border border-solid text-center">Add blog</a>
                         </div>
                     </div>
                     <div class="flex w-full gap-2 shrink-0 md:w-max">
                         <div class="w-full md:w-72">
-                            <form method="get" action="{% url 'bbgi_home:all-blogs' %}"
+                            <form method="get" action="{% url 'siyazalana_home:all-blogs' %}"
                                 class="relative h-10 w-full min-w-[200px]">
                                 <div
                                     class="absolute grid w-5 h-5 top-2/4 right-3 -translate-y-2/4 place-items-center text-blue-gray-500">
@@ -149,7 +149,7 @@
                                 </div>
                             </td>
                             <td class="p-4 border-b border-blue-gray-50 space-x-8">
-                                <a href="{% url 'bbgi_home:update-blog' blog.slug %}"
+                                <a href="{% url 'siyazalana_home:update-blog' blog.slug %}"
                                     class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                     type="button">
                                     <span class="">
@@ -157,7 +157,7 @@
                                     </span>
                                 </a>
 
-                                <a href="{% url 'bbgi_home:delete-blog' blog.slug %}"
+                                <a href="{% url 'siyazalana_home:delete-blog' blog.slug %}"
                                     class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                     type="button">
                                     <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">

@@ -83,3 +83,20 @@ class IdentityVerification(AbstractCreate):
     
     def __str__(self) -> str:
         return f"{self.user.get_full_name()} - Identity verification data"
+
+class AboutCompany(AbstractCreate, AbstractProfile):
+    title = models.CharField(max_length=300, null=True, blank=True, unique=True)
+    slogan = models.CharField(max_length=300, null=True, blank=True, unique=True)
+    # vision = models.CharField(max_length=300, null=True, blank=True, unique=True)
+    slug = models.SlugField(max_length=300, default="about-siyazalana-model", unique=True)
+    email = models.EmailField(null=True, blank=True)
+    small_description = models.TextField(null=True, blank=True)
+    vision = models.TextField(blank=True, null=True, unique=True)
+    mission = models.TextField(blank=True, null=True, unique=True)
+
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        verbose_name = 'About Company'
+        verbose_name_plural = 'About Companys'

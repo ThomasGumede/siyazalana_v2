@@ -1,0 +1,499 @@
+{% extends '_base.html' %}
+{% load static %}
+
+
+
+{% block seo_tags %}
+<!-- Primary Meta Tags -->
+<title>BBGI - The Leading Business Growth Initiative</title>
+<meta name="title" content="BBGI - The Leading Business Growth Initiative" />
+<meta name="description"
+    content="Black Business Growth Initiative was formed with the intention of creating a gathering of black African business owners  and professionals. It is..." />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://bbgi.co.za/about-us" />
+<meta property="og:title" content="BBGI - The Leading Business Growth Initiative" />
+<meta property="og:description"
+    content="Black Business Growth Initiative was formed with the intention of creating a gathering of black African business owners  and professionals. It is..." />
+<meta property="og:image" content="https://bbgi.co.za{% static 'imgs/logo/logo.jpeg' %}" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://bbgi.co.za/about-us" />
+<meta property="twitter:title" content="BBGI - The Leading Business Growth Initiative" />
+<meta property="twitter:description"
+    content="Black Business Growth Initiative was formed with the intention of creating a gathering of black African business owners  and professionals. It is..." />
+<meta property="twitter:image" content="https://bbgi.co.za{% static 'imgs/logo/logo.jpeg' %}" />
+
+<!-- Meta Tags Generated with https://metatags.io -->
+{% endblock seo_tags %}
+
+{% block styles %}
+<style>
+    #hero-section-bg {
+        background-image: url("{% static 'imgs/home.jpg' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-blend-mode: overlay;
+    }
+</style>
+{% endblock styles %}
+
+{% block content %}
+<!-- Banner -->
+<section>
+    <!-- banner section -->
+    <div id="hero-section-"
+        class="w-full bg-no-repeat bg-cover bg-center relative z-0 after:w-full after:h-full after:absolute after:top-0 after:left-0 after:bg-white after:bg-opacity-30 after:-z-1">
+        <div class="container py-[110px]">
+            <h1 class="text-2xl sm:text-3xl md:text-[26px] lg:text-3xl xl:text-4xl font-bold text-custom-h mb-4">
+                <span class="leading-1.3 md:leading-1.3 lg:leading-1.3 xl:leading-1.3">Terms And Conditions</span>
+            </h1>
+            <ul class="breadcrumb flex gap-7 items-center text-sm lg:text-base font-bold pt-4">
+                <li class="home relative leading-1.8 lg:leading-1.8">
+                    <a href="{% url 'bbgi_home:bbgi-home' %}"><i class="fas fa-home text-custom-primary"></i> Home</a>
+                </li>
+                <li class="leading-1.8 lg:leading-1.8 text-custom-h">
+                    Terms of Use
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container modal-container property-tab pt-[70px] pb-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-[30px]">
+            <!-- details body -->
+            <div class="lg:col-start-1 lg:col-span-8">
+                <!--  top -->
+                <ul class="flex flex-wrap gap-x-[15px] md:gap-x-[35px] gap-y-[15px] items-center mb-[30px]">
+                    
+
+                    <li>
+                        <ul class="flex gap-x-[15px] md:gap-x-[30px] items-center">
+                            <li>
+                                <p class="text-xs md:text-sm font-semibold">
+                                    <span class="leading-1.8 md:leading-1.8"><i
+                                            class="fa-regular fa-calendar-alt text-custom-primary mr-[5px]"></i>
+                                        12 Dec, 2024</span>
+                                </p>
+                            </li>
+                            <li>
+                                <p class="text-xs md:text-sm font-semibold">
+                                    <span class="leading-1.8 md:leading-1.8"><i
+                                            class="fa-solid fa-location-dot text-custom-primary mr-[5px]"></i>
+                                        {{address}}</span>
+                                </p>
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- main -->
+                <div>
+                    <h4 class="text-2xl md:text-[26px] lg:text-3xl xl:text-4xl font-bold text-custom-h mb-[15px]">
+                        <span class="leading-1.3 lg:leading-1.3 xl:leading-1.3">BBGI Terms And Conditions</span>
+                    </h4>
+
+                    <!-- Description -->
+                    <h4
+                        class="text-[22px] font-semibold leading-1.3 pl-[10px] border-l-2 border-custom-primary text-custom-h my-[30px]">
+                        Description
+                    </h4>
+                    <p class="text-sm lg:text-base ">
+                        <span class="leading-1.8 lg:leading-1.8">{{event.content|safe}}</span>
+                    </p>
+                    
+
+                </div>
+            </div>
+            <!-- sidebar -->
+            <div class="lg:col-start-9 lg:col-span-4 pt-[60px] lg:pt-0">
+                <!-- author details -->
+                <!-- Popular Properties-->
+                <div class="px-5 pt-[35px] pb-10 xl:pl-[35px] xl:pr-[30px] mb-10 border-2 border-border-color-11">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="mb-[25px] overflow-hidden w-40 h-40">
+                            <img src="{% static 'imgs/R.png' %}"
+                                alt="Sazi Ndwandwa BBGI CEO" class="w-140px h-140px rounded-full">
+                        </div>
+                        <h4 class="mb-15px lg:text-lg text-heading-color font-bold">
+                            <span class="leading-1.3 lg:leading-1.3">Mr Sazi Ndwandwa CA(SA)</span>
+                        </h4>
+                        <p class="text-[12.25px] lg:text-sm">
+                            <span class="lg:leading-1 8"> BBGI CEO </span>
+                        </p>
+
+                        <p class="text-sm mb-[22px] hyphens-none">
+                            <span class="leading-1.8">BBGI's expertise in optimizing our business listings has significantly boosted our online visibility.</span>
+                        </p>
+                        <ul class="text-sm lg:text-base flex gap-[18px] justify-center items-center text-color-1">
+                            {% if event.organiser.facebook %}
+                            <li class="leading-1.8 lg:leading-1.8">
+                                <a href="{{event.organiser.facebook}}"><i class="fab fa-facebook-f"></i></a>
+                            </li>
+                            {% endif %}
+                            {% if event.organiser.twitter %}
+                            <li class="leading-1.8 lg:leading-1.8">
+                                <a href="{{event.organiser.twitter}}"><i class="fab fa-twitter"></i></a>
+                            </li>
+                            {% endif %}
+                            {% if event.organiser.linkedIn %}
+                            <li class="leading-1.8 lg:leading-1.8">
+                                <a href="{{event.organiser.linkedIn}}"><i class="fab fa-linkedin"></i></a>
+                            </li>
+                            {% endif %}
+                            {% if event.organiser.instagram %}
+                            <li class="leading-1.8 lg:leading-1.8">
+                                <a href="{{event.organiser.instagram}}"><i class="fab fa-youtube"></i></a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Follow Us -->
+                <div class="px-5 pt-[35px] pb-10 xl:pl-[35px] xl:pr-[30px] mb-10 border-2 border-[#ededed]">
+                    <h4 class="text-lg font-semibold text-custom-h mb-[25px]">
+                        <span class="leading-1.3 pl-[10px] border-l-2 border-custom-primary">Follow Us</span>
+                    </h4>
+                    <ul class="flex gap-x-[15px] pt-4">
+                        {% if website %}
+                        <li>
+                            <a target="_blank" rel="noopener noreferrer" href="{{website}}"
+                                class="text-sm lg:text-base w-10 h-10 bg-[rgb(242_246_247_/_1)] hover:bg-custom-primary hover:text-white flex items-center justify-center"><i
+                                    class="fab fa-globe"></i></a>
+                        </li>
+                        {% endif %}
+                        {% if facebook %}
+                        <li>
+                            <a target="_blank" rel="noopener noreferrer" href="{{facebook}}"
+                                class="text-sm lg:text-base w-10 h-10 bg-[rgb(242_246_247_/_1)] hover:bg-custom-primary hover:text-white flex items-center justify-center"><i
+                                    class="fab fa-facebook-f"></i></a>
+                        </li>
+                        {% endif %}
+                        {% if twitter %}
+                        <li>
+                            <a target="_blank" rel="noopener noreferrer" href="{{twitter}}"
+                                class="text-sm lg:text-base w-10 h-10 bg-[rgb(242_246_247_/_1)] hover:bg-custom-primary hover:text-white flex items-center justify-center"><i
+                                    class="fab fa-twitter"></i></a>
+                        </li>
+                        {% endif %}
+                        {% if linkedin %}
+                        <li>
+                            <a target="_blank" rel="noopener noreferrer" href="{{linkedin}}"
+                                class="text-sm lg:text-base w-10 h-10 bg-[rgb(242_246_247_/_1)] hover:bg-custom-primary hover:text-white flex items-center justify-center"><i
+                                    class="fab fa-linkedin"></i></a>
+                        </li>
+                        {% endif %}
+                        {% if youtube %}
+                        <li>
+                            <a target="_blank" rel="noopener noreferrer" href="{{youtube}}"
+                                class="text-sm lg:text-base w-10 h-10 bg-[rgb(242_246_247_/_1)] hover:bg-custom-primary hover:text-white flex items-center justify-center"><i
+                                    class="fab fa-youtube"></i></a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- services section -->
+<section>
+    <div class="container pt-[115px] pb-[90px]">
+        <!-- section heading -->
+        <div class="text-center mb-[50px]">
+            <p
+                class="text-sm md:text-[15px] lg:text-base text-secondary-color bg-[#c2a6404d] capitalize 1b-[15px] py-0.5 px-5 rounded-full inline-block font-semibold mb-5">
+                <span class="leading-1.3">Our Services</span>
+            </p>
+            <h2 class="text-2xl sm:text-3xl md:text-[26px] lg:text-3xl xl:text-[44px] text-heading-color font-bold">
+                <span class="leading-1.3"> Our Main Focus </span>
+            </h2>
+        </div>
+        <!-- services cards  -->
+
+        <div class="service-cards flex flex-wrap justify-center items-center text-center -mx-[15px]">
+            <!-- card 1 -->
+            <div class="service-card basis-full sm:basis-1/2 lg:basis-1/3 px-[15px] mb-[30px]">
+                <div
+                    class="border border-border-color-1 shadow-box-shadow-1 bg-white relative py-10 pb-[35px] px-[30px] transition-all duration-300">
+                    <div
+                        class="mb-5 rounded-full w-[120px] h-[120px] leading-[120px] bg-[#f5f5f5] text-center mx-auto text-[50px]">
+                        <i class="fa-solid fa-business-time text-custom-primary"></i>
+                    </div>
+                    <h6 class="text-lg md:text-xl lg:text-[22px] xl:text-2xl text-heading-color font-bold">
+                        <a class="hover:text-secondary-color leading-1.3 mb-1"
+                            href="{% if request.user.is_authenticated and request.user.is_paid %}{% url 'listings:add-listing' %}{% else %}{% url 'listings:get-started-with-listing' %}{% endif %}">Business
+                            Listing</a>
+                    </h6>
+                    <p class="text-sm mb-[25px]">
+                        <span class="leading-1.8">Our business/shops listing service offers a dedicated space for Black
+                            African business owners to showcase their products
+                            and services..</span>
+                    </p>
+                    <div class="text-sm text-color-1 font-bold">
+                        <a class="find-service hover:text-secondary-color flex items-center justify-center"
+                            href="{% if request.user.is_authenticated and request.user.is_paid %}{% url 'listings:add-listing' %}{% else %}{% url 'listings:get-started-with-listing' %}{% endif %}">Add
+                            listing
+                            <i class="flaticon-right-arrow inline-block leading-1"></i></a>
+                    </div>
+                    <span
+                        class="hover-line absolute bottom-0 left-0 w-0 h-1 bg-secondary-color transition-all duration-300 block"></span>
+                </div>
+            </div>
+            <!-- card 2 -->
+            <div class="service-card active basis-full sm:basis-1/2 lg:basis-1/3 px-[15px] mb-[30px]">
+                <div
+                    class="border border-border-color-1 shadow-box-shadow-1 bg-white relative py-10 pb-[35px] px-[30px] transition-all duration-300">
+                    <div
+                        class="mb-5 rounded-full w-[120px] h-[120px] leading-[120px] bg-[#f5f5f5] text-center mx-auto text-[50px]">
+                        <i class="fa-solid fa-magnifying-glass-dollar text-custom-primary"></i>
+                    </div>
+                    <h6 class="text-lg md:text-xl lg:text-[22px] xl:text-2xl text-heading-color font-bold">
+                        <a class="hover:text-secondary-color leading-1.3 mb-1"
+                            href="{% url 'campaigns:create-campaign' %}">Fundraise
+                            Listing</a>
+                    </h6>
+                    <p class="text-sm mb-[25px]">
+                        <span class="leading-1.8">Our fundraising campaigns listing service provides a platform for
+                            Black African business owners to showcase their
+                            fundraising efforts.</span>
+                    </p>
+                    <div class="text-sm text-color-1 font-bold">
+                        <a class="find-service hover:text-secondary-color flex items-center justify-center"
+                            href="{% url 'campaigns:create-campaign' %}">Add Campaign
+                            <i class="flaticon-right-arrow inline-block leading-1"></i></a>
+                    </div>
+                    <span
+                        class="hover-line absolute bottom-0 left-0 w-0 h-1 bg-secondary-color transition-all duration-300 block"></span>
+                </div>
+            </div>
+            <!-- card 3 -->
+            <div class="service-card basis-full sm:basis-1/2 lg:basis-1/3 px-[15px] mb-[30px]">
+                <div
+                    class="border border-border-color-1 shadow-box-shadow-1 bg-white relative py-10 pb-[35px] px-[30px] transition-all duration-300">
+                    <div
+                        class="mb-5 rounded-full w-[120px] h-[120px] leading-[120px] bg-[#f5f5f5] text-center mx-auto text-[50px]">
+                        <i class="fa-solid fa-calendar-check text-custom-primary"></i>
+                    </div>
+                    <h6 class="text-lg md:text-xl lg:text-[22px] xl:text-2xl text-heading-color font-bold">
+                        <a class="hover:text-secondary-color leading-1.3 mb-1"
+                            href="{% url 'events:create-event' %}">Business
+                            Events</a>
+                    </h6>
+                    <p class="text-sm mb-[25px]">
+                        <span class="leading-1.8">The business events listing service allows you to promote your
+                            business-related events to a wider audience.</span>
+                    </p>
+                    <div class="text-sm text-color-1 font-bold">
+                        <a class="find-service hover:text-secondary-color flex items-center justify-center"
+                            href="{% url 'events:create-event' %}">Add Event
+                            <i class="flaticon-right-arrow inline-block leading-1"></i></a>
+                    </div>
+                    <span
+                        class="hover-line absolute bottom-0 left-0 w-0 h-1 bg-secondary-color transition-all duration-300 block"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- testimonials section -->
+<section>
+    <div class="bg-[url('../img/bg/20.jpg')] bg-top bg-no-repeat">
+        <div class="container pt-[115px] pb-[55px]">
+            <!-- section heading -->
+            <div class="text-center mb-[50px]">
+                <p
+                    class="text-sm md:text-[15px] lg:text-base text-secondary-color bg-[#c2a6404d] capitalize mb-[15px] py-0.5 px-5 rounded-full inline-block font-semibold">
+                    <span class="leading-1.3">Our Testimonial</span>
+                </p>
+                <h2 class="text-2xl sm:text-3xl md:text-[26px] lg:text-3xl xl:text-[44px] text-heading-color font-bold">
+                    <span class="leading-1.3">Clients Feedback </span>
+                </h2>
+            </div>
+
+            <div class="testimonials-slider-container swiper-container relative -mx-[15px]">
+                <!-- apartment cards  -->
+                <div class="swiper testimonials-slider static">
+                    <div class="swiper-wrapper">
+                        <!-- card 1 -->
+                        <div class="swiper-slide mb-[65px] lg:mb-[50px] px-[15px]">
+                            <div
+                                class="pt-[25px] pb-10 px-[35px] group border border-border-color-13 shadow-box-shadow-4 rounded-[10px] bg-white cursor-default relative">
+                                <!-- card body -->
+                                <div>
+                                    <p class="text-sm md:text-base mb-5 md:mb-6 xl:mb-[27px]">
+                                        <span class="text-3xl mr-0.5 translate-y-2 inline-block"><i
+                                                class="flaticon-left-quote-1 group-hover:text-secondary-color transition-all duration-300"></i></span>
+                                        <span class="leading-1.8">
+                                            Choosing BBGI was one of the best decisions we made. Their comprehensive
+                                            approach to managing our listings not only
+                                            saved us valuable time but also ensured accuracy across all
+                                            platforms.</span>
+                                    </p>
+                                </div>
+                                <!-- cart footer -->
+                                <div>
+                                    <div>
+                                        <div
+                                            class="flex flex-wrap md:flex-nowrap gap-x-[15px] gap-y-[10px] items-center">
+                                            <div class="w-[60px] h-[60px] flex-shrink-0">
+                                                <img src="{% static 'imgs/R.png' %}" alt="Avatar"
+                                                    class="w-full h-full rounded-full">
+                                            </div>
+                                            <div>
+                                                <h4 class="text-base lg:text-lg font-semibold text-heading-color mb-0">
+                                                    <span class="leading-1.3 hover:text-secondary-color">Lebo
+                                                        Sekwela</span>
+                                                </h4>
+
+                                                <span class="text-sm uppercase">
+                                                    customer
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span
+                                    class="hover-line absolute bottom-0 left-0 w-0 group-hover:w-full h-1 bg-secondary-color transition-all duration-300 block"></span>
+                            </div>
+                        </div>
+                        <!-- card 2 -->
+                        <div class="swiper-slide mb-[65px] px-[15px]">
+                            <div
+                                class="pt-[25px] pb-10 px-[35px] group border border-border-color-13 shadow-box-shadow-4 rounded-[10px] bg-white cursor-default relative">
+                                <!-- card body -->
+                                <div>
+                                    <p class="text-sm md:text-base mb-5 md:mb-6 xl:mb-[27px]">
+                                        <span class="text-3xl mr-0.5 translate-y-2 inline-block"><i
+                                                class="flaticon-left-quote-1 group-hover:text-secondary-color transition-all duration-300"></i></span>
+                                        <span class="leading-1.8">
+                                            Working with BBGI has been a game-changer for our business. Their meticulous
+                                            expertise in optimizing our business
+                                            listings across various platforms have significantly enhanced our online
+                                            visibility</span>
+                                    </p>
+                                </div>
+                                <!-- cart footer -->
+                                <div>
+                                    <div>
+                                        <div class="flex gap-x-[15px] gap-y-[10px] items-center">
+                                            <div class="w-[60px] h-[60px] flex-shrink-0">
+                                                <img src="{% static 'imgs/R.png' %}" alt="Avatar"
+                                                    class="w-full h-full rounded-full">
+                                            </div>
+                                            <div>
+                                                <h4 class="text-base lg:text-lg font-semibold text-heading-color mb-0">
+                                                    <span class="leading-1.3 hover:text-secondary-color">Kamogelo
+                                                        Motswiane</span>
+                                                </h4>
+
+                                                <span class="text-sm uppercase">
+                                                    Customer
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span
+                                    class="hover-line absolute bottom-0 left-0 w-0 group-hover:w-full h-1 bg-secondary-color transition-all duration-300 block"></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- pagination -->
+                    <div
+                        class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal !-bottom-[6px] block lg:hidden">
+
+                    </div>
+                    <!--  navigation -->
+                    <div class="hidden lg:block">
+                        <div class="swiper-button-next bg-white z-1">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="swiper-button-prev bg-white z-1">
+                            <i class="fas fa-arrow-left"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+
+{% block js %}
+<script src='{% static "js/swiper-bundle.min.js" %}'></script>
+<script>
+    const swiper_2 = new Swiper('.swiper-2', {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        loop: true,
+        breakpoints: {
+            // when window width is >= 320px
+            750: {
+                slidesPerView: 2
+            },
+            1032: {
+                slidesPerView: 2.5
+            },
+            // when window width is >= 640px
+            1140: {
+                slidesPerView: 3,
+                spaceBetween: 30
+            }
+        }
+    })
+</script>
+<script type="module">
+    import KeenSlider from 'https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/+esm'
+
+
+
+    const keenSlider = new KeenSlider(
+        '#keen-slider',
+        {
+            loop: true,
+            slides: {
+                origin: 'center',
+                perView: 1.25,
+                spacing: 16,
+            },
+            breakpoints: {
+                '(min-width: 1024px)': {
+                    slides: {
+                        origin: 'auto',
+                        perView: 1.5,
+                        spacing: 32,
+                    },
+                },
+            },
+        },
+        []
+    )
+
+    const keenSliderPrevious = document.getElementById('keen-slider-previous')
+    const keenSliderNext = document.getElementById('keen-slider-next')
+
+    const keenSliderPreviousDesktop = document.getElementById('keen-slider-previous-desktop')
+    const keenSliderNextDesktop = document.getElementById('keen-slider-next-desktop')
+
+    keenSliderPrevious.addEventListener('click', () => keenSlider.prev())
+    keenSliderNext.addEventListener('click', () => keenSlider.next())
+
+    keenSliderPreviousDesktop.addEventListener('click', () => keenSlider.prev())
+    keenSliderNextDesktop.addEventListener('click', () => keenSlider.next())
+</script>
+
+{% endblock js %}

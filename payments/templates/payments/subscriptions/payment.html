@@ -1,0 +1,51 @@
+{% extends '_subscribe.html' %}
+{% load static %}
+{% block title %}Contribution added successfully{% endblock title %}
+
+{% block ticketsordercontent %}
+
+<section class="py-20 h-full bg-white font-sans">
+    <div class="container">
+        <div
+            class="w-full max-w-full rounded-xl my-auto bg-gray-50 mx-auto md:w-1/2 lg:w-5/12 relative shadow-xl text-center">
+            <div class="p-5 md:p-7">
+                <div class="space-y-6">
+                    <h3 class="text-custom-h text-2xl md:text-4xl font-extrabold">A Big Thank You</h3>
+                    <div>
+                        <i class="fa-regular fa-check-circle text-8xl font-extralight text-custom-h"></i>
+                    </div>
+                    <p class="text-custom-h text-lg font-medium">
+                        R{{subscription_order.total_amount|floatformat:2}} to be paid
+                    </p>
+                    <p class="text-gray-500 text-lg font-medium">
+                        Your subscription order was created and ready for futher process! Use this order number <span
+                            class="text-custom-h">{{subscription_order.order_id}}</span> for future references.
+                    </p>
+                    <div class="flex w-full items-center justify-between">
+                        <div
+                            class="w-36 lg:w-40 text-center grid items-center justify-center h-12 border-2 border-custom-h bg-custom-h hover:bg-white hover:text-custom-h text-white font-medium text-sm focus-within:outline-none focus:outline-none lg:text-base duration-500 rounded-md">
+                            <a href="{% url 'accounts:cancel-subscription-order' subscription_order.id %}"
+                                class="">cancel</a>
+                        </div>
+                        <form method="post">
+                            {% csrf_token %}
+                            <button value="submit" type="submit"
+                                class="w-36 lg:w-40 h-12 border-2 border-custom-h bg-custom-h hover:bg-white hover:text-custom-h text-white font-medium text-sm focus-within:outline-none focus:outline-none lg:text-base duration-500 rounded-md">
+                                
+                                    Pay
+                                
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock ticketsordercontent %}
+{% block js %}
+
+
+{% endblock js %}

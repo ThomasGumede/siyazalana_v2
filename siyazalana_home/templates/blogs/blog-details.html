@@ -8,22 +8,22 @@
 <meta name="title" content="{{post.title}}" />
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://bbgi.co.za/blogs/details/{{post.slug}}" />
+<meta property="og:url" content="https://siyazalana.org/blogs/details/{{post.slug}}" />
 <meta property="og:title" content="{{post.title}}" />
 <meta property="og:description"
     content="{{post.content|truncatechars:157}}" />
-<meta property="og:image" content="https://bbgi.co.za{% static 'imgs/logo/logo.jpeg' %}" />
+<meta property="og:image" content="https://siyazalana.org{% static 'imgs/logo/logo.jpeg' %}" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://bbgi.co.za/blogs/details/{{post.slug}}" />
+<meta property="twitter:url" content="https://siyazalana.org/blogs/details/{{post.slug}}" />
 <meta property="twitter:title" content="{{post.title}}" />
 <meta property="twitter:description"
     content="{{post.content|truncatechars:157}}" />
 {% if post.image %}
-<meta property="twitter:image" content="https://bbgi.co.za{{post.image.url}}" />
+<meta property="twitter:image" content="https://siyazalana.org{{post.image.url}}" />
 {% else %}
-<meta property="twitter:image" content="https://bbgi.co.za{% static 'imgs/logo/logo.jpeg' %}" />
+<meta property="twitter:image" content="https://siyazalana.org{% static 'imgs/logo/logo.jpeg' %}" />
 {% endif %}
 {% endblock seo_tags %}
 

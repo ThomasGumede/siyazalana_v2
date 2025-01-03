@@ -12,6 +12,7 @@ from siyazalana_home.utilities.file_handlers import handle_post_file_upload
 
 class BlogCategory(AbstractCreate):
     thumbnail = models.ImageField(upload_to="category/", null=True, blank=True)
+    icon = models.CharField(max_length=250)
     slug = models.SlugField(max_length=350, unique=True, db_index=True)
     label = models.CharField(max_length=250, unique=True)
     
@@ -60,7 +61,7 @@ class Blog(AbstractCreate):
 
     
     def get_absolute_url(self):
-        return reverse("bbgi_home:details-blog", kwargs={"post_slug": self.slug})
+        return reverse("siyazalana_home:details-blog", kwargs={"post_slug": self.slug})
 
 class Comment(AbstractCreate):
     commenter = models.ForeignKey(get_user_model(), related_name="comments", on_delete=models.SET_NULL, null=True)

@@ -10,6 +10,8 @@ urlpatterns = [
     path("", include("accounts.urls", namespace="accounts")),
     path("", include("campaigns.urls", namespace="campaigns")),
     path("", include("events.urls", namespace="events")),
+    path("payments", include("payments.urls", namespace="payments")),
+    path("coupons", include("coupons.urls", namespace="coupons")),
 ]
 
 if settings.DEBUG:

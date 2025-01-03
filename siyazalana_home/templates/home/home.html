@@ -21,13 +21,13 @@
                                     <p
                                         class="text-sm md:text-[15px] lg:text-base text-heading-color font-bold mb-5 animated">
                                         <i class="fas fa-home text-secondary-color"></i>
-                                        Real Estate Agency
+                                        Non-profit Organisation
                                     </p>
                                     <h1
                                         class="text-3xl md:text-[40px] lg:text-[50px] 4xl:text-[65px] leading-[30px] md:leading-10 lg:leading-[50px] 4xl:leading-[65px] font-bold mb-5 animated">
                                         <span class="leading-[30px] md:leading-10 lg:leading-[50px] 4xl:leading-[65px]">
-                                            Find Your Dream <br>
-                                            House By Us
+                                            Small Effort <br>
+                                            Make Big Change
                                         </span>
                                     </h1>
                                     <p
@@ -42,7 +42,7 @@
                                             class="capitalize text-sm md:text-base text-white relative group whitespace-nowrap font-normal transition-all duration-300 border border-secondary-color hover:border-heading-color inline-block mr-[15px]">
                                             <span
                                                 class="inline-block absolute top-0 right-0 w-full h-full bg-secondary-color group-hover:bg-primary-color z-1 group-hover:w-0 transition-all duration-300"></span>
-                                            <a href="about.html"
+                                            <a href="{% url 'siyazalana_home:contact' %}"
                                                 class="relative z-10 px-5 md:px-[25px] lg:px-10 py-[10px] md:py-3 lg:py-[17px] group-hover:text-heading-color leading-[23px]">Make
                                                 An Enquiry</a>
                                         </h5>
@@ -77,7 +77,7 @@
                                     <p
                                         class="text-sm md:text-[15px] lg:text-base text-heading-color font-bold mb-5 animated">
                                         <i class="fas fa-home text-secondary-color"></i>
-                                        Real Estate Agency
+                                        Non-profit Organisation
                                     </p>
                                     <h1
                                         class="text-3xl md:text-[40px] lg:text-[50px] 4xl:text-[65px] leading-[30px] md:leading-10 lg:leading-[50px] 4xl:leading-[65px] font-bold mb-5 animated">
@@ -106,7 +106,7 @@
                                             class="capitalize inline-block text-sm md:text-base text-primary-color hover:text-white hover:bg-primary-color relative group whitespace-nowrap font-normal transition-all duration-300 shadow-box-shadow-3">
                                             <span
                                                 class="inline-block absolute top-0 right-0 w-full h-full bg-white group-hover:bg-secondary-color z-1 group-hover:w-0 transition-all duration-300"></span>
-                                            <a href="about.html"
+                                            <a href="{% url 'siyazalana_home:about-siyazalana' %}"
                                                 class="relative z-10 px-5 md:px-[25px] lg:px-10 py-[10px] md:py-3 lg:py-[17px] group-hover:text-white leading-[23px]">LEARN
                                                 MORE</a>
                                         </h5>
@@ -124,10 +124,10 @@
                     </div>
                 </div>
                 <div class="hidden xl:block">
-                    <div class="swiper-button-next">
+                    <div class="swiper-button-next !bg-none !text-inherit after:!hidden">
                         <i class="fas fa-arrow-right"></i>
                     </div>
-                    <div class="swiper-button-prev">
+                    <div class="swiper-button-prev !bg-none !text-inherit after:!hidden">
                         <i class="fas fa-arrow-left"></i>
                     </div>
                 </div>
@@ -141,32 +141,32 @@
     <!-- pinned select area  -->
     <div class="container mt-10 dxxl:-mt-[65px] w-full lg:w-10/12  py-4 relative z-20">
         <div class="w-full overflow-hidden mx-auto sm:flex py-[10px] sm:justify-center relative">
-            <form method="get" action=""
+            <form method="get" action="{% url 'siyazalana_home:search' %}"
                 class="flex flex-wrap overflow-hidden bg-white p-3 w-full mx-auto shadow-lg rounded-xl gap-6 justify-center items-center">
                 <div class="relative lg:w-5/12 w-full">
                     <div class="flex bg-white items-center gap-4 text-custom-h">
                         <div>
-                            <i class="fa-solid text-custom-h fa-search fa-lg md:fa-xl"></i>
+                            <i class="fa-solid text-secondary-color fa-search fa-lg md:fa-xl"></i>
                         </div>
                         <input id="search-service-input"
                             class="border-none w-full  h-14 text-sm md:text-base font-medium focus:ring-0 text-custom-h outline-none focus:outline-none focus:border-none"
                             style="padding-right:50px" type="text" name="query"
-                            placeholder="Doctors,  plumbers,  beauty salons..." value="">
+                            placeholder="Event..." value="">
                     </div>
                 </div>
                 <div class="w-[1px] h-full bg-custom-h mx-1 hidden lg:block"></div>
                 <div class="relative lg:w-5/12 w-full">
                     <div class="flex bg-white items-center gap-4 text-custom-h">
                         <div>
-                            <i class="fa-solid text-custom-h fa-location-dot fa-lg md:fa-xl"></i>
+                            <i class="fa-solid text-secondary-color fa-location-dot fa-lg md:fa-xl"></i>
                         </div>
-                        <input placeholder="eg. Southdowns"
+                        <input placeholder="Location..."
                             class="border-none w-full  h-14 text-sm md:text-base font-medium focus:ring-0 text-custom-h outline-none focus:outline-none focus:border-none"
                             style="padding-right:50px" type="text" name="place" value="">
                     </div>
                 </div>
                 <button type="submit" value="submit"
-                    class="!text-white bg-custom-h h-12 w-full lg:w-fit p-4 text-center grid items-center justify-center rounded-md mt-2 md:mt-0">
+                    class="!text-white bg-secondary-color h-12 w-full lg:w-fit p-4 text-center grid items-center justify-center rounded-md mt-2 md:mt-0">
                     <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M1 6.68359C1 8.00968 1.52678 9.28145 2.46447 10.2191C3.40215 11.1568 4.67392 11.6836 6 11.6836C7.32608 11.6836 8.59785 11.1568 9.53553 10.2191C10.4732 9.28145 11 8.00968 11 6.68359C11 5.35751 10.4732 4.08574 9.53553 3.14806C8.59785 2.21038 7.32608 1.68359 6 1.68359C4.67392 1.68359 3.40215 2.21038 2.46447 3.14806C1.52678 4.08574 1 5.35751 1 6.68359V6.68359Z"
@@ -219,7 +219,7 @@
                         <div>
                             <h5 class="text-[17px] md:text-lg lg:text-xl font-bold text-heading-color mb-[5px]">
                                 <a href="service-details.html" class="leading-1.3 md:leading-1.3 lg:leading-1.3">
-                                    The Perfect Residency</a>
+                                    Join Our Team</a>
                             </h5>
                             <p class="text-sm lg:text-base">
                                 Lorem ipsum dolor sit amet, consectetur adipisic do
@@ -233,7 +233,7 @@
                         <div>
                             <h5 class="text-[17px] md:text-lg lg:text-xl font-bold text-heading-color mb-[5px]">
                                 <a href="service-details.html" class="leading-1.3 md:leading-1.3 lg:leading-1.3">
-                                    Global Architect Experts</a>
+                                    Quick Fundraising</a>
                             </h5>
                             <p class="text-sm lg:text-base">
                                 Lorem ipsum dolor sit amet, consectetur adipisic do
@@ -350,17 +350,288 @@
         </div>
     </div>
 </section>
+
+<section>
+    <div class="container pb-[100px]">
+        <div class="text-center mb-[50px]">
+            <p
+                class="text-sm md:text-[15px] lg:text-base text-secondary-color bg-[#005a4a69] capitalize 1b-[15px] py-0.5 px-5 rounded-full inline-block font-semibold mb-5">
+                <span class="leading-1.3">FAQ</span>
+            </p>
+            <h2 class="text-2xl sm:text-3xl md:text-[26px] lg:text-3xl xl:text-[44px] text-heading-color font-bold">
+                <span class="leading-1.3"> Any Questions </span>
+            </h2>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-[30px]">
+            <!-- details -->
+            <div class="">
+                <!-- faq accordion -->
+                <div>
+                    <ul class="accordion-container neighbour-accordion border-2 border-b-0 border-border-color-10">
+                        <li class="accordion border-b-2 border-border-color-10">
+                            <!-- accordion header -->
+                            <div
+                                class="accordion-controller flex items-center justify-between cursor-pointer text-sm lg:text-base p-5 pr-[18px] md:pl-10">
+                                <div class="font-semibold font-sans">
+                                    <p class="text-primary-color md:text-lg">
+                                        How to buy a product?
+                                    </p>
+                                </div>
+                                <button
+                                    class="h-10 w-10 leading-10 flex flex-col justify-center items-center bg-section-bg-1">
+                                    <span class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor"></span><span
+                                        class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor rotate-90 -mt-0.5"></span>
+                                </button>
+                            </div>
+                            <!-- accordion content -->
+                            <div class="accordion-content h-0 overflow-hidden transition-all duration-500">
+                                <div class="content-wrapper px-5 md:px-10 pt-[15px] pb-[25px] text-sm lg:text-base">
+                                    <p class="leading-1.8 lg:leading-1.8 mb-5">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing
+                                        elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna aliqua. Scelerisque eleifend donec
+                                        pretium vulputate sapien nec sagittis. Proin libero
+                                        nunc consequat interdum. Condimentum lacinia quis vel
+                                        eros donec ac. Mauris sit amet massa vitae tortor.
+                                        Quisque id diam vel quam elementum pulvinar. Gravida
+                                        in fermentum et sollicitudin ac orci phasellus.
+                                        Facilisis gravida neque convallis a cras semper. Non
+                                        arcu risus quis varius quam quisque id.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="accordion border-b-2 border-border-color-10 active">
+                            <!-- accordion header -->
+                            <div
+                                class="accordion-controller flex items-center justify-between cursor-pointer text-sm lg:text-base p-5 pr-[18px] md:pl-10">
+                                <div class="font-semibold font-sans">
+                                    <p class="text-primary-color md:text-lg">
+                                        How can i make refund from your website?
+                                    </p>
+                                </div>
+                                <button
+                                    class="h-10 w-10 leading-10 flex flex-col justify-center items-center bg-section-bg-1">
+                                    <span class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor"></span><span
+                                        class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor rotate-90 -mt-0.5"
+                                        style="transform: rotate(0deg)"></span>
+                                </button>
+                            </div>
+                            <!-- accordion content -->
+                            <div class="accordion-content overflow-hidden transition-all duration-500">
+                                <div class="content-wrapper px-5 md:px-10 pt-[15px] pb-[25px] text-sm lg:text-base">
+                                    <div>
+                                        
+                                        <p class="leading-1.8 lg:leading-1.8 mb-5">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                                            elit, sed do eiusmod tempor incididunt ut labore et
+                                            dolore magna aliqua. Scelerisque eleifend donec
+                                            pretium vulputate sapien nec sagittis. Proin libero
+                                            nunc consequat interdum. Condimentum lacinia quis
+                                            vel eros donec ac. Mauris sit amet massa vitae
+                                            tortor. Quisque id diam vel quam elementum pulvinar.
+                                            Gravida in fermentum et sollicitudin ac orci
+                                            phasellus. Facilisis gravida neque convallis a cras
+                                            semper. Non arcu risus quis varius quam quisque id.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="accordion border-b-2 border-border-color-10">
+                            <!-- accordion header -->
+                            <div
+                                class="accordion-controller flex items-center justify-between cursor-pointer text-sm lg:text-base p-5 pr-[18px] md:pl-10">
+                                <div class="font-semibold font-sans">
+                                    <p class="text-primary-color md:text-lg">
+                                        I am a new user. How should I start?
+                                    </p>
+                                </div>
+                                <button
+                                    class="h-10 w-10 leading-10 flex flex-col justify-center items-center bg-section-bg-1">
+                                    <span class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor"></span><span
+                                        class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor rotate-90 -mt-0.5"></span>
+                                </button>
+                            </div>
+                            <!-- accordion content -->
+                            <div class="accordion-content h-0 overflow-hidden transition-all duration-500">
+                                <div class="content-wrapper px-5 md:px-10 pt-[15px] pb-[25px] text-sm lg:text-base">
+                                    <p class="leading-1.8 lg:leading-1.8 mb-5">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing
+                                        elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna aliqua. Scelerisque eleifend donec
+                                        pretium vulputate sapien nec sagittis. Proin libero
+                                        nunc consequat interdum. Condimentum lacinia quis vel
+                                        eros donec ac. Mauris sit amet massa vitae tortor.
+                                        Quisque id diam vel quam elementum pulvinar. Gravida
+                                        in fermentum et sollicitudin ac orci phasellus.
+                                        Facilisis gravida neque convallis a cras semper. Non
+                                        arcu risus quis varius quam quisque id.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="accordion border-b-2 border-border-color-10">
+                            <!-- accordion header -->
+                            <div
+                                class="accordion-controller flex items-center justify-between cursor-pointer text-sm lg:text-base p-5 pr-[18px] md:pl-10">
+                                <div class="font-semibold font-sans">
+                                    <p class="text-primary-color md:text-lg">
+                                        Returns and refunds
+                                    </p>
+                                </div>
+                                <button
+                                    class="h-10 w-10 leading-10 flex flex-col justify-center items-center bg-section-bg-1">
+                                    <span class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor"></span><span
+                                        class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor rotate-90 -mt-0.5"></span>
+                                </button>
+                            </div>
+                            <!-- accordion content -->
+                            <div class="accordion-content h-0 overflow-hidden transition-all duration-500">
+                                <div class="content-wrapper px-5 md:px-10 pt-[15px] pb-[25px] text-sm lg:text-base">
+                                    <p class="leading-1.8 lg:leading-1.8 mb-5">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing
+                                        elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna aliqua. Scelerisque eleifend donec
+                                        pretium vulputate sapien nec sagittis. Proin libero
+                                        nunc consequat interdum. Condimentum lacinia quis vel
+                                        eros donec ac. Mauris sit amet massa vitae tortor.
+                                        Quisque id diam vel quam elementum pulvinar. Gravida
+                                        in fermentum et sollicitudin ac orci phasellus.
+                                        Facilisis gravida neque convallis a cras semper. Non
+                                        arcu risus quis varius quam quisque id.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="accordion border-b-2 border-border-color-10">
+                            <!-- accordion header -->
+                            <div
+                                class="accordion-controller flex items-center justify-between cursor-pointer text-sm lg:text-base p-5 pr-[18px] md:pl-10">
+                                <div class="font-semibold font-sans">
+                                    <p class="text-primary-color md:text-lg">
+                                        Are my details secured?
+                                    </p>
+                                </div>
+                                <button
+                                    class="h-10 w-10 leading-10 flex flex-col justify-center items-center bg-section-bg-1">
+                                    <span class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor"></span><span
+                                        class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor rotate-90 -mt-0.5"></span>
+                                </button>
+                            </div>
+                            <!-- accordion content -->
+                            <div class="accordion-content h-0 overflow-hidden transition-all duration-500">
+                                <div class="content-wrapper px-5 md:px-10 pt-[15px] pb-[25px] text-sm lg:text-base">
+                                    <p class="leading-1.8 lg:leading-1.8 mb-5">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing
+                                        elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna aliqua. Scelerisque eleifend donec
+                                        pretium vulputate sapien nec sagittis. Proin libero
+                                        nunc consequat interdum. Condimentum lacinia quis vel
+                                        eros donec ac. Mauris sit amet massa vitae tortor.
+                                        Quisque id diam vel quam elementum pulvinar. Gravida
+                                        in fermentum et sollicitudin ac orci phasellus.
+                                        Facilisis gravida neque convallis a cras semper. Non
+                                        arcu risus quis varius quam quisque id.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="accordion border-b-2 border-border-color-10">
+                            <!-- accordion header -->
+                            <div
+                                class="accordion-controller flex items-center justify-between cursor-pointer text-sm lg:text-base p-5 pr-[18px] md:pl-10">
+                                <div class="font-semibold font-sans">
+                                    <p class="text-primary-color md:text-lg">
+                                        Sale code is not working
+                                    </p>
+                                </div>
+                                <button
+                                    class="h-10 w-10 leading-10 flex flex-col justify-center items-center bg-section-bg-1">
+                                    <span class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor"></span><span
+                                        class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor rotate-90 -mt-0.5"></span>
+                                </button>
+                            </div>
+                            <!-- accordion content -->
+                            <div class="accordion-content h-0 overflow-hidden transition-all duration-500">
+                                <div class="content-wrapper px-5 md:px-10 pt-[15px] pb-[25px] text-sm lg:text-base">
+                                    <p class="leading-1.8 lg:leading-1.8 mb-5">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing
+                                        elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna aliqua. Scelerisque eleifend donec
+                                        pretium vulputate sapien nec sagittis. Proin libero
+                                        nunc consequat interdum. Condimentum lacinia quis vel
+                                        eros donec ac. Mauris sit amet massa vitae tortor.
+                                        Quisque id diam vel quam elementum pulvinar. Gravida
+                                        in fermentum et sollicitudin ac orci phasellus.
+                                        Facilisis gravida neque convallis a cras semper. Non
+                                        arcu risus quis varius quam quisque id.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="accordion border-b-2 border-border-color-10">
+                            <!-- accordion header -->
+                            <div
+                                class="accordion-controller flex items-center justify-between cursor-pointer text-sm lg:text-base p-5 pr-[18px] md:pl-10">
+                                <div class="font-semibold font-sans">
+                                    <p class="text-primary-color md:text-lg">
+                                        How do I make payment by my credit card
+                                    </p>
+                                </div>
+                                <button
+                                    class="h-10 w-10 leading-10 flex flex-col justify-center items-center bg-section-bg-1">
+                                    <span class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor"></span><span
+                                        class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor rotate-90 -mt-0.5"></span>
+                                </button>
+                            </div>
+                            <!-- accordion content -->
+                            <div class="accordion-content h-0 overflow-hidden transition-all duration-500">
+                                <div class="content-wrapper px-5 md:px-10 pt-[15px] pb-[25px] text-sm lg:text-base">
+                                    <p class="leading-1.8 lg:leading-1.8 mb-5">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing
+                                        elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna aliqua. Scelerisque eleifend donec
+                                        pretium vulputate sapien nec sagittis. Proin libero
+                                        nunc consequat interdum. Condimentum lacinia quis vel
+                                        eros donec ac. Mauris sit amet massa vitae tortor.
+                                        Quisque id diam vel quam elementum pulvinar. Gravida
+                                        in fermentum et sollicitudin ac orci phasellus.
+                                        Facilisis gravida neque convallis a cras semper. Non
+                                        arcu risus quis varius quam quisque id.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                
+            </div>
+            <!-- sidebar -->
+            <div class="mt-[100px] lg:mt-0">
+                
+                <!-- img -->
+                <div>
+                    
+                        <img src="{% static 'assets/images/que.png' %}" alt="">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <!-- featured appartments  section -->
 <section>
-    <div class="container-3 pt-[115px] pb-[75px]">
+    <div class="container pt-[115px] pb-[75px]">
         <!-- section heading -->
         <div class="text-center mb-[50px]">
             <p
                 class="text-sm md:text-[15px] lg:text-base text-secondary-color bg-[#005a4a69] bg-opacity-10 capitalize mb-[15px] py-0.5 px-5 rounded-full inline-block font-semibold">
-                <span class="leading-1.3">Properties</span>
+                <span class="leading-1.3">We Love To Help</span>
             </p>
             <h2 class="text-2xl sm:text-3xl md:text-[26px] lg:text-3xl xl:text-[44px] text-heading-color font-bold">
-                <span class="leading-1.3">Featured Campaigns </span>
+                <span class="leading-1.3">Help & Donate Now </span>
             </h2>
         </div>
         <div class="featured-apartments swiper-container relative">
@@ -368,565 +639,107 @@
             <div class="swiper featured-apartments-slider static">
                 <div class="swiper-wrapper">
                     <!-- card 1 -->
+                    
+                    {% for campaign in campaigns %}
                     <div class="swiper-slide mb-[65px] px-[15px]">
                         <div class="group border border-border-color-13 shadow-box-shadow-4">
-                            <!-- card thumbs -->
-                            <div class="relative leading-1">
-                                <a href="product-details.html" class="overflow-hidden">
-                                    <img src="assets/img/product-3/1.jpg"
-                                        class="w-full group-hover:scale-110 transition-all duration-700" alt="">
-                                </a>
-                                <div
-                                    class="absolute w-full left-0 bottom-0 px-[15px] pb-[15px] lg:px-[30px] bg-transparent bg-gradient-color-5">
-                                    <div class="text-sm text-white flex justify-between items-center">
-                                        <a href="locations.html" class="hover:text-secondary-color"><i
-                                                class="flaticon-pin"></i> Belmont Gardens,
-                                            Chicago</a>
-                                        <ul class="flex gap-[10px]">
-                                            <li>
-                                                <a class="w-[30px] lg:w-[42px] h-[30px] flex justify-center items-center bg-transparent lg:bg-white lg:bg-opacity-35 hover:text-secondary-color"
-                                                    href="product-details.html"><i
-                                                        class="fas fa-camera pr-1 leading-1"></i>
-                                                    4</a>
-                                            </li>
-                                            <li>
-                                                <a class="w-[30px] lg:w-[42px] h-[30px] flex justify-center items-center bg-transparent lg:bg-white lg:bg-opacity-35 hover:text-secondary-color"
-                                                    href="product-details.html"><i
-                                                        class="fas fa-film pr-1 leading-1"></i> 2</a>
-                                            </li>
-                                        </ul>
+                            <div class="relative mb-7 block">
+                                <div class="img_box relative block">
+                                    <div class="overflow-hidden h-64 bg-custom-h relative block transition-all duration-500 ease-in">
+                                        {% if campaign.image %}
+                                        <img src="{{campaign.image.url}}" alt="{{campaign.title}} image by {{campaign.organiser.get_full_name}}"
+                                            class="w-full transition-all duration-500 ease-in group-hover:scale-105 group-hover:opacity-50 h-full object-cover">
+                                        {% else %}
+                                        <img src="{% static 'images/global/image-no.jpg' %}"
+                                            alt="{{campaign.title}} image by {{campaign.organiser.get_full_name}}"
+                                            class="w-full transition-all duration-500 ease-in group-hover:scale-105 group-hover:opacity-50 h-full object-cover">
+                                        {% endif %}
                                     </div>
                                 </div>
-                                <div
-                                    class="text-xs sm:text-[13px] text-white px-[10px] py-1 sm:px-[15px] sm:pt-[3px] sm:pb-0 bg-green uppercase font-semibold absolute top-[15px] right-[18px]">
-                                    <span class="leading-5 sm:leading-[25px] block">for rent</span>
-                                </div>
-                            </div>
-                            <!-- card body -->
-                            <div class="px-5 pt-4 lg:px-[30px] lg:pt-5">
-                                <h5 class="text-lg text-secondary-color font-semibold mb-[5px]">
-                                    <span class="leading-1.8">$34,900</span>
-                                    <label class="text-sm font-normal">/Month</label>
-                                </h5>
-                                <h4 class="text-lg md:text-xl lg:text-[22px] font-semibold text-heading-color mb-[15px]">
-                                    <a href="product-details.html" class="hover:text-secondary-color leading-1.3">New
-                                        Apartment Nice View</a>
-                                </h4>
-                                <p class="text-sm mb-[15px]">
-                                    <span class="leading-1.8">Beautiful Huge 1 Family House In Heart Of
-                                        <br>Westbury. Newly Renovated With New Wood</span>
-                                </p>
-
-                                <ul class="flex flex-wrap gap-[15px] py-4">
-                                    <li class="text-sm pr-4 border-r border-primary-color border-opacity-20">
-                                        <p class="leading-1.8 font-bold">
-                                            3<i class="flaticon-bed ml-1"></i>
+                                <div class="block text-center bg-white p-[26px_30px_20px]">
+                                    <div class="inline-block relative text-center bg-custom-primary p-[7px_19px_8px]">
+                                        <p class="font-bold text-white text-xs leading-3">
+                                            {{campaign.category.label}}
                                         </p>
-                                        <p class="leading-1.8">Bedrooms</p>
-                                    </li>
-                                    <li class="text-sm pr-4 border-r border-primary-color border-opacity-20">
-                                        <p class="leading-1.8 font-bold">
-                                            2<i class="flaticon-clean ml-1"></i>
-                                        </p>
-                                        <p class="leading-1.8">Bedrooms</p>
-                                    </li>
-
-                                    <li class="text-sm">
-                                        <p class="leading-1.8 font-bold">
-                                            3450<i class="flaticon-square-shape-design-interface-tool-symbol ml-1"></i>
-                                        </p>
-                                        <p class="leading-1.8">square Ft</p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- cart footer -->
-                            <div class="p-5 lg:p-[30px] lg:pt-5 border-t border-border-color-1">
-                                <div class="flex flex-wrap-reverse items-center justify-between gap-y-5">
-                                    <div class="flex gap-x-3">
-                                        <a href="team-details.html" class="w-10 h-10"><img
-                                                src="assets/img/blog/author.jpg" alt=""
-                                                class="w-full h-full rounded-full"></a>
-                                        <div>
-                                            <h4 class="text-sm font-semibold text-heading-color mb-0">
-                                                <a class="leading-1.3 hover:text-secondary-color"
-                                                    href="team-details.html">William Seklo</a>
-                                            </h4>
-                                            <span class="text-xs"> Estate Agents </span>
+                                    </div>
+                                    <h3 class="text-custom-h m-0 transition-all duration-500 text-xl font-bold mt-4 mb-2">
+                                        <a href="{{campaign.get_absolute_url}}"
+                                            class="text-custom-h transition-all duration-500 ease-in group-hover:text-custom-primary">{{campaign.title|truncatewords:3}}</a>
+                                    </h3>
+                                    <div class="relative flex justify-center items-center">
+                                        <div class="text-sm text-custom-primary">
+                                            <i class="fa-solid fa-clock font-bold"></i>
+                                        </div>
+                                        <div class="ml-1">
+                                            <p class="text-xs font-normal">{{campaign.get_days}} remaining {% if campaign.status == "Completed" %}<span class="text-sm rounded-sm p-1 bg-green-300 text-black font-normal">Completed</span>{%  endif %}</p>
                                         </div>
                                     </div>
-                                    <ul class="flex gap-x-2">
-                                        <li>
-                                            <button
-                                                class="modal-open w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold"
-                                                data-modal-index="1">
-                                                <i class="flaticon-expand leading-1"></i>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button
-                                                class="modal-open w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold"
-                                                data-modal-index="2">
-                                                <i class="flaticon-heart-1 leading-1"></i>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <a href="product-details.html"
-                                                class="w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold"><i
-                                                    class="flaticon-add leading-1"></i></a>
-                                        </li>
-                                    </ul>
+                                    <div class="relative block mt-4 mb-1">
+                                        <div class="relative bg-[#f2f7f7] py-3 px-2 block w-full">
+                                            <div class="relative flex items-center justify-between space-x-2 w-full">
+                                                <div class="text-sm font-bold text-custom-h leading-4">
+                                                    Raised</div>
+                                                <div class="relative block w-full">
+                                                    <div class="w-full relative h-[3px] bg-white rounded-none">
+                                                        <div data-style="{{campaign.get_percentage_of_donated_fund}}" id=""
+                                                            class=" bg-custom-primary campaign_percentage_w h-[3px] rounded-none relative before:absolute before:content-[''] before:h-3 before:w-3 before:right-0 before:-top-1 before:bg-custom-primary before:rounded-full">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center p-0 w-10 h-5 flex items-center">
+                                                    <span
+                                                        class="text-gray-500 relative leading-3 font-medium float-none inline-block text-sm">{{campaign.get_percentage_of_donated_fund}}</span>
+                                                    <span class="text-sm ml-[-2px] float-none font-medium text-gray-500 leading-3">%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="relative flex items-center justify-between">
+                                        <p class="text-xs text-gray-500 font-semibold">Achieved: <span
+                                                class="font-bold text-custom-h">R{{campaign.current_amount}}</span></p>
+                                        <p class="text-xs text-gray-500 font-semibold">Goal: <span
+                                                class="font-bold text-custom-h">R{{campaign.target}}</span></p>
+                                    </div>
+                                    <!-- <div class="p-5 lg:p-[30px] lg:pt-5 border-t border-border-color-1">
+                                        <div class="flex flex-wrap-reverse items-center justify-between gap-y-5">
+                                            <div class="flex gap-x-3">
+                                                <a href="team-details.html" class="w-10 h-10"><img src="{% if campaign.organiser.profile_image %}{{campaign.organiser.profile_image.url}}{% else %}{% static 'R.png' %}{% endif %}" alt="{{campaign.organiser.get_full_name}}"
+                                                        class="w-full h-full rounded-full"></a>
+                                                <div>
+                                                    <h4 class="text-sm font-semibold text-heading-color mb-0">
+                                                        <a class="leading-1.3 hover:text-secondary-color" href="">{{campaign.organiser.get_full_name}}</a>
+                                                    </h4>
+                                                    <span class="text-xs"> {{campaign.organiser.username}} </span>
+                                                </div>
+                                            </div>
+                                            <ul class="flex gap-x-2">
+                                                <li>
+                                                    <button
+                                                        class="modal-open w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold"
+                                                        data-modal-index="1">
+                                                        <i class="flaticon-expand leading-1"></i>
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button
+                                                        class="modal-open w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold"
+                                                        data-modal-index="2">
+                                                        <i class="flaticon-heart-1 leading-1"></i>
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <a href="product-details.html"
+                                                        class="w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold"><i
+                                                            class="flaticon-add leading-1"></i></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- card 2 -->
-                    <div class="swiper-slide mb-[65px] px-[15px]">
-                        <div class="group border border-border-color-13 shadow-box-shadow-4">
-                            <!-- card thumbs -->
-                            <div class="relative leading-1">
-                                <a href="product-details.html" class="overflow-hidden">
-                                    <img src="assets/img/product-3/2.jpg"
-                                        class="w-full group-hover:scale-110 transition-all duration-700" alt="">
-                                </a>
-                                <div
-                                    class="absolute w-full left-0 bottom-0 px-[15px] pb-[15px] lg:px-[30px] bg-transparent bg-gradient-color-5">
-                                    <div class="text-sm text-white flex justify-between items-center">
-                                        <a href="locations.html" class="hover:text-secondary-color"><i
-                                                class="flaticon-pin"></i> Belmont Gardens,
-                                            Chicago</a>
-                                        <ul class="flex gap-[10px]">
-                                            <li>
-                                                <a class="w-[30px] lg:w-[42px] h-[30px] flex justify-center items-center bg-transparent lg:bg-white lg:bg-opacity-35 hover:text-secondary-color"
-                                                    href="product-details.html"><i
-                                                        class="fas fa-camera pr-1 leading-1"></i>
-                                                    4</a>
-                                            </li>
-                                            <li>
-                                                <a class="w-[30px] lg:w-[42px] h-[30px] flex justify-center items-center bg-transparent lg:bg-white lg:bg-opacity-35 hover:text-secondary-color"
-                                                    href="product-details.html"><i
-                                                        class="fas fa-film pr-1 leading-1"></i> 2</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div
-                                    class="text-xs sm:text-[13px] text-white px-[10px] py-1 sm:px-[15px] sm:pt-[3px] sm:pb-0 bg-secondary-color uppercase font-semibold absolute top-[15px] right-[18px]">
-                                    <span class="leading-5 sm:leading-[25px] block">for rent</span>
-                                </div>
-                            </div>
-                            <!-- card body -->
-                            <div class="px-5 pt-4 lg:px-[30px] lg:pt-5">
-                                <h5 class="text-lg text-secondary-color font-semibold mb-[5px]">
-                                    <span class="leading-1.8">$34,900</span>
-                                    <label class="text-sm font-normal">/Month</label>
-                                </h5>
-                                <h4 class="text-lg md:text-xl lg:text-[22px] font-semibold text-heading-color mb-[15px]">
-                                    <a href="product-details.html" class="hover:text-secondary-color leading-1.3">Modern
-                                        Apartments</a>
-                                </h4>
-                                <p class="text-sm mb-[15px]">
-                                    <span class="leading-1.8">Beautiful Huge 1 Family House In Heart Of
-                                        <br>Westbury. Newly Renovated With New Wood</span>
-                                </p>
-
-                                <ul class="flex flex-wrap gap-[15px] py-4">
-                                    <li class="text-sm pr-4 border-r border-primary-color border-opacity-20">
-                                        <p class="leading-1.8 font-bold">
-                                            3<i class="flaticon-bed ml-1"></i>
-                                        </p>
-                                        <p class="leading-1.8">Bedrooms</p>
-                                    </li>
-                                    <li class="text-sm pr-4 border-r border-primary-color border-opacity-20">
-                                        <p class="leading-1.8 font-bold">
-                                            2<i class="flaticon-clean ml-1"></i>
-                                        </p>
-                                        <p class="leading-1.8">Bedrooms</p>
-                                    </li>
-
-                                    <li class="text-sm">
-                                        <p class="leading-1.8 font-bold">
-                                            3450<i class="flaticon-square-shape-design-interface-tool-symbol ml-1"></i>
-                                        </p>
-                                        <p class="leading-1.8">square Ft</p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- cart footer -->
-                            <div class="p-5 lg:p-[30px] lg:pt-5 border-t border-border-color-1">
-                                <div class="flex flex-wrap-reverse items-center justify-between gap-y-5">
-                                    <div class="flex gap-x-3">
-                                        <a href="team-details.html" class="w-10 h-10"><img
-                                                src="assets/img/blog/author.jpg" alt=""
-                                                class="w-full h-full rounded-full"></a>
-                                        <div>
-                                            <h4 class="text-sm font-semibold text-heading-color mb-0">
-                                                <a class="leading-1.3 hover:text-secondary-color"
-                                                    href="team-details.html">William Seklo</a>
-                                            </h4>
-                                            <span class="text-xs"> Estate Agents </span>
-                                        </div>
-                                    </div>
-                                    <ul class="flex gap-x-2">
-                                        <li>
-                                            <button
-                                                class="modal-open w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold"
-                                                data-modal-index="1">
-                                                <i class="flaticon-expand leading-1"></i>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button
-                                                class="modal-open w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold"
-                                                data-modal-index="2">
-                                                <i class="flaticon-heart-1 leading-1"></i>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <a href="product-details.html"
-                                                class="w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold"><i
-                                                    class="flaticon-add leading-1"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- card 3 -->
-                    <div class="swiper-slide mb-[65px] px-[15px]">
-                        <div class="group border border-border-color-13 shadow-box-shadow-4">
-                            <!-- card thumbs -->
-                            <div class="relative leading-1">
-                                <a href="product-details.html" class="overflow-hidden">
-                                    <img src="assets/img/product-3/3.jpg"
-                                        class="w-full group-hover:scale-110 transition-all duration-700" alt="">
-                                </a>
-                                <div
-                                    class="absolute w-full left-0 bottom-0 px-[15px] pb-[15px] lg:px-[30px] bg-transparent bg-gradient-color-5">
-                                    <div class="text-sm text-white flex justify-between items-center">
-                                        <a href="locations.html" class="hover:text-secondary-color"><i
-                                                class="flaticon-pin"></i> Belmont Gardens,
-                                            Chicago</a>
-                                        <ul class="flex gap-[10px]">
-                                            <li>
-                                                <a class="w-[30px] lg:w-[42px] h-[30px] flex justify-center items-center bg-transparent lg:bg-white lg:bg-opacity-35 hover:text-secondary-color"
-                                                    href="product-details.html"><i
-                                                        class="fas fa-camera pr-1 leading-1"></i>
-                                                    4</a>
-                                            </li>
-                                            <li>
-                                                <a class="w-[30px] lg:w-[42px] h-[30px] flex justify-center items-center bg-transparent lg:bg-white lg:bg-opacity-35 hover:text-secondary-color"
-                                                    href="product-details.html"><i
-                                                        class="fas fa-film pr-1 leading-1"></i> 2</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div
-                                    class="text-xs sm:text-[13px] text-white px-[10px] py-1 sm:px-[15px] sm:pt-[3px] sm:pb-0 bg-green uppercase font-semibold absolute top-[15px] right-[18px]">
-                                    <span class="leading-5 sm:leading-[25px] block">for rent</span>
-                                </div>
-                            </div>
-                            <!-- card body -->
-                            <div class="px-5 pt-4 lg:px-[30px] lg:pt-5">
-                                <h5 class="text-lg text-secondary-color font-semibold mb-[5px]">
-                                    <span class="leading-1.8">$34,900</span>
-                                    <label class="text-sm font-normal">/Month</label>
-                                </h5>
-                                <h4 class="text-lg md:text-xl lg:text-[22px] font-semibold text-heading-color mb-[15px]">
-                                    <a href="product-details.html"
-                                        class="hover:text-secondary-color leading-1.3">Comfortable Apartment</a>
-                                </h4>
-                                <p class="text-sm mb-[15px]">
-                                    <span class="leading-1.8">Beautiful Huge 1 Family House In Heart Of
-                                        <br>Westbury. Newly Renovated With New Wood</span>
-                                </p>
-
-                                <ul class="flex flex-wrap gap-[15px] py-4">
-                                    <li class="text-sm pr-4 border-r border-primary-color border-opacity-20">
-                                        <p class="leading-1.8 font-bold">
-                                            3<i class="flaticon-bed ml-1"></i>
-                                        </p>
-                                        <p class="leading-1.8">Bedrooms</p>
-                                    </li>
-                                    <li class="text-sm pr-4 border-r border-primary-color border-opacity-20">
-                                        <p class="leading-1.8 font-bold">
-                                            2<i class="flaticon-clean ml-1"></i>
-                                        </p>
-                                        <p class="leading-1.8">Bedrooms</p>
-                                    </li>
-
-                                    <li class="text-sm">
-                                        <p class="leading-1.8 font-bold">
-                                            3450<i class="flaticon-square-shape-design-interface-tool-symbol ml-1"></i>
-                                        </p>
-                                        <p class="leading-1.8">square Ft</p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- cart footer -->
-                            <div class="p-5 lg:p-[30px] lg:pt-5 border-t border-border-color-1">
-                                <div class="flex flex-wrap-reverse items-center justify-between gap-y-5">
-                                    <div class="flex gap-x-3">
-                                        <a href="team-details.html" class="w-10 h-10"><img
-                                                src="assets/img/blog/author.jpg" alt=""
-                                                class="w-full h-full rounded-full"></a>
-                                        <div>
-                                            <h4 class="text-sm font-semibold text-heading-color mb-0">
-                                                <a class="leading-1.3 hover:text-secondary-color"
-                                                    href="team-details.html">William Seklo</a>
-                                            </h4>
-                                            <span class="text-xs"> Estate Agents </span>
-                                        </div>
-                                    </div>
-                                    <ul class="flex gap-x-2">
-                                        <li>
-                                            <button
-                                                class="modal-open w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold"
-                                                data-modal-index="1">
-                                                <i class="flaticon-expand leading-1"></i>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button
-                                                class="modal-open w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold"
-                                                data-modal-index="2">
-                                                <i class="flaticon-heart-1 leading-1"></i>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <a href="product-details.html"
-                                                class="w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold"><i
-                                                    class="flaticon-add leading-1"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- card 4 -->
-                    <div class="swiper-slide mb-[65px] px-[15px]">
-                        <div class="group border border-border-color-13 shadow-box-shadow-4">
-                            <!-- card thumbs -->
-                            <div class="relative leading-1">
-                                <a href="product-details.html" class="overflow-hidden">
-                                    <img src="assets/img/product-3/4.jpg"
-                                        class="w-full group-hover:scale-110 transition-all duration-700" alt="">
-                                </a>
-                                <div
-                                    class="absolute w-full left-0 bottom-0 px-[15px] pb-[15px] lg:px-[30px] bg-transparent bg-gradient-color-5">
-                                    <div class="text-sm text-white flex justify-between items-center">
-                                        <a href="locations.html" class="hover:text-secondary-color"><i
-                                                class="flaticon-pin"></i> Belmont Gardens,
-                                            Chicago</a>
-                                        <ul class="flex gap-[10px]">
-                                            <li>
-                                                <a class="w-[30px] lg:w-[42px] h-[30px] flex justify-center items-center bg-transparent lg:bg-white lg:bg-opacity-35 hover:text-secondary-color"
-                                                    href="product-details.html"><i
-                                                        class="fas fa-camera pr-1 leading-1"></i>
-                                                    4</a>
-                                            </li>
-                                            <li>
-                                                <a class="w-[30px] lg:w-[42px] h-[30px] flex justify-center items-center bg-transparent lg:bg-white lg:bg-opacity-35 hover:text-secondary-color"
-                                                    href="product-details.html"><i
-                                                        class="fas fa-film pr-1 leading-1"></i> 2</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div
-                                    class="text-xs sm:text-[13px] text-white px-[10px] py-1 sm:px-[15px] sm:pt-[3px] sm:pb-0 bg-green uppercase font-semibold absolute top-[15px] right-[18px]">
-                                    <span class="leading-5 sm:leading-[25px] block">for rent</span>
-                                </div>
-                            </div>
-                            <!-- card body -->
-                            <div class="px-5 pt-4 lg:px-[30px] lg:pt-5">
-                                <h5 class="text-lg text-secondary-color font-semibold mb-[5px]">
-                                    <span class="leading-1.8">$34,900</span>
-                                    <label class="text-sm font-normal">/Month</label>
-                                </h5>
-                                <h4 class="text-lg md:text-xl lg:text-[22px] font-semibold text-heading-color mb-[15px]">
-                                    <a href="product-details.html" class="hover:text-secondary-color leading-1.3">Luxury
-                                        villa in Rego Park</a>
-                                </h4>
-                                <p class="text-sm mb-[15px]">
-                                    <span class="leading-1.8">Beautiful Huge 1 Family House In Heart Of
-                                        <br>Westbury. Newly Renovated With New Wood</span>
-                                </p>
-
-                                <ul class="flex flex-wrap gap-[15px] py-4">
-                                    <li class="text-sm pr-4 border-r border-primary-color border-opacity-20">
-                                        <p class="leading-1.8 font-bold">
-                                            3<i class="flaticon-bed ml-1"></i>
-                                        </p>
-                                        <p class="leading-1.8">Bedrooms</p>
-                                    </li>
-                                    <li class="text-sm pr-4 border-r border-primary-color border-opacity-20">
-                                        <p class="leading-1.8 font-bold">
-                                            2<i class="flaticon-clean ml-1"></i>
-                                        </p>
-                                        <p class="leading-1.8">Bedrooms</p>
-                                    </li>
-
-                                    <li class="text-sm">
-                                        <p class="leading-1.8 font-bold">
-                                            3450<i class="flaticon-square-shape-design-interface-tool-symbol ml-1"></i>
-                                        </p>
-                                        <p class="leading-1.8">square Ft</p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- cart footer -->
-                            <div class="p-5 lg:p-[30px] lg:pt-5 border-t border-border-color-1">
-                                <div class="flex flex-wrap-reverse items-center justify-between gap-y-5">
-                                    <div class="flex gap-x-3">
-                                        <a href="team-details.html" class="w-10 h-10"><img
-                                                src="assets/img/blog/author.jpg" alt=""
-                                                class="w-full h-full rounded-full"></a>
-                                        <div>
-                                            <h4 class="text-sm font-semibold text-heading-color mb-0">
-                                                <a class="leading-1.3 hover:text-secondary-color"
-                                                    href="team-details.html">William Seklo</a>
-                                            </h4>
-                                            <span class="text-xs"> Estate Agents </span>
-                                        </div>
-                                    </div>
-                                    <ul class="flex gap-x-2">
-                                        <li>
-                                            <button
-                                                class="modal-open w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold"
-                                                data-modal-index="1">
-                                                <i class="flaticon-expand leading-1"></i>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button
-                                                class="modal-open w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold"
-                                                data-modal-index="2">
-                                                <i class="flaticon-heart-1 leading-1"></i>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <a href="product-details.html"
-                                                class="w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold"><i
-                                                    class="flaticon-add leading-1"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- card 5 -->
-                    <div class="swiper-slide mb-[65px] px-[15px]">
-                        <div class="group border border-border-color-13 shadow-box-shadow-4">
-                            <!-- card thumbs -->
-                            <div class="relative leading-1">
-                                <a href="product-details.html" class="overflow-hidden">
-                                    <img src="assets/img/product-3/5.jpg"
-                                        class="w-full group-hover:scale-110 transition-all duration-700" alt="">
-                                </a>
-                                <div
-                                    class="absolute w-full left-0 bottom-0 px-[15px] pb-[15px] lg:px-[30px] bg-transparent bg-gradient-color-5">
-                                    <div class="text-sm text-white flex justify-between items-center">
-                                        <a href="locations.html" class="hover:text-secondary-color"><i
-                                                class="flaticon-pin"></i> Belmont Gardens,
-                                            Chicago</a>
-                                        <ul class="flex gap-[10px]">
-                                            <li>
-                                                <a class="w-[30px] lg:w-[42px] h-[30px] flex justify-center items-center bg-transparent lg:bg-white lg:bg-opacity-35 hover:text-secondary-color"
-                                                    href="product-details.html"><i
-                                                        class="fas fa-camera pr-1 leading-1"></i>
-                                                    4</a>
-                                            </li>
-                                            <li>
-                                                <a class="w-[30px] lg:w-[42px] h-[30px] flex justify-center items-center bg-transparent lg:bg-white lg:bg-opacity-35 hover:text-secondary-color"
-                                                    href="product-details.html"><i
-                                                        class="fas fa-film pr-1 leading-1"></i> 2</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div
-                                    class="text-xs sm:text-[13px] text-white px-[10px] py-1 sm:px-[15px] sm:pt-[3px] sm:pb-0 bg-green uppercase font-semibold absolute top-[15px] right-[18px]">
-                                    <span class="leading-5 sm:leading-[25px] block">for rent</span>
-                                </div>
-                            </div>
-                            <!-- card body -->
-                            <div class="px-5 pt-4 lg:px-[30px] lg:pt-5">
-                                <h5 class="text-lg text-secondary-color font-semibold mb-[5px]">
-                                    <span class="leading-1.8">$34,900</span>
-                                    <label class="text-sm font-normal">/Month</label>
-                                </h5>
-                                <h4 class="text-lg md:text-xl lg:text-[22px] font-semibold text-heading-color mb-[15px]">
-                                    <a href="product-details.html"
-                                        class="hover:text-secondary-color leading-1.3">Beautiful Flat in Manhattan</a>
-                                </h4>
-                                <p class="text-sm mb-[15px]">
-                                    <span class="leading-1.8">Beautiful Huge 1 Family House In Heart Of
-                                        <br>Westbury. Newly Renovated With New Wood</span>
-                                </p>
-
-                                <ul class="flex flex-wrap gap-[15px] py-4">
-                                    <li class="text-sm pr-4 border-r border-primary-color border-opacity-20">
-                                        <p class="leading-1.8 font-bold">
-                                            3<i class="flaticon-bed ml-1"></i>
-                                        </p>
-                                        <p class="leading-1.8">Bedrooms</p>
-                                    </li>
-                                    <li class="text-sm pr-4 border-r border-primary-color border-opacity-20">
-                                        <p class="leading-1.8 font-bold">
-                                            2<i class="flaticon-clean ml-1"></i>
-                                        </p>
-                                        <p class="leading-1.8">Bedrooms</p>
-                                    </li>
-
-                                    <li class="text-sm">
-                                        <p class="leading-1.8 font-bold">
-                                            3450<i class="flaticon-square-shape-design-interface-tool-symbol ml-1"></i>
-                                        </p>
-                                        <p class="leading-1.8">square Ft</p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- cart footer -->
-                            <div class="p-5 lg:p-[30px] lg:pt-5 border-t border-border-color-1">
-                                <div class="flex flex-wrap-reverse items-center justify-between gap-y-5">
-                                    <div class="flex gap-x-3">
-                                        <a href="team-details.html" class="w-10 h-10"><img
-                                                src="assets/img/blog/author.jpg" alt=""
-                                                class="w-full h-full rounded-full"></a>
-                                        <div>
-                                            <h4 class="text-sm font-semibold text-heading-color mb-0">
-                                                <a class="leading-1.3 hover:text-secondary-color"
-                                                    href="team-details.html">William Seklo</a>
-                                            </h4>
-                                            <span class="text-xs"> Estate Agents </span>
-                                        </div>
-                                    </div>
-                                    <ul class="flex gap-x-2">
-                                        <li>
-                                            <button
-                                                class="modal-open w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold"
-                                                data-modal-index="1">
-                                                <i class="flaticon-expand leading-1"></i>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button
-                                                class="modal-open w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold"
-                                                data-modal-index="2">
-                                                <i class="flaticon-heart-1 leading-1"></i>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <a href="product-details.html"
-                                                class="w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold"><i
-                                                    class="flaticon-add leading-1"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
 
                 <!-- pagination -->
@@ -958,25 +771,30 @@
         <div class="text-center mb-[50px]">
             <p
                 class="text-sm md:text-[15px] lg:text-base text-secondary-color bg-[#005a4a69] bg-opacity-10 capitalize mb-[15px] py-0.5 px-5 rounded-full inline-block font-semibold">
-                <span class="leading-1.3">Our Aminities</span>
+                <span class="leading-1.3">Our Categories</span>
             </p>
             <h2 class="text-2xl sm:text-3xl md:text-[26px] lg:text-3xl xl:text-[44px] text-heading-color font-bold">
-                <span class="leading-1.3">Building Aminities </span>
+                <span class="leading-1.3">Building Categories </span>
             </h2>
         </div>
 
         <div class="flex flex-wrap items-center justify-center -mx-[15px] px-[7px] md:px-0">
             <!-- card 1 -->
+             {% for category in blog_categories %}
             <div class="basis-1/2 md:basis-1/3 lg:basis-1/4 px-2 md:px-[15px] mb-[50px]">
                 <a href="shop.html"
                     class="pt-10 pb-[35px] px-[15px] md:px-5 xl:px-[30px] bg-white hover:bg-secondary-color transition-all duration-300 shadow-box-shadow-4 rounded-[10px] flex flex-col items-center group relative">
                     <span
                         class="block w-[60px] md:w-20 xl:w-[100px] h-[60px] md:h-20 xl:h-[100px] text-[25px] md:text-3xl xl:text-[45px] bg-section-bg-5 rounded-full transition-all duration-300 group-hover:bg-white text-secondary-color mb-5 text-center leading-1">
-                        <i class="flaticon-car leading-[65px] md:leading-[90px] xl:leading-[110px]"></i>
+                        {% if category.thumbnail %}
+                        <img src="{{category.thumbnail.url}}" alt="Medical Category" class="w-full  h-full object-cover">
+                        {% else %}
+                        <img src="{% static 'imgs/categories/Medical.png' %}" alt="Medical Category" class="w-full  h-full object-cover">
+                        {% endif %}
                     </span>
                     <span
                         class="block text-[13px] md:text-lg xl:text-[22px] transition-all duration-300 text-heading-color group-hover:text-white mb-[10px] font-poppins font-semibold leading-1.8 capitalize">
-                        Parking Space
+                        {{category.label}}
                     </span>
 
                     <span
@@ -985,139 +803,7 @@
                     </span>
                 </a>
             </div>
-            <!-- card 2 -->
-            <div class="basis-1/2 md:basis-1/3 lg:basis-1/4 px-2 md:px-[15px] mb-[50px]">
-                <a href="shop.html"
-                    class="pt-10 pb-[35px] px-[15px] md:px-5 xl:px-[30px] bg-white hover:bg-secondary-color transition-all duration-300 shadow-box-shadow-4 rounded-[10px] flex flex-col items-center group relative">
-                    <span
-                        class="block w-[60px] md:w-20 xl:w-[100px] h-[60px] md:h-20 xl:h-[100px] text-[25px] md:text-3xl xl:text-[45px] bg-section-bg-5 rounded-full transition-all duration-300 group-hover:bg-white text-secondary-color mb-5 text-center leading-1">
-                        <i class="flaticon-swimming leading-[65px] md:leading-[90px] xl:leading-[110px]"></i>
-                    </span>
-                    <span
-                        class="block text-[13px] md:text-lg xl:text-[22px] transition-all duration-300 text-heading-color group-hover:text-white mb-[10px] font-poppins font-semibold leading-1.8 capitalize">
-                        Swimming Pool
-                    </span>
-
-                    <span
-                        class="text-lg w-[45px] h-[45px] border border-border-color-8 shadow-box-shadow-2 rounded-full bg-white group-hover:text-secondary-color transition-all duration-300 text-center block absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
-                        <i class="flaticon-right-arrow leading-12"></i>
-                    </span>
-                </a>
-            </div>
-            <!-- card 3 -->
-            <div class="basis-1/2 md:basis-1/3 lg:basis-1/4 px-2 md:px-[15px] mb-[50px]">
-                <a href="shop.html"
-                    class="pt-10 pb-[35px] px-[15px] md:px-5 xl:px-[30px] bg-white hover:bg-secondary-color transition-all duration-300 shadow-box-shadow-4 rounded-[10px] flex flex-col items-center group relative">
-                    <span
-                        class="block w-[60px] md:w-20 xl:w-[100px] h-[60px] md:h-20 xl:h-[100px] text-[25px] md:text-3xl xl:text-[45px] bg-section-bg-5 rounded-full transition-all duration-300 group-hover:bg-white text-secondary-color mb-5 text-center leading-1">
-                        <i class="flaticon-secure-shield leading-[65px] md:leading-[90px] xl:leading-[110px]"></i>
-                    </span>
-                    <span
-                        class="block text-[13px] md:text-lg xl:text-[22px] transition-all duration-300 text-heading-color group-hover:text-white mb-[10px] font-poppins font-semibold leading-1.8 capitalize">
-                        Private Security
-                    </span>
-
-                    <span
-                        class="text-lg w-[45px] h-[45px] border border-border-color-8 shadow-box-shadow-2 rounded-full bg-white group-hover:text-secondary-color transition-all duration-300 text-center block absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
-                        <i class="flaticon-right-arrow leading-12"></i>
-                    </span>
-                </a>
-            </div>
-            <!-- card 4 -->
-            <div class="basis-1/2 md:basis-1/3 lg:basis-1/4 px-2 md:px-[15px] mb-[50px]">
-                <a href="shop.html"
-                    class="pt-10 pb-[35px] px-[15px] md:px-5 xl:px-[30px] bg-white hover:bg-secondary-color transition-all duration-300 shadow-box-shadow-4 rounded-[10px] flex flex-col items-center group relative">
-                    <span
-                        class="block w-[60px] md:w-20 xl:w-[100px] h-[60px] md:h-20 xl:h-[100px] text-[25px] md:text-3xl xl:text-[45px] bg-section-bg-5 rounded-full transition-all duration-300 group-hover:bg-white text-secondary-color mb-5 text-center leading-1">
-                        <i class="flaticon-stethoscope leading-[65px] md:leading-[90px] xl:leading-[110px]"></i>
-                    </span>
-                    <span
-                        class="block text-[13px] md:text-lg xl:text-[22px] transition-all duration-300 text-heading-color group-hover:text-white mb-[10px] font-poppins font-semibold leading-1.8 capitalize">
-                        Medical Center
-                    </span>
-
-                    <span
-                        class="text-lg w-[45px] h-[45px] border border-border-color-8 shadow-box-shadow-2 rounded-full bg-white group-hover:text-secondary-color transition-all duration-300 text-center block absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
-                        <i class="flaticon-right-arrow leading-12"></i>
-                    </span>
-                </a>
-            </div>
-            <!-- card 5 -->
-            <div class="basis-1/2 md:basis-1/3 lg:basis-1/4 px-2 md:px-[15px] mb-[50px]">
-                <a href="shop.html"
-                    class="pt-10 pb-[35px] px-[15px] md:px-5 xl:px-[30px] bg-white hover:bg-secondary-color transition-all duration-300 shadow-box-shadow-4 rounded-[10px] flex flex-col items-center group relative">
-                    <span
-                        class="block w-[60px] md:w-20 xl:w-[100px] h-[60px] md:h-20 xl:h-[100px] text-[25px] md:text-3xl xl:text-[45px] bg-section-bg-5 rounded-full transition-all duration-300 group-hover:bg-white text-secondary-color mb-5 text-center leading-1">
-                        <i class="flaticon-book leading-[65px] md:leading-[90px] xl:leading-[110px]"></i>
-                    </span>
-                    <span
-                        class="block text-[13px] md:text-lg xl:text-[22px] transition-all duration-300 text-heading-color group-hover:text-white mb-[10px] font-poppins font-semibold leading-1.8 capitalize">
-                        Library Area
-                    </span>
-
-                    <span
-                        class="text-lg w-[45px] h-[45px] border border-border-color-8 shadow-box-shadow-2 rounded-full bg-white group-hover:text-secondary-color transition-all duration-300 text-center block absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
-                        <i class="flaticon-right-arrow leading-12"></i>
-                    </span>
-                </a>
-            </div>
-            <!-- card 6 -->
-            <div class="basis-1/2 md:basis-1/3 lg:basis-1/4 px-2 md:px-[15px] mb-[50px]">
-                <a href="shop.html"
-                    class="pt-10 pb-[35px] px-[15px] md:px-5 xl:px-[30px] bg-white hover:bg-secondary-color transition-all duration-300 shadow-box-shadow-4 rounded-[10px] flex flex-col items-center group relative">
-                    <span
-                        class="block w-[60px] md:w-20 xl:w-[100px] h-[60px] md:h-20 xl:h-[100px] text-[25px] md:text-3xl xl:text-[45px] bg-section-bg-5 rounded-full transition-all duration-300 group-hover:bg-white text-secondary-color mb-5 text-center leading-1">
-                        <i class="flaticon-bed-1 leading-[65px] md:leading-[90px] xl:leading-[110px]"></i>
-                    </span>
-                    <span
-                        class="block text-[13px] md:text-lg xl:text-[22px] transition-all duration-300 text-heading-color group-hover:text-white mb-[10px] font-poppins font-semibold leading-1.8 capitalize">
-                        King Size Beds
-                    </span>
-
-                    <span
-                        class="text-lg w-[45px] h-[45px] border border-border-color-8 shadow-box-shadow-2 rounded-full bg-white group-hover:text-secondary-color transition-all duration-300 text-center block absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
-                        <i class="flaticon-right-arrow leading-12"></i>
-                    </span>
-                </a>
-            </div>
-            <!-- card 7 -->
-            <div class="basis-1/2 md:basis-1/3 lg:basis-1/4 px-2 md:px-[15px] mb-[50px]">
-                <a href="shop.html"
-                    class="pt-10 pb-[35px] px-[15px] md:px-5 xl:px-[30px] bg-white hover:bg-secondary-color transition-all duration-300 shadow-box-shadow-4 rounded-[10px] flex flex-col items-center group relative">
-                    <span
-                        class="block w-[60px] md:w-20 xl:w-[100px] h-[60px] md:h-20 xl:h-[100px] text-[25px] md:text-3xl xl:text-[45px] bg-section-bg-5 rounded-full transition-all duration-300 group-hover:bg-white text-secondary-color mb-5 text-center leading-1">
-                        <i class="flaticon-home-2 leading-[65px] md:leading-[90px] xl:leading-[110px]"></i>
-                    </span>
-                    <span
-                        class="block text-[13px] md:text-lg xl:text-[22px] transition-all duration-300 text-heading-color group-hover:text-white mb-[10px] font-poppins font-semibold leading-1.8 capitalize">
-                        Smart Homes
-                    </span>
-
-                    <span
-                        class="text-lg w-[45px] h-[45px] border border-border-color-8 shadow-box-shadow-2 rounded-full bg-white group-hover:text-secondary-color transition-all duration-300 text-center block absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
-                        <i class="flaticon-right-arrow leading-12"></i>
-                    </span>
-                </a>
-            </div>
-            <!-- card 8 -->
-            <div class="basis-1/2 md:basis-1/3 lg:basis-1/4 px-2 md:px-[15px] mb-[50px]">
-                <a href="shop.html"
-                    class="pt-10 pb-[35px] px-[15px] md:px-5 xl:px-[30px] bg-white hover:bg-secondary-color transition-all duration-300 shadow-box-shadow-4 rounded-[10px] flex flex-col items-center group relative">
-                    <span
-                        class="block w-[60px] md:w-20 xl:w-[100px] h-[60px] md:h-20 xl:h-[100px] text-[25px] md:text-3xl xl:text-[45px] bg-section-bg-5 rounded-full transition-all duration-300 group-hover:bg-white text-secondary-color mb-5 text-center leading-1">
-                        <i class="flaticon-slider leading-[65px] md:leading-[90px] xl:leading-[110px]"></i>
-                    </span>
-                    <span
-                        class="block text-[13px] md:text-lg xl:text-[22px] transition-all duration-300 text-heading-color group-hover:text-white mb-[10px] font-poppins font-semibold leading-1.8 capitalize">
-                        flaticon-slider
-                    </span>
-
-                    <span
-                        class="text-lg w-[45px] h-[45px] border border-border-color-8 shadow-box-shadow-2 rounded-full bg-white group-hover:text-secondary-color transition-all duration-300 text-center block absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
-                        <i class="flaticon-right-arrow leading-12"></i>
-                    </span>
-                </a>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -1143,46 +829,44 @@
                 <div class="swiper news-slider static">
                     <div class="swiper-wrapper">
                         <!-- card 1 -->
+                        {% for post in posts %}
                         <div class="swiper-slide mb-[65px] xl:mb-[50px] px-[15px] cursor-default">
                             <div class="group">
                                 <!-- card thumbs -->
                                 <div class="relative leading-1">
-                                    <a href="blog-details.html" class="overflow-hidden">
-                                        <img src="assets/img/blog/1.jpg"
-                                            class="w-full group-hover:scale-110 transition-all duration-700" alt="">
+                                    <a href="{{post.get_absolute_url}}" class="overflow-hidden w-full h-52">
+                                        <img src="{% if post.image %}{{post.image.url}}{% else %}{% static 'imgs/no-image.png'  %}{% endif %}"
+                                            class="w-full group-hover:scale-110 transition-all duration-700 object-fit" alt="">
                                     </a>
                                 </div>
                                 <!-- card body -->
                                 <div class="p-[30px] shadow-box-shadow-4">
                                     <ul class="mb-[15px] flex gap-x-[25px] items-center">
                                         <li class="text-xs md:text-sm font-semibold">
-                                            <a href="#"
-                                                class="leading-1.8 hover:text-secondary-color flex gap-[5px] items-center"><i
+                                            <a href="#" class="leading-1.8 hover:text-secondary-color flex gap-[5px] items-center"><i
                                                     class="far fa-user text-secondary-color"></i>
                                                 by: Admin</a>
                                         </li>
                                         <li class="text-xs md:text-sm font-semibold">
-                                            <a href="#"
-                                                class="leading-1.8 hover:text-secondary-color flex gap-[5px] items-center"><i
+                                            <a href="#" class="leading-1.8 hover:text-secondary-color flex gap-[5px] items-center"><i
                                                     class="fas fa-tags text-secondary-color"></i>
-                                                Room</a>
+                                                {{post.category.label}}</a>
                                         </li>
                                     </ul>
                                     <h4 class="text-lg md:text-xl lg:text-[22px] font-semibold text-heading-color">
-                                        <a href="blog-details.html" class="hover:text-secondary-color leading-1.3">10
-                                            Brilliant Ways To Decorate Your Home</a>
+                                        <a href="{{post.get_absolute_url}}" class="hover:text-secondary-color leading-1.3">{{post.title}}</a>
                                     </h4>
                                     <div class="pt-5 mt-5 lg:pt-5 border-t border-border-color-1">
                                         <ul class="flex justify-between items-center">
                                             <li class="text-xs md:text-sm font-semibold">
                                                 <p class="leading-1.8 flex gap-[5px] items-center">
                                                     <i class="far fa-calendar-alt text-secondary-color"></i>
-                                                    June 24, 2024
+                                                    {{post.created|date:"M d, Y"}}
+                        
                                                 </p>
                                             </li>
                                             <li class="text-xs md:text-sm font-semibold">
-                                                <a href="blog-details.html"
-                                                    class="leading-1.8 text-secondary-color uppercase">
+                                                <a href="{{post.get_absolute_url}}" class="leading-1.8 text-secondary-color uppercase">
                                                     Read more</a>
                                             </li>
                                         </ul>
@@ -1190,201 +874,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- card 2 -->
-                        <div class="swiper-slide mb-[65px] xl:mb-[50px] px-[15px] cursor-default">
-                            <div class="group">
-                                <!-- card thumbs -->
-                                <div class="relative leading-1">
-                                    <a href="blog-details.html" class="overflow-hidden">
-                                        <img src="assets/img/blog/2.jpg"
-                                            class="w-full group-hover:scale-110 transition-all duration-700" alt="">
-                                    </a>
-                                </div>
-                                <!-- card body -->
-                                <div class="p-[30px] shadow-box-shadow-4">
-                                    <ul class="mb-[15px] flex gap-x-[25px] items-center">
-                                        <li class="text-xs md:text-sm font-semibold">
-                                            <a href="#"
-                                                class="leading-1.8 hover:text-secondary-color flex gap-[5px] items-center"><i
-                                                    class="far fa-user text-secondary-color"></i>
-                                                by: Admin</a>
-                                        </li>
-                                        <li class="text-xs md:text-sm font-semibold">
-                                            <a href="#"
-                                                class="leading-1.8 hover:text-secondary-color flex gap-[5px] items-center"><i
-                                                    class="fas fa-tags text-secondary-color"></i>
-                                                Interior</a>
-                                        </li>
-                                    </ul>
-                                    <h4 class="text-lg md:text-xl lg:text-[22px] font-semibold text-heading-color">
-                                        <a href="blog-details.html" class="hover:text-secondary-color leading-1.3">The
-                                            Most Inspiring Interior Design Of 2024</a>
-                                    </h4>
-                                    <div class="pt-5 mt-5 lg:pt-5 border-t border-border-color-1">
-                                        <ul class="flex justify-between items-center">
-                                            <li class="text-xs md:text-sm font-semibold">
-                                                <p class="leading-1.8 flex gap-[5px] items-center">
-                                                    <i class="far fa-calendar-alt text-secondary-color"></i>
-                                                    June 21, 2024
-                                                </p>
-                                            </li>
-                                            <li class="text-xs md:text-sm font-semibold">
-                                                <a href="blog-details.html"
-                                                    class="leading-1.8 text-secondary-color uppercase">
-                                                    Read more</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- card 3 -->
-                        <div class="swiper-slide mb-[65px] xl:mb-[50px] px-[15px] cursor-default">
-                            <div class="group">
-                                <!-- card thumbs -->
-                                <div class="relative leading-1">
-                                    <a href="blog-details.html" class="overflow-hidden">
-                                        <img src="assets/img/blog/3.jpg"
-                                            class="w-full group-hover:scale-110 transition-all duration-700" alt="">
-                                    </a>
-                                </div>
-                                <!-- card body -->
-                                <div class="p-[30px] shadow-box-shadow-4">
-                                    <ul class="mb-[15px] flex gap-x-[25px] items-center">
-                                        <li class="text-xs md:text-sm font-semibold">
-                                            <a href="#"
-                                                class="leading-1.8 hover:text-secondary-color flex gap-[5px] items-center"><i
-                                                    class="far fa-user text-secondary-color"></i>
-                                                by: Admin</a>
-                                        </li>
-                                        <li class="text-xs md:text-sm font-semibold">
-                                            <a href="#"
-                                                class="leading-1.8 hover:text-secondary-color flex gap-[5px] items-center"><i
-                                                    class="fas fa-tags text-secondary-color"></i>
-                                                Estate</a>
-                                        </li>
-                                    </ul>
-                                    <h4 class="text-lg md:text-xl lg:text-[22px] font-semibold text-heading-color">
-                                        <a href="blog-details.html"
-                                            class="hover:text-secondary-color leading-1.3">Recent Commercial Real Estate
-                                            Transactions</a>
-                                    </h4>
-                                    <div class="pt-5 mt-5 lg:pt-5 border-t border-border-color-1">
-                                        <ul class="flex justify-between items-center">
-                                            <li class="text-xs md:text-sm font-semibold">
-                                                <p class="leading-1.8 flex gap-[5px] items-center">
-                                                    <i class="far fa-calendar-alt text-secondary-color"></i>
-                                                    June 22, 2024
-                                                </p>
-                                            </li>
-                                            <li class="text-xs md:text-sm font-semibold">
-                                                <a href="blog-details.html"
-                                                    class="leading-1.8 text-secondary-color uppercase">
-                                                    Read more</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- card 4 -->
-                        <div class="swiper-slide mb-[65px] xl:mb-[50px] px-[15px] cursor-default">
-                            <div class="group">
-                                <!-- card thumbs -->
-                                <div class="relative leading-1">
-                                    <a href="blog-details.html" class="overflow-hidden">
-                                        <img src="assets/img/blog/4.jpg"
-                                            class="w-full group-hover:scale-110 transition-all duration-700" alt="">
-                                    </a>
-                                </div>
-                                <!-- card body -->
-                                <div class="p-[30px] shadow-box-shadow-4">
-                                    <ul class="mb-[15px] flex gap-x-[25px] items-center">
-                                        <li class="text-xs md:text-sm font-semibold">
-                                            <a href="#"
-                                                class="leading-1.8 hover:text-secondary-color flex gap-[5px] items-center"><i
-                                                    class="far fa-user text-secondary-color"></i>
-                                                by: Admin</a>
-                                        </li>
-                                        <li class="text-xs md:text-sm font-semibold">
-                                            <a href="#"
-                                                class="leading-1.8 hover:text-secondary-color flex gap-[5px] items-center"><i
-                                                    class="fas fa-tags text-secondary-color"></i>
-                                                Room</a>
-                                        </li>
-                                    </ul>
-                                    <h4 class="text-lg md:text-xl lg:text-[22px] font-semibold text-heading-color">
-                                        <a href="blog-details.html"
-                                            class="hover:text-secondary-color leading-1.3">Renovating a Living Room?
-                                            Experts Share Their
-                                            Secrets</a>
-                                    </h4>
-                                    <div class="pt-5 mt-5 lg:pt-5 border-t border-border-color-1">
-                                        <ul class="flex justify-between items-center">
-                                            <li class="text-xs md:text-sm font-semibold">
-                                                <p class="leading-1.8 flex gap-[5px] items-center">
-                                                    <i class="far fa-calendar-alt text-secondary-color"></i>
-                                                    June 24, 2024
-                                                </p>
-                                            </li>
-                                            <li class="text-xs md:text-sm font-semibold">
-                                                <a href="blog-details.html"
-                                                    class="leading-1.8 text-secondary-color uppercase">
-                                                    Read more</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- card 5 -->
-                        <div class="swiper-slide mb-[65px] xl:mb-[50px] px-[15px] cursor-default">
-                            <div class="group">
-                                <!-- card thumbs -->
-                                <div class="relative leading-1">
-                                    <a href="blog-details.html" class="overflow-hidden">
-                                        <img src="assets/img/blog/5.jpg"
-                                            class="w-full group-hover:scale-110 transition-all duration-700" alt="">
-                                    </a>
-                                </div>
-                                <!-- card body -->
-                                <div class="p-[30px] shadow-box-shadow-4">
-                                    <ul class="mb-[15px] flex gap-x-[25px] items-center">
-                                        <li class="text-xs md:text-sm font-semibold">
-                                            <a href="#"
-                                                class="leading-1.8 hover:text-secondary-color flex gap-[5px] items-center"><i
-                                                    class="far fa-user text-secondary-color"></i>
-                                                by: Admin</a>
-                                        </li>
-                                        <li class="text-xs md:text-sm font-semibold">
-                                            <a href="#"
-                                                class="leading-1.8 hover:text-secondary-color flex gap-[5px] items-center"><i
-                                                    class="fas fa-tags text-secondary-color"></i>
-                                                Trends</a>
-                                        </li>
-                                    </ul>
-                                    <h4 class="text-lg md:text-xl lg:text-[22px] font-semibold text-heading-color">
-                                        <a href="blog-details.html" class="hover:text-secondary-color leading-1.3">7
-                                            home trends that will shape your house in 2024</a>
-                                    </h4>
-                                    <div class="pt-5 mt-5 lg:pt-5 border-t border-border-color-1">
-                                        <ul class="flex justify-between items-center">
-                                            <li class="text-xs md:text-sm font-semibold">
-                                                <p class="leading-1.8 flex gap-[5px] items-center">
-                                                    <i class="far fa-calendar-alt text-secondary-color"></i>
-                                                    June 24, 2024
-                                                </p>
-                                            </li>
-                                            <li class="text-xs md:text-sm font-semibold">
-                                                <a href="blog-details.html"
-                                                    class="leading-1.8 text-secondary-color uppercase">
-                                                    Read more</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
 
                     <!-- pagination -->
@@ -1412,3 +902,27 @@
 </section>
 <!-- End-of Gallery -->
 {% endblock content %}
+{% block js %}
+<script>
+    var campaign_percentage_w = document.getElementsByClassName("campaign_percentage_w");
+    const categoryBtn = document.getElementById("category_button");
+    const categoryMenu = document.getElementById("category_menu");
+    window.onload = () => {
+        for (let index = 0; index < campaign_percentage_w.length; index++) {
+            const element = campaign_percentage_w[index];
+            element.style.width = `${element.getAttribute("data-style")}%`
+        }
+
+    }
+
+    categoryBtn.addEventListener("click", function () {
+        if (categoryMenu.classList.contains("hidden")) {
+            categoryMenu.classList.remove("hidden")
+            categoryMenu.classList.add("block")
+        } else {
+            categoryMenu.classList.remove("block")
+            categoryMenu.classList.add("hidden")
+        }
+    })
+</script>
+{% endblock js %}

@@ -33,6 +33,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/favicon-16x16.png' %}">
     <link rel="manifest" href="{% static 'assets/site.webmanifest' %}">
+    <script defer src="{% static 'assets/js/alpinejs.min.js' %}"></script>
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="{% static 'assets/css/font-icons.css' %}">
@@ -40,8 +41,20 @@
     <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/glightbox.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/jquery.datetimepicker.min.css' %}">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
     <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/custom.css' %}">
+
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    
+        .card-linear-gradient {
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(255, 255, 255, 0) 99%);
+        }
+    </style>
 
 </head>
 <body class="font-body-font">
@@ -59,6 +72,7 @@
     </button>
     <!-- jquery-->
     <script src="{% static 'assets/js/jquery-3.7.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.datetimepicker.full.min.js' %}"></script>
     <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
     <script src="{% static 'assets/js/stickyHeader.js' %}"></script>
     <script src="{% static 'assets/js/accordion.js' %}"></script>

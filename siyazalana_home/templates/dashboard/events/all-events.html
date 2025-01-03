@@ -28,7 +28,7 @@
                     </div>
                     <div class="flex w-full gap-2 shrink-0 md:w-max">
                         <div class="w-full md:w-72">
-                            <form method="get" action="{% url 'bbgi_home:all-events' %}"
+                            <form method="get" action="{% url 'siyazalana_home:all-events' %}"
                                 class="relative h-10 w-full min-w-[200px]">
                                 <div
                                     class="absolute grid w-5 h-5 top-2/4 right-3 -translate-y-2/4 place-items-center text-blue-gray-500">
@@ -99,7 +99,7 @@
                         {% for event in events %}
                         <tr>
                             <td class="p-4 border-b border-blue-gray-50">
-                                <a href="{% url 'bbgi_home:event-details' event_slug=event.slug %}"
+                                <a href="{% url 'siyazalana_home:event-details' event_slug=event.slug %}"
                                     class="flex items-center gap-3">
                                     {% if event.image %}
                                     <img src="{{event.image.url}}" alt="{{event.title}}"

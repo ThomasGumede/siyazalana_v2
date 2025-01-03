@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'events',
     'campaigns',
     'coupons',
+    'payments',
     'fontawesomefree',
     'tailwind',
     'theme',
@@ -56,6 +57,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'siyazalana_home.context_processors.global_context',
             ],
         },
     },
@@ -148,6 +150,18 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'noreply@siyazalana.org'
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = 'noreply@siyazalana.org'
+
+
+TEST_MODE = config('YOCO_TEST_MODE')
+# YOCO
+if DEBUG or TEST_MODE == 'yes':
+    YOCO_WEBHOOK_KEY = config('YOCO_TEST_WEBHOOK_KEY')
+    YOCO_API_KEY = config('YOCO_TEST_API_KEY')
+    ALLOWED_HOSTS=['*']
+
+else:
+    YOCO_WEBHOOK_KEY = config('YOCO_LIVE_WEBHOOK_KEY')
+    YOCO_API_KEY = config('YOCO_LIVE_API_KEY')
 
 if DEBUG:
     ALLOWED_HOSTS = []

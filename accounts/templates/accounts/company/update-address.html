@@ -1,0 +1,307 @@
+{% extends '_company.html' %}
+{% load static %}
+
+{% block title %}Company Address{% endblock title %}
+
+{% block businessblock %}
+
+<div class="w-full pb-20 h-full bg-white">
+    <div class="space-y-4 bg-white py-4 w-full relative">
+        {% include "includes/errors.html" %}
+        <div class="px-4">
+            <form method="post">
+                {% csrf_token %}
+            
+                <div>
+                    <h4
+                        class="text-22px font-semibold leading-[1.3] pl-[10px] border-l-2 border-custom-primary text-custom-h mb-[30px] mt-[50px]">
+                        Company Details Update
+                    </h4>
+                    <div class="form-primary bg-white border border-[#e5eaee] p-[30px]">
+                        <!-- personal info -->
+                        <div>
+                            <h5 class="text-sm md:text-[15px] lg:text-base font-bold leading-[1.3] text-custom-h mb-[15px]">
+                                <span class="leading-[1.3] md:leading-[1.3] lg:leading-[1.3]">
+                                    Company Information</span>
+                            </h5>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-[30px] mb-[30px]">
+                                <!-- 1st name -->
+                                <div class="relative">
+                                    <input type="text" id="id_title" name="title" placeholder="Company Title"
+                                        value="{% if form.title.value %}{{form.title.value}}{% endif %}"
+                                        class="text-custom-text pl-5 pr-[50px] focus:outline-none focus:ring-0 outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">
+                                    <span class="absolute top-1/2 -translate-y-1/2 right-4">
+                                        <i class="fa-solid fa-user text-sm lg:text-base text-custom-primary font-bold"></i>
+                                    </span>
+                                </div>
+                                <!-- last name -->
+                                <div class="relative">
+                                    <input type="text" id="id_slogan" name="slogan" placeholder="Company Slogan"
+                                        value="{% if form.slogan.value %}{{form.slogan.value}}{% endif %}"
+                                        class="text-custom-text pl-5 pr-[50px] focus:outline-none focus:ring-0 outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">
+                                    <span class="absolute top-1/2 -translate-y-1/2 right-4">
+                                        <i class="fa-solid fa-user text-sm lg:text-base text-custom-primary font-bold"></i>
+                                    </span>
+                                </div>
+                                <!-- email -->
+                                <div class="relative">
+                                    <input type="email" placeholder="Email address" value="{% if form.email.value %}{{form.email.value}}{% endif %}"
+                                        name="email" id="id_email"
+                                        class="text-custom-text pl-5 pr-[50px] focus:outline-none focus:ring-0 outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">
+                                    <span class="absolute top-1/2 -translate-y-1/2 right-4">
+                                        <i class="fa-solid fa-envelope text-sm lg:text-base text-custom-primary font-bold"></i>
+                                    </span>
+                                </div>
+                                <!-- number -->
+                                <div class="relative">
+                                    <input type="text" placeholder="Phone number" value="{% if form.phone.value %}{{form.phone.value}}{% endif %}" name="phone"
+                                        id="id_phone"
+                                        class="text-custom-text pl-5 pr-[50px] focus:outline-none focus:ring-0 outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">
+                                    <span class="absolute top-1/2 -translate-y-1/2 right-4">
+                                        <i class="fa-solid fa-phone text-sm lg:text-base text-custom-primary font-bold"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="relative mb-2">
+                                <textarea placeholder="Company's vision" name="vision" id="id_vision"
+                                    class="!min-h-[150px] text-paragraph-color pl-5 pr-[50px] focus:outline-none focus:ring-0 py-[15px] outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary !h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">{{company.vision}}</textarea>
+                                <span class="absolute top-[30px] -translate-y-1/2 right-4">
+                                    <i class="fa-solid fa-pencil text-sm lg:text-base text-custom-primary font-bold"></i>
+                                </span>
+                            </div>
+                            <div class="relative mb-4">
+                                <textarea placeholder="Company's mission" name="mission" id="id_mission"
+                                    class="!min-h-[150px] text-paragraph-color pl-5 pr-[50px] focus:outline-none focus:ring-0 py-[15px] outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary !h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">{{company.mission}}</textarea>
+                                <span class="absolute top-[30px] -translate-y-1/2 right-4">
+                                    <i class="fa-solid fa-pencil text-sm lg:text-base text-custom-primary font-bold"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="mb-[30px]">
+                            <h5 class="text-sm md:text-[15px] lg:text-base font-bold leading-1.3 text-custom-h mb-[15px]">
+                                <span class="leading-1.3 md:leading-1.3 lg:leading-1.3">
+                                    Short Description (optional)
+                                </span>
+                            </h5>
+                            <div class="relative">
+                                <textarea placeholder="Small Description about company" name="small_description" id="id_small_description"
+                                    class="!min-h-[150px] text-paragraph-color pl-5 pr-[50px] focus:outline-none focus:ring-0 py-[15px] outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary !h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">{{company.small_description}}</textarea>
+                                <span class="absolute top-[30px] -translate-y-1/2 right-4">
+                                    <i class="fa-solid fa-pencil text-sm lg:text-base text-custom-primary font-bold"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- Country-->
+                        <div class="pb-[60px] w-[300px]">
+                            <h5 class="text-sm md:text-[15px] lg:text-base font-bold leading-[1.3] text-custom-h mb-[15px]">
+                                <span class="leading-[1.3] md:leading-[1.3] lg:leading-[1.3]">
+                                    Country</span>
+                            </h5>
+                            <input type="text" placeholder="Country" value="South Africa" disabled name="country" id="id_country"
+                                class="text-custom-text pl-5 pr-[50px] focus:outline-none focus:ring-0 outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">
+                        </div>
+                        <!-- Address -->
+                        <div>
+                            <h5 class="text-sm md:text-[15px] lg:text-base font-bold leading-[1.3] text-custom-h mb-[15px]">
+                                <span class="leading-[1.3] md:leading-[1.3] lg:leading-[1.3]">
+                                    Address
+                                </span>
+                            </h5>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-[30px] mb-[30px]">
+                                <!-- House number and street name  -->
+                                <div>
+                                    <input type="text" placeholder="House number and street name"
+                                        value="{% if form.address_one.value %}{{form.address_one.value}}{% endif %}" name="address_one" id="id_address_one"
+                                        class="text-custom-text pl-5 pr-[50px] focus:outline-none focus:ring-0 outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">
+                                </div>
+                                <!-- Apartment, suite, unit etc.  -->
+                                <div>
+                                    <input type="text" placeholder="Apartment, suite, unit etc. (optional)"
+                                        value="{% if form.address_two.value %}{{form.address_two.value}}{% endif %}" name="address_two" id="id_address_two"
+                                        class="text-custom-text pl-5 pr-[50px] focus:outline-none focus:ring-0 outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- town and state -->
+                        <div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px] mb-[35px]">
+                                <!-- City  -->
+                                <div>
+                                    <h5
+                                        class="text-sm md:text-[15px] lg:text-base font-bold leadinl-[10px] text-custom-h mb-[15px]">
+                                        <span class="leading-[1.3] md:leading-[1.3] lg:leading-[1.3]">
+                                            Town / City
+                                        </span>
+                                    </h5>
+                                    <input type="text" placeholder="City" value="{% if form.city.value %}{{form.city.value}}{% endif %}" name="city"
+                                        class="text-custom-text pl-5 pr-[50px] focus:outline-none focus:ring-0 outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">
+                                </div>
+                                <!-- State  -->
+                                <div>
+                                    <h5
+                                        class="text-sm md:text-[15px] lg:text-base font-bold leadinl-[10px] text-custom-h mb-[15px]">
+                                        <span class="leading-[1.3] md:leading-[1.3] lg:leading-[1.3]">
+                                            State
+                                        </span>
+                                    </h5>
+                                    {{form.province}}
+                                </div>
+                                <!-- Zip -->
+                                <div>
+                                    <h5
+                                        class="text-sm md:text-[15px] lg:text-base font-bold leadinl-[10px] text-custom-h mb-[15px]">
+                                        <span class="leading-[1.3] md:leading-[1.3] lg:leading-[1.3]">
+                                            Zip
+                                        </span>
+                                    </h5>
+                                    <input type="number" placeholder="Zip" value="{% if form.zipcode.value %}{{form.zipcode.value}}{% endif %}" name="zipcode"
+                                        id="id_zipcode"
+                                        class="text-custom-text pl-5 pr-[50px] focus:outline-none focus:ring-0 outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="text-sm md:text-[15px] lg:text-base font-bold leading-[1.3] text-custom-h mb-[15px]">
+                                <span class="leading-[1.3] md:leading-[1.3] lg:leading-[1.3]">
+                                    Social Media Information</span>
+                            </h5>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-[30px] mb-[30px]">
+                                <!-- 1st name -->
+                                <div class="relative">
+                                    <input type="url" id="id_facebook" name="facebook" placeholder="Company facebook" value="{% if form.facebook.value %}{{form.facebook.value}}{% endif %}"
+                                        class="text-custom-text pl-5 pr-[50px] focus:outline-none focus:ring-0 outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">
+                                    <span class="absolute top-1/2 -translate-y-1/2 right-4">
+                                        <i class="fa-brands fa-facebook text-sm lg:text-base text-custom-primary font-bold"></i>
+                                    </span>
+                                </div>
+                                <!-- last name -->
+                                <div class="relative">
+                                    <input type="url" id="id_instagram" name="instagram" placeholder="Company Instagram" value="{% if form.instagram.value %}{{form.instagram.value}}{% endif %}"
+                                        class="text-custom-text pl-5 pr-[50px] focus:outline-none focus:ring-0 outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">
+                                    <span class="absolute top-1/2 -translate-y-1/2 right-4">
+                                        <i class="fa-brands fa-instagram text-sm lg:text-base text-custom-primary font-bold"></i>
+                                    </span>
+                                </div>
+                                <!-- email -->
+                                <div class="relative">
+                                    <input type="url" placeholder="Company Linkedin" value="{% if form.linkedIn.value %}{{form.linkedIn.value}}{% endif %}" name="linkedIn" id="id_linkedIn"
+                                        class="text-custom-text pl-5 pr-[50px] focus:outline-none focus:ring-0 outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">
+                                    <span class="absolute top-1/2 -translate-y-1/2 right-4">
+                                        <i class="fa-brands fa-linkedin text-sm lg:text-base text-custom-primary font-bold"></i>
+                                    </span>
+                                </div>
+                                <!-- number -->
+                                <div class="relative">
+                                    <input type="url" placeholder="Company Twitter" value="{% if form.twitter.value %}{{form.twitter.value}}{% endif %}" name="twitter" id="id_twitter"
+                                        class="text-custom-text pl-5 pr-[50px] focus:outline-none focus:ring-0 outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">
+                                    <span class="absolute top-1/2 -translate-y-1/2 right-4">
+                                        <i class="fa-brand fa-x text-sm lg:text-base text-custom-primary font-bold"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 py-4 lg:grid-cols-2 gap-x-[30px]">
+                    <!-- payment methods -->
+                    <div>
+                        
+                        <!-- submt -->
+                        <div>
+                            
+                            <h5
+                                class="uppercase text-sm md:text-base text-white relative group whitespace-nowrap font-normal mb-0 transition-all duration-300 border border-custom-primary hover:border-custom-h inline-block z-0">
+                                <span
+                                    class="inline-block absolute top-0 right-0 w-full h-full bg-custom-primary group-hover:bg-black -z-1 group-hover:w-0 transition-all duration-300"></span>
+                                <button type="submit"
+                                    class="relative z-1 px-[30px] lg:px-10 py-3 md:py-[15px] lg:py-[17px] group-hover:text-custom-h leading-1.5 uppercase">
+                                    Submit
+                                </button>
+                            </h5>
+                        </div>
+            
+                    </div>
+            
+                    <!-- checkout -->
+            
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock businessblock %}
+{% block js %}
+<script>
+    window.onload = () => {
+        const file_picker = document.querySelector("#id_image"),
+            pick_image = document.querySelector("#pick_image")
+        const no_image = document.querySelector("#no_image");
+        const img_container = document.querySelector("#img_container")
+        const img = document.querySelector("#img")
+
+        if (img_container.getAttribute("data-image")) {
+
+            img_container.removeChild(no_image);
+            img_container.innerHTML += `
+                    <img
+                        src="${img_container.getAttribute("data-image")}"
+                        alt="{{form.first_name}}"
+                        class="w-full h-full object-cover"
+                        id="img"
+                    />
+                `
+        }
+        pick_image.addEventListener('click', () => {
+            file_picker.click()
+        })
+
+        file_picker.onchange = ({target}) => {
+
+            var file = target.files[0]
+            if (file) {
+                // console.log(no_image)
+                if (no_image) {
+
+                    img_container.removeChild(no_image);
+                    img_container.innerHTML += `
+                    <img
+                        src="${window.URL.createObjectURL(file)}"
+                        alt="{{form.first_name}}"
+                        class="w-full h-full object-cover"
+                        id="img"
+                    />
+                `
+                } else {
+                    img.src = window.URL.createObjectURL(file)
+                }
+
+            } else {
+                alert("no file selected")
+            }
+
+        };
+
+    }
+
+</script>
+<script>
+
+    $(document).ready(function () {
+        // Initialize DateTimePicker for startDatetime
+        $('#id_start_date').datetimepicker({
+            format: 'Y-m-d H:i:s',
+            minDate: 0,  // Set minimum date to the current date
+            step: 15,   // Set the time step to 15 minutes (optional)
+        });
+
+        // Initialize DateTimePicker for endDatetime
+        $('#id_end_date').datetimepicker({
+            format: 'Y-m-d H:i:s',
+            minDate: 0,  // Set minimum date to the current date
+            step: 15,   // Set the time step to 15 minutes (optional)
+        });
+    });
+</script>
+
+{% endblock js %}

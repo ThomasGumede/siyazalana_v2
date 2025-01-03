@@ -1,0 +1,33 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block title %}Payment cancelled{% endblock title %}
+
+{% block content %}
+<section class="py-16 h-full bg-custom-bg font-sans">
+    <div class="container">
+        <div
+            class="w-full max-w-full rounded-xl my-auto bg-white mx-auto md:w-1/2 lg:w-5/12 relative shadow-xl text-center">
+            <div class="p-5 md:p-7">
+                <div class="space-y-6">
+                    <h3 class="text-custom-h text-2xl md:text-4xl font-extrabold">Payment Cancelled</h3>
+                    <div>
+                        <i class="fa-regular fa-circle-xmark text-8xl font-extralight text-custom-h"></i>
+                    </div>
+                    <p class="text-gray-500 text-lg font-medium">
+                        Your order was not successfully paid because you cancelled your payment.
+                    </p>
+                    
+                    <div>
+                        <button
+                            class="w-36 lg:w-40 h-12 border-2 border-custom-h bg-custom-h hover:bg-white hover:text-custom-h text-white font-medium text-sm focus-within:outline-none focus:outline-none lg:text-base duration-500 rounded-md">
+                            <a href="{% url 'siyazalana_home:siyazalana-home' %}">
+                                Home
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

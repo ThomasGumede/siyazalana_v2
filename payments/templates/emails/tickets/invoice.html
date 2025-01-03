@@ -1,0 +1,255 @@
+{% load static %}
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- <link href="invoice.css" media="print" rel="stylesheet"> -->
+  <title>Invoice</title>
+  <meta name="description" content="Invoice demo sample">
+  <style media="print">
+    @font-face {
+            font-family: Pacifico;
+            src: url("{{ protocol }}://{{ domain }}{% static 'fonts/invoice/pacifico.ttf' %}");
+        }
+
+        @font-face {
+            font-family: Source Sans Pro;
+            font-weight: 400;
+            src: url("{{ protocol }}://{{ domain }}{% static 'fonts/invoice/sourcesanspro-regular.otf' %}");
+        }
+
+        @font-face {
+            font-family: Source Sans Pro;
+            font-weight: 700;
+            src: url("{{ protocol }}://{{ domain }}{% static 'fonts/invoice/sourcesanspro-bold.otf' %}");
+        }
+  
+    @page {
+      font-family: Pacifico;
+      margin: 1.4cm;
+  
+      @bottom-left {
+        color: #071a1d;
+        content: '♥ Thank you!';
+      }
+  
+      @bottom-right {
+        color: #9f939f;
+        content: 'info@siyazalana.org | https://siyazalana.org';
+        font-size: 9pt;
+      }
+    }
+  
+    html {
+      color: #14213d;
+      font-family: Source Sans Pro;
+      font-size: 11pt;
+      line-height: 1.6;
+    }
+  
+    body {
+      margin: 0;
+    }
+  
+    h1 {
+      color: #071a1d;
+      font-family: Pacifico;
+      font-size: 40pt;
+      margin: 0;
+    }
+  
+    aside {
+      display: flex;
+      margin: 2em 0 4em;
+    }
+  
+    aside address {
+      font-style: normal;
+      white-space: pre-line;
+    }
+  
+    aside address#from {
+      color: #887f88;
+      flex: 1;
+    }
+  
+    aside address#to {
+      text-align: right;
+    }
+  
+    dl {
+      position: absolute;
+      right: 0;
+      text-align: right;
+      top: 0;
+    }
+  
+    dt,
+    dd {
+      display: inline;
+      margin: 0;
+    }
+  
+    dt {
+      color: #a9a;
+    }
+  
+    dt::before {
+      content: '';
+      display: block;
+    }
+  
+    dt::after {
+      content: ':';
+    }
+  
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+  
+    th {
+      border-bottom: .2mm solid #a9a;
+      color: #a9a;
+      font-size: 10pt;
+      font-weight: 400;
+      padding-bottom: .25cm;
+      text-transform: uppercase;
+    }
+  
+    td {
+      padding-top: 7mm;
+    }
+  
+    td:last-of-type {
+      color: #071a1d;
+      font-weight: bold;
+      text-align: right;
+    }
+  
+    th,
+    td {
+      text-align: center;
+    }
+  
+    th:first-of-type,
+    td:first-of-type {
+      text-align: left;
+    }
+  
+    th:last-of-type,
+    td:last-of-type {
+      text-align: right;
+    }
+  
+    table#total {
+      background: #f6f6f6;
+      border-color: #f6f6f6;
+      border-style: solid;
+      border-width: 2cm 3cm;
+      bottom: 0;
+      font-size: 10pt;
+      margin: 0 -1.4cm;
+      position: absolute;
+      width: 18cm;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Invoice</h1>
+
+  <aside>
+    <address id="from">
+      <span style="font-size: 10pt; font-weight: bold; color: #071a1d;">Black Business Growth Initiative</span>
+      Reg no: 2023/10234 7
+      email: info@siyazalana.org
+      tel: 081 123 4567
+      website: https://siyazalana.org
+      36 Avenue
+      69100 Villeurbanne
+      RSA
+    </address>
+
+    <address id="to">
+      {% if order.buyer %}{{buyer_full_name}}{% else %}{{order.get_client_full_name}}{% endif %}
+      Email: {% if order.buyer %}{{order.buyer.email}}{% else %}{{order.client_email}}{% endif %}
+      phone: {% if order.buyer %}{{order.buyer.phone}}{% else %}{{order.client_phone}}{% endif %}
+      {% if order.buyer %}
+        {{order.buyer.address_one}}
+        {{order.buyer.city}}, {{order.buyer.zipcode}}, {{order.buyer.province}}, RSA
+      {% else %}
+          {{order.client_address_one}}
+          {{order.client_city}}, {{order.client_zipcode}}, {{order.client_province}}, RSA
+      {% endif %}
+    </address>
+  </aside>
+
+  <dl id="informations">
+    <dt>Invoice number</dt>
+    <dd>{{order.order_number}}</dd>
+    <dt>Date</dt>
+    <dd>{{order.created}}</dd>
+    <dt>Status</dt>
+    <dd>{{order.paid}}</dd>
+  </dl>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for ticket in order.tickets.all %}
+      <tr>
+        <td>{{ticket.ticket_type.title}} - {{order.event.title}}</td>
+        <td>R{{ticket.ticket_type.price|floatformat:2}}</td>
+        <td>{{ticket.quantity}}</td>
+        <td>R{{ticket.ticket_type.price|floatformat:2}}<span style="font-size: 15px; font-weight: 400; color: #a9a;">(incl. VAT)</span></td>
+      </tr>
+      
+      {% endfor %}
+      <tr>
+        <td></td>
+        <td></td>
+        <td style="text-align: start; font-weight: bold; color: #071a1d;">Subtotal</td>
+        <td>R{{order.subtotal|floatformat:2}}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td style="text-align: start; font-weight: bold; color: #071a1d;">Transaction fees</td>
+        <td>R{{order.total_transaction_costs|floatformat:2}}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td style="text-align: start; font-weight: bold; color: #071a1d;">Total</td>
+        <td>R{{order.total_price|floatformat:2}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table id="total">
+    <thead>
+      <tr>
+        <th>Due by</th>
+        <th></th>
+        <th>Total due</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{due_date}}</td>
+        <td></td>
+        <td>R{{order.total_price}}</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>

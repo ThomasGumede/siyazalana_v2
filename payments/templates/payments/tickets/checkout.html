@@ -1,0 +1,366 @@
+{% extends '_ticket_order.html' %}
+{% load static %}
+{% block title %}Order placed successfully{% endblock title %}
+
+{% block ticketsordercontent %}
+
+<!-- banner section -->
+
+<!-- checkout section -->
+<section>
+    <div class="pb-10">
+        
+        <!-- apply  coupon -->
+        <div class="accordion-container">
+            <div x-data="{applyCoupon: false }" class="accordion mb-[30px]">
+                <div class="px-[30px] py-5 lg:py-[17px] bg-[#f2f6f7]">
+                    <h6 class="text-base lg:text-lg text-custom-h font-bold mb-0 leading-1">
+                        <span class="leading-[1.3] lg:leading-[1.3]">Have a coupon?
+                        </span>
+                        <button
+                            class="accordion-controller text-custom-primary hover:text-custom-primary leading-[1.3] lg:leading-[1.3] font-sans">
+                            Click here to enter your code
+                        </button>
+                    </h6>
+                </div>
+                <div class="accordion-content h-0 overflow-hidden transition-all duration-500">
+                    <form class="content-wrapper form-primary bg-white p-[30px] border border-[#e5eaee] mt-[15px]">
+                        <p class="text-sm md:text-base mb-5 lg:mb-6">
+                            <span class="leading-[1.8] lg:leading-[1.8]">
+                                If you have a coupon code, please apply it below.
+                            </span>
+                        </p>
+                        <div class="mb-[30px]">
+                            <!-- coupon -->
+                            <div class="relative">
+                                <input type="text" placeholder="Coupon code"
+                                    class="text-base text-custom-text pl-5 pr-[50px] outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-sm placeholder:text-custom-text">
+                            </div>
+                        </div>
+
+                        <!-- submit button -->
+
+                        <div>
+                            <h5
+                                class="uppercase text-sm md:text-base text-white relative group whitespace-nowrap font-normal mb-0 transition-all duration-300 border border-custom-h hover:border-custom-primary inline-block z-0">
+                                <span
+                                    class="inline-block absolute top-0 left-0 w-full h-full bg-custom-h group-hover:bg-custom-primary -z-1 group-hover:w-0 transition-all duration-300"></span>
+                                <button type="submit"
+                                    class="relative z-1 px-5 md:px-[25px] lg:px-10 py-[10px] md:py-[15px] lg:py-[17px] group-hover:text-custom-h leading-1.5 uppercase">
+                                    Apply Coupon
+                                </button>
+                            </h5>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- billing details -->
+        <div>
+            <h4
+                class="text-22px font-semibold leading-[1.3] pl-[10px] border-l-2 border-custom-primary text-custom-h mb-[30px] mt-[50px]">
+                Billing Details
+            </h4>
+            <form class="form-primary bg-white border border-[#e5eaee] p-[30px]">
+                <!-- personal info -->
+                <div>
+                    <h5 class="text-sm md:text-[15px] lg:text-base font-bold leading-[1.3] text-custom-h mb-[15px]">
+                        <span class="leading-[1.3] md:leading-[1.3] lg:leading-[1.3]">
+                            Personal Information</span>
+                    </h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-[30px] mb-[30px]">
+                        <!-- 1st name -->
+                        <div class="relative">
+                            <input type="text" placeholder="First name" value="{{request.user.first_name}}"
+                                class="text-custom-text pl-5 pr-[50px] outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">
+                            <span class="absolute top-1/2 -translate-y-1/2 right-4">
+                                <i class="fa-solid fa-user text-sm lg:text-base text-custom-primary font-bold"></i>
+                            </span>
+                        </div>
+                        <!-- last name -->
+                        <div class="relative">
+                            <input type="text" placeholder="Last name" value="{{request.user.last_name}}"
+                                class="text-custom-text pl-5 pr-[50px] outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">
+                            <span class="absolute top-1/2 -translate-y-1/2 right-4">
+                                <i class="fa-solid fa-user text-sm lg:text-base text-custom-primary font-bold"></i>
+                            </span>
+                        </div>
+                        <!-- email -->
+                        <div class="relative">
+                            <input type="email" placeholder="Email address" value="{{request.user.email}}"
+                                class="text-custom-text pl-5 pr-[50px] outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">
+                            <span class="absolute top-1/2 -translate-y-1/2 right-4">
+                                <i class="fa-solid fa-envelope text-sm lg:text-base text-custom-primary font-bold"></i>
+                            </span>
+                        </div>
+                        <!-- number -->
+                        <div class="relative">
+                            <input type="text" placeholder="Phone number" value="{{request.user.phone}}"
+                                class="text-custom-text pl-5 pr-[50px] outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">
+                            <span class="absolute top-1/2 -translate-y-1/2 right-4">
+                                <i class="fa-solid fa-phone text-sm lg:text-base text-custom-primary font-bold"></i>
+                            </span>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!-- Country-->
+                <div class="pb-[60px] w-[300px]">
+                    <h5 class="text-sm md:text-[15px] lg:text-base font-bold leading-[1.3] text-custom-h mb-[15px]">
+                        <span class="leading-[1.3] md:leading-[1.3] lg:leading-[1.3]">
+                            Country</span>
+                    </h5>
+                    <input type="text" placeholder="Country" value="South Africa" disabled
+                        class="text-custom-text pl-5 pr-[50px] outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">
+                </div>
+                <!-- Address -->
+                <div>
+                    <h5 class="text-sm md:text-[15px] lg:text-base font-bold leading-[1.3] text-custom-h mb-[15px]">
+                        <span class="leading-[1.3] md:leading-[1.3] lg:leading-[1.3]">
+                            Address
+                        </span>
+                    </h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-[30px] mb-[30px]">
+                        <!-- House number and street name  -->
+                        <div>
+                            <input type="text" placeholder="House number and street name" value="{{request.user.address_one}}"
+                                class="text-custom-text pl-5 pr-[50px] outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">
+                        </div>
+                        <!-- Apartment, suite, unit etc.  -->
+                        <div>
+                            <input type="text" placeholder="Apartment, suite, unit etc. (optional)" value="{{request.user.address_two}}"
+                                class="text-custom-text pl-5 pr-[50px] outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">
+                        </div>
+                    </div>
+                </div>
+                <!-- town and state -->
+                <div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px] mb-[35px]">
+                        <!-- City  -->
+                        <div>
+                            <h5
+                                class="text-sm md:text-[15px] lg:text-base font-bold leadinl-[10px] text-custom-h mb-[15px]">
+                                <span class="leading-[1.3] md:leading-[1.3] lg:leading-[1.3]">
+                                    Town / City
+                                </span>
+                            </h5>
+                            <input type="text" placeholder="City" value="{{request.user.city}}"
+                                class="text-custom-text pl-5 pr-[50px] outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">
+                        </div>
+                        <!-- State  -->
+                        <div>
+                            <h5
+                                class="text-sm md:text-[15px] lg:text-base font-bold leadinl-[10px] text-custom-h mb-[15px]">
+                                <span class="leading-[1.3] md:leading-[1.3] lg:leading-[1.3]">
+                                    State
+                                </span>
+                            </h5>
+                            <input type="text" placeholder="State" value="{{request.user.province}}"
+                                class="text-custom-text pl-5 pr-[50px] outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">
+                        </div>
+                        <!-- Zip -->
+                        <div>
+                            <h5
+                                class="text-sm md:text-[15px] lg:text-base font-bold leadinl-[10px] text-custom-h mb-[15px]">
+                                <span class="leading-[1.3] md:leading-[1.3] lg:leading-[1.3]">
+                                    Zip
+                                </span>
+                            </h5>
+                            <input type="text" placeholder="Zip" value="{{request.user.zipcode}}"
+                                class="text-custom-text pl-5 pr-[50px] outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm">
+                        </div>
+                    </div>
+                </div>
+                <!-- message -->
+                <div class="mb-[30px]">
+                    <h5 class="text-sm md:text-[15px] lg:text-base font-bold leading-[1.3] text-custom-h mb-[15px]">
+                        <span class="leading-[1.3] md:leading-[1.3] lg:leading-[1.3]">
+                            Order Notes (optional)
+                        </span>
+                    </h5>
+                    <div class="relative">
+                        <textarea placeholder="Notes about your order, e.g. special notes for delivery."
+                            class="min-h-[50px] text-custom-text pl-5 pr-[50px] py-[15px] outline-none border-2 border-[#e4ecf2] focus:border focus:border-custom-primary h-[65px] block w-full rounded-none placeholder:text-custom-text placeholder:text-sm"></textarea>
+                        <span class="absolute top-[30px] -translate-y-1/2 right-4">
+                            <i class="fa-solid fa-pencil text-sm lg:text-base text-custom-primary font-bold"></i>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-[30px]">
+            <!-- payment methods -->
+            <div>
+                <div class="flex justify-end">
+                    <div class="max-w-4[50px] w-full">
+                        <h4
+                            class="text-22px font-semibold leading-[1.3] pl-[10px] border-l-2 border-custom-primary text-custom-h mb-[30px] mt-[50px]">
+                            Cart Totals
+                        </h4>
+                        <ul class="text-sm lg:text-base text-custom-h">
+                            {% for ticket in ticketorder.tickets.all  %}
+                            <li class="p-2 border-b border-[#e5eaee]7 bg-table-bg">
+                                <div class="flex justify-between items-center">
+                                    <span class="leading-[1.8] lg:leading-[1.8]">
+                                        {{ticket.ticket_type.title}} <strong> × {{ticket.quantity}}</strong></span>
+                                    <span class="leading-[1.8] lg:leading-[1.8]"> R{{ticket.ticket_type.price}}(excl. trans costs)</span>
+                                </div>
+                            </li>
+                            {% endfor %}
+                
+                            <li class="p-2 border-b border-[#e5eaee]7">
+                                <div class="flex justify-between items-center">
+                                    <span class="leading-[1.8] lg:leading-[1.8]">
+                                        Transaction costs</span>
+                                    <span class="leading-[1.8] lg:leading-[1.8]"> R{{ticketorder.total_transaction_costs}}</span>
+                                </div>
+                            </li>
+                
+                            <li class="p-2 border-b border-[#e5eaee]7 bg-table-bg">
+                                <div class="flex justify-between items-center">
+                                    <span class="leading-[1.8] lg:leading-[1.8]"> Vat</span>
+                                    <span class="leading-[1.8] lg:leading-[1.8]"> R00.00</span>
+                                </div>
+                            </li>
+                
+                            <li class="p-2 border-b border-[#e5eaee]7">
+                                <div class="flex justify-between items-center font-bold">
+                                    <span class="leading-[1.8] lg:leading-[1.8]">
+                                        Order Total</span>
+                                    <span class="leading-[1.8] lg:leading-[1.8]"> R{{ticketorder.total_price}}</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                    <!-- submt -->
+                    <div>
+                        <p class="text-sm lg:text-base mb-[30px]">
+                            <span class="leading-[1.8] lg:leading-[1.8]">
+                                Your personal data will be used to process your order,
+                                support your experience throughout this website, and for
+                                other purposes described in our privacy policy.
+                            </span>
+                        </p>
+                        <h5
+                            class="uppercase text-sm md:text-base text-white relative group whitespace-nowrap font-normal mb-0 transition-all duration-300 border border-custom-primary hover:border-custom-h inline-block z-0">
+                            <span
+                                class="inline-block absolute top-0 right-0 w-full h-full bg-custom-primary group-hover:bg-black -z-1 group-hover:w-0 transition-all duration-300"></span>
+                            <button type="submit"
+                                class="relative z-1 px-[30px] lg:px-10 py-3 md:py-[15px] lg:py-[17px] group-hover:text-custom-h leading-1.5 uppercase">
+                                Place order
+                            </button>
+                        </h5>
+                    </div>
+                
+            </div>
+
+            <!-- checkout -->
+            
+        </div>
+    </div>
+</section>
+
+{% endblock ticketsordercontent %}
+{% block js %}
+  <script>
+    // style controllers
+
+        const controllerStyle = (accordionController, isActive) => {
+            const rotateAbleLine = accordionController.querySelectorAll("span")[1];
+
+            if (rotateAbleLine) {
+                rotateAbleLine.style.transform = !isActive
+                    ? "rotate(0deg)"
+                    : "rotate(90deg)";
+            }
+        };
+
+        // accordion hide and show
+        const toggleAccordion = (accordion, isActive, currentIndex, index) => {
+            const parentContent = accordion.closest(".accordion-content");
+            const content = accordion.querySelector(".accordion-content");
+            const contentWrapper = accordion.querySelector(".content-wrapper");
+            const contentHeight = contentWrapper.offsetHeight;
+
+            let contenStyleHeight = content.style.height;
+            if (contenStyleHeight === "auto") {
+                content.style.height = `${contentHeight}px`;
+            }
+
+            setTimeout(() => {
+                content.style.height = !isActive ? `${contentHeight}px` : 0;
+            }, 1);
+            if (!isActive) {
+                setTimeout(() => {
+                    if (!parentContent) {
+                        content.style.height = `auto`;
+                    }
+                }, 500);
+            }
+        };
+
+        // get accordion controller and listen click event
+        const accordionController = (accordionContainer) => {
+            const groupOfAccordion = accordionContainer.querySelectorAll(".accordion");
+
+            groupOfAccordion.forEach((accordion, idx) => {
+                const accordionController = accordion.querySelector(
+                    ".accordion-controller"
+                );
+                const isInitialyActive = accordion.classList.contains("active");
+
+                if (isInitialyActive) {
+                    const contents = accordion.querySelector(".accordion-content");
+                    const contentHeight = contents.children[0].offsetHeight;
+                    if (contentHeight) {
+                        contents.style.height = `${contentHeight}px`;
+                    }
+                }
+
+                if (accordionController) {
+                    accordionController.addEventListener("click", function () {
+                        const currentAccordion = this.closest(".accordion");
+
+                        const isActive = currentAccordion.classList.contains("active");
+                        let waitForDblClick = setTimeout(() => {
+                            groupOfAccordion.forEach((accordion, idx1) => {
+                                const isAccordionController = accordion.querySelector(
+                                    ".accordion-controller"
+                                );
+
+                                if (isAccordionController) {
+                                    accordion.classList.remove("active");
+                                    const accordionController = accordion.querySelector(
+                                        ".accordion-controller"
+                                    );
+                                    controllerStyle(accordionController, true);
+                                    toggleAccordion(accordion, true, idx, idx1);
+                                }
+                            });
+                            if (!isActive) {
+                                currentAccordion.classList.add("active");
+                                controllerStyle(accordionController, false);
+                                toggleAccordion(currentAccordion, false);
+                            }
+                        }, 10);
+                        accordionController.addEventListener("dblclick", function () {
+                            clearTimeout(waitForDblClick);
+                        });
+                    });
+                }
+            });
+        };
+        const accordions = () => {
+            const accordionContainers = document.querySelectorAll(".accordion-container");
+
+            if (!accordionContainers.length) {
+                return;
+            }
+            accordionContainers.forEach((accordionContainer) => {
+                accordionController(accordionContainer);
+            });
+        };
+        accordions()
+  </script>
+{% endblock js %}

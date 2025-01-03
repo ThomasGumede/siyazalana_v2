@@ -40,6 +40,25 @@ def send_email_confirmation_email(user, new_email, request):
         email_logger.error(f"Failed to send send_email_confirmation_email to {user.email}. Error: {err}")
         return False
     
+def send_html_email(subject, to_email, template_name, context):
+    try:
+        
+        html_content = render_to_string(template_name, context)
+
+        # Create the email message
+        email = EmailMessage(
+            subject=subject,
+            body=html_content,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[to_email],
+        )
+        email.content_subtype = 'html' 
+
+        # Send the email
+        email.send()
+        email_logger.info(f"Email sent to {to_email} without attachment.")
+    except Exception as e:
+        email_logger.error(f"Failed to send email to {to_email}. Error: {e}")  
 
 def send_verification_email(user, request):
     try:
@@ -129,3 +148,33 @@ def custom_send_email(to_email, subject, html_content):
         # logger.error(f"Error sending email: {e}")
         return False
 
+def send_html_email_with_attachments(to_email: str, subject: str, html_content: str, from_email: str, attachments: list = None) -> bool:
+    """
+    Sends an HTML email with optional attachments.
+
+    Args:
+        to_email (str): The recipient's email address.
+        subject (str): The email subject.
+        html_content (str): The HTML content of the email.
+        from_email (str): The sender's email address.
+        attachments (list): A list of attachments where each is a dictionary with 'file_content' and 'filename'.
+
+    Returns:
+        bool: True if the email is sent successfully, False otherwise.
+    """
+    try:
+        email = EmailMessage(subject=subject, body=html_content, from_email=from_email, to=[to_email])
+        email.content_subtype = 'html'
+
+        # Attach files if provided
+        if attachments:
+            for attachment in attachments:
+                email.attach(attachment['filename'], base64.b64decode(attachment['file_content']), 'application/pdf')
+
+        email.send()
+        email_logger.info(f"Email sent to {to_email} with attachments.")
+        return True
+
+    except Exception as e:
+        email_logger.error(f"Failed to send email to {to_email}. Error: {e}")
+        return False

@@ -1,0 +1,589 @@
+{% extends '_base.html' %}
+{% load static %}
+
+
+
+{% block seo_tags %}
+<!-- Primary Meta Tags -->
+<title>Siyazalana - We Care If You Care</title>
+<meta name="title" content="Siyazalana - We Care If You Care" />
+<meta name="description"
+    content="Black Business Growth Initiative was formed with the intention of creating a gathering of black African business owners  and professionals. It is..." />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://siyazalana.org/about-us" />
+<meta property="og:title" content="Siyazalana - We Care If You Care" />
+<meta property="og:description"
+    content="Black Business Growth Initiative was formed with the intention of creating a gathering of black African business owners  and professionals. It is..." />
+<meta property="og:image" content="https://siyazalana.org{% static 'imgs/logo/logo.jpeg' %}" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://siyazalana.org/about-us" />
+<meta property="twitter:title" content="Siyazalana - We Care If You Care" />
+<meta property="twitter:description"
+    content="Black Business Growth Initiative was formed with the intention of creating a gathering of black African business owners  and professionals. It is..." />
+<meta property="twitter:image" content="https://siyazalana.org{% static 'imgs/logo/logo.jpeg' %}" />
+
+<!-- Meta Tags Generated with https://metatags.io -->
+{% endblock seo_tags %}
+
+{% block styles %}
+<style>
+    #hero-section-bg {
+        background-image: url("{% static 'imgs/home.jpg' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-blend-mode: overlay;
+    }
+</style>
+{% endblock styles %}
+
+{% block content %}
+<!-- Banner -->
+<section>
+    <!-- banner section -->
+    <div id="hero-section-"
+        class="w-full bg-no-repeat bg-cover bg-center relative z-0 after:w-full after:h-full after:absolute after:top-0 after:left-0 after:bg-white after:bg-opacity-30 after:-z-1">
+        <div class="container py-[110px]">
+            <h1 class="text-2xl sm:text-3xl md:text-[26px] lg:text-3xl xl:text-4xl font-bold text-custom-h mb-4">
+                <span class="leading-1.3 md:leading-1.3 lg:leading-1.3 xl:leading-1.3">About siyazalana</span>
+            </h1>
+            <ul class="breadcrumb flex gap-7 items-center text-sm lg:text-base font-bold pt-4">
+                <li class="home relative leading-1.8 lg:leading-1.8">
+                    <a href="{% url 'siyazalana_home:siyazalana-home' %}"><i class="fas fa-home text-custom-primary"></i> Home</a>
+                </li>
+                <li class="leading-1.8 lg:leading-1.8 text-custom-h">
+                    About Us
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- faq section -->
+<section>
+    <div class="container pb-[100px]">
+        <div class="grid grid-cols-1 lg:grid-cols-12 lg:gap-x-[30px]">
+            <!-- details -->
+            <div class="lg:col-start-1 lg:col-span-8">
+                <!-- faq accordion -->
+                <div>
+                    <ul class="accordion-container neighbour-accordion border-2 border-b-0 border-border-color-10">
+                        <li class="accordion border-b-2 border-border-color-10">
+                            <!-- accordion header -->
+                            <div
+                                class="accordion-controller flex items-center justify-between cursor-pointer text-sm lg:text-base p-5 pr-[18px] md:pl-10">
+                                <div class="font-semibold font-sans">
+                                    <p class="text-primary-color md:text-lg">
+                                        How to buy a product?
+                                    </p>
+                                </div>
+                                <button
+                                    class="h-10 w-10 leading-10 flex flex-col justify-center items-center bg-section-bg-1">
+                                    <span class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor"></span><span
+                                        class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor rotate-90 -mt-0.5"></span>
+                                </button>
+                            </div>
+                            <!-- accordion content -->
+                            <div class="accordion-content h-0 overflow-hidden transition-all duration-500">
+                                <div class="content-wrapper px-5 md:px-10 pt-[15px] pb-[25px] text-sm lg:text-base">
+                                    <p class="leading-1.8 lg:leading-1.8 mb-5">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing
+                                        elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna aliqua. Scelerisque eleifend donec
+                                        pretium vulputate sapien nec sagittis. Proin libero
+                                        nunc consequat interdum. Condimentum lacinia quis vel
+                                        eros donec ac. Mauris sit amet massa vitae tortor.
+                                        Quisque id diam vel quam elementum pulvinar. Gravida
+                                        in fermentum et sollicitudin ac orci phasellus.
+                                        Facilisis gravida neque convallis a cras semper. Non
+                                        arcu risus quis varius quam quisque id.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="accordion border-b-2 border-border-color-10 active">
+                            <!-- accordion header -->
+                            <div
+                                class="accordion-controller flex items-center justify-between cursor-pointer text-sm lg:text-base p-5 pr-[18px] md:pl-10">
+                                <div class="font-semibold font-sans">
+                                    <p class="text-primary-color md:text-lg">
+                                        How can i make refund from your website?
+                                    </p>
+                                </div>
+                                <button
+                                    class="h-10 w-10 leading-10 flex flex-col justify-center items-center bg-section-bg-1">
+                                    <span class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor"></span><span
+                                        class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor rotate-90 -mt-0.5"
+                                        style="transform: rotate(0deg)"></span>
+                                </button>
+                            </div>
+                            <!-- accordion content -->
+                            <div class="accordion-content overflow-hidden transition-all duration-500">
+                                <div class="content-wrapper px-5 md:px-10 pt-[15px] pb-[25px] text-sm lg:text-base">
+                                    <div>
+                                        <div
+                                            class="float-left clear-both inline-block mr-5 relative z-0 after:w-full after:h-full after:absolute after:left-0 after:top-0 after:bg-primary-color after:opacity-30 after:z-1">
+                                            <img src="assets/img/bg/17.jpg" class="inline-block" alt="">
+                                            <div
+                                                class="absolute left-0 top-0 flex justify-center items-center h-full w-full z-10">
+                                                <a class="glightbox3 w-[60px] h-[60px] text-center text-sm lg:text-base text-secondary-color shadow-box-shadow-2 rounded-full bg-white flex items-center justify-center"
+                                                    href="https://www.youtube.com/embed/LjCzPp-MK48?autoplay=1&amp;showinfo=0"
+                                                    data-glightbox="type: video;">
+                                                    <i class="icon-play ltn__secondary-color"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <p class="leading-1.8 lg:leading-1.8 mb-5">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                                            elit, sed do eiusmod tempor incididunt ut labore et
+                                            dolore magna aliqua. Scelerisque eleifend donec
+                                            pretium vulputate sapien nec sagittis. Proin libero
+                                            nunc consequat interdum. Condimentum lacinia quis
+                                            vel eros donec ac. Mauris sit amet massa vitae
+                                            tortor. Quisque id diam vel quam elementum pulvinar.
+                                            Gravida in fermentum et sollicitudin ac orci
+                                            phasellus. Facilisis gravida neque convallis a cras
+                                            semper. Non arcu risus quis varius quam quisque id.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="accordion border-b-2 border-border-color-10">
+                            <!-- accordion header -->
+                            <div
+                                class="accordion-controller flex items-center justify-between cursor-pointer text-sm lg:text-base p-5 pr-[18px] md:pl-10">
+                                <div class="font-semibold font-sans">
+                                    <p class="text-primary-color md:text-lg">
+                                        I am a new user. How should I start?
+                                    </p>
+                                </div>
+                                <button
+                                    class="h-10 w-10 leading-10 flex flex-col justify-center items-center bg-section-bg-1">
+                                    <span class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor"></span><span
+                                        class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor rotate-90 -mt-0.5"></span>
+                                </button>
+                            </div>
+                            <!-- accordion content -->
+                            <div class="accordion-content h-0 overflow-hidden transition-all duration-500">
+                                <div class="content-wrapper px-5 md:px-10 pt-[15px] pb-[25px] text-sm lg:text-base">
+                                    <p class="leading-1.8 lg:leading-1.8 mb-5">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing
+                                        elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna aliqua. Scelerisque eleifend donec
+                                        pretium vulputate sapien nec sagittis. Proin libero
+                                        nunc consequat interdum. Condimentum lacinia quis vel
+                                        eros donec ac. Mauris sit amet massa vitae tortor.
+                                        Quisque id diam vel quam elementum pulvinar. Gravida
+                                        in fermentum et sollicitudin ac orci phasellus.
+                                        Facilisis gravida neque convallis a cras semper. Non
+                                        arcu risus quis varius quam quisque id.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="accordion border-b-2 border-border-color-10">
+                            <!-- accordion header -->
+                            <div
+                                class="accordion-controller flex items-center justify-between cursor-pointer text-sm lg:text-base p-5 pr-[18px] md:pl-10">
+                                <div class="font-semibold font-sans">
+                                    <p class="text-primary-color md:text-lg">
+                                        Returns and refunds
+                                    </p>
+                                </div>
+                                <button
+                                    class="h-10 w-10 leading-10 flex flex-col justify-center items-center bg-section-bg-1">
+                                    <span class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor"></span><span
+                                        class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor rotate-90 -mt-0.5"></span>
+                                </button>
+                            </div>
+                            <!-- accordion content -->
+                            <div class="accordion-content h-0 overflow-hidden transition-all duration-500">
+                                <div class="content-wrapper px-5 md:px-10 pt-[15px] pb-[25px] text-sm lg:text-base">
+                                    <p class="leading-1.8 lg:leading-1.8 mb-5">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing
+                                        elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna aliqua. Scelerisque eleifend donec
+                                        pretium vulputate sapien nec sagittis. Proin libero
+                                        nunc consequat interdum. Condimentum lacinia quis vel
+                                        eros donec ac. Mauris sit amet massa vitae tortor.
+                                        Quisque id diam vel quam elementum pulvinar. Gravida
+                                        in fermentum et sollicitudin ac orci phasellus.
+                                        Facilisis gravida neque convallis a cras semper. Non
+                                        arcu risus quis varius quam quisque id.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="accordion border-b-2 border-border-color-10">
+                            <!-- accordion header -->
+                            <div
+                                class="accordion-controller flex items-center justify-between cursor-pointer text-sm lg:text-base p-5 pr-[18px] md:pl-10">
+                                <div class="font-semibold font-sans">
+                                    <p class="text-primary-color md:text-lg">
+                                        Are my details secured?
+                                    </p>
+                                </div>
+                                <button
+                                    class="h-10 w-10 leading-10 flex flex-col justify-center items-center bg-section-bg-1">
+                                    <span class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor"></span><span
+                                        class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor rotate-90 -mt-0.5"></span>
+                                </button>
+                            </div>
+                            <!-- accordion content -->
+                            <div class="accordion-content h-0 overflow-hidden transition-all duration-500">
+                                <div class="content-wrapper px-5 md:px-10 pt-[15px] pb-[25px] text-sm lg:text-base">
+                                    <p class="leading-1.8 lg:leading-1.8 mb-5">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing
+                                        elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna aliqua. Scelerisque eleifend donec
+                                        pretium vulputate sapien nec sagittis. Proin libero
+                                        nunc consequat interdum. Condimentum lacinia quis vel
+                                        eros donec ac. Mauris sit amet massa vitae tortor.
+                                        Quisque id diam vel quam elementum pulvinar. Gravida
+                                        in fermentum et sollicitudin ac orci phasellus.
+                                        Facilisis gravida neque convallis a cras semper. Non
+                                        arcu risus quis varius quam quisque id.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="accordion border-b-2 border-border-color-10">
+                            <!-- accordion header -->
+                            <div
+                                class="accordion-controller flex items-center justify-between cursor-pointer text-sm lg:text-base p-5 pr-[18px] md:pl-10">
+                                <div class="font-semibold font-sans">
+                                    <p class="text-primary-color md:text-lg">
+                                        Sale code is not working
+                                    </p>
+                                </div>
+                                <button
+                                    class="h-10 w-10 leading-10 flex flex-col justify-center items-center bg-section-bg-1">
+                                    <span class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor"></span><span
+                                        class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor rotate-90 -mt-0.5"></span>
+                                </button>
+                            </div>
+                            <!-- accordion content -->
+                            <div class="accordion-content h-0 overflow-hidden transition-all duration-500">
+                                <div class="content-wrapper px-5 md:px-10 pt-[15px] pb-[25px] text-sm lg:text-base">
+                                    <p class="leading-1.8 lg:leading-1.8 mb-5">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing
+                                        elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna aliqua. Scelerisque eleifend donec
+                                        pretium vulputate sapien nec sagittis. Proin libero
+                                        nunc consequat interdum. Condimentum lacinia quis vel
+                                        eros donec ac. Mauris sit amet massa vitae tortor.
+                                        Quisque id diam vel quam elementum pulvinar. Gravida
+                                        in fermentum et sollicitudin ac orci phasellus.
+                                        Facilisis gravida neque convallis a cras semper. Non
+                                        arcu risus quis varius quam quisque id.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="accordion border-b-2 border-border-color-10">
+                            <!-- accordion header -->
+                            <div
+                                class="accordion-controller flex items-center justify-between cursor-pointer text-sm lg:text-base p-5 pr-[18px] md:pl-10">
+                                <div class="font-semibold font-sans">
+                                    <p class="text-primary-color md:text-lg">
+                                        How do I make payment by my credit card
+                                    </p>
+                                </div>
+                                <button
+                                    class="h-10 w-10 leading-10 flex flex-col justify-center items-center bg-section-bg-1">
+                                    <span class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor"></span><span
+                                        class="w-4 h-0.5 bg-primary-color block dark:bg-whiteColor rotate-90 -mt-0.5"></span>
+                                </button>
+                            </div>
+                            <!-- accordion content -->
+                            <div class="accordion-content h-0 overflow-hidden transition-all duration-500">
+                                <div class="content-wrapper px-5 md:px-10 pt-[15px] pb-[25px] text-sm lg:text-base">
+                                    <p class="leading-1.8 lg:leading-1.8 mb-5">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing
+                                        elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna aliqua. Scelerisque eleifend donec
+                                        pretium vulputate sapien nec sagittis. Proin libero
+                                        nunc consequat interdum. Condimentum lacinia quis vel
+                                        eros donec ac. Mauris sit amet massa vitae tortor.
+                                        Quisque id diam vel quam elementum pulvinar. Gravida
+                                        in fermentum et sollicitudin ac orci phasellus.
+                                        Facilisis gravida neque convallis a cras semper. Non
+                                        arcu risus quis varius quam quisque id.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- contact -->
+                <div class="pt-[100px] text-center">
+                    <h4 class="text-xl md:text-[22px] lg:text-[26px] xl:text-3xl font-bold text-heading-color">
+                        <span class="heading-1.3 md:heading-1.3 lg:heading-1.3 xl:heading-1.3">Still need help? Reach
+                            out to support 24/7:</span>
+                    </h4>
+                    <div class="my-[30px]">
+                        <h5
+                            class="capitalize text-sm md:text-base !text-white relative group whitespace-nowrap font-normal mb-0 transition-all duration-300 border bg-secondary-color border-secondary-color hover:bg-heading-color hover:border-heading-color inline-block">
+                            <a href="{% url 'siyazalana_home:contact' %}"
+                                class="relative z-10 px-5 md:px-[25px] lg:px-10 py-[10px] md:py-3 lg:py-[17px] group-hover:text-white leading-[23px]">Contact
+                                Us</a>
+                        </h5>
+                    </div>
+                    <h4 class="text-lg md:text-xl lg:text-22 xl:text-2xl font-bold text-heading-color mb-[15px]">
+                        <span class="heading-1.3 md:heading-1.3 lg:heading-1.3 xl:heading-1.3"><i
+                                class="fas fa-phone"></i> {{company_support}}</span>
+                    </h4>
+                </div>
+            </div>
+            <!-- sidebar -->
+            <div class="lg:col-start-9 lg:col-span-4 space-y-10 mt-[100px] lg:mt-0">
+                <!-- search  -->
+                <div class="px-5 xl:px-[35px] pt-[35px] pb-10 xl:py-[50px] bg-primary-color relative z-0">
+                    <h4 class="text-sm md:text-[15px] lg:text-base text-secondary-color font-bold mb-[5px]">
+                        <span class="leading-1.3 md:leading-1.3 lg:leading-1.3">// subscribe</span>
+                    </h4>
+                    <h4 class="text-4xl !text-white font-bold mb-[25px]">
+                        <span class="leading-1.3">Get Newsletter</span>
+                    </h4>
+                    <form class="h-[70px] w-full leading-[70px] flex !text-white">
+                        <input type="text" placeholder="Search"
+                            class="text-sm font-semibold h-full flex-grow pl-[25px] bg-primary-color-3 focus:outline-none outline-none">
+                        <button type="submit"
+                            class="text-sm lg:text-base h-full w-[68px] flex items-center justify-center bg-secondary-color hover:bg-secondary-color-2 flex-shrink-0">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                    <div class="text-[120px] text-color-1 absolute right-5 top-[15%] -z-1 opacity-10 leading-1">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                </div>
+                <!-- img -->
+                <div>
+                    <a href="">
+                        <img src="assets/img/banner/banner-3.jpg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- counter section -->
+<section class="bg-section-bg-1">
+    <div class="container pt-32 pb-[70px]">
+        <div class="text-center counter grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-[30px] mb-[45px] -mt-3">
+            <!-- count 1 -->
+            <div>
+                <div class="text-[65px] text-secondary-color">
+                    <i class="flaticon-select leading-1"></i>
+                </div>
+                <h5 class="text-3xl md:text-4xl lg:text-[42px] text-heading-color font-bold mb-[10px]">
+                    <span class="leading-1.3" data-countup-number="5">5</span><span>+</span>
+                </h5>
+                <p class="text-sm lg:text-base font-bold">
+                    <span class="leading-1.8">Total Listings</span>
+                </p>
+            </div>
+            <!-- count 2 -->
+            <div>
+                <div class="text-[65px] text-secondary-color">
+                    <i class="flaticon-office leading-1"></i>
+                </div>
+                <h5 class="text-3xl md:text-4xl lg:text-[42px] text-heading-color font-bold mb-[10px]">
+                    <span class="leading-1.3" data-countup-number="13">13</span><span>+</span>
+                </h5>
+                <p class="text-sm lg:text-base font-bold">
+                    <span class="leading-1.8">Registered Clients</span>
+                </p>
+            </div>
+            <!-- count 3 -->
+            <div>
+                <div class="text-[65px] text-secondary-color">
+                    <i class="flaticon-excavator leading-1"></i>
+                </div>
+                <h5 class="text-3xl md:text-4xl lg:text-[42px] text-heading-color font-bold mb-[10px]">
+                    <span class="leading-1.3" data-countup-number="10">10</span><span>+</span>
+                </h5>
+                <p class="text-sm lg:text-base font-bold">
+                    <span class="leading-1.8">Total Events</span>
+                </p>
+            </div>
+            <!-- count 4 -->
+            <div>
+                <div class="text-[65px] text-secondary-color">
+                    <i class="flaticon-armchair leading-1"></i>
+                </div>
+                <h5 class="text-3xl md:text-4xl lg:text-[42px] text-heading-color font-bold mb-[10px]">
+                    <span class="leading-1.3" data-countup-number="30">30</span><span>+</span>
+                </h5>
+                <p class="text-sm lg:text-base font-bold">
+                    <span class="leading-1.8">Event Tickets Sold</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- news  section -->
+<section>
+    <div>
+        <div class="container pb-[70px] pt-32">
+            <!-- section heading -->
+            <div class="text-center mb-[50px]">
+                <p
+                    class="text-sm md:text-[15px] lg:text-base text-secondary-color bg-[#c2a6404d] capitalize mb-[15px] py-0.5 px-5 rounded-full inline-block font-semibold">
+                    <span class="leading-1.3">News & Blogs</span>
+                </p>
+
+                <h2 class="text-2xl sm:text-3xl md:text-[26px] lg:text-3xl xl:text-[44px] text-heading-color font-bold">
+                    <span class="leading-1.3">Leatest News Feeds </span>
+                </h2>
+            </div>
+
+            <div class="news-slider-container swiper-container relative -mx-[15px]">
+                <!-- apartment cards  -->
+                <div class="swiper news-slider static">
+                    <div class="swiper-wrapper">
+                        {% for post in posts %}
+                        <div class="swiper-slide mb-[65px] xl:mb-[50px] px-[15px] cursor-default">
+                            <div class="group">
+                                <!-- card thumbs -->
+                                <div class="relative leading-1">
+                                    <a href="{{post.get_absolute_url}}" class="overflow-hidden w-full h-52">
+                                        <img src="{% if post.image %}{{post.image.url}}{% else %}{% static 'imgs/no-image.png'  %}{% endif %}"
+                                            class="w-full group-hover:scale-110 transition-all duration-700 object-fit" alt="">
+                                    </a>
+                                </div>
+                                <!-- card body -->
+                                <div class="p-[30px] shadow-box-shadow-4">
+                                    <ul class="mb-[15px] flex gap-x-[25px] items-center">
+                                        <li class="text-xs md:text-sm font-semibold">
+                                            <a href="#" class="leading-1.8 hover:text-secondary-color flex gap-[5px] items-center"><i
+                                                    class="far fa-user text-secondary-color"></i>
+                                                by: Admin</a>
+                                        </li>
+                                        <li class="text-xs md:text-sm font-semibold">
+                                            <a href="#" class="leading-1.8 hover:text-secondary-color flex gap-[5px] items-center"><i
+                                                    class="fas fa-tags text-secondary-color"></i>
+                                                {{post.category.label}}</a>
+                                        </li>
+                                    </ul>
+                                    <h4 class="text-lg md:text-xl lg:text-[22px] font-semibold text-heading-color">
+                                        <a href="{{post.get_absolute_url}}" class="hover:text-secondary-color leading-1.3">{{post.title}}</a>
+                                    </h4>
+                                    <div class="pt-5 mt-5 lg:pt-5 border-t border-border-color-1">
+                                        <ul class="flex justify-between items-center">
+                                            <li class="text-xs md:text-sm font-semibold">
+                                                <p class="leading-1.8 flex gap-[5px] items-center">
+                                                    <i class="far fa-calendar-alt text-secondary-color"></i>
+                                                    {{post.created|date:"M d, Y"}}
+                        
+                                                </p>
+                                            </li>
+                                            <li class="text-xs md:text-sm font-semibold">
+                                                <a href="{{post.get_absolute_url}}" class="leading-1.8 text-secondary-color uppercase">
+                                                    Read more</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- pagination -->
+                    <div
+                        class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal !-bottom-[6px] block xl:hidden">
+                        <span class="swiper-pagination-bullet" tabindex="0" role="button"
+                            aria-label="Go to slide 1"></span><span
+                            class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button"
+                            aria-label="Go to slide 2" aria-current="true"></span><span class="swiper-pagination-bullet"
+                            tabindex="0" role="button" aria-label="Go to slide 3"></span>
+                    </div>
+                    <!--  navigation -->
+                    <div class="hidden xl:block">
+                        <div class="swiper-button-next bg-white z-1">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="swiper-button-prev bg-white z-1">
+                            <i class="fas fa-arrow-left"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+
+{% block js %}
+<script src='{% static "js/swiper-bundle.min.js" %}'></script>
+<script>
+    const swiper_2 = new Swiper('.swiper-2', {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        loop: true,
+        breakpoints: {
+            // when window width is >= 320px
+            750: {
+                slidesPerView: 2
+            },
+            1032: {
+                slidesPerView: 2.5
+            },
+            // when window width is >= 640px
+            1140: {
+                slidesPerView: 3,
+                spaceBetween: 30
+            }
+        }
+    })
+</script>
+<script type="module">
+    import KeenSlider from 'https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/+esm'
+
+
+
+    const keenSlider = new KeenSlider(
+        '#keen-slider',
+        {
+            loop: true,
+            slides: {
+                origin: 'center',
+                perView: 1.25,
+                spacing: 16,
+            },
+            breakpoints: {
+                '(min-width: 1024px)': {
+                    slides: {
+                        origin: 'auto',
+                        perView: 1.5,
+                        spacing: 32,
+                    },
+                },
+            },
+        },
+        []
+    )
+
+    const keenSliderPrevious = document.getElementById('keen-slider-previous')
+    const keenSliderNext = document.getElementById('keen-slider-next')
+
+    const keenSliderPreviousDesktop = document.getElementById('keen-slider-previous-desktop')
+    const keenSliderNextDesktop = document.getElementById('keen-slider-next-desktop')
+
+    keenSliderPrevious.addEventListener('click', () => keenSlider.prev())
+    keenSliderNext.addEventListener('click', () => keenSlider.next())
+
+    keenSliderPreviousDesktop.addEventListener('click', () => keenSlider.prev())
+    keenSliderNextDesktop.addEventListener('click', () => keenSlider.next())
+</script>
+
+{% endblock js %}

@@ -7,9 +7,9 @@
         <div class="flex justify-center md:block pt-2 md:pt-0">
           <ul class="basis-full md:basis-auto flex gap-6 lg:gap-9 items-center">
             <li>
-              <a class="hover:text-custom-primary" href="mailto:info@bbgi.co.za">
+              <a class="hover:text-custom-primary" href="mailto:info@siyazalana.org">
                 <i class="fa-solid fa-envelope text-custom-primary font-bold mr-0.5"></i>
-                info@bbgi.co.za</a>
+                info@siyazalana.org</a>
             </li>
             <li>
               <a class="hover:text-custom-primary"><i
@@ -35,9 +35,9 @@
               <a href="{{linkedin}}" title="Linkedin"><i class="fab fa-linkedin font-bold"></i></a>
             </li>
             <li>
-              <a href=""
+              <a href="{% url 'campaigns:campaigns' %}"
                 class="px-4 md:px-5 py-0.5 md:py-3 ml-2 lg:ml-5 bg-custom-primary inline-block bg-opacity-100 hover:bg-opacity-60 hover:text-white">Add
-                Listing</a>
+                Donation</a>
             </li>
           </ul>
         </div>
@@ -50,7 +50,7 @@
       <!-- logo area -->
       <div class="mt-[10px] mb-[22px] md:mt-0 md:mb-0 h-[71px] w-[170px] overflow-hidden leading-1">
         <a href="{% url 'siyazalana_home:siyazalana-home' %}">
-          <img src="{% static 'assets/images/logo/logo-1.png'%}" alt="BBGI Logo" class="w-full h-full object-cover">
+          <img src="{% static 'assets/images/logo/logo-1.png'%}" alt="Siyazalana Logo" class="w-full h-full object-cover">
         </a>
       </div>
       <nav class="flex-grow hidden xl:block">
@@ -63,40 +63,31 @@
           </li>
 
           <li>
-            <a href=""
+            <a href="{% url 'siyazalana_home:about-siyazalana' %}"
               class="text-lg xl:text-[15px] xxl:text-lg text-heading-color hover:text-custom-primary font-semibold whitespace-nowrap pl-[10px] py-[22px]">About
             </a>
           </li>
 
-          
-
-
           <li>
-            <a href=""
-              class="text-lg xl:text-[15px] xxl:text-lg text-heading-color hover:text-custom-primary font-semibold whitespace-nowrap pl-[10px] py-[22px]">Listings
-            </a>
-          </li>
-
-          <li>
-            <a href=""
+            <a href="{% url 'events:events' %}"
               class="text-lg xl:text-[15px] xxl:text-lg text-heading-color hover:text-custom-primary font-semibold whitespace-nowrap pl-[10px] py-[22px]">Events
             </a>
           </li>
 
           <!-- item 5 -->
           <li>
-            <a href=""
-              class="text-lg xl:text-[15px] xxl:text-lg text-heading-color hover:text-custom-primary font-semibold whitespace-nowrap pl-[10px] py-[22px]">Campaigns
+            <a href="{% url 'campaigns:campaigns' %}"
+              class="text-lg xl:text-[15px] xxl:text-lg text-heading-color hover:text-custom-primary font-semibold whitespace-nowrap pl-[10px] py-[22px]">Donate
             </a>
           </li>
           <li>
-            <a href=""
+            <a href="{% url 'siyazalana_home:blogs' %}"
               class="text-lg xl:text-[15px] xxl:text-lg text-heading-color hover:text-custom-primary font-semibold whitespace-nowrap pl-[10px] py-[22px]">Blog
             </a>
           </li>
           <!-- item 6 -->
           <li>
-            <a href=""
+            <a href="{% url 'siyazalana_home:contact' %}"
               class="text-lg xl:text-[15px] xxl:text-lg text-heading-color hover:text-custom-primary font-semibold whitespace-nowrap pl-[10px] py-[22px]">Contact
             </a>
           </li>
@@ -106,7 +97,7 @@
       <div>
         <ul class="flex items-center gap-[10px]">
           <li class="relative search-form-container">
-            <a href=""
+            <a href="{% url 'siyazalana_home:search' %}"
               class="search-toggle h-[50px] w-[50px] text-heading-color shadow-box-shadow-1 flex justify-center items-center hover:bg-custom-primary hover:text-white transition-all duration-300">
               <i class="fa-solid fa-magnifying-glass font-bold"></i>
               <!-- <i class="fa-solid fa-magnifying-glass font-bold hidden"></i> -->
@@ -127,15 +118,15 @@
             <ul
               class="py-[10px] w-[150px] shadow-box-shadow-4 absolute right-0 top-full opacity-0 invisible translate-y-4 bg-white transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 z-xl">
               <li>
-                <a class="whitespace-nowrap px-[15px] py-[5px]" href="">Add event</a>
+                <a class="whitespace-nowrap px-[15px] py-[5px]" href="{% url 'events:create-event' %}">Add event</a>
               </li>
               <li>
-                <a class="whitespace-nowrap px-[15px] py-[5px]" href="">Add
+                <a class="whitespace-nowrap px-[15px] py-[5px]" href="{% url 'campaigns:create-campaign' %}">Add
                   Campaign</a>
               </li>
               {% if request.user.is_staff %}
               <li>
-                <a class="whitespace-nowrap px-[15px] py-[5px]" href="">Dashboard</a>
+                <a class="whitespace-nowrap px-[15px] py-[5px]" href="{% url 'siyazalana_home:dashboard' %}">Dashboard</a>
               </li>
               {% endif %}
               <li>
@@ -185,8 +176,8 @@
           <!-- mobile logo area -->
           <div class="flex justify-between items-center border-b border-border-primary pt-[3px] pb-[10px] mb-[25px]">
             <div>
-              <a href="/">
-                <img src="https://bbgi.co.za/static/imgs/logo_3.png" alt="">
+              <a href="{% url 'siyazalana_home:siyazalana-home' %}">
+                <img src="{% static 'assets/images/logo/logo-1.png'%}" alt="">
               </a>
             </div>
             <div>
@@ -209,32 +200,32 @@
               </li>
               <li class="mt-4">
                 <!-- accordion header -->
-                <a href=""
+                <a href="{% url 'siyazalana_home:about-siyazalana' %}"
                   class="accordion-controller flex items-center justify-between cursor-pointer hover:text-custom-primary uppercase text-sm lg:text-base py-2 lg:py-2.5">
                   ABOUT</a>
               </li>
               
               <li class="mt-4">
                 <!-- accordion header -->
-                <a href=""
+                <a href="{% url 'events:events' %}"
                   class="accordion-controller flex items-center justify-between cursor-pointer hover:text-custom-primary uppercase text-sm lg:text-base py-2 lg:py-2.5">
                   EVENTS</a>
               </li>
               <li class="mt-4">
                 <!-- accordion header -->
-                <a href=""
+                <a href="{% url 'campaigns:campaigns' %}"
                   class="accordion-controller flex items-center justify-between cursor-pointer hover:text-custom-primary uppercase text-sm lg:text-base py-2 lg:py-2.5">
-                  CAMPAIGNS</a>
+                  DONATE</a>
               </li>
               <li class="mt-4">
                 <!-- accordion header -->
-                <a href=""
+                <a href="{% url 'siyazalana_home:blogs' %}"
                   class="accordion-controller flex items-center justify-between cursor-pointer hover:text-custom-primary uppercase text-sm lg:text-base py-2 lg:py-2.5">
                   BLOG</a>
               </li>
               <li class="mt-4">
                 <!-- accordion header -->
-                <a href=""
+                <a href="{% url 'siyazalana_home:contact' %}"
                   class="accordion-controller flex items-center justify-between cursor-pointer hover:text-custom-primary uppercase text-sm lg:text-base py-2 lg:py-2.5">
                   CONTACT</a>
               </li>
@@ -247,7 +238,7 @@
               <li class="group mt-4">
                 <!-- accordion header -->
                 {% if request.user.is_authenticated %}
-                <a href="" class="text-sm lg:text-base">
+                <a href="{% url 'accounts:profile-update' %}" class="text-sm lg:text-base">
                   <span
                     class="inline-block h-[50px] w-[50px] border-2 border-border-color-1 text-center leading-[50px] mr-3">
                     <i class="far fa-user"></i>

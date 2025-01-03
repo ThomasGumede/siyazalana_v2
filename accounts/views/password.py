@@ -55,6 +55,7 @@ def password_reset_request(request):
                 return redirect("accounts:password-reset-sent")
             else:
                 return render(request, "accounts/password/reset-password-form.html", {"form": form})
+            
     except get_user_model().DoesNotExist as ex:
         account_logger.error(f"User not found - trying to request email reset - {ex}")
         messages.success(request, "Password reset email was successfully sent")
@@ -68,7 +69,7 @@ def password_reset_request(request):
     form = PasswordResetForm()
     return render(
         request=request, 
-        template_name="accounts/password/pwd_reset_form.html", 
+        template_name="accounts/password/reset-password-form.html", 
         context={"form": form}
         )
 

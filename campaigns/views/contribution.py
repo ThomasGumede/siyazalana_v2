@@ -84,10 +84,10 @@ def cancel_contribution(request, contribution_id):
     contribution = get_object_or_404(ContributionModel, contributor = request.user, id = contribution_id)
     if contribution.paid == PaymentStatus.PAID:
         messages.warning(request, "You cannot cancel an already paid or pending payment contribution, please visit our <a href='' class='text-custom-primary'>refund policy</a>")
-        return redirect("accounts:contributions")
+        return redirect("campaigns:manage-contributions")
     
     if request.method == "POST":
         contribution.delete()
-        return redirect("accounts:contributions")
+        return redirect("campaigns:manage-contributions")
     
     return render(request, "campaigns/delete/confirm_delete.html", {"message": f"Are you sure you want to cancel this contribution ({contribution.order_number})?", "title": "Cancel Contribution"})
