@@ -11,7 +11,7 @@ AUTHENTICATION_BACKENDS = ['accounts.utilities.backends.EmailBackend']
 LOGIN_URL = 'accounts:login'
 SECRET_KEY = config('SECRET', 'django-insecure-*1&e92eo3**p^ts02_nxi=w5u#zm9v&&6ps=q50-6o32v)zcq3')
 
-DEBUG = True
+DEBUG = False
 
 INSTALLED_APPS = [
     'django.contrib.admin',
