@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.conf import settings
 from django.db.models import Q
 import logging, jwt
-from jwt import ExpiredSignatureError, InvalidTokenError
+from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
 
 
 logger = logging.getLogger("accounts")
