@@ -3,31 +3,20 @@
 {{form.media}}
 
 
-{% block seo_tags %}
-<title>{{event.title}}</title>
-<meta name="description" content="{{event.small_description|truncatechars:157}}">
-<meta name="title" content="{{event.title}}" />
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://bbgi.co.za/events/add" />
-<meta property="og:title" content="{{event.title}}" />
-<meta property="og:description" content="{{event.small_description|truncatechars:157}}" />
-{% if event.image %}
-<meta property="og:image" content="https://bbgi.co.za{{event.image.url}}" />
-{% else %}
-<meta property="og:image" content="https://bbgi.co.za{% static 'imgs/logo/logo.jpeg' %}" />
-{% endif %}
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://bbgi.co.za/events/add" />
-<meta property="twitter:title" content="{{event.title}}" />
-<meta property="twitter:description" content="{{event.small_description|truncatechars:157}}" />
-{% if event.image %}
-<meta property="twitter:image" content="https://bbgi.co.za{{event.image.url}}" />
-{% else %}
-<meta property="twitter:image" content="https://bbgi.co.za{% static 'imgs/logo/logo.jpeg' %}" />
-{% endif %}
-{% endblock seo_tags %}
+{% block seo %}
+<title>{{ event.title }}</title>
+<meta name="description" content="{{ event.small_description }}">
+<meta name="author" content="Siyazalana">
+
+<!-- Open Graph Meta -->
+<meta property="og:title" content="{{ event.title }}">
+<meta property="og:description" content="{{ event.small_description }}">
+<meta property="og:image"
+    content="{% if event.image %}{{ event.image.url }}{% else %}{% static 'logo-5.png' %}{% endif %}">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta property="og:type" content="website">
+
+{% endblock seo %}
 
 {% block content %}
 <section class="w-full font-sans relative block bg-custom-h mt-10 ">

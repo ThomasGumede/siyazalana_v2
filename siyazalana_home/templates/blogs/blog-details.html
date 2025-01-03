@@ -1,31 +1,31 @@
 {% extends '_base.html' %} 
 {% load static %} 
 
-{% block seo_tags %}
+{% block seo %}
 <title>{{post.title}}</title>
 <meta name="description"
-    content="{{post.content|truncatechars:157}}">
+    content="{{post.content|safe|truncatechars:157}}">
 <meta name="title" content="{{post.title}}" />
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://siyazalana.org/blogs/details/{{post.slug}}" />
+<meta property="og:url" content="{{ request.build_absolute_uri }}" />
 <meta property="og:title" content="{{post.title}}" />
 <meta property="og:description"
-    content="{{post.content|truncatechars:157}}" />
-<meta property="og:image" content="https://siyazalana.org{% static 'imgs/logo/logo.jpeg' %}" />
+    content="{{post.content|safe|truncatechars:157}}" />
+<meta property="og:image" content="https://siyazalana.org{% static 'logo-2.png' %}" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://siyazalana.org/blogs/details/{{post.slug}}" />
+<meta property="twitter:url" content="{{ request.build_absolute_uri }}" />
 <meta property="twitter:title" content="{{post.title}}" />
 <meta property="twitter:description"
-    content="{{post.content|truncatechars:157}}" />
+    content="{{post.content|safe|truncatechars:157}}" />
 {% if post.image %}
 <meta property="twitter:image" content="https://siyazalana.org{{post.image.url}}" />
 {% else %}
-<meta property="twitter:image" content="https://siyazalana.org{% static 'imgs/logo/logo.jpeg' %}" />
+<meta property="twitter:image" content="https://siyazalana.org{% static 'logo-2.png' %}" />
 {% endif %}
-{% endblock seo_tags %}
+{% endblock seo %}
 
 
 <!-- ==================================== TWITTER =================================== -->

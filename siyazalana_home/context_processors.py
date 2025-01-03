@@ -24,6 +24,7 @@ def global_context(request):
         "company_zipcode": COMPANY["company_zipcode"],
         "vision": COMPANY["vision"],
         "mission": COMPANY["mission"],
+        'GOOGLE_ANALYTICS_MEASUREMENT_ID': getattr(settings, 'GOOGLE_ANALYTICS_MEASUREMENT_ID', None)
     }
 
     

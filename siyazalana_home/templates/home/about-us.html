@@ -1,6 +1,22 @@
 {% extends '_base.html' %}
 {% load static %}
 
+{% block seo %}
+<title>About Us - Siyazalana</title>
+<meta name="description"
+    content="Learn about Siyazalana, a secure and transparent crowdfunding platform connecting South Africans with impactful causes.">
+<meta name="author" content="Siyazalana">
+
+<!-- Open Graph Meta -->
+<meta property="og:title" content="About Us - Siyazalana">
+<meta property="og:description"
+    content="Discover how Siyazalana empowers communities through crowdfunding with safety and transparency.">
+<meta property="og:image" content="{% static 'logo-5.png' %}">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta property="og:type" content="website">
+
+{% endblock seo %}
+
 {% block content %}
 <section>
     <!-- banner section -->

@@ -8,27 +8,36 @@
     {{form.media}}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description"
-        content="These template is suitable for charity , NGO , non-profit organization , donation , church or a fundraising website.">
-    <meta name="keywords"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="keywords"
         content="charity, causes, donate, charity foundation, charity hub, charity theme, donations, non profit, fundraiser,social, ngo, non-profit, nonprofit, organization, volunteer">
-    <meta name="author" content="initTheme">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Siyazalana &dash; We Care, You Care">
-    <meta property="og:site_name" content="donate Website">
-    <meta property="og:site_name" content="siyazalana">
-    <meta property="og:url" content="www.siyazalana.com">
-    <meta property="og:image" content="www.siyazalana.com">
-    <meta property="og:description"
-        content="These template is suitable for charity , NGO ,donate,fundraiser, non-profit organization">
-    <meta name="twitter:title" content="Siyazalana &dash; We Care, You Care">
-    <meta name="twitter:description"
-        content="These template is suitable for charity , NGO ,donate,fundraiser, non-profit organization">
-    <meta name="twitter:image" content="www.siyazalana.com">
-    <meta name="twitter:card" content="summary">
-    <title>Siyazalana &dash; We Care, You Care</title>
+    <meta name="author" content="Thomas Gumede - Wedodevs">
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ GOOGLE_ANALYTICS_MEASUREMENT_ID }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{{ GOOGLE_ANALYTICS_MEASUREMENT_ID }}');
+    </script>
+    
+    {% block seo %}
+        <title>Siyazalana - Empowering Crowdfunding Across South Africa</title>
+        <meta name="description"
+            content="Join Siyazalana, South Africa's leading crowdfunding platform, to fundraise for charity, education, health, and more without any fees.">
+        <meta name="author" content="Siyazalana">
+        
+        
+        <!-- Open Graph Meta -->
+        <meta property="og:title" content="Siyazalana - Empowering Crowdfunding Across South Africa">
+        <meta property="og:description"
+            content="Join Siyazalana to fundraise for charity, education, and health with zero fees. Safe and verified campaigns for real impact.">
+        <meta property="og:image" content="{% static 'logo-5.png' %}">
+        <meta property="og:url" content="{{ request.build_absolute_uri }}">
+        <meta property="og:type" content="website">
+
+    {% endblock seo %}
+
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/favicon-16x16.png' %}">

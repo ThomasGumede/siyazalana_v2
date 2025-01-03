@@ -1,30 +1,19 @@
 {% extends '_base.html' %}
 {% load static %}
-{% block seo_tags %}
-<title>{{campaign.title}}</title>
-<meta name="description" content="{{campaign.details|safe|truncatechars:157}}">
-<meta name="title" content="{{campaign.title}}" />
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://bbgi.co.za/campaigns/campaign/{{campaign.slug}}" />
-<meta property="og:title" content="{{campaign.title}}" />
-<meta property="og:description" content="{{campaign.details|truncatechars:157}}" />
-{% if campaign.image %}
-<meta property="og:image" content="https://bbgi.co.za{{campaign.image.url}}" />
-{% else %}
-<meta property="og:image" content="https://bbgi.co.za{% static 'imgs/logo/logo.jpeg' %}" />
-{% endif %}
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://bbgi.co.za/campaigns/campaign/{{campaign.slug}}" />
-<meta property="twitter:title" content="{{campaign.title}}" />
-<meta property="twitter:description" content="{{campaign.details|truncatechars:157}}" />
-{% if campaign.image %}
-<meta property="twitter:image" content="https://bbgi.co.za{{campaign.image.url}}" />
-{% else %}
-<meta property="twitter:image" content="https://bbgi.co.za{% static 'imgs/logo/logo.jpeg' %}" />
-{% endif %}
-{% endblock seo_tags %}
+{% block seo %}
+<title>{{ campaign.title }}</title>
+<meta name="description" content="{{ campaign.small_description }}">
+<meta name="author" content="Siyazalana">
+
+<!-- Open Graph Meta -->
+<meta property="og:title" content="{{ campaign.title }}">
+<meta property="og:description" content="{{ campaign.small_description }}">
+<meta property="og:image"
+    content="{% if campaign.image %}{{ campaign.image.url }}{% else %}{% static 'logo-5.png' %}{% endif %}">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta property="og:type" content="website">
+
+{% endblock seo %}
 
 
 {% block content %}

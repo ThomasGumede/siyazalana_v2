@@ -5,26 +5,26 @@
 
 {% block seo_tags %}
 <!-- Primary Meta Tags -->
-<title>BBGI - The Leading Business Growth Initiative</title>
-<meta name="title" content="BBGI - The Leading Business Growth Initiative" />
+<title>Legal - Siyazalana</title>
+<meta name="title" content="Legal - Siyazalana" />
 <meta name="description"
     content="Black Business Growth Initiative was formed with the intention of creating a gathering of black African business owners  and professionals. It is..." />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://bbgi.co.za/about-us" />
-<meta property="og:title" content="BBGI - The Leading Business Growth Initiative" />
+<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+<meta property="og:title" content="Legal - Siyazalana" />
 <meta property="og:description"
     content="Black Business Growth Initiative was formed with the intention of creating a gathering of black African business owners  and professionals. It is..." />
-<meta property="og:image" content="https://bbgi.co.za{% static 'imgs/logo/logo.jpeg' %}" />
+<meta property="og:image" content="{% static 'lgo-4.png' %}" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://bbgi.co.za/about-us" />
-<meta property="twitter:title" content="BBGI - The Leading Business Growth Initiative" />
+<meta property="twitter:url" content="{{ request.build_absolute_uri }}" />
+<meta property="twitter:title" content="Legal - Siyazalana" />
 <meta property="twitter:description"
     content="Black Business Growth Initiative was formed with the intention of creating a gathering of black African business owners  and professionals. It is..." />
-<meta property="twitter:image" content="https://bbgi.co.za{% static 'imgs/logo/logo.jpeg' %}" />
+<meta property="twitter:image" content="{% static 'lgo-4.png' %}" />
 
 <!-- Meta Tags Generated with https://metatags.io -->
 {% endblock seo_tags %}

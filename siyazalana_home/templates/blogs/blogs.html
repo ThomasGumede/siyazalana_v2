@@ -1,26 +1,22 @@
 {% extends '_base.html' %}
 {% load static %}
-{% block seo_tags %}
-<title>Siyazalana - Blog</title>
+{% block seo %}
+<title>Blog - Siyazalana</title>
 <meta name="description"
-    content="The Black Business Growth Initiative supports Black African businesses and careers by providing a unified platform for entrepreneurs and professionals to showcase their expertise and promote unity and cooperation.">
-<meta name="title" content="Siyazalana -  Black Business Growth Initiative" />
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://siyazalana.org/blogs" />
-<meta property="og:title" content="Siyazalana - Blog" />
-<meta property="og:description"
-    content="The Black Business Growth Initiative supports Black African businesses and careers by providing a unified platform for entrepreneurs and professionals to showcase their expertise and promote unity and cooperation." />
-<meta property="og:image" content="https://siyazalana.org{% static 'imgs/logo/logo.jpeg' %}" />
+    content="Stay updated with Siyazalana's latest tips, success stories, and crowdfunding insights on our blog.">
+<meta name="keywords" content="blog, crowdfunding tips, fundraising success stories, Siyazalana news">
+<meta name="author" content="Siyazalana">
 
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://siyazalana.org/blogs" />
-<meta property="twitter:title" content="Siyazalana - Blog" />
-<meta property="twitter:description"
-    content="The Black Business Growth Initiative supports Black African businesses and careers by providing a unified platform for entrepreneurs and professionals to showcase their expertise and promote unity and cooperation." />
-<meta property="twitter:image" content="https://siyazalana.org{% static 'imgs/logo/logo.jpeg' %}" />
-{% endblock seo_tags %}
+<!-- Open Graph Meta -->
+<meta property="og:title" content="Blog - Siyazalana">
+<meta property="og:description"
+    content="Explore helpful tips and stories from Siyazalana to enhance your crowdfunding journey.">
+<meta property="og:image" content="{% static 'logo-5.png' %}">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta property="og:type" content="website">
+
+
+{% endblock seo %}
 
 {% block content %}
 

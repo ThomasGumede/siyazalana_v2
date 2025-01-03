@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /
+
+User-agent: *
+Allow: /{% url 'siyazalana_home:siyazalana-home' %}
+Allow: /{% url 'siyazalana_home:about-siyazalana' %}
+Allow: /{% url 'siyazalana_home:contact' %}
+Allow: /{% url 'siyazalana_home:blogs' %}
+Allow: /{% url 'campaigns:campaigns' %}
+Allow: /{% url 'events:events' %}
+Sitemap: {{ request.scheme }}://{{ request.get_host }}/sitemap.xml

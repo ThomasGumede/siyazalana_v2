@@ -1,6 +1,21 @@
 {% extends '_base.html' %}
 {% load static %}
 
+{% block seo %}
+<meta name="description"
+    content="Get in touch with Siyazalana. We're here to help with your fundraising campaigns and events.">
+<meta name="keywords" content="contact Siyazalana, crowdfunding support, fundraising help">
+<meta name="author" content="Siyazalana">
+
+<!-- Open Graph Meta -->
+<meta property="og:title" content="Contact Us - Siyazalana">
+<meta property="og:description" content="Reach out to Siyazalana for assistance with your crowdfunding needs.">
+<meta property="og:image" content="{% static 'logo-5.png' %}">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta property="og:type" content="website">
+
+{% endblock seo %}
+
 {% block content %}
 <!-- banner section -->
 <section>

@@ -10,6 +10,7 @@ AUTH_USER_MODEL = 'accounts.Account'
 AUTHENTICATION_BACKENDS = ['accounts.utilities.backends.EmailBackend']
 LOGIN_URL = 'accounts:login'
 SECRET_KEY = config('SECRET', 'django-insecure-*1&e92eo3**p^ts02_nxi=w5u#zm9v&&6ps=q50-6o32v)zcq3')
+GOOGLE_ANALYTICS_MEASUREMENT_ID = config('GOOGLE_ANA')
 
 DEBUG = False
 
@@ -20,6 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
     'accounts',
     'siyazalana_home',
     'events',

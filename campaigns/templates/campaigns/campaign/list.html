@@ -1,24 +1,20 @@
 {% extends '_base.html' %}
 {% load static %}
-{% block seo_tags %}
-<title>BBGI - Campaigns</title>
-<meta name="description" content="From educational initiatives to healthcare support, our campaigns are a testament to the transformative impact of unity">
-<meta name="title" content="BBGI - Campaigns" />
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://bbgi.co.za/campaigns" />
-<meta property="og:title" content="BBGI - Campaigns" />
-<meta property="og:description" content="From educational initiatives to healthcare support, our campaigns are a testament to the transformative impact of unity" />
-<meta property="og:image" content="https://bbgi.co.za{{listing.background_image.url}}" />
+{% block seo %}
+<title>Campaigns - Siyazalana</title>
+<meta name="description"
+    content="Learn about Siyazalana, a secure and transparent crowdfunding platform connecting South Africans with impactful causes.">
+<meta name="author" content="Siyazalana">
 
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://bbgi.co.za/campaigns" />
-<meta property="twitter:title" content="BBGI - Campaigns" />
-<meta property="twitter:description" content="From educational initiatives to healthcare support, our campaigns are a testament to the transformative impact of unity" />
-<meta property="twitter:image" content="https://bbgi.co.za{% static 'imgs/logo/logo.jpeg' %}" />
+<!-- Open Graph Meta -->
+<meta property="og:title" content="Campaigns - Siyazalana">
+<meta property="og:description"
+    content="Join verified crowdfunding campaigns or start your own to support causes you care about.">
+<meta property="og:image" content="{% static 'logo-5.png' %}">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta property="og:type" content="website">
 
-{% endblock seo_tags %}
+{% endblock seo %}
 
 {% block description %}
 <meta name="description"
