@@ -16,7 +16,7 @@ click-plugins==1.1.1
 click-repl==0.3.0
 cookiecutter==2.6.0
 cron-descriptor==1.4.5
-cryptography==43.0.3 --hash=sha256:03f2442dfc4d7ccc531ae25143b7fa2ef7bee907bf55f9b8db7dea3aaec860f
+cryptography==43.0.3
 cssselect2==0.7.0
 Django==5.1.3
 django-celery-beat==2.7.0
