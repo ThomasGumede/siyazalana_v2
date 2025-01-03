@@ -182,7 +182,7 @@ if DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
     
 else:
-    ALLOWED_HOSTS = ['siyazalana.org', 'www.siyazalana.org']
+    ALLOWED_HOSTS = ['siyazalana.org', 'www.siyazalana.org', 'localhost']
     CSRF_TRUSTED_ORIGINS = ['https://127.0.0.1', 'https://localhost', 'https://siyazalana.org', 'https://www.siyazalana.org']
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     X_FRAME_OPTIONS = "SAMEORIGIN"
