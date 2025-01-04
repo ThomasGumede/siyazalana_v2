@@ -94,11 +94,11 @@ def contributions_payment_success(request, contribution_id):
             logger.info(f"Payment information updated for contribution {contribution_id}, order number: {contribution.order_number}")
         else:
             logger.warning(f"Payment update failed for contribution {contribution_id}. Scheduling retry.")
-            # check_payment_update_2_contribution.apply_async((contribution.checkout_id, domain, protocol), countdown=25*60)
+            check_payment_update_2_contribution.apply_async((contribution.checkout_id, domain, protocol), countdown=25*60)
 
     except PaymentInformation.DoesNotExist as ex:
         logger.error(f"PaymentInformation not found for contribution {contribution_id}: {ex}")
-        # check_payment_update_2_contribution.apply_async((contribution.checkout_id, protocol, domain), countdown=25*60)
+        check_payment_update_2_contribution.apply_async((contribution.checkout_id, protocol, domain), countdown=25*60)
         
     except Exception as ex:
         logger.error(f"Unexpected error occurred for contribution {contribution_id}: {ex}")
