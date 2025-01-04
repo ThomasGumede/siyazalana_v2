@@ -82,24 +82,27 @@ def contributions_payment_success(request, contribution_id):
     protocol = "https" if request.is_secure() else "http"
     
     contribution = get_object_or_404(ContributionModel, id=contribution_id)
+    
     try:
-        payment_information = PaymentInformation.objects.get(id = contribution.checkout_id)
+        payment_information = PaymentInformation.objects.get(id=contribution.checkout_id)
         updated = update_payment_status_contribution_order(json.loads(payment_information.data), request, contribution)
 
         if updated:
             payment_information.order_number = contribution.order_number
             payment_information.order_updated = True
             payment_information.save(update_fields=["order_number", "order_updated"])
-
+            logger.info(f"Payment information updated for contribution {contribution_id}, order number: {contribution.order_number}")
         else:
-            check_payment_update_2_contribution.apply_async((contribution.checkout_id, domain, protocol), countdown=25*60)
+            logger.warning(f"Payment update failed for contribution {contribution_id}. Scheduling retry.")
+            # check_payment_update_2_contribution.apply_async((contribution.checkout_id, domain, protocol), countdown=25*60)
 
     except PaymentInformation.DoesNotExist as ex:
-        logger.error(f"something went wrong: {ex}")
-        check_payment_update_2_contribution.apply_async((contribution.checkout_id, protocol, domain), countdown=25*60)
+        logger.error(f"PaymentInformation not found for contribution {contribution_id}: {ex}")
+        # check_payment_update_2_contribution.apply_async((contribution.checkout_id, protocol, domain), countdown=25*60)
         
     except Exception as ex:
-        logger.error(f"something went wrong: {ex}")
-        render(request, "payments/contributions/success.html", {"contribution": contribution})
+        logger.error(f"Unexpected error occurred for contribution {contribution_id}: {ex}")
+        return render(request, "payments/contributions/success.html", {"contribution": contribution})
 
     return render(request, "payments/contributions/success.html", {"contribution": contribution})
+
