@@ -20,10 +20,10 @@ def update_wallet(user, amount, tip, order_number, order_uuid):
     try:
         wallet, created = Wallet.objects.get_or_create(owner = user)
         if wallet:
-            wallet.balance += decimal.Decimal(amount)
+            wallet.balance += amount
             wallet.save(update_fields=['balance'])
         if created:
-            wallet.balance += decimal.Decimal(amount)
+            wallet.balance += amount
             wallet.save(update_fields=['balance'])
         
         SiyazalanaBank.objects.get_or_create(balance=tip, order_id=order_number, order_uuid=order_uuid)
