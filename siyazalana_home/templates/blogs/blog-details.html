@@ -62,9 +62,9 @@
                 <div class="relative block">
                     <div class="relativ block lg:h-96 overflow-hidden">
                         {% if post.image %}
-                        <img src="{{post.image.url}}" alt="" class="w-full object-cover h-full" />
+                        <img src="{{post.image.url}}" alt="{{post.title}}" class="w-full object-cover h-full" />
                         {% else %}
-                        <img src="{% static 'images/global/image-no.jpg' %}" alt=""
+                        <img src="{% static 'images/global/image-no.jpg' %}" alt="No Image"
                             class="w-full object-cover h-full" />
                         {% endif %}
 
@@ -122,9 +122,9 @@
                             <li class="flex items-center">
                                 <div class="pr-5 w-20 h-16 overflow-hidden">
                                     {% if post.image %}
-                                    <img src="{{post.image.url}}" alt="" class="w-full h-full object-cover" />
+                                    <img src="{{post.image.url}}" alt="{{post.title}}" class="w-full h-full object-cover" />
                                     {% else %}
-                                    <img src="{% static 'images/global/image-no.jpg' %}" alt=""
+                                    <img src="{% static 'images/global/image-no.jpg' %}" alt="No image {{post.title}}"
                                         class="w-full h-full object-cover" />
                                     {% endif %}
                                 </div>

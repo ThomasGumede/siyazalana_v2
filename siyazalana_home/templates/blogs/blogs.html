@@ -11,7 +11,7 @@
 <meta property="og:title" content="Blog - Siyazalana">
 <meta property="og:description"
     content="Explore helpful tips and stories from Siyazalana to enhance your crowdfunding journey.">
-<meta property="og:image" content="{% static 'logo-5.png' %}">
+<meta property="og:image" content="https://siyazalana.org{% static 'logo-5.png' %}">
 <meta property="og:url" content="{{ request.build_absolute_uri }}">
 <meta property="og:type" content="website">
 
@@ -33,7 +33,7 @@
                             <div class="relative leading-1">
                                 <a href="{{post.get_absolute_url}}" class="overflow-hidden w-full h-52">
                                     <img src="{% if post.image %}{{post.image.url}}{% else %}{% static 'imgs/no-image.png'  %}{% endif %}"
-                                        class="w-full group-hover:scale-110 transition-all duration-700 object-fit" alt="">
+                                        class="w-full group-hover:scale-110 transition-all duration-700 object-fit" alt="{{blog.title}}">
                                 </a>
                             </div>
                             <!-- card body -->

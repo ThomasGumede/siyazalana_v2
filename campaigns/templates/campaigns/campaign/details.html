@@ -9,7 +9,7 @@
 <meta property="og:title" content="{{ campaign.title }}">
 <meta property="og:description" content="{{ campaign.small_description }}">
 <meta property="og:image"
-    content="{% if campaign.image %}{{ campaign.image.url }}{% else %}{% static 'logo-5.png' %}{% endif %}">
+    content="{% if campaign.image %}https://siyazalana.org{{ campaign.image.url }}{% else %}https://siyazalana.org{% static 'logo-5.png' %}{% endif %}">
 <meta property="og:url" content="{{ request.build_absolute_uri }}">
 <meta property="og:type" content="website">
 

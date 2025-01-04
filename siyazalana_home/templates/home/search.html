@@ -120,7 +120,7 @@
                                 <div
                                     class="overflow-hidden h-64 bg-custom-h relative block transition-all duration-500 ease-in">
                                     {% if campaign.image %}
-                                    <img src="{{campaign.image.url}}" alt=""
+                                    <img src="{{campaign.image.url}}" alt="{{campaign.title}}"
                                         class="w-full transition-all duration-500 ease-in group-hover:scale-105 group-hover:opacity-50 h-full object-cover">
                                     {% else %}
                                     {% endif %}
@@ -303,7 +303,7 @@
                             <div class="img_box relative block">
                                 <div class="overflow-hidden h-64 bg-custom-h relative block transition-all duration-500 ease-in">
                                     {% if campaign.image %}
-                                    <img src="{{campaign.image.url}}" alt=""
+                                    <img src="{{campaign.image.url}}" alt="{{campaign.title}}"
                                         class="w-full transition-all duration-500 ease-in group-hover:scale-105 group-hover:opacity-50 h-full object-cover">
                                     {% else %}
                                     {% endif %}

@@ -12,7 +12,7 @@
 <meta property="og:title" content="{{ event.title }}">
 <meta property="og:description" content="{{ event.small_description }}">
 <meta property="og:image"
-    content="{% if event.image %}{{ event.image.url }}{% else %}{% static 'logo-5.png' %}{% endif %}">
+    content="{% if event.image %}https://siyazalana.org{{ event.image.url }}{% else %}https://siyazalana.org{% static 'logo-5.png' %}{% endif %}">
 <meta property="og:url" content="{{ request.build_absolute_uri }}">
 <meta property="og:type" content="website">
 

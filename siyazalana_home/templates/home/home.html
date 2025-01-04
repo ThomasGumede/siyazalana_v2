@@ -60,7 +60,7 @@
                                 <!-- banner right -->
                                 <div
                                     class="4xl:absolute right-[60px] xl:right-[150px] bottom-[100px] 4xl:h-[70%] 4xl:w-[45%]">
-                                    <img class="4xl:h-full 4xl:ml-auto" src="{% static 'assets/images/hero/hero-1.png' %}" alt="">
+                                    <img class="4xl:h-full 4xl:ml-auto" src="{% static 'assets/images/hero/hero-1.png' %}" alt="Kid in Siyazalana">
                                 </div>
                             </div>
                         </div>
@@ -115,7 +115,7 @@
                                 <div class="lg:row-start-1 lg:row-span-1 lg:col-start-1 lg:col-span-1">
                                     <div
                                         class="4xl:absolute left-[60px] xl:left-[150px] bottom-[100px] 4xl:h-[70%] 4xl:w-[45%]">
-                                        <img class="4xl:h-full 4xl:ml-auto" src="{% static 'assets/images/hero/hero-6.png' %}" alt="">
+                                        <img class="4xl:h-full 4xl:ml-auto" src="{% static 'assets/images/hero/hero-6.png' %}" alt="Hero image Siyazalana">
                                     </div>
                                 </div>
                             </div>
@@ -190,7 +190,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-[30px]">
             <!-- about left -->
             <div class="lg:mr-[30px] relative mb-10 lg:mb-0">
-                <img src="{% static 'assets/images/gallery/about-3.png' %}" alt="" class="max-w-full">
+                <img src="{% static 'assets/images/gallery/about-3.png' %}" alt="About Siyazalana" class="max-w-full">
                 
             </div>
            
@@ -605,7 +605,7 @@
                 <!-- img -->
                 <div>
                     
-                        <img src="{% static 'assets/images/que.png' %}" alt="">
+                        <img src="{% static 'assets/images/que.png' %}" alt="FAQs">
                     
                 </div>
             </div>
@@ -776,7 +776,7 @@
                 <a href="shop.html"
                     class="pt-10 pb-[35px] px-[15px] md:px-5 xl:px-[30px] bg-white hover:bg-secondary-color transition-all duration-300 shadow-box-shadow-4 rounded-[10px] flex flex-col items-center group relative">
                     <span
-                        class="block w-[60px] md:w-20 xl:w-[100px] h-[60px] md:h-20 xl:h-[100px] text-[25px] md:text-3xl xl:text-[45px] bg-section-bg-5 rounded-full transition-all duration-300 group-hover:bg-white text-secondary-color mb-5 text-center leading-1">
+                        class="w-[60px] md:w-20 xl:w-[100px] grid items-center justify-center h-[60px] md:h-20 xl:h-[100px] text-[25px] md:text-3xl xl:text-[45px] bg-section-bg-5 rounded-full transition-all duration-300 group-hover:bg-white text-secondary-color mb-5 text-center leading-1">
                         {% if category.thumbnail %}
                         <img src="{{category.thumbnail.url}}" alt="Medical Category" class="w-full  h-full object-cover">
                         {% else %}
@@ -827,7 +827,7 @@
                                 <div class="relative leading-1">
                                     <a href="{{post.get_absolute_url}}" class="overflow-hidden w-full h-52">
                                         <img src="{% if post.image %}{{post.image.url}}{% else %}{% static 'imgs/no-image.png'  %}{% endif %}"
-                                            class="w-full group-hover:scale-110 transition-all duration-700 object-fit" alt="">
+                                            class="w-full group-hover:scale-110 transition-all duration-700 object-fit" alt="{{post.title}} image">
                                     </a>
                                 </div>
                                 <!-- card body -->
