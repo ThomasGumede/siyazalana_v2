@@ -94,7 +94,12 @@ def contributions_payment_success(request, contribution_id):
         else:
             check_payment_update_2_contribution.apply_async((contribution.checkout_id, domain, protocol), countdown=25*60)
 
-    except PaymentInformation.DoesNotExist:
+    except PaymentInformation.DoesNotExist as ex:
+        logger.error(f"something went wrong: {ex}")
         check_payment_update_2_contribution.apply_async((contribution.checkout_id, protocol, domain), countdown=25*60)
+        
+    except Exception as ex:
+        logger.error(f"something went wrong: {ex}")
+        render(request, "payments/contributions/success.html", {"contribution": contribution})
 
     return render(request, "payments/contributions/success.html", {"contribution": contribution})
