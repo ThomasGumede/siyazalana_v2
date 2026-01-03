@@ -12,9 +12,12 @@ LOGIN_URL = 'accounts:login'
 SECRET_KEY = config('SECRET', 'django-insecure-*1&e92eo3**p^ts02_nxi=w5u#zm9v&&6ps=q50-6o32v)zcq3')
 GOOGLE_ANALYTICS_MEASUREMENT_ID = config('GOOGLE_ANA')
 
-DEBUG = False
+DEBUG = config('DEBUG', default=False, cast=bool)
+
 
 INSTALLED_APPS = [
+    "admin_interface",
+    'colorfield',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -103,8 +106,8 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-ADMINS = [('admin@siyazalana.org'),( 'support@siyazalana.org'), ('gumedethomas12@gmail.com') ]
-MANAGERS = [('admin@siyazalana.org'), ('support@siyazalana.org'), ('gumedethomas12@gmail.com') ]
+# ADMINS = [('admin@siyazalana.org'),( 'support@siyazalana.org'), ('gumedethomas12@gmail.com') ]
+# MANAGERS = [('admin@siyazalana.org'), ('support@siyazalana.org'), ('gumedethomas12@gmail.com') ]
 
 # Files
 TICKETS_PDF_DIR = os.path.join(BASE_DIR, 'media/tickets/pdf')
@@ -152,7 +155,19 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'noreply@siyazalana.org'
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = 'noreply@siyazalana.org'
-
+INSTALLED_APPS += [
+    "django_q",
+]
+Q_CLUSTER = {
+    "name": "siyazalana",
+    "workers": 4,
+    "recycle": 500,
+    "timeout": 60,
+    "retry": 120,
+    "queue_limit": 50,
+    "bulk": 10,
+    "orm": "default",
+}
 
 TEST_MODE = config('YOCO_TEST_MODE')
 # YOCO
@@ -210,7 +225,10 @@ else:
                 'PORT': '',
             }
         }
-    
+    ADMINS = [
+    ("Wandile Gumede", "wedodevs@gmail.com"), ("Support", "technical@siyazalana.org"),
+    ]
+    MANAGERS = [('admin@siyazalana.org', 'technical@siyazalana.org'), ('support@siyazalana.org',)]
     STATIC_URL = 'static/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
     
