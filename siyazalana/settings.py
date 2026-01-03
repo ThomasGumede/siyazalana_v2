@@ -134,15 +134,51 @@ PASSWORD_RESET_TIMEOUT = 14400
 DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880 # 5MB
 
 TINYMCE_DEFAULT_CONFIG = {
-    'content_style': '* { margin: 0 !important; padding: 0 !important; }',
-    'theme_advanced_fonts': 'DM Sans=dm-sans,Arial=arial,helvetica,sans-serif',
+    'content_style': '''
+    * { margin: 0 !important; padding: 0 !important; }
+    body { 
+            color: #5D666F !important; 
+            font-family: "DM Sans", sans-serif !important;
+        }
+    ''',
+    'font_family_formats': "DM Sans='DM Sans', sans-serif;Arial=arial,helvetica,sans-serif",
+
     'height': "400px",
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 20,
-    # 'selector': 'textarea',
+    'images_upload_url': '/tinymce-upload/',
+    'automatic_uploads': True,
+    'file_picker_types': 'image',
+    'file_picker_callback': """
+        function (cb, value, meta) {
+            if (meta.filetype === 'image') {
+                var input = document.createElement('input');
+                input.setAttribute('type', 'file');
+                input.setAttribute('accept', 'image/*');
+                input.onchange = function () {
+                    var file = this.files[0];
+                    var formData = new FormData();
+                    formData.append('file', file);
+                    fetch('/tinymce-upload/', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        cb(data.location, { title: file.name });
+                    })
+                    .catch(err => console.error(err));
+                };
+                input.click();
+            }
+        }
+    """,
     "menubar": "file edit view insert format tools table help",
     "plugins": "advlist autolink lists link image charmap print preview anchor searchreplace visualblocks fullscreen insertdatetime media table paste help",
-    "toolbar": "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | a11ycheck ltr rtl | showcomments addcomment",
+    'textcolor_map': [
+        "5D666F", "Brand Grey",
+    ],
+    "toolbar": "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist checklist | forecolor backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | fullscreen preview save print | a11ycheck ltr rtl | showcomments addcomment",
 }
 
 MEDIA_URL = '/media/'

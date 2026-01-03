@@ -124,10 +124,10 @@
                 </div>
                 <div class="hidden xl:block">
                     <div class="swiper-button-next !bg-none !text-inherit after:!hidden">
-                        <i class="fas fa-arrow-right"></i>
+                        <i class="fa-solid fa-arrow-right"></i>
                     </div>
                     <div class="swiper-button-prev !bg-none !text-inherit after:!hidden">
-                        <i class="fas fa-arrow-left"></i>
+                        <i class="fa-solid fa-arrow-left"></i>
                     </div>
                 </div>
                 <div
@@ -613,6 +613,9 @@
     </div>
 </section>
 <!-- featured appartments  section -->
+ 
+ {% if campaigns.count > 3 %}
+
 <section>
     <div class="container pt-[115px] pb-[75px]">
         <!-- section heading -->
@@ -754,7 +757,7 @@
 
     </div>
 </section>
-
+{% endif %}
 <!-- features section -->
 <section>
     <div class="container pt-[115px] pb-[90px]">
@@ -801,6 +804,9 @@
 
 
 <!-- news  section -->
+ 
+ {% if posts.count > 3 %}
+
 <section>
     <div>
         <div class="container pb-[70px]">
@@ -891,6 +897,7 @@
         </div>
     </div>
 </section>
+{% endif %}
 <!-- End-of Gallery -->
 {% endblock content %}
 {% block js %}

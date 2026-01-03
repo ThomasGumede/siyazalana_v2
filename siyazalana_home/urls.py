@@ -1,6 +1,6 @@
 from django.urls import path
 from siyazalana_home.views.admin_views import all_accounts
-from siyazalana_home.views.blog_views import all_blogs, blog_details, blogs, create_blog, delete_blog, update_blog
+from siyazalana_home.views.blog_views import all_blogs, blog_details, blogs, create_blog, delete_blog, tinymce_image_upload, update_blog
 from siyazalana_home.views.campaigns_views import all_campaigns, all_contributions, campaign_details, contribution_details, delete_contribution
 from siyazalana_home.views.events_views import all_events, all_ticket_orders, delete_ticket_order, event_details, ticket_order_details
 from siyazalana_home.views.home import about_siyazalana, contact, dashboard, faqs, home, privacy, refunds, search, terms_and_conditions
@@ -43,4 +43,6 @@ urlpatterns = [
     path("dashboard/ticket-orders", all_ticket_orders, name="all-ticket-orders"),
     path("dashboard/ticket-orders/<order_id>", ticket_order_details, name="order"),
     path("dashboard/ticket-orders/delete/<uuid:order_id>", delete_ticket_order, name="cancel-ticket-order"),
+    
+     path('tinymce-upload/', tinymce_image_upload, name='tinymce_upload'),
 ]
